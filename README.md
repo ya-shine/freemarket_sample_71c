@@ -35,6 +35,7 @@ Things you may want to cover:
 
 - has_one :credit_card
 - has_one :profile
+- has_many :items
 - has_many :orders
 - has_many :comments
 - has_many :likes
@@ -106,13 +107,13 @@ Things you may want to cover:
 |shipping_days|string|null:false|
 |selling_status|boolean|null:false|
 
+- belongs_to :user
+- belongs_to :category
+- belongs_to :brand
 - has_one :order
 - has_one :size 
 - has_many :likes
 - has_many :comments
-- belongs_to :category
-- belongs_to :brand
-
 
 ## brandsテーブル
 |Column|Type|Options|
