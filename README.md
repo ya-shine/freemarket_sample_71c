@@ -93,7 +93,7 @@ Things you may want to cover:
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null:false|
+|name|string|null:false, add_index:true|
 |category_id|references|foreign_key:true, null:false|
 |brand_id|references|foreign_key:true|
 |discription|text|null:false|
