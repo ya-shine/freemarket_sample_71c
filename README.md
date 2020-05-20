@@ -89,7 +89,8 @@ Things you may want to cover:
 |payment_method|string|null:false|
 
 - has_one :evaluation
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
 
 ## itemsテーブル
 |Column|Type|Options|
