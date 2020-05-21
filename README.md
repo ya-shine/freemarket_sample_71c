@@ -129,7 +129,6 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null:false|
-|category_id|references|foreign_key:true,null:false|
 
 - has_many :items
 
