@@ -123,7 +123,6 @@ Things you may want to cover:
 |category_id|references|foreign_key:true,null:false|
 
 - has_many :items
-- has_many :categories
 - belongs_to category
 
 ## categoriesテーブル
