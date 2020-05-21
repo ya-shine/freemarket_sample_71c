@@ -92,6 +92,7 @@ Things you may want to cover:
 ## shipping_addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
+|user_id|references|foreign_key:true,null:false|
 |zipcode|string|null:false|
 |prefecture|string|null:false|
 |city|string|null:false|
@@ -105,6 +106,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null:false, add_index:true|
+|user_id|references|foreigh_key:true, null:false|
 |category_id|references|foreign_key:true, null:false|
 |brand_id|references|foreign_key:true|
 |discription|text|null:false|
