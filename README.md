@@ -35,6 +35,7 @@ Things you may want to cover:
 
 - has_one :credit_card
 - has_one :profile
+- has_one :shipping_address
 - has_many :items
 - has_many :orders
 - has_many :comments
@@ -68,29 +69,37 @@ Things you may want to cover:
 |building|string|
 
 - belongs_to :user
-- has_many :orders
 
 ## ordersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |buyer_id|references|foreign_key:true,null:false|
 |seller_id|references|foreign_key:true,null:false|
+|shipping_address_id|references|foreign_key:true,null:false|
 |item_id|references|foreign_key:true,null:false|
 |firstname_deliver_at|string|null:false|
 |familyname_deliver_at|string|null:false|
 |firstname_kana_deliver_at|string|null:false|
 |familyname_kana_deliver_at|string|null:false|
 |user_points|integer|
-|zipcode|string|null:false|
-|prefecture|string|null:false|
-|city|string|null:false|
-|address|string|null:false|
-|building|string|
 |payment_method|string|null:false|
 
 - has_one :evaluation
 - belongs_to :user
 - belongs_to :item
+- belongs_to :shipping_address
+
+## shipping_addressesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|zipcode|string|null:false|
+|prefecture|string|null:false|
+|city|string|null:false|
+|address|string|null:false|
+|building|string|
+
+- has_one :order
+- belongs_to :user
 
 ## itemsテーブル
 |Column|Type|Options|
@@ -123,7 +132,6 @@ Things you may want to cover:
 |category_id|references|foreign_key:true,null:false|
 
 - has_many :items
-- belongs_to category
 
 ## categoriesテーブル
 |Column|Type|Options|
@@ -132,7 +140,6 @@ Things you may want to cover:
 |ancestry|string|add_index: true|
 
 - has_many :items
-- has_many :brands
 
 ## sizesテーブル
 |Column|Type|Options|
