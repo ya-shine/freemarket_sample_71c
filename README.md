@@ -61,7 +61,7 @@ Things you may want to cover:
 |profile_text|text|
 |birthday|integer|
 |phone_number|integer|unique:true|
-|zipcode|integer|null:false|
+|zipcode|string|null:false|
 |prefecture|string|null:false|
 |city|string|null:false|
 |address|string|null:false|
@@ -81,11 +81,11 @@ Things you may want to cover:
 |firstname_kana_deliver_at|string|null:false|
 |familyname_kana_deliver_at|string|null:false|
 |user_points|integer|
-|zipcode|references|null:false|
-|prefecture|references|null:false|
-|city|references|null:false|
-|address|references|null:false|
-|building|references|
+|zipcode|string|null:false|
+|prefecture|string|null:false|
+|city|string|null:false|
+|address|string|null:false|
+|building|string|
 |payment_method|string|null:false|
 
 - has_one :evaluation
@@ -111,8 +111,8 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :category
 - belongs_to :brand
+- belongs_to :size 
 - has_one :order
-- has_one :size 
 - has_many :likes
 - has_many :comments
 
@@ -123,29 +123,17 @@ Things you may want to cover:
 |category_id|references|foreign_key:true,null:false|
 
 - has_many :items
-- has_many :categories, through: :brands_categories
-- has_many :brands_categories
-
-## brands_categoriesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|category_id|references|foreign_key:true,null:false|
-|brand_id|references|foreign_key:true,null:false|
-
-- belongs_to :brand
-- belongs_to :category
+- has_many :categories
+- belongs_to category
 
 ## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|first_category|string|null:false|
-|second_category|string|null:false|
-|third_category|string|null:false|
-|brand_id|references|foreign_key,null:false|
+|name|string|null:false|
+|ancestry|string|add_index: true|
 
 - has_many :items
-- has_many :brands, through: :brands_categories
-- has_many :brands_categories
+- has_many :brands
 
 ## sizesテーブル
 |Column|Type|Options|
