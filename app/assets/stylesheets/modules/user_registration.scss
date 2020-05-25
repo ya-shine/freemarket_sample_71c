@@ -54,6 +54,9 @@ body {
           width: 100%;
           height: 48px;
           margin: 8px 0 0;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
         }
         .field-top__require {
           background-color: #ea352d;
@@ -73,11 +76,49 @@ body {
           width: 100%;
           height: 48px;
           margin: 8px 0 0;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
         }
         #user_email {
           width: 100%;
           height: 48px;
           margin: 8px 0 0;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+        }
+        #user_last_name {
+          width: calc(50% - 6px);
+          height: 48px;
+          margin: 8px 0 0;
+          padding: 10px 16px 8px;
+        }
+        #user_first_name {
+          width: calc(50% - 6px);
+          height: 48px;
+          margin: 8px 0 0;
+          padding: 10px 16px 8px;
+        }
+        #user_last_name_kana {
+          width: calc(50% - 6px);
+          height: 48px;
+          margin: 8px 0 0;
+          padding: 10px 16px 8px;
+        }
+        #user_first_name_kana {
+          width: calc(50% - 6px);
+          height: 48px;
+          margin: 8px 0 0;
+          padding: 10px 16px 8px;
+        }
+        &__identification {
+          font-size: 16px;
+          font-weight: 600;
+        }
+        &__id-text {
+          margin: 8px 0 0;
+          font-size: 15px;
         }
         .field__require {
           background-color: #ea352d;

@@ -4,7 +4,7 @@
 
 .main
   .form-container
-    %h2 Sign up
+    %h2 会員情報入力
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       = render "devise/shared/error_messages", resource: resource
       .contents-fields
@@ -13,7 +13,7 @@
           %span.field-top__require
             必須
           %br/
-          = f.password_field :nickname, autocomplete: "nickname", placeholder: "例）フリマ太郎"
+          = f.text_field :nickname, autocomplete: "nickname", placeholder: "例）フリマ太郎"
         .field
           = f.label :email
           %span.field__require
@@ -22,14 +22,35 @@
           = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可"
         .field
           = f.label :password
-          -# - if @minimum_password_length
-          -#   %em
-          -#     (#{@minimum_password_length} characters minimum)
           %span.field__require
             必須
           %br/
           = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の半角英数字"
-
+        .field
+          %h3.field__identification
+            本人確認
+          %p.field__id-text
+            安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+        .field
+          = f.label :last_name
+          %span.field__require
+            必須
+          %br/
+          = f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "例）山田"
+          = f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "例）太郎"
+        .field
+          = f.label :last_name_kana
+          %span.field__require
+            必須
+          %br/
+          = f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", placeholder: "例）ヤマダ"
+          = f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder: "例）タロウ"
+        .field
+          = f.label :birth_day
+          %span.field__require
+            必須
+          %br/
+          = raw sprintf(f.date_select(:birth_day, use_month_numbers: true,autofocus: true, autocomplete: "birth_day", start_year:Time.now.year, end_year: 1920, prompt: "--", date_separator:'%s'),'年','月')+ '日'
         .actions
           = f.submit "Sign up"
       = render "devise/shared/links"
