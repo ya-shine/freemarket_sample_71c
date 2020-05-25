@@ -9,20 +9,21 @@
         アカウントをお持ちでない方はこちら
       = link_to "新規会員登録","#",id:"no-account-signup"
     .login-form-api
-      = button_tag "Facebookでログイン",type:"#" do
+      = button_tag type:"#",id:"facebook-login" do
         = icon('fab','facebook-square')
+        Facebookでログイン
+      = button_tag type:"#",id:"google-login" do
+        = icon('fab','google')
+        Googleでログイン
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      .field
-        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス"
-      .field
-        = f.password_field :password, autocomplete: "current-password", placeholder:"パスワード"
-      - if devise_mapping.rememberable?
+      .form-fields
+        .field-top
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス"
         .field
-          = f.check_box :remember_me
-          = f.label :remember_me
-      .actions
-        = f.submit "Log in"
-    = render "devise/shared/links"
+          = f.password_field :password, autocomplete: "current-password", placeholder:"パスワード"
+        .actions
+          = f.submit "ログイン", id:"login-button"
+          = link_to "パスワードをお忘れの方","#",id:"forget-password"
 
 .footer
   %ul.terms-lists
