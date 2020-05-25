@@ -88,6 +88,11 @@ body {
           border-radius: 4px;
           border: 1px solid #ccc;
         }
+        .notification {
+          margin: 5px 0 0 0;
+          color: #888;
+          font-size: 13px;
+        }
         #user_last_name {
           width: calc(50% - 6px);
           height: 48px;
@@ -130,6 +135,7 @@ body {
         }
         &__birth-day {
           height: 56px;
+          margin-top: 5px;
           #user_birth_day_1i {
             height: 48px;
           }
@@ -173,9 +179,47 @@ body {
           color: white;
           margin-top: 32px;
           font-size: 14px;
-          
+
+        }
+      }
+      .about-identification {
+        text-align: right;
+        margin-top: 32px;
+        #about-id {
+          text-decoration: none;
+          font-size: 14px;
+          color: #0099e8;
         }
       }
     }
+  }
+}
+
+.footer {
+  width: 456px;
+  height: 220px;
+  margin: 0 auto;
+  .terms-lists {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    padding: 40px 0;
+    &__all {
+      font-size: 12px;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+  .bottom-logo {
+    display: block;
+    text-align: center;
+    .logo-bottom {
+    }
+  }
+  .company-signature {
+    text-align: center;
+    font-size: 12px;
   }
 }

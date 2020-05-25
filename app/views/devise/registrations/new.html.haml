@@ -26,6 +26,8 @@
             必須
           %br/
           = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の半角英数字"
+          %p.notification
+            ※ 英字と数字の両方を含めて設定してください
         .field
           %h3.field__identification
             本人確認
@@ -62,5 +64,17 @@
             に同意したものとみなします。
         .actions
           = f.submit "次に進む", id:"submit"
+        .about-identification
+          = link_to "本人情報の登録について","#",id:"about-id"
 
 .footer
+  %ul.terms-lists
+    %li.terms-lists__all
+      = link_to "プライバシーポリシー","#",id:"policy"
+    %li.terms-lists__all
+      = link_to "フリマ利用規約","#",id:"furima-terms"
+    %li.terms-lists__all
+      = link_to "特定商取引に関する表記","#",id:"dealing"
+  = link_to image_tag("/images/logo-white.png",alt:"FURIMA",class:"logo-bottom",height:"65",width:"80"),"#", class:"bottom-logo"
+  %p.company-signature
+    © Furima, Inc.
