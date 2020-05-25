@@ -53,6 +53,15 @@ body {
         #user_nickname {
           width: 100%;
           height: 48px;
+          margin: 8px 0 0;
+        }
+        .field-top__require {
+          background-color: #ea352d;
+          color: #fff;
+          font-size: 12px;
+          border-radius: 2px;
+          margin: 0 0 0 8;
+          padding: 2px 4px;
         }
       }
       .field {
@@ -63,10 +72,20 @@ body {
         #user_password {
           width: 100%;
           height: 48px;
+          margin: 8px 0 0;
         }
         #user_email {
           width: 100%;
           height: 48px;
+          margin: 8px 0 0;
+        }
+        .field__require {
+          background-color: #ea352d;
+          color: #fff;
+          font-size: 12px;
+          border-radius: 2px;
+          margin: 0 0 0 8;
+          padding: 2px 4px;
         }
       }
     }
