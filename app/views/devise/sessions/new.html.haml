@@ -1,17 +1,37 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.header
+  %h1
+    = link_to image_tag("/images/logo.png", alt:"FURIMA", class:"logo"), "#", class:"logo-link"
+
+.sign-in-main
+  .sign-in-container
+    .signin-no-account
+      %p.signin-no-account__line
+        アカウントをお持ちでない方はこちら
+      = link_to "新規会員登録","#",id:"no-account-signup"
+    .login-form-api
+      = button_tag "Facebookでログイン",type:"#" do
+        = icon('fab','facebook-square')
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .field
+        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス"
+      .field
+        = f.password_field :password, autocomplete: "current-password", placeholder:"パスワード"
+      - if devise_mapping.rememberable?
+        .field
+          = f.check_box :remember_me
+          = f.label :remember_me
+      .actions
+        = f.submit "Log in"
+    = render "devise/shared/links"
+
+.footer
+  %ul.terms-lists
+    %li.terms-lists__all
+      = link_to "プライバシーポリシー","#",id:"policy"
+    %li.terms-lists__all
+      = link_to "フリマ利用規約","#",id:"furima-terms"
+    %li.terms-lists__all
+      = link_to "特定商取引に関する表記","#",id:"dealing"
+  = link_to image_tag("/images/logo-white.png",alt:"FURIMA",class:"logo-bottom",height:"65",width:"80"),"#", class:"bottom-logo"
+  %p.company-signature
+    © Furima, Inc.
