@@ -128,6 +128,42 @@ body {
           margin: 0 0 0 8;
           padding: 2px 4px;
         }
+        &__birth-day {
+          height: 56px;
+          #user_birth_day_1i {
+            height: 48px;
+          }
+          #user_birth_day_2i {
+            height: 48px;
+            width: 76px;
+            margin-left: 5px;
+          }
+          #user_birth_day_3i {
+            height: 48px;
+            width: 76px;
+            margin-left: 5px;
+          }
+        }
+      }
+      &__info {
+        line-height: 1.5;
+        margin: 8px 0 0;
+        color: #888;
+        font-size: 14px;
+      }
+    }
+    .submit-contents {
+      max-width: 343px;
+      margin: 0 auto;
+      .field {
+        margin: 40px 0 0;
+        &__submit_info {
+          font-size: 14px;
+          .terms {
+            color: #0099e8;
+            text-decoration: none;
+          }
+        }
       }
     }
   }

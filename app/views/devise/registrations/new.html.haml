@@ -50,9 +50,18 @@
           %span.field__require
             必須
           %br/
-          = raw sprintf(f.date_select(:birth_day, use_month_numbers: true,autofocus: true, autocomplete: "birth_day", start_year:Time.now.year, end_year: 1920, prompt: "--", date_separator:'%s'),'年','月')+ '日'
+          .field__birth-day
+            = raw sprintf(f.date_select(:birth_day, use_month_numbers: true,autofocus: true, autocomplete: "birth_day", start_year:Time.now.year, end_year: 1920, prompt: "--", date_separator:'%s'),'年','月')+ '日'
+        %p.contents-fields__info
+          ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+      .submit-contents
+        .field
+          %p.field__submit_info
+            「次へ進む」のボタンを押すことにより、
+            = link_to "利用規約","#",class:"terms"
+            に同意したものとみなします。
         .actions
-          = f.submit "Sign up"
+          = f.submit "次に進む"
       = render "devise/shared/links"
 
 .footer
