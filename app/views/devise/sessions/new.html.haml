@@ -1,0 +1,29 @@
+.header
+  %h1.title-logo
+    = link_to image_tag("/images/logo.png", alt:"FURIMA", class:"logo"), root_path, class:"logo-link"
+
+.sign-in-main
+  .sign-in-container
+    .signin-no-account
+      %p.signin-no-account__line
+        アカウントをお持ちでない方はこちら
+      = link_to "新規会員登録","#",id:"no-account-signup"
+    .login-form-api
+      = button_tag type:"#",id:"facebook-login" do
+        = icon('fab','facebook-square')
+        Facebookでログイン
+      = button_tag type:"#",id:"google-login" do
+        = icon('fab','google')
+        Googleでログイン
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .form-fields
+        .field-top
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス"
+        .field
+          = f.password_field :password, autocomplete: "current-password", placeholder:"パスワード"
+        .actions
+          = f.submit "ログイン", id:"login-button"
+          = link_to "パスワードをお忘れの方","#",id:"forget-password"
+
+.footer
+  = render "/devise/shared/login_signup_footer"

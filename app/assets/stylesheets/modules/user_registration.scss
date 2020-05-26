@@ -1,0 +1,296 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f5f5f5;
+  min-height: 100%;
+  position: relative;
+}
+
+.header {
+  height: 128px;
+  text-align: center;
+  .title-logo {
+    display: inline-block;
+    margin-top: 40px;
+    .logo-link {
+      height: 49px;
+      width: 185px;
+      line-height: 49px;
+      .logo {
+        height: 49px;
+        width: 185px;
+      }
+    }
+  }
+}
+
+.registration-main {
+  .sign-up-container {
+    margin: 0 auto;
+    width: 700px;
+    background-color: white;
+    &__title {
+      font-size: 22px;
+      padding: 32px;
+      font-weight: bold;
+      margin: auto;
+      text-align: center;
+    }
+    .new_user {
+      padding: 40px 40px 64px;
+      border-top: 1px solid #f5f5f5;
+    }
+    .contents-fields {
+      max-width: 343px;
+      margin: 0 auto;
+      .field-top {
+        label {
+          font-weight: 600;
+        }
+        #user_nickname {
+          width: 100%;
+          height: 48px;
+          margin: 8px 0 0;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+        }
+        .field-top__require {
+          background-color: #ea352d;
+          color: #fff;
+          font-size: 12px;
+          border-radius: 2px;
+          margin: 0 0 0 8;
+          padding: 2px 4px;
+        }
+      }
+      .field {
+        margin-top: 30px;
+        label {
+          font-weight: 600;
+        }
+        #user_password {
+          @include form-email-password;
+        }
+        #user_email {
+          @include form-email-password;
+        }
+        .notification {
+          margin: 5px 0 0 0;
+          color: #888;
+          font-size: 13px;
+        }
+        #user_last_name {
+          @include form-area;
+        }
+        #user_first_name {
+          @include form-area;
+        }
+        #user_last_name_kana {
+          @include form-area;
+        }
+        #user_first_name_kana {
+          @include form-area;
+        }
+        &__identification {
+          font-size: 16px;
+          font-weight: 600;
+        }
+        &__id-text {
+          margin: 8px 0 0;
+          font-size: 15px;
+        }
+        .field__require {
+          background-color: #ea352d;
+          color: #fff;
+          font-size: 12px;
+          border-radius: 2px;
+          margin: 0 0 0 8;
+          padding: 2px 4px;
+        }
+        &__birth-day {
+          height: 56px;
+          margin-top: 5px;
+          #user_birth_day_1i {
+            height: 48px;
+          }
+          #user_birth_day_2i {
+            @include birthday-form;
+          }
+          #user_birth_day_3i {
+            @include birthday-form;
+          }
+        }
+      }
+      &__info {
+        line-height: 1.5;
+        margin: 8px 0 0;
+        color: #888;
+        font-size: 14px;
+      }
+    }
+    .submit-contents {
+      max-width: 343px;
+      margin: 0 auto;
+      .field {
+        margin: 40px 0 0;
+        &__submit_info {
+          font-size: 14px;
+          .terms {
+            color: #0099e8;
+            text-decoration: none;
+          }
+        }
+      }
+      .actions {
+        #submit {
+          width: 100%;
+          height: 50px;
+          background-color: #ea352d;
+          color: white;
+          margin-top: 32px;
+          font-size: 14px;
+
+        }
+      }
+      .about-identification {
+        text-align: right;
+        margin-top: 32px;
+        #about-id {
+          text-decoration: none;
+          font-size: 14px;
+          color: #0099e8;
+        }
+      }
+    }
+  }
+}
+
+.sign-in-main {
+  .sign-in-container {
+    margin: 0 auto;
+    width: 456px;
+    background-color: white;
+    .signin-no-account {
+      text-align: center;
+      padding: 40px 64px;
+      &__line {
+        font-size: 14px;
+      }
+      #no-account-signup {
+        display: block;
+        background-color: #0099e8;
+        text-decoration: none;
+        color: white;
+        margin-top: 8px;
+        line-height: 40px;
+      }
+    }
+    .login-form-api {
+      border-top: 1px solid #f5f5f5;
+      padding: 32px 64px;
+      position: relative;
+      #facebook-login {
+        display: block;
+        background-color: #385185;
+        color: #fff;
+        width: 100%;
+        line-height: 48px;
+        font-size: 14px;
+        i {
+          font-size: 26px;
+          position: absolute;
+          top: 25%;
+          left: 80px;
+        }
+      }
+      #google-login {
+        display: block;
+        margin-top: 16px;
+        width: 100%;
+        line-height: 48px;
+        font-size: 14px;
+        background-color: #fff;
+        color: black;
+        i {
+          font-size: 26px;
+          position: absolute;
+          top: 60%;
+          left: 80px;
+        }
+      }
+    }
+    #new_user {
+      .form-fields {
+        padding: 24px 64px 32px;
+        .field-top {
+          height: 48px;
+          #user_email {
+            width: 100%;
+            height: 48px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            padding: 10px 16px 8px;
+          }
+        }
+        .field {
+          margin-top: 30px;
+          #user_password {
+            width: 100%;
+            height: 48px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            padding: 10px 16px 8px;
+          }
+        }
+        .actions {
+          margin-top: 30px;
+          #login-button {
+            width: 100%;
+            background-color: #ea352d;
+            color: white;
+            line-height: 47px;
+          }
+          #forget-password {
+            display: block;
+            margin: 40px 0 0;
+            text-decoration: none;
+            color: #0099e8;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  width: 456px;
+  height: 220px;
+  margin: 0 auto;
+  .terms-lists {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    padding: 40px 0;
+    &__all {
+      font-size: 12px;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+  .bottom-logo {
+    display: block;
+    text-align: center;
+    .logo-bottom {
+    }
+  }
+  .company-signature {
+    text-align: center;
+    font-size: 12px;
+  }
+}
