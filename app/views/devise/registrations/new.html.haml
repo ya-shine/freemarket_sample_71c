@@ -1,10 +1,10 @@
 .header
-  %h1
-    = link_to image_tag("/images/logo.png", alt:"FURIMA", class:"logo"), "#", class:"logo-link"
+  %h1.title-logo
+    = link_to image_tag("/images/logo.png", alt:"FURIMA", class:"logo"), root_path, class:"logo-link"
 
 .registration-main
   .sign-up-container
-    %h2 会員情報入力
+    %h2.sign-up-container__title 会員情報入力
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       = render "devise/shared/error_messages", resource: resource
       .contents-fields
@@ -68,13 +68,4 @@
           = link_to "本人情報の登録について","#",id:"about-id"
 
 .footer
-  %ul.terms-lists
-    %li.terms-lists__all
-      = link_to "プライバシーポリシー","#",id:"policy"
-    %li.terms-lists__all
-      = link_to "フリマ利用規約","#",id:"furima-terms"
-    %li.terms-lists__all
-      = link_to "特定商取引に関する表記","#",id:"dealing"
-  = link_to image_tag("/images/logo-white.png",alt:"FURIMA",class:"logo-bottom",height:"65",width:"80"),"#", class:"bottom-logo"
-  %p.company-signature
-    © Furima, Inc.
+  = render "/devise/shared/login_signup_footer"

@@ -1,6 +1,6 @@
 .header
-  %h1
-    = link_to image_tag("/images/logo.png", alt:"FURIMA", class:"logo"), "#", class:"logo-link"
+  %h1.title-logo
+    = link_to image_tag("/images/logo.png", alt:"FURIMA", class:"logo"), root_path, class:"logo-link"
 
 .sign-in-main
   .sign-in-container
@@ -26,13 +26,4 @@
           = link_to "パスワードをお忘れの方","#",id:"forget-password"
 
 .footer
-  %ul.terms-lists
-    %li.terms-lists__all
-      = link_to "プライバシーポリシー","#",id:"policy"
-    %li.terms-lists__all
-      = link_to "フリマ利用規約","#",id:"furima-terms"
-    %li.terms-lists__all
-      = link_to "特定商取引に関する表記","#",id:"dealing"
-  = link_to image_tag("/images/logo-white.png",alt:"FURIMA",class:"logo-bottom",height:"65",width:"80"),"#", class:"bottom-logo"
-  %p.company-signature
-    © Furima, Inc.
+  = render "/devise/shared/login_signup_footer"

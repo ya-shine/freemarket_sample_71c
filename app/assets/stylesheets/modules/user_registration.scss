@@ -11,7 +11,7 @@ body {
 .header {
   height: 128px;
   text-align: center;
-  h1 {
+  .title-logo {
     display: inline-block;
     margin-top: 40px;
     .logo-link {
@@ -31,7 +31,7 @@ body {
     margin: 0 auto;
     width: 700px;
     background-color: white;
-    h2 {
+    &__title {
       font-size: 22px;
       padding: 32px;
       font-weight: bold;
