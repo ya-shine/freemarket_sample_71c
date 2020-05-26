@@ -72,20 +72,10 @@ body {
           font-weight: 600;
         }
         #user_password {
-          width: 100%;
-          height: 48px;
-          margin: 8px 0 0;
-          padding: 10px 16px 8px;
-          border-radius: 4px;
-          border: 1px solid #ccc;
+          @include form-email-password;
         }
         #user_email {
-          width: 100%;
-          height: 48px;
-          margin: 8px 0 0;
-          padding: 10px 16px 8px;
-          border-radius: 4px;
-          border: 1px solid #ccc;
+          @include form-email-password;
         }
         .notification {
           margin: 5px 0 0 0;
@@ -93,28 +83,16 @@ body {
           font-size: 13px;
         }
         #user_last_name {
-          width: calc(50% - 6px);
-          height: 48px;
-          margin: 8px 0 0;
-          padding: 10px 16px 8px;
+          @include form-area;
         }
         #user_first_name {
-          width: calc(50% - 6px);
-          height: 48px;
-          margin: 8px 0 0;
-          padding: 10px 16px 8px;
+          @include form-area;
         }
         #user_last_name_kana {
-          width: calc(50% - 6px);
-          height: 48px;
-          margin: 8px 0 0;
-          padding: 10px 16px 8px;
+          @include form-area;
         }
         #user_first_name_kana {
-          width: calc(50% - 6px);
-          height: 48px;
-          margin: 8px 0 0;
-          padding: 10px 16px 8px;
+          @include form-area;
         }
         &__identification {
           font-size: 16px;
@@ -139,14 +117,10 @@ body {
             height: 48px;
           }
           #user_birth_day_2i {
-            height: 48px;
-            width: 76px;
-            margin-left: 5px;
+            @include birthday-form;
           }
           #user_birth_day_3i {
-            height: 48px;
-            width: 76px;
-            margin-left: 5px;
+            @include birthday-form;
           }
         }
       }
