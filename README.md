@@ -131,6 +131,16 @@ Things you may want to cover:
 - has_one :order
 - has_many :likes
 - has_many :comments
+- has_many :images
+
+## imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|image|string|null: false|
+|url|string|null: false|
+|item_id|references|foreign_key:true,null:false|
+
+- belongs_to :item
 
 ## brandsテーブル
 |Column|Type|Options|
