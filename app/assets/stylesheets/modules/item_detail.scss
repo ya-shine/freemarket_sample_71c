@@ -14,20 +14,102 @@
     line-height: 1.4;
     font-weight: bold;
   }
-  .main-clearfix {
+  .main-container {
     display: flex;
     margin-top: 16px;
-    .main-photos {
+    .item-photos {
       min-width: 300px;
       max-width: 300px;
       min-height: 375px;
       margin: 0;
     }
-    .main-details {
+    .item-details {
       min-width: 300px;
       max-width: 300px;
       min-height: 375px;
       margin: 0 auto;
+      border:1px solid #f5f5f5;
+      .item-container {
+        .item-details-table {
+          &__containers {
+            @include table_data;
+          }
+          &__information {
+            @include table_seller;
+            .user-name {
+              color:#0099e8;
+              text-decoration: none;
+              display: block;
+              font-size: 14px;
+            }
+            .user-evaluations-container {
+              .user-evaluations-good {
+                margin: 0;
+                display: inline-block;
+                i {
+                  font-size: 14px;
+                  vertical-align: middle;
+                  color: #ef5185;
+                }
+                &__number {
+                  font-size: 12px;
+                }
+              }
+              .user-evaluations-normal {
+                margin: 8px 0 0 14px;
+                display: inline-block;
+                i {
+                  font-size: 14px;
+                  vertical-align: middle;
+                  color: #fba933;
+                }
+                &__number {
+                  font-size: 12px;
+                }
+              }
+              .user-evaluations-bad {
+                margin: 8px 0 0 14px;
+                display: inline-block;
+                i {
+                  font-size: 14px;
+                  vertical-align: middle;
+                  color: #6ab5d8;
+                }
+                &__number {
+                  font-size: 12px;
+                }
+              }
+            }
+            .category {
+              display: block;
+              color:#0099e8;
+              text-decoration: none;
+              font-size: 14px;
+            }
+            .brand {
+              color:#0099e8;
+              text-decoration: none;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .price-container {
+    margin: 24px 0 0;
+    text-align: center;
+    &__price {
+      font-size: 50px;
+      margin: 0 16px 0 0;
+      font-weight: 600;
+    }
+    &__tax {
+      font-size: 10px;
+    }
+    &__shipping-fee {
+      display: inline-block;
+      font-size: 16px;
     }
   }
 }
