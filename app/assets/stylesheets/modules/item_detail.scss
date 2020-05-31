@@ -418,6 +418,60 @@
     }
   }
 }
+.bottom-category-connection {
+  position: relative;
+  border-top: 1px solid #eee;
+  .categories-box {
+    width: 1020px;
+    margin: 0 auto;
+    padding: 16px 0;
+    white-space: normal;
+    display: flex;
+    &__root {
+      font-size: 14px;
+      line-height: 1.2;
+      .category-root {
+        text-decoration: none;
+        color: #333;
+      }
+      i {
+        margin: 0 8px;
+        font-size: 9px;
+        color: #888;
+      }
+    }
+    &__parent {
+      font-size: 14px;
+      line-height: 1.2;
+      .category-parent {
+        text-decoration: none;
+        color:#333;
+        font-weight: 600;
+      }
+    }
+  }
+}
+.banner-for-app {
+  background-image: url(/images/bg-appBanner-pict.jpg);
+  padding: 100px 40px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  .banner-inner {
+    color: #fff;
+    text-align: center;
+    &__title {
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.4;
+    }
+    &__text {
+      font-size: 35px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+  }
+}
 
 
 .footer {

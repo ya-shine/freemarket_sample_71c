@@ -296,6 +296,20 @@
               = icon("far","heart")
               %span.item-box-likes__number
                 4
-
-
+.bottom-category-connection
+  %ul.categories-box
+    %li.categories-box__root
+      = link_to root_path,class:"category-root" do
+        %span.root-name
+          メルカリ
+      = icon("fas","arrow-right")
+    %li.categories-box__parent
+      = link_to "カテゴリー","#",class:"category-parent"
+%aside.banner-for-app
+  .banner-inner
+    %h2.banner-inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.banner-inner__text
+      今すぐ無料ダウンロード！
 .footer
+  %ul.contents-container
