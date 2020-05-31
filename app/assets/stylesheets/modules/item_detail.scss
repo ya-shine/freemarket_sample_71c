@@ -214,6 +214,123 @@
     }
   }
 }
+.item-social-medias {
+  margin: 24px auto;
+  padding: 32px 0 24px;
+  width: 700px;
+  background: #fff;
+  .social-media-text {
+    text-align: center;
+  }
+  .social-media-container {
+    margin: 16px 0 0;
+    text-align: center;
+    &__box {
+      display: inline-block;
+      margin: 0 8px 8px 0;
+      vertical-align: middle;
+      text-align: center;
+      .facebook {
+        font-size: 44px;
+        display: block;
+      }
+      .twitter {
+        font-size: 44px;
+        display: block;
+      }
+      .instagram {
+        font-size: 44px;
+        display: block;
+      }
+    }
+  }
+}
+.item-other-in-this-user {
+  width: 700px;
+  margin: 0 auto;
+  .item-other-content {
+    font-size: 22px;
+    margin: 24px 0 8px;
+    font-weight: 600;
+    .other-item {
+      color: #0099e8;
+      text-decoration: none;
+    }
+  }
+  .item-others-container {
+    width: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    .item-informations {
+      width: 220px;
+      height: 330px;
+      margin: 0 20px 20px 0;
+      background: #fff;
+      position: relative;
+      &__link {
+        display: block;
+        text-decoration: none;
+        color: black;
+        .item-image {
+          width: 220px;
+          height: 220px;
+          overflow: hidden;
+          position: relative;
+          padding: 0 0 100%;
+          margin: 0;
+          &__title {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 1;
+          }
+        }
+        .item-box-body {
+          padding: 16px;
+          height: 110px;
+          .item-box-name {
+            overflow: hidden;
+            position: relative;
+            font-size: 16px;
+            font-weight: 400;
+            height: 3em;
+            line-height: 1.5;
+            word-break: break-word;
+            white-space: normal;
+          }
+          .item-box-price-box {
+            display: flex;
+            -webkit-box-pack: justify;
+            align-items: center;
+            justify-content: space-between;
+            margin: 8px 0 0;
+            .item-box-price {
+              font-size: 15px;
+              font-weight: 600;
+            }
+            .item-box-likes {
+              color: #333;
+              i {
+                color: #ccc;
+              }
+              &__number {
+                font-size: 14px;
+                font-weight: 400;
+              }
+            }
+          }
+        }
+      }
+    }
+    .item-informations:nth-of-type(3) {
+      margin-right: 0;
+    }
+    .item-informations:nth-of-type(6) {
+      margin-right: 0;
+    }
+  }
+}
 
 .footer {
   height: 150px;
