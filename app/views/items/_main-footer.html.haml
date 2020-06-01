@@ -1,0 +1,35 @@
+%ul.contents-container
+  %li.contents-container__lists
+    %h2.contents-head
+      FURIMAについて
+    %ul.contents-list
+      %li.contents-list__each
+        = link_to "会社概要（運営会社）","#",class:"company-sammary"
+      %li.contents-list__each
+        = link_to "プライバシーポリシー","#",class:"company-sammary"
+      %li.contents-list__each
+        = link_to "FURIMA利用規約","#",class:"company-sammary"
+      %li.contents-list__each
+        = link_to "ポイントに関する特約","#",class:"company-sammary"
+  %li.contents-container__lists
+    %h2.contents-head
+      FURIMAを見る
+    %ul.contents-list
+      %li.contents-list__each
+        = link_to "カテゴリー一覧","#",class:"company-sammary"
+      %li.contents-list__each
+        = link_to "ブランド一覧","#",class:"company-sammary"
+  %li.contents-container__lists
+    %h2.contents-head
+      ヘルプ&ガイド
+    %ul.contents-list
+      %li.contents-list__each
+        = link_to "FURIMAガイド","#",class:"company-sammary"
+      %li.contents-list__each
+        = link_to "FURIMAロゴ利用ガイドライン","#",class:"company-sammary"
+      %li.contents-list__each
+        = link_to "お知らせ","#",class:"company-sammary"
+.logo-container
+  = link_to image_tag("/images/logo-white.png",alt:"FURIMA", class:"logo-image"), root_path, class:"logo-container__link"
+%p.bottom-web-name
+  ©︎　FURIMA

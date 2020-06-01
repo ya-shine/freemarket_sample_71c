@@ -53,6 +53,9 @@
           display: flex;
           .navigation-category__categories {
             padding: 0 11px;
+            position: relative;
+            padding: 0 11px;
+            cursor: pointer;
             .category-title-box {
               .category {
                 text-decoration: none;
@@ -63,6 +66,70 @@
                 .category-title__title {
                   color: black;
                   font-weight: 600;
+                }
+              }
+            }
+            .categories-container {
+              position: absolute;
+              top: 44px;
+              z-index: 1000;
+              background: #fff;
+              width: auto;
+              display: none;
+              &__parent {
+                width: 224px;
+                font-size: 14px;
+                font-weight: 400;
+                .category-name {
+                  .category-parent {
+                    text-decoration: none;
+                    color: black;
+                    line-height: 44px;
+                    padding: 0 16px;
+                    overflow: hidden;
+                  }
+                }
+                .categories-container-child {
+                  position: absolute;
+                  top: 0;
+                  left: 224px;
+                  bottom: 0;
+                  background: #fff;
+                  display: none;
+                  &__child {
+                    width: 224px;
+                    .category-name {
+                      .category-child {
+                        padding: 8px 16px;
+                        overflow: hidden;
+                        font-size: 14px;
+                        text-decoration: none;
+                        color: black;
+                        display: block;
+                      }
+                    }
+                    .categories-container-grandchild {
+                      position: absolute;
+                      top: 0;
+                      left: 224px;
+                      bottom: 0;
+                      background: #fff;
+                      display: none;
+                      &__grandchild {
+                        width: 224px;
+                        .category-name {
+                          .category-grandchild {
+                            padding: 8px 16px;
+                            overflow: hidden;
+                            font-size: 14px;
+                            text-decoration: none;
+                            color: black;
+                            display: block;
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }

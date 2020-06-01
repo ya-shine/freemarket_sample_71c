@@ -30,3 +30,10 @@ $(function(){
     centerMode: true,
   });
 });
+
+
+$(function(){
+  $('.category-title-box').on('mouseover',function(){
+    $('.categories-container').css('background-color',"#aaf")
+  })
+})

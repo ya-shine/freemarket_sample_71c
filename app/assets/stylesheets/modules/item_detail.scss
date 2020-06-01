@@ -91,10 +91,8 @@
           &__information {
             @include table_seller;
             .user-name {
-              color:#0099e8;
-              text-decoration: none;
+              @include previous-next-item;
               display: block;
-              font-size: 14px;
             }
             .user-evaluations-container {
               .user-evaluations-good {
@@ -110,8 +108,7 @@
                 }
               }
               .user-evaluations-normal {
-                margin: 8px 0 0 14px;
-                display: inline-block;
+                @include evaluation;
                 i {
                   font-size: 14px;
                   vertical-align: middle;
@@ -122,8 +119,7 @@
                 }
               }
               .user-evaluations-bad {
-                margin: 8px 0 0 14px;
-                display: inline-block;
+                @include evaluation;
                 i {
                   font-size: 14px;
                   vertical-align: middle;
@@ -136,14 +132,10 @@
             }
             .category {
               display: block;
-              color:#0099e8;
-              text-decoration: none;
-              font-size: 14px;
+              @include previous-next-item
             }
             .brand {
-              color:#0099e8;
-              text-decoration: none;
-              font-size: 14px;
+              @include previous-next-item
             }
           }
         }
@@ -252,9 +244,7 @@
     width: 45%;
     word-wrap: break-word;
     .previous-item {
-      color:#0099e8;
-      text-decoration: none;
-      font-size: 14px;
+      @include previous-next-item
     }
   }
   &__next {
@@ -262,9 +252,7 @@
     word-wrap: break-word;
     text-align: right;
     .next-item {
-      color:#0099e8;
-      text-decoration: none;
-      font-size: 14px;
+      @include previous-next-item
     }
   }
 }
@@ -285,16 +273,14 @@
       vertical-align: middle;
       text-align: center;
       .facebook {
-        font-size: 44px;
-        display: block;
+        @include fontawesome-icon;
       }
       .twitter {
-        font-size: 44px;
-        display: block;
+        @include fontawesome-icon;
+        color: #0099e8;
       }
       .instagram {
-        font-size: 44px;
-        display: block;
+        @include fontawesome-icon;
       }
     }
   }
