@@ -1,0 +1,28 @@
+@mixin category-container{
+  padding: 0 11px;
+  position: relative;
+  cursor: pointer;
+}
+
+@mixin category-brands-parentbox {
+  position: absolute;
+  top: 44px;
+  z-index: 1000;
+  background: #fff;
+  width: auto;
+  visibility: hidden;
+}
+
+@mixin category-brands-one-box {
+  width: 224px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+@mixin category-brands-element{
+  text-decoration: none;
+  color: black;
+  line-height: 44px;
+  padding: 0 16px;
+  overflow: hidden;
+}

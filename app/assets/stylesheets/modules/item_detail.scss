@@ -27,7 +27,7 @@
       margin: 0;
       #slider{
         width: 300px;
-        height: 300px;
+        height: 320px;
         margin:0 auto 30px;
         display: flex;
         .slide-item{
@@ -274,6 +274,7 @@
       text-align: center;
       .facebook {
         @include fontawesome-icon;
+        color: rgb(59,89,152);
       }
       .twitter {
         @include fontawesome-icon;
@@ -281,6 +282,7 @@
       }
       .instagram {
         @include fontawesome-icon;
+        color: rgb(76,76,76);
       }
     }
   }

@@ -8,34 +8,46 @@
         = icon("fas","search")
   .header-navigation-bar
     .navigation-left
-      %ul.navigation-category-brand
-        %li.navigation-category__categories
-          %h2.category-title-box
-            = link_to "#", class:"category" do
-              = image_tag("/images/icon_category.png", alt:"Category",class:"category-logo")
-              %span.category-title__title
-                カテゴリーから探す
-          %ul.categories-container
-            %li.categories-container__parent
-              %h3.category-name
-                = link_to "レディース","#",class:"category-parent"
-              %ul.categories-container-child
-                %li.categories-container-child__child
-                  %h3.category-name
-                    = link_to "トップス","#",class:"category-child"
-                  %ul.categories-container-grandchild
-                    %li.categories-container-grandchild__grandchild
-                      %h3.category-name
-                        = link_to "ポロシャツ","#",class:"category-grandchild"
-            %li.categories-container__parent
-              %h3.category-name
-                = link_to "メンズ","#",class:"category-parent"
-        %li.navigation-category__brands
-          %h2.brand-title-box
-            = link_to "#", class:"brand" do
-              = image_tag("/images/icon_brand.png", alt:"Brand",class:"brand-logo")
-              %span.brand-title__title
-                ブランドから探す
+      .navigation-category__categories
+        %h2.category-title-box
+          = link_to "#", class:"category" do
+            = image_tag("/images/icon_category.png", alt:"Category",class:"category-logo")
+            %span.category-title__title
+              カテゴリーから探す
+        %ul.categories-container
+          %li.categories-container__parent
+            %h3.category-name
+              = link_to "レディース","#",class:"category-parent"
+            %ul.categories-container-child
+              %li.categories-container-child__child
+                %h3.category-name
+                  = link_to "トップス","#",class:"category-child"
+                %ul.categories-container-grandchild
+                  %li.categories-container-grandchild__grandchild
+                    %h3.category-name
+                      = link_to "ポロシャツ","#",class:"category-grandchild"
+          %li.categories-container__parent
+            %h3.category-name
+              = link_to "メンズ","#",class:"category-parent"
+      .navigation-category__brands
+        %h2.brand-title-box
+          = link_to "#", class:"brand" do
+            = image_tag("/images/icon_brand.png", alt:"Brand",class:"brand-logo")
+            %span.brand-title__title
+              ブランドから探す
+        %ul.brands-container
+          %li.brands-container__brand
+            %h3.brand-name
+              = link_to "ナイキ","#",class:"brand"
+          %li.brands-container__brand
+            %h3.brand-name
+              = link_to "アディダス","#",class:"brand"
+          %li.brands-container__brand
+            %h3.brand-name
+              = link_to "プーマ","#",class:"brand"
+          %li.brands-container__brand
+            %h3.brand-name
+              = link_to "アシックス","#",class:"brand"
     .navigation-right
       %ul.navigation-likes-mypage
         %li.navigation-likes-mypage__likes
