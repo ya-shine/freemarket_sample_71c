@@ -1,0 +1,223 @@
+$borderBottom: 1px solid #f5f5f5;
+$borderTop: 0.5px solid #f5f5f5;
+$fontSize: 14px;
+$fontWeight: 600;
+
+*{
+  box-sizing: border-box;
+}
+
+body{
+  min-height: auto;
+  background-color: #f5f5f5;
+  position: relative;
+}
+
+.header{
+  height: 128px;
+  text-align: center;
+  h1{
+    display: block;
+    padding-top: 40px;
+    .logo-link{
+      height: 49px;
+      width: 185px;
+      line-height: 49px;
+      .logo{
+        height: 49px;
+        width: 185px;
+      }
+    }
+  }
+}
+
+.purchase-detals-main{
+  margin: 0 auto;
+  width: 700px;
+  background-color: #ffffff;
+  .main-title-container{
+    width: 100%;
+    border-bottom: $borderBottom;
+    &__text{
+      font-size: 22px;
+      font-weight: bold;
+      padding: 32px;
+      line-height: 1.5;
+      text-align: center;
+    }
+  }
+
+  .selected-item-container{
+    width: 100%;
+    border-bottom: $borderBottom;
+    padding: 32px 16px;
+    text-align: center;
+    &__content{
+      max-width: 343px;
+      margin: 0 auto;
+      &__inner{
+        display: flex;
+        &--image{
+          height: 80px;
+          width: 80px;
+          font-size: 22px;
+        }
+        .item-detail{
+          margin-left: 16px;
+          &--name{
+            font-size: $fontSize;
+            line-height: 1.5;
+            text-align: left;
+            padding: 0 0 8px;
+            color: #333333;
+          }
+          &--price{
+            font-size: 15px;
+            text-align: left;
+            font-weight: $fontWeight;
+            &--fee{
+              font-size: 12px;
+              display: inline-block;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .payment-container{
+    width: 100%;
+    padding: 32px 16px;
+    &__contents{
+      @include elementBlock;
+      &__inner{
+        .price-table{
+          display: table;
+          border-collapse: collapse;
+          width: 100%;
+          list-style: none;
+          margin-bottom: 32px;
+          &__label{
+            font-size: 30px;
+            display: table-row;
+            font-weight: $fontWeight;
+            &--text{
+              text-align: left;
+              font-size: 18px;
+              display: table-cell;
+            }
+            &--amount{
+              text-align: right;
+              display: table-cell;
+            }
+          }
+        }
+        .method{
+          padding: 32px 0;
+          text-align: left;
+          border-top: $borderTop;
+          &__label{
+            @include elementBlock;
+            &--text{
+              font-size: $fontSize;
+            }
+            &--link{
+              color: #0099e8;
+              text-decoration: none;
+              font-size: $fontSize;
+              &--icon{
+                text-align: left;
+                margin: 8px 0 0;
+              }
+              &--comment{
+                cursor: pointer;
+              }
+            }
+          }
+        }
+        .sipping-adress{
+          padding: 32px 0;
+          text-align: left;
+          border-top: $borderTop;
+          &__inner{
+            @include elementBlock;
+            &__label{
+              &--left{
+                font-size: $fontSize;
+                font-weight: 600;
+                float: left;
+              }
+              &--right{
+                display: block;
+                font-size: $fontSize;
+                text-align: right;
+                float: right;
+                text-decoration: none;
+                color: #0099e8;
+              }
+            }
+            &--info{
+              display: block;
+              text-align: left;
+              margin: 8px 0 0;
+              font-size: 12px;
+              line-height: 1.5;
+            }
+            .clearfix::after{
+              content: "";
+              clear: both;
+              display: block;
+            }
+          }
+        }
+        .buy-content{
+          padding: 32px 0;
+          border-top: $borderTop;
+          &--button{
+            border: 1px solid #888;
+            background: #888;
+            color: #fff;
+            display: block;
+            width: 100%;
+            line-height: 48px;
+            font-size: $fontSize;
+            text-align: center;
+            font-weight: 600;
+            outline: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  width: 456px;
+  height: 220px;
+  margin: 0 auto;
+  .terms-lists {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    padding: 40px 0;
+    &__all {
+      font-size: 12px;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+  .bottom-logo {
+    display: block;
+    text-align: center;
+    .logo-bottom {
+      width: 170px;
+      height: 50px;
+    }
+  }
+  .company-signature {
+    text-align: center;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,57 @@
+.header
+  %h1
+    = link_to image_tag("/assets/logo.png", alt:"FURIMA", class: "logo"), "$", class: "logo-link"
+
+.purchase-detals-main
+  .main-title-container
+    %h2.main-title-container__text 購入内容の確認
+  .selected-item-container
+    .selected-item-container__content
+      .selected-item-container__content__inner
+        = image_tag("/assets/IMG_1471.png", alt:"", class: "selected-item-container__content__inner--image")
+        .item-detail
+          %p.item-detail--name Dell 4Kモニター 27インチ U2720QM
+          %p.item-detail--price
+            %span ¥59,890
+            %span.item-detail--price--fee （税込）送料込み
+  .payment-container
+    .payment-container__contents
+      .payment-container__contents__inner
+        %ul.price-table
+          %li.price-table__label
+            .price-table__label--text 支払い金額
+            .price-table__label--amount
+              %span ¥59,890
+        .method
+          .method__label
+            %h3.method__label--text 支払い方法
+            = link_to "#", class: "method__label--link" do
+              = icon('fas', 'plus-circle', class: "method__label--link--icon")
+              %span.method__label--link--comment 登録してください
+        .sipping-adress
+          .sipping-adress__inner
+            .sipping-adress__inner__label.clearfix
+              %h3.sipping-adress__inner__label--left 配送先
+              = link_to "#", class: "sipping-adress__inner__label--right" do
+                %span 変更する
+            %address.sipping-adress__inner--info
+              %p 
+                〒810-0801
+                %br/ 
+                福岡県福岡市博多区中洲4丁目6ー12 プラート中洲8F
+                %br/ 
+                福岡 太郎
+        .buy-content
+          = button_tag "購入する", class: "buy-content--button"
+
+.footer
+  %ul.terms-lists
+    %li.terms-lists__all
+      = link_to "プライバシーポリシー","#",id:"policy"
+    %li.terms-lists__all
+      = link_to "フリマ利用規約","#",id:"furima-terms"
+    %li.terms-lists__all
+      = link_to "特定商取引に関する表記","#",id:"dealing"
+  = link_to image_tag("/assets/logo-white.png",alt:"FURIMA",class:"logo-bottom"),"#", class:"bottom-logo"
+  %p.company-signature
+    © Furima, Inc.
