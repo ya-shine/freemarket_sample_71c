@@ -1,0 +1,52 @@
+@mixin container {
+  width: 100%;
+  padding: 40px;
+}
+
+@mixin containerTitle {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4em;
+}
+
+@mixin annotation {
+  font-size: 12px;
+  color: #fff;
+  margin-left: 8px;
+  padding: 0 4px;
+  border-radius: 2px;
+  display: inline-block;
+  font-weight: 600;
+  line-height: 1.4em;
+}
+
+@mixin textField {
+  width: 100%;
+  height: 48px;
+  input{
+    display: block;
+    width: 100%;
+    height: 48px;
+    border-radius: 4px;
+    box-shadow: none;
+    border: 1px solid #ccc;
+    outline: none;
+  }
+}
+
+@mixin selectBox {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 48px;
+  line-height: 1;
+  outline: none;
+  padding: 0 56px 0 16px;
+  width: 100%;
+}
+
+@mixin linkButton {
+  text-decoration: none;
+  color: #0095ee;
+}
