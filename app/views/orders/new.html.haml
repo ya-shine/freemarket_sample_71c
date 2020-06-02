@@ -45,13 +45,4 @@
           = button_tag "購入する", class: "buy-content--button"
 
 .footer
-  %ul.terms-lists
-    %li.terms-lists__all
-      = link_to "プライバシーポリシー","#",id:"policy"
-    %li.terms-lists__all
-      = link_to "フリマ利用規約","#",id:"furima-terms"
-    %li.terms-lists__all
-      = link_to "特定商取引に関する表記","#",id:"dealing"
-  = link_to image_tag("/images/logo-white.png",alt:"FURIMA",class:"logo-bottom"),"#", class:"bottom-logo"
-  %p.company-signature
-    © Furima, Inc.
+  = render "/devise/shared/login_signup_footer"
