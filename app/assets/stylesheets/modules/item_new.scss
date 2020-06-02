@@ -10,24 +10,6 @@ body{
   position: relative;
 }
 
-.header{
-  height: 128px;
-  text-align: center;
-  h1{
-    display: block;
-    padding-top: 40px;
-    .logo-link{
-      height: 49px;
-      width: 185px;
-      line-height: 49px;
-      .logo{
-        height: 49px;
-        width: 185px;
-      }
-    }
-  }
-}
-
 .item-exhibition-main{
   margin: 0 auto;
   width: 700px;

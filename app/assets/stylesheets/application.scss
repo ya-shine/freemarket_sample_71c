@@ -5,7 +5,9 @@
 @import "mixin/item_detail-mixin";
 @import "mixin/headers-mixin";
 @import "mixin/item_new-mixin";
+@import "mixin/shipping_address-mixin";
 @import "modules/user_registration";
 @import "modules/item_detail";
 @import "modules/header";
 @import "modules/item_new";
+@import "modules/shipping_address"
