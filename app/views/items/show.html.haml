@@ -1,0 +1,145 @@
+.header-main
+  = render partial:"main_header"
+.main
+  %h1.main-title
+    ここにタイトルが入ります。
+  .main-container
+    .item-photos
+      = render partial:"slider-item-image"
+    %table.item-details
+      %tbody.item-container
+        %tr.item-details-table
+          %th.item-details-table__containers
+            出品者
+          %td.item-details-table__information
+            = link_to "ユーザー名","#",class:"user-name"
+            .user-evaluations-container
+              .user-evaluations-good
+                = icon("far", "grin-beam")
+                %span.user-evaluations-good__number
+                  234
+              .user-evaluations-normal
+                = icon("far", "meh")
+                %span.user-evaluations-normal__number
+                  19
+              .user-evaluations-bad
+                = icon("far", "sad-tear")
+                %span.user-evaluations-bad__number
+                  345
+        %tr.item-details-table
+          %th.item-details-table__containers
+            カテゴリー
+          %td.item-details-table__information
+            = link_to "カテゴリー1","#",class:"category"
+            = link_to "#",class:"category" do
+              = icon("fas", "chevron-right")
+              カテゴリー2
+            = link_to "#",class:"category" do
+              = icon("fas", "chevron-right")
+              カテゴリー3
+        %tr.item-details-table
+          %th.item-details-table__containers
+            ブランド
+          %td.item-details-table__information
+            = link_to "ブランド名","#",class:"brand"
+        %tr.item-details-table
+          %th.item-details-table__containers
+            商品のサイズ
+          %td.item-details-table__information
+            LL
+        %tr.item-details-table
+          %th.item-details-table__containers
+            商品の状態
+          %td.item-details-table__information
+            傷なし
+        %tr.item-details-table
+          %th.item-details-table__containers
+            送料の負担
+          %td.item-details-table__information
+            送料込み
+        %tr.item-details-table
+          %th.item-details-table__containers
+            発送の方法
+          %td.item-details-table__information
+            未定
+        %tr.item-details-table
+          %th.item-details-table__containers
+            発送元地域
+          %td.item-details-table__information
+            山形県
+        %tr.item-details-table
+          %th.item-details-table__containers
+            発送日の目安
+          %td.item-details-table__information
+            4~7日で発送
+  .price-container
+    %span.price-container__price
+      ￥10,000
+    %span.price-container__tax
+      (税込)
+    %span.price-container__shipping-fee
+      送料込み
+  = link_to "購入画面に進む","#",class:"link-to-purchase"
+  .item-description
+    %p.item-description__inner
+      サンプルサンプルサンプル
+  .item-likes
+    = button_tag  "#", id:"like" do
+      = icon("far","heart")
+      %span.like-title
+      いいね！
+      %span.likes-counts
+      23
+.item-messages
+  .message-container
+    .message-content
+      .message-form
+        %p.message-warning
+          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        = text_area "text",'', class:"item-messages" 
+        = button_tag '#', class:"submit-comment" do
+          %span.submit-comment__line
+            コメントする
+%ul.link-to-items
+  %li.link-to-items__previous
+    = link_to "#", class:"previous-item" do
+      = icon("fas", "chevron-left")
+      前の商品
+  %li.link-to-items__next
+    = link_to "#", class:"next-item" do
+      次の商品
+      = icon("fas", "chevron-right")
+.item-social-medias
+  .social-media-text
+  %ul.social-media-container
+    %li.social-media-container__box
+      = link_to "#",class:"facebook" do
+        = icon("fab","facebook")
+    %li.social-media-container__box
+      = link_to "#", class:"twitter" do
+        = icon("fab","twitter")
+    %li.social-media-container__box
+      = link_to "#",class:"instagram" do
+        = icon("fab","instagram")
+.item-other-in-this-user
+  = render partial:"other-items-lists"
+.bottom-category-connection
+  %ul.categories-box
+    %li.categories-box__root
+      = link_to root_path,class:"category-root" do
+        %span.root-name
+          メルカリ
+      = icon("fas","arrow-right")
+    %li.categories-box__parent
+      = link_to "カテゴリー","#",class:"category-parent"
+%aside.banner-for-app
+  .banner-inner
+    %h2.banner-inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.banner-inner__text
+      今すぐ無料ダウンロード！
+    .inner-icons
+      = link_to image_tag("/images/appstore-icon.png",alt:"appstore",class:"icon-image"),"#",class:"icon-left"
+      = link_to image_tag("/images/googlestore-icon.png",alt:"googleplay",class:"icon-image"),"#",class:"icon-right"
+.main-footer
+  = render partial:"main-footer"
