@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root 'items#index'
   resource :item
   resource :order
-
+  resource :shipping_addresses
 end

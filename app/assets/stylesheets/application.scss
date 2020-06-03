@@ -5,9 +5,12 @@
 @import "mixin/item_detail-mixin";
 @import "mixin/headers-mixin";
 @import "mixin/item_new-mixin";
+@import "mixin/shipping_address-mixin";
 @import "mixin/order_new-mixin";
 @import "modules/user_registration";
 @import "modules/item_detail";
 @import "modules/header";
 @import "modules/item_new";
 @import "modules/orders_new";
+@import "modules/user_registration";
+@import "modules/shipping_address";
