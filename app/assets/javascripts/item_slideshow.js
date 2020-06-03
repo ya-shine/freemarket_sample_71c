@@ -7,7 +7,6 @@ $(function(){
    $(this).attr("data-index",index);
   });
   
-
   $(slider).on('init',function(slick){
    var index = $(".slide-item.slick-slide.slick-current").attr("data-slick-index");
    $(thumbnailItem+'[data-index="'+index+'"]').addClass("thumbnail-current");
