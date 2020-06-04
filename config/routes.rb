@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resource :item
   resource :order
   resource :shipping_addresses
-  resource :mypage
+  resources :mypage, only: :index
 end

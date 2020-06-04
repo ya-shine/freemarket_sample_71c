@@ -1,0 +1,219 @@
+.header-main
+  .header-inner
+    .header-upper
+      .logo-box
+        =link_to image_tag("/images/logo.png", alt:"FURIMA", class: "logo-main"), root_path, class: "logo-header"
+      .form-box
+        = text_field_tag 'search', "", class: "item-search", placeholder: "キーワードから探す"
+        = link_to root_path, class: "search" do
+          = image_tag("/images/icon-search 1.png", alt: "search", class: "search-icon")
+    .header-navigation-bar
+      .navigation-left
+        .navigation-category__categories
+          %h2.category-title-box
+            = link_to "#", class: "category" do
+              %span.category-title__title
+                カテゴリー
+          %ul.categories-container
+            %li.categories-container__parent
+              %h3.category-name
+                = link_to "レディース", "#", class: "category-parent"
+              %ul.categories-container-child
+                %li.categories-container-child__child
+                  %h3.category-name
+                    = link_to "トップス", "#", class: "category-child"
+                  %ul.categories-container-grandchild
+                    %li.categories-container-grandchild__grandchild
+                      %h3.category-name
+                        = link_to "ポロシャツ", "#", class: "category-grandchild"
+            %li.categories-container__parent
+              %h3.category-name
+                = link_to "メンズ", "#", class: "category-parent"
+        .navigation-category__brands
+          %h2.brand-title-box
+            = link_to "#", class: "brand" do
+              %span.brand-title__title
+                ブランド
+          %ul.brands-container
+            %li.brands-container__brand
+              %h3.brand-name
+                = link_to "ナイキ", "#", class: "brand"
+            %li.brands-container__brand
+              %h3.brand-name
+                = link_to "アディダス", "#", class: "brand"
+            %li.brands-container__brand
+              %h3.brand-name
+                = link_to "プーマ", "#", class: "brand"
+            %li.brands-container__brand
+              %h3.brand-name
+                = link_to "アシックス", "#", class: "brand"
+      .navigation-right
+        %ul.navigation-likes-mypage
+          %li.navigation-likes-mypage__likes
+            = link_to "#", class: "likes-link" do
+              = icon("far", "heart")
+              %span.navigation-likes-mypage__likes--title
+                いいね！一覧
+          %li.navigation-likes-mypage__mypage
+            = link_to "#", class: "mypage-link" do
+              = image_tag("/images/member_photo_noimage_thumb.png", alt: "mypage", class: "mypage")
+              %span.navigation-likes-mypage__mypage--title
+                マイページ
+
+.bread-crumb
+  %ul.bread-crumb__nav
+    %li.bread-crumb__nav__item
+      = link_to root_path, class: "bread-crumb__nav__item--link" do
+        %span フリマ
+      = icon('fas', 'chevron-right', class: "bread-crumb__nav__item--icon")
+      = link_to root_path, class: "bread-crumb__nav__item--link present-location" do
+        %span マイページ
+
+.mypage-main
+  .left-content
+    %nav.nav
+      %ul.nav__list
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            マイページ
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            いいね！一覧
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            出品する
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            出品した商品-出品中
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            出品した商品-取引中
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            出品した商品-売却済み
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            購入した商品-取引中
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            購入した商品-過去の取引
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            評価一覧
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+      %h3.nav__title 設定
+      %ul.nav__list
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            プロフィール
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            発送元・お届け先住所変更
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            支払い方法
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            メール/パスワード
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            本人情報
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            電話番号の確認
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            ログアウト
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+  .right-content
+    .mypage-user
+      = link_to "#", class: "mypage-user__link" do
+        %figure
+          = image_tag("/images/member_photo_noimage_thumb.png", alt: "member", class: "member", width: "60", height: "60")
+        %h2.nickname 博多
+        .mypage-count
+          .mypage-count__evaluation
+            評価
+            %span.mypage-count__evaluation--number 10
+          .mypage-count__exhibition
+            出品数
+            %span.mypage-count__exhibition--number 30
+    .mypage-tab-container
+      %h2.mypage-tab-head 購入した商品
+      .tabs
+        = radio_button_tag(:tab, "left", "")
+        %label{for: "tab_left", class: "tab-item"} 取引中
+        = radio_button_tag(:tab, "right")
+        %label{for: "tab_right", class: "tab-item"} 過去の取引
+        .tab-content#tab_left
+          = image_tag("/images/logo-white.png",alt:"FURIMA",class:"logo-bottom",height:"50",width:"170")
+          %p.tab-content-text 取引中の商品がありません
+        .tab-content#tab_right
+          = image_tag("/images/logo-white.png",alt:"FURIMA",class:"logo-bottom",height:"50",width:"170")
+          %p.tab-content-text 過去に取引した商品がありません
+
+%aside.banner-for-app
+  .banner-inner
+    %h2.banner-inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.banner-inner__text
+      今すぐ無料ダウンロード！
+    .inner-icons
+      = link_to image_tag("/images/appstore-icon.png",alt:"appstore",class:"icon-image"),"#",class:"icon-left"
+      = link_to image_tag("/images/googlestore-icon.png",alt:"googleplay",class:"icon-image"),"#",class:"icon-right"
+
+.main-footer
+  %ul.contents-container
+    %li.contents-container__lists
+      %h2.contents-head
+        FURIMAについて
+      %ul.contents-list
+        %li.contents-list__each
+          = link_to "会社概要（運営会社）","#",class:"company-sammary"
+        %li.contents-list__each
+          = link_to "プライバシーポリシー","#",class:"company-sammary"
+        %li.contents-list__each
+          = link_to "FURIMA利用規約","#",class:"company-sammary"
+        %li.contents-list__each
+          = link_to "ポイントに関する特約","#",class:"company-sammary"
+    %li.contents-container__lists
+      %h2.contents-head
+        FURIMAを見る
+      %ul.contents-list
+        %li.contents-list__each
+          = link_to "カテゴリー一覧","#",class:"company-sammary"
+        %li.contents-list__each
+          = link_to "ブランド一覧","#",class:"company-sammary"
+    %li.contents-container__lists
+      %h2.contents-head
+        ヘルプ&ガイド
+      %ul.contents-list
+        %li.contents-list__each
+          = link_to "FURIMAガイド","#",class:"company-sammary"
+        %li.contents-list__each
+          = link_to "FURIMAロゴ利用ガイドライン","#",class:"company-sammary"
+        %li.contents-list__each
+          = link_to "お知らせ","#",class:"company-sammary"
+  .logo-container
+    = link_to image_tag("/images/logo-white.png",alt:"FURIMA", class:"logo-image"), root_path, class:"logo-container__link"
+  %p.bottom-web-name
+    ©︎　FURIMA
+
+= link_to root_path do
+  .sell-btn
+    %span.sell-btn__text 出品
+    = image_tag("/images/icon_camera.png", alt: "CAMERA", class: "sell-btn__image")
