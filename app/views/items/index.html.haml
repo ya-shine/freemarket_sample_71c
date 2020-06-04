@@ -94,6 +94,26 @@
             様々な支払いに対応
         %p.lists-descreption
           お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+  %section.pickups
+    %h2.title
+      ピックアップカテゴリー
+    .pickup-box
+      .pickup-head
+        = link_to "#",class:"link-pickups" do
+          %h3.pickup-title
+            新規投稿商品
+      .pickup-lists
+        = render partial:"layouts/main_pickup-items"
+  %section.pickups
+    %h2.title
+      ピックアップブランド
+    .pickup-box
+      .pickup-head
+        = link_to "#",class:"link-pickups" do
+          %h3.pickup-title
+            アーカイバ
+      .pickup-lists
+        = render partial:"/layouts/main_pickup-items"
 %aside.banner-for-app
   .banner-inner
     %h2.banner-inner__title
