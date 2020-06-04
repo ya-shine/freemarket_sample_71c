@@ -1,5 +1,78 @@
-test
+.header-main
+  = render partial:'/layouts/main_header'
+-# .toppage-main
+-#   %section.main-images
+-#     .content-container
+-#       %h2.content-subtitle
+-#         %br
+-#         人生を変えるフリマアプリ
+-#       %p.content-container__text
+-#         FURIMAはだれでもかんたんに出品・購入できる
+-#         %br
+-#         フリマアプリです
+-#       .app-banners
+-#         = link_to image_tag("/images/appstore-icon.png",alt:"appstore",class:"icon"),"#",class:"store-icon-left"
+-#         = link_to image_tag("/images/googlestore-icon.png",alt:"googleplay",class:"icon"),"#",class:"store-icon-right"
+-#   %section.introduction
+-#     %h2.intro-subtitle
+-#       FURIMAが選ばれる3つの理由
+-#     %ul.lists-container
+-#       %li.lists-container__list
+-#         .image-container
+-#           %span.image-container__number
+-#             1
+-#           = image_tag("/images/pict-reason-01.jpg",alt:"reason",class:"reason-image")
+-#         %h3.lists-text
+-#           %span.lists-text__colored
+-#             ３分
+-#           %span.lists-text__normal
+-#             ですぐ出品
+-#         %p.lists-descreption
+-#           スマホで入力するだけで簡単に出品できる！
+-#       %li.lists-container__list
+-#         .image-container
+-#           %span.image-container__number
+-#             2
+-#           = image_tag("/images/pict-reason-02.jpg",alt:"reason",class:"reason-image")
+-#         %h3.lists-text
+-#           %span.lists-text__colored
+-#             シンプル
+-#           %span.lists-text__normal
+-#             で使いやすい
+-#         %p.lists-descreption
+-#           めんどくさい入力は必要なく、検索も購入もスムーズ！
+-#       %li.lists-container__list
+-#         .image-container
+-#           %span.image-container__number
+-#             3
+-#           = image_tag("/images/pict-reason-03.jpg",alt:"reason",class:"reason-image")
+-#         %h3.lists-text
+-#           %span.lists-text__normal
+-#             手数料
+-#           %span.lists-text__colored
+-#             業界最安
+-#         %p.lists-descreption
+-#           最大3%でお得に出品&購入！
+-# %aside.banner-for-app
+-#   .banner-inner
+-#     %h2.banner-inner__title
+-#       だれでもかんたん、人生を変えるフリマアプリ
+-#     %p.banner-inner__text
+-#       今すぐ無料ダウンロード！
+-#     .inner-icons
+-#       = link_to image_tag("/images/appstore-icon.png",alt:"appstore",class:"icon-image"),"#",class:"icon-left"
+-#       = link_to image_tag("/images/googlestore-icon.png",alt:"googleplay",class:"icon-image"),"#",class:"icon-right"
 
+.main-footer
+  = render partial:"/layouts/main-footer"
+
+
+
+
+
+
+
+test
 = link_to "ログイン", user_session_path
 = link_to "新規会員登録", new_user_registration_path
 = link_to "出品", new_item_path
