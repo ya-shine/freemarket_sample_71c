@@ -1,64 +1,5 @@
 .header-main
-  .header-inner
-    .header-upper
-      .logo-box
-        =link_to image_tag("/images/logo.png", alt:"FURIMA", class: "logo-main"), root_path, class: "logo-header"
-      .form-box
-        = text_field_tag 'search', "", class: "item-search", placeholder: "キーワードから探す"
-        = link_to root_path, class: "search" do
-          = image_tag("/images/icon-search 1.png", alt: "search", class: "search-icon")
-    .header-navigation-bar
-      .navigation-left
-        .navigation-category__categories
-          %h2.category-title-box
-            = link_to "#", class: "category" do
-              %span.category-title__title
-                カテゴリー
-          %ul.categories-container
-            %li.categories-container__parent
-              %h3.category-name
-                = link_to "レディース", "#", class: "category-parent"
-              %ul.categories-container-child
-                %li.categories-container-child__child
-                  %h3.category-name
-                    = link_to "トップス", "#", class: "category-child"
-                  %ul.categories-container-grandchild
-                    %li.categories-container-grandchild__grandchild
-                      %h3.category-name
-                        = link_to "ポロシャツ", "#", class: "category-grandchild"
-            %li.categories-container__parent
-              %h3.category-name
-                = link_to "メンズ", "#", class: "category-parent"
-        .navigation-category__brands
-          %h2.brand-title-box
-            = link_to "#", class: "brand" do
-              %span.brand-title__title
-                ブランド
-          %ul.brands-container
-            %li.brands-container__brand
-              %h3.brand-name
-                = link_to "ナイキ", "#", class: "brand"
-            %li.brands-container__brand
-              %h3.brand-name
-                = link_to "アディダス", "#", class: "brand"
-            %li.brands-container__brand
-              %h3.brand-name
-                = link_to "プーマ", "#", class: "brand"
-            %li.brands-container__brand
-              %h3.brand-name
-                = link_to "アシックス", "#", class: "brand"
-      .navigation-right
-        %ul.navigation-likes-mypage
-          %li.navigation-likes-mypage__likes
-            = link_to "#", class: "likes-link" do
-              = icon("far", "heart")
-              %span.navigation-likes-mypage__likes--title
-                いいね！一覧
-          %li.navigation-likes-mypage__mypage
-            = link_to "#", class: "mypage-link" do
-              = image_tag("/images/member_photo_noimage_thumb.png", alt: "mypage", class: "mypage")
-              %span.navigation-likes-mypage__mypage--title
-                マイページ
+  = render partial: "/layouts/main_header"
 
 .bread-crumb
   %ul.bread-crumb__nav
@@ -177,41 +118,7 @@
       = link_to image_tag("/images/googlestore-icon.png",alt:"googleplay",class:"icon-image"),"#",class:"icon-right"
 
 .main-footer
-  %ul.contents-container
-    %li.contents-container__lists
-      %h2.contents-head
-        FURIMAについて
-      %ul.contents-list
-        %li.contents-list__each
-          = link_to "会社概要（運営会社）","#",class:"company-sammary"
-        %li.contents-list__each
-          = link_to "プライバシーポリシー","#",class:"company-sammary"
-        %li.contents-list__each
-          = link_to "FURIMA利用規約","#",class:"company-sammary"
-        %li.contents-list__each
-          = link_to "ポイントに関する特約","#",class:"company-sammary"
-    %li.contents-container__lists
-      %h2.contents-head
-        FURIMAを見る
-      %ul.contents-list
-        %li.contents-list__each
-          = link_to "カテゴリー一覧","#",class:"company-sammary"
-        %li.contents-list__each
-          = link_to "ブランド一覧","#",class:"company-sammary"
-    %li.contents-container__lists
-      %h2.contents-head
-        ヘルプ&ガイド
-      %ul.contents-list
-        %li.contents-list__each
-          = link_to "FURIMAガイド","#",class:"company-sammary"
-        %li.contents-list__each
-          = link_to "FURIMAロゴ利用ガイドライン","#",class:"company-sammary"
-        %li.contents-list__each
-          = link_to "お知らせ","#",class:"company-sammary"
-  .logo-container
-    = link_to image_tag("/images/logo-white.png",alt:"FURIMA", class:"logo-image"), root_path, class:"logo-container__link"
-  %p.bottom-web-name
-    ©︎　FURIMA
+  = render partial: "/layouts/main-footer"
 
 = link_to root_path do
   .sell-btn
