@@ -1,5 +1,5 @@
 .header-main
-  = render partial:"main_header"
+  = render partial:"/layouts/main_header"
 .main
   %h1.main-title
     ここにタイトルが入ります。
@@ -142,4 +142,4 @@
       = link_to image_tag("/images/appstore-icon.png",alt:"appstore",class:"icon-image"),"#",class:"icon-left"
       = link_to image_tag("/images/googlestore-icon.png",alt:"googleplay",class:"icon-image"),"#",class:"icon-right"
 .main-footer
-  = render partial:"main-footer"
+  = render partial:"/layouts/main-footer"

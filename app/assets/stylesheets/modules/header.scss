@@ -1,45 +1,57 @@
-.header-main {
-  height: 100px;
-  width: 100%;
-  background-color: white;
-  .header-inner {
-    width: 1020px;
+.header-main{
+  background-color: #fff;
+  padding: 0 60px;
+  border-bottom: 1px solid #f5f5f5;
+  .header-inner{
+    max-width: 1020px;
+    width: 100%;
+    min-height: 82px;
     margin: 0 auto;
-    padding: 8px 0 0;
+    padding: 15px 0 0;
     .header-upper{
+      position: relative;
       display: flex;
-      .logo-box {
-        #logo-header {
-          .logo-main {
-            height: 36px;
-            width: 134px;
+      align-items: center;
+      .logo-box{
+        padding-bottom: 10px;
+        margin-right: 30px;
+        border-radius: 4px;
+        .logo-header{
+          width: 140px;
+          display: block;
+          .logo-main{
+            width: 100%;
+            vertical-align: bottom;
           }
         }
       }
-      .form-box {
-        position: relative;
-        margin-left: 45px;
+      .form-box{
+        margin-left: auto;
         width: 100%;
-        #name {
-          width: 100%;
-          height: 40px;
-          padding: 0 42px 0 10px;
-          background-color: #f5f5f5;
-          border-radius: 4px;
+        display: flex;
+        margin-bottom: 5px;
+        .item-search{
+          width: calc(100% - 26px);
+          height: 36px;
           border: 1px solid #ccc;
+          padding: 5px;
         }
-        .search {
-          position: absolute;
-          top: 0;
-          right: 0;
-          width: 40px;
-          height: 40px;
-          text-decoration: none;
-          align-items: center;
-          display: flex;
+        .search{
+          width: 36px;
+          height: 36px;
           cursor: pointer;
-          i {
-            color: black;
+          background-color: #3ccace;
+          padding: 8px;
+          color: #3ccace;
+          overflow: hidden;
+          border: 0;
+          position: relative;
+          .search-icon{
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 8px;
+            left: 8px;
           }
         }
       }
@@ -56,6 +68,7 @@
             visibility: visible;
           }
           .category-title-box {
+            line-height: 32px;
             .category {
               text-decoration: none;
               .category-logo {
@@ -64,9 +77,8 @@
               }
               .category-title__title {
                 color: black;
-                font-weight: 600;
                 &:hover  {
-                  color: #0099e8;
+                  color: #ffb340;
                 }
               }
             }
@@ -149,17 +161,13 @@
             visibility: visible;
           }
           .brand-title-box {
+            line-height: 32px;
             .brand {
               text-decoration: none;
-              .brand-logo {
-                height: 14px;
-                width: 16px;
-              }
               .brand-title__title {
                 color: black;
-                font-weight: 600;
                 &:hover  {
-                  color: #0099e8;
+                  color: #ffb340;
                 }
               }
             }
@@ -195,6 +203,7 @@
               color: #0099e8;
             }
             .likes-link {
+              line-height: 32px;
               text-decoration: none;
               i {
                 color:#ccc;
@@ -202,6 +211,8 @@
               }
               .navigation-likes-mypage__likes--title {
                 color:#333;
+                display: inline-block;
+                vertical-align: top;
               }
             }
           }
@@ -211,7 +222,7 @@
             &:hover .mypage-link span {
               color: #0099e8;
             }
-            .mypage-link {
+            .mypage-link {  
               position: relative;
               height: 44px;
               line-height: 32px;
@@ -223,7 +234,7 @@
                 }
               .navigation-likes-mypage__mypage--title {
                 margin-left: 10px;
-                font-size: 14px;
+                font-size: 16px;
                 display: inline-block;
                 vertical-align: top;
                 color:#333;
