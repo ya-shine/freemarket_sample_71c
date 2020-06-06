@@ -35,3 +35,10 @@
   width: auto;
   visibility: hidden;
 }
+
+@mixin login-signup {
+  text-decoration: none;
+  color: #333;
+  align-items: center;
+  line-height: 32px;
+}

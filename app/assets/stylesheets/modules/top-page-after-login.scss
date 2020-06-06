@@ -48,10 +48,7 @@
         justify-content: space-between;
         width: 100%;
         .favorite-title {
-          font-size: 24px;
-          line-height: 34px;
-          font-weight: 600;
-          padding-bottom: 20px;
+          @include box-title;
         }
         .favorite-more {
         font-size: 15px;
@@ -68,10 +65,7 @@
         width: 100%;
         margin-top: 65px;
         .favorite-title {
-          font-size: 24px;
-          line-height: 34px;
-          font-weight: 600;
-          padding-bottom: 20px;
+          @include box-title;
         }
         .favorite-more {
         font-size: 15px;

@@ -197,18 +197,12 @@
         &__login {
           padding: 0 14px;
           .login {
-            text-decoration: none;
-            color: #333;
-            align-items: center;
-            line-height: 32px;
+            @include login-signup;
           }
         }
         &__signup {
           .signup {
-            text-decoration: none;
-            color: #333;
-            align-items: center;
-            line-height: 32px;
+            @include login-signup;
           }
         }
       }
