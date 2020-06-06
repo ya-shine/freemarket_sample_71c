@@ -109,19 +109,6 @@
               %h3.brand-name
                 = link_to "アシックス", "#", class: "brand"
       .navigation-right
-      - if user_signed_in?
-        %ul.navigation-likes-mypage
-          %li.navigation-likes-mypage__likes
-            = link_to "#", class: "likes-link" do
-              = icon("far", "heart")
-              %span.navigation-likes-mypage__likes--title
-                いいね！一覧
-          %li.navigation-likes-mypage__mypage
-            = link_to "#", class: "mypage-link" do
-              = image_tag("/images/member_photo_noimage_thumb.png", alt: "mypage", class: "mypage")
-              %span.navigation-likes-mypage__mypage--title
-                マイページ
-      - else
         %ul.navigation-login-signup
           %li.navigation-login-signup__login
             = link_to "ログイン", new_user_session_path, class:"login"
