@@ -26,3 +26,19 @@
   padding: 0 16px;
   overflow: hidden;
 }
+
+@mixin category-brands-parentbox-before-login {
+  position: absolute;
+  top: 32px;
+  z-index: 1000;
+  background: #fff;
+  width: auto;
+  visibility: hidden;
+}
+
+@mixin login-signup {
+  text-decoration: none;
+  color: #333;
+  align-items: center;
+  line-height: 32px;
+}

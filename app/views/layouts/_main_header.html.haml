@@ -1,4 +1,4 @@
-.header-inner
+- if user_signed_in?
   .header-inner
     .header-upper
       .logo-box
@@ -59,3 +59,58 @@
               = image_tag("/images/member_photo_noimage_thumb.png", alt: "mypage", class: "mypage")
               %span.navigation-likes-mypage__mypage--title
                 マイページ
+- else
+  .header-inner-before-login
+    .header-upper
+      .logo-box
+        =link_to image_tag("/images/logo.png", alt:"FURIMA", class: "logo-main"), root_path, class: "logo-header"
+      .form-box
+        = text_field_tag 'search', "", class: "item-search", placeholder: "キーワードから探す"
+        = link_to root_path, class: "search" do
+          = image_tag("/images/icon-search 1.png", alt: "search", class: "search-icon")
+    .header-navigation-bar
+      .navigation-left
+        .navigation-category__categories
+          %h2.category-title-box
+            = link_to "#", class: "category" do
+              %span.category-title__title
+                カテゴリー
+          %ul.categories-container
+            %li.categories-container__parent
+              %h3.category-name
+                = link_to "レディース", "#", class: "category-parent"
+              %ul.categories-container-child
+                %li.categories-container-child__child
+                  %h3.category-name
+                    = link_to "トップス", "#", class: "category-child"
+                  %ul.categories-container-grandchild
+                    %li.categories-container-grandchild__grandchild
+                      %h3.category-name
+                        = link_to "ポロシャツ", "#", class: "category-grandchild"
+            %li.categories-container__parent
+              %h3.category-name
+                = link_to "メンズ", "#", class: "category-parent"
+        .navigation-category__brands
+          %h2.brand-title-box
+            = link_to "#", class: "brand" do
+              %span.brand-title__title
+                ブランド
+          %ul.brands-container
+            %li.brands-container__brand
+              %h3.brand-name
+                = link_to "ナイキ", "#", class: "brand"
+            %li.brands-container__brand
+              %h3.brand-name
+                = link_to "アディダス", "#", class: "brand"
+            %li.brands-container__brand
+              %h3.brand-name
+                = link_to "プーマ", "#", class: "brand"
+            %li.brands-container__brand
+              %h3.brand-name
+                = link_to "アシックス", "#", class: "brand"
+      .navigation-right
+        %ul.navigation-login-signup
+          %li.navigation-login-signup__login
+            = link_to "ログイン", new_user_session_path, class:"login"
+          %li.navigation-login-signup__signup
+            = link_to "新規会員登録", new_user_registration_path, class:"signup"
