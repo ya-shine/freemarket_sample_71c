@@ -9,10 +9,12 @@
 @import "mixin/order_new-mixin";
 @import "modules/user_registration";
 @import "modules/item_detail";
-@import "modules/header";
+@import "modules/header-before-signin";
+@import "modules/header-after-signin";
 @import "modules/item_new";
 @import "modules/orders_new";
 @import "modules/user_registration";
 @import "modules/shipping_address";
 @import "modules/mypage";
-@import "modules/top-page";
+@import "modules/top-page-before-login";
+@import "modules/top-page-after-login";
