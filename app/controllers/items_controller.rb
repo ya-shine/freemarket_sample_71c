@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    
+    @parents = Category.all.order("id ASC").limit(13)
   end
 
   def show
