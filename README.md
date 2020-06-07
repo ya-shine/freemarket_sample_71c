@@ -137,7 +137,6 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
-|url|string|null: false|
 |item_id|references|foreign_key:true,null:false|
 
 - belongs_to :item
