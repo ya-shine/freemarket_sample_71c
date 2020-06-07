@@ -144,7 +144,7 @@ Things you may want to cover:
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null:false|
+|name|string|
 
 - has_many :items
 
