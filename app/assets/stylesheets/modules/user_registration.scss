@@ -74,6 +74,9 @@ body {
         #user_password {
           @include form-email-password;
         }
+        #user_password_confirmation {
+          @include form-email-password;
+        }
         #user_email {
           @include form-email-password;
         }
