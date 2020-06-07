@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_07_175949) do
+ActiveRecord::Schema.define(version: 2020_06_07_230603) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 2020_06_07_175949) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
+
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_images_on_item_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -66,5 +74,6 @@ ActiveRecord::Schema.define(version: 2020_06_07_175949) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "images", "items"
   add_foreign_key "items", "users"
 end
