@@ -5,6 +5,19 @@
   padding: 10px 16px 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
+  &:focus{
+    outline: none;
+    border-color: #0098e8;
+    border-radius: 4px;
+  }
+  input.invalid{
+    border: 1px solid #ea352d;
+    border-radius: 4px;
+  }
+  input.valid{
+    border: 1px solid #3ccace;
+    border-radius: 4px;
+  }
 }
 
 @mixin form-area {
@@ -12,10 +25,23 @@
   height: 48px;
   margin: 8px 0 0;
   padding: 10px 16px 8px;
+  input.invalid{
+    border: 1px solid #ea352d;
+    border-radius: 4px;
+  }
+  input.valid{
+    border: 1px solid #3ccace;
+    border-radius: 4px;
+  }
 }
 
 @mixin birthday-form {
   height: 48px;
   width: 76px;
   margin-left: 5px;
+  &:focus{
+    outline: none;
+    border-color: #0098e8;
+    border-radius: 4px;
+  }
 }

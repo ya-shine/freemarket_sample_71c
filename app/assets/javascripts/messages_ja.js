@@ -13,6 +13,8 @@ $.extend( $.validator.messages, {
 	digits: "数字のみを入力してください。",
 	creditcard: "有効なクレジットカード番号を入力してください。",
 	equalTo: "同じ値をもう一度入力してください。",
+	first_name: "全角で入力してください",
+	first_name_kana: "全角（カナ）で入力してください",
 	extension: "有効な拡張子を含む値を入力してください。",
 	maxlength: $.validator.format( "{0} 文字以内で入力してください。" ),
 	minlength: $.validator.format( "{0} 文字以上で入力してください。" ),

@@ -56,6 +56,18 @@ body {
           padding: 10px 16px 8px;
           border-radius: 4px;
           border: 1px solid #ccc;
+          &.invalid{
+            border: 1px solid #ea352d;
+          }
+          &.valid{
+            border: 1px solid #3ccace;
+            border-radius: 4px;
+          }
+          &:focus{
+            outline: none;
+            border-color: #0098e8;
+            border-radius: 4px;
+          }
         }
         .field-top__require {
           background-color: #ea352d;
@@ -73,12 +85,33 @@ body {
         }
         #user_password {
           @include form-email-password;
+          &.invalid{
+            border: 1px solid #ea352d;
+          }
+          &.valid{
+            border: 1px solid #3ccace;
+            border-radius: 4px;
+          }
         }
         #user_password_confirmation {
           @include form-email-password;
+          &.invalid{
+            border: 1px solid #ea352d;
+          }
+          &.valid{
+            border: 1px solid #3ccace;
+            border-radius: 4px;
+          }
         }
         #user_email {
           @include form-email-password;
+          &.invalid{
+            border: 1px solid #ea352d;
+          }
+          &.valid{
+            border: 1px solid #3ccace;
+            border-radius: 4px;
+          }
         }
         .notification {
           margin: 5px 0 0 0;
@@ -87,15 +120,35 @@ body {
         }
         #user_last_name {
           @include form-area;
+          &:focus{
+            outline: none;
+            border-color: #0098e8;
+            border-radius: 4px;
+          }
         }
         #user_first_name {
           @include form-area;
+          &:focus{
+            outline: none;
+            border-color: #0098e8;
+            border-radius: 4px;
+          }
         }
         #user_last_name_kana {
           @include form-area;
+          &:focus{
+            outline: none;
+            border-color: #0098e8;
+            border-radius: 4px;
+          }
         }
         #user_first_name_kana {
           @include form-area;
+          &:focus{
+            outline: none;
+            border-color: #0098e8;
+            border-radius: 4px;
+          }
         }
         &__identification {
           font-size: 16px;
@@ -118,21 +171,47 @@ body {
           margin-top: 5px;
           #user_birth_day_1i {
             height: 48px;
+            &.invalid{
+              border: 1px solid #ea352d;
+              border-radius: 4px;
+            }
+            .valid{
+              border: 1px solid #3ccace;
+              border-radius: 4px;
+            }
+            &:focus{
+              outline: none;
+              border-color: #0098e8;
+              border-radius: 4px;
+            }
           }
           #user_birth_day_2i {
             @include birthday-form;
+            &.invalid{
+              border: 1px solid #ea352d;
+              border-radius: 4px;
+            }
+            &.valid{
+              border: 1px solid #3ccace;
+              border-radius: 4px;
+            }
           }
           #user_birth_day_3i {
             @include birthday-form;
+            &.invalid{
+              border: 1px solid #ea352d;
+              border-radius: 4px;
+            }
+            &.valid{
+              border: 1px solid #3ccace;
+              border-radius: 4px;
+            }
           }
-        }
-        .field_with_errors{
-          display: contents;
         }
       }
       &__info {
         line-height: 1.5;
-        margin: 8px 0 0;
+        margin: 18px 0 0;
         color: #888;
         font-size: 14px;
       }
