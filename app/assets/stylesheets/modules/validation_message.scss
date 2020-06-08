@@ -1,3 +1,11 @@
+$white: #fff;
+$side_blue_dark: #253141;
+$side_blue_light: #2f3e51;
+$light_blue: #38AEF0;
+$light_gray: #999;
+$black: #434a54;
+$alert_orange: #F35500; 
+
 input.invalid{
   border: 1px solid #ea352d;
 }
@@ -19,3 +27,17 @@ input.valid{
   margin-top: 8px;
   display: block;
 }
+
+#error_explanation{
+  #error_explanation_count{
+    background-color: $light_blue;
+    color: $white;
+    text-align: center;
+  }
+
+  #error_explanation_details{
+    background-color: $alert_orange;
+    color: $white;
+    text-align: center;
+  }
+} 

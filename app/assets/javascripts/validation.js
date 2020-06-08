@@ -1,7 +1,7 @@
 $(function () {
   var methods = {
     email: function (value, element) {
-      return this.optional(element) || /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.test(value);
+      return this.optional(element) || /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/i.test(value);
     },
     password: function (value, element) {
       return this.optional(element) || /^(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,100}$/i.test(value);
@@ -34,10 +34,12 @@ $(function () {
       "user[password]": {
         required: true,
         password: true,
+        minlength: 7
       },
       "user[password_confirmation]": {
         required: true,
         password: true,
+        minlength: 7,
         equalTo: "#user_password"
       },
       "user[last_name]": {
@@ -77,10 +79,12 @@ $(function () {
       "user[password]": {
         required: "パスワードを入力してください",
         password: "英字と数字両方含むパスワードを入力してください",
+        minlength: "7文字以上で入力してください"
       },
       "user[password_confirmation]": {
         required: "確認用パスワードを入力してください",
         password: "英字と数字両方含むパスワードを入力してください",
+        minlength: "7文字以上で入力してください",
         equalTo: "パスワードが一致しません"
       },
       "user[last_name]": {
