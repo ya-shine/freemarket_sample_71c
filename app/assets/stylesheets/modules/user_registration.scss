@@ -126,6 +126,9 @@ body {
             @include birthday-form;
           }
         }
+        .field_with_errors{
+          display: contents;
+        }
       }
       &__info {
         line-height: 1.5;
