@@ -24,7 +24,7 @@
         %span.product-container__top__require
           必須
         .product-container__top__text-box
-          = f.text_field :text, class: "product-container__top__text-box--field", placeholder: "40文字まで"
+          = f.text_field :text, class: "product-container__top__text-box--field", placeholder: "40文字まで",style:"text-aligh:left"
       .product-container__bottom
         %label.product-container__bottom__title 商品の説明
         %span.product-container__bottom__require
@@ -41,7 +41,7 @@
         %span.product-details-container__top__require
           必須
         .product-details-container__top__select
-          = select_tag 'category', options_for_select([["選択してください", "1"], ["レディース", "2"], ["メンズ", "3"]])
+          = f.select :category, @category_parent_array,{prompt: "選択してください"}, {class: 'listing-select__box', id: 'category'}
       .product-details-container__middle
         %label.product-details-container__middle__title プランド
         %span.product-details-container__middle__any
@@ -126,3 +126,6 @@
 
 .footer
   = render partial: "/layouts/form_footer"
+
+-# - @category_parent_array.each do |c|
+-#   = c.name

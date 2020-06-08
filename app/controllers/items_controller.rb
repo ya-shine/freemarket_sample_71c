@@ -4,7 +4,10 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @parents = Category.all.order("id ASC").limit(13)
+    @category_parent_array = []
+    Category.where(ancestry: nil).each do |parent|
+        @category_parent_array << parent.name
+    end
     @item = Item.new
     @item.images.new
   end
@@ -16,6 +19,10 @@ class ItemsController < ApplicationController
     else
       render "new"
     end
+  end
+
+  def get_category_children
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
 
   private
