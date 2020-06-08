@@ -3,125 +3,126 @@
     = link_to image_tag("/images/logo.png", alt:"FURIMA", class:"logo"), root_path, class:"logo-link"
 
 .item-exhibition-main
-  .exhibition-image-container
-    %label.exhibition-image-container__title 出品画像
-    %span.exhibition-image-container__require
-      必須
-    %p.exhibition-image-container__explanation
-      最大10枚までアップロードできます
-    .exhibition-image-container__field
-      = link_to "#", class: "exhibition-image-container__field--input" do
+  = form_with model:@item, local: true do |f|
+    .exhibition-image-container
+      %label.exhibition-image-container__title 出品画像
+      %span.exhibition-image-container__require
+        必須
+      %p.exhibition-image-container__explanation
+        最大10枚までアップロードできます
+      .exhibition-image-container__field
         = icon('fas', 'camera', class: "exhibition-image-container__field--input--icon")
-      %p.exhibition-image-container__field--text
-        ドラッグアンドドロップ
-        %br/
-        またはクリックしてファイルをアップロード
-  
-  .product-container
-    .product-container__top
-      %label.product-container__top__title 商品名
-      %span.product-container__top__require
-        必須
-      .product-container__top__text-box
-        = text_field_tag 'text', "", calss: "product-container__top__text-box--field", placeholder: "40文字まで"
-    .product-container__bottom
-      %label.product-container__bottom__title 商品の説明
-      %span.product-container__bottom__require
-        必須
-      .product-container__bottom__text-area
-        = text_area "content", "", class: "product-container__bottom__text-area--field", placeholder: "商品の説明（必須 1,000文字以内）"
-      .product-container__bottom__limit
-        %span 0/1000
-  
-  .product-details-container
-    %p.product-details-container__main-title 商品の詳細
-    .product-details-container__top
-      %label.product-details-container__top__title カテゴリー
-      %span.product-details-container__top__require
-        必須
-      .product-details-container__top__select
-        = select_tag 'category', options_for_select([["選択してください", "1"], ["レディース", "2"], ["メンズ", "3"]])
-    .product-details-container__middle
-      %label.product-details-container__middle__title プランド
-      %span.product-details-container__middle__any
-        任意
-      .product-details-container__middle__text-box
-        = text_field_tag 'text', "", class: "product-details-container__middle__text-box--field", placeholder: "例）シャネル"
-    .product-details-container__bottom
-      %label.product-details-container__bottom__title 商品の状態
-      %span.product-details-container__bottom__require
-        必須
-      .product-details-container__bottom__select
-        = select_tag 'status', options_for_select([["選択してください", "1"], ["新品、未使用", "2"], ["未使用に近い", "3"]])
-  
-  .delivery-container
-    %p.delivery-container__main-title 配送について
-    .delivery-container__top
-      %label.delivery-container__top__title 配送料の負担
-      %span.delivery-container__top__require
-        必須
-      .delivery-container__top__select
-        = select_tag 'fee', options_for_select([["選択してください", "1"], ["送料込み(出品者負担)", "2"], ["着払い(購入者負担)", "3"]])
-    .delivery-container__top-derivation
-      %label.delivery-container__top-derivation__title 配送の方法
-      %span.delivery-container__top-derivation__require
-        必須
-      .delivery-container__top-derivation__select
-        = select_tag 'method', options_for_select([["選択してください", "1"], ["未定", "2"], ["レターパック", "3"]])
-    .delivery-container__middle
-      %label.delivery-container__middle__title 発送元の地域
-      %span.delivery-container__middle__require
-        必須
-      .delivery-container__middle__select
-        = select_tag 'shippingOrigin', options_for_select([["選択してください", "1"], ["東京", "2"], ["福岡", "3"]])
-    .delivery-container__bottom
-      %label.delivery-container__bottom__title 発送までの日数
-      %span.delivery-container__bottom__require
-        必須
-      .delivery-container__bottom__select
-        = select_tag 'shippingDays', options_for_select([["選択してください", "1"], ["１〜2日で発送", "2"], ["２〜3日で発送", "3"], ["４〜7日で発送", "4"]])
-  
-  .price-container
-    %p.price-container__main-title 価格 (¥300~9,999,999)
-    .price-container__contents
-      .price-container__contents__main
-        .price-container__contents__main__left
-          %label.price-container__contents__main__left__title 販売価格
-          %span.price-container__contents__main__left__require
-            必須
-        %span.price-container__contents__main__center
-          ¥
-        .price-container__contents__main__right
-          .price-container__contents__main__right__price-box
-            = text_field 'price', "", class: "price-container__contents__main__right__price-box--field", placeholder: "0"
-      .price-container__contents__fee
-        .price-container__contents__fee--label
-          .price-container__contents__fee--label--text 販売手数料 (10%)
-        %span.price-container__contents__fee--value ー
-      %hr.price-container__contents__line
-      .price-container__contents__profit
-        .price-container__contents__profit--label
-          .price-container__contents__profit--label--text 販売利益
-        %span.price-container__contents__profit--value ー
-  
-  .button-container
-    = button_tag "出品する", class: "button-container__exhibition"
-    = button_tag "下書きに保存", class: "button-container__draft"
-    = link_to "もどる", "", class: "button-container__return"
-  
-  .notes-container
-    %p.notes-container__text 
-      禁止されている
-      = link_to "行為", "", class: "notes-container__text--link"
-      および
-      = link_to "出品物", "", class: "notes-container__text--link"
-      を必ずご確認ください。
-      = link_to "偽ブランド品", "", class: "notes-container__text--link"
-      や
-      = link_to "盗品物", "", class: "notes-container__text--link"
-      などの販売は犯罪であり、法律により処罰される可能性があります。また、出品をもちまして
-      = link_to "加盟店規約", "", class: "notes-container__text--link"
-      に同意したことになります。
+        %p.exhibition-image-container__field--text
+          ドラッグアンドドロップ
+          %br/
+          またはクリックしてファイルをアップロード
+        = f.fields_for :images do |i|
+          = i.file_field :image, style: "display:none;",height:"100%",width:"100%", id:"file"
+    .product-container
+      .product-container__top
+        %label.product-container__top__title 商品名
+        %span.product-container__top__require
+          必須
+        .product-container__top__text-box
+          = f.text_field :text, class: "product-container__top__text-box--field", placeholder: "40文字まで"
+      .product-container__bottom
+        %label.product-container__bottom__title 商品の説明
+        %span.product-container__bottom__require
+          必須
+        .product-container__bottom__text-area
+          = f.text_area :content,class: "product-container__bottom__text-area--field", placeholder: "商品の説明（必須 1,000文字以内）"
+        .product-container__bottom__limit
+          %span 0/1000
+    
+    .product-details-container
+      %p.product-details-container__main-title 商品の詳細
+      .product-details-container__top
+        %label.product-details-container__top__title カテゴリー
+        %span.product-details-container__top__require
+          必須
+        .product-details-container__top__select
+          = select_tag 'category', options_for_select([["選択してください", "1"], ["レディース", "2"], ["メンズ", "3"]])
+      .product-details-container__middle
+        %label.product-details-container__middle__title プランド
+        %span.product-details-container__middle__any
+          任意
+        .product-details-container__middle__text-box
+          = text_field_tag 'text', "", class: "product-details-container__middle__text-box--field", placeholder: "例）シャネル"
+      .product-details-container__bottom
+        %label.product-details-container__bottom__title 商品の状態
+        %span.product-details-container__bottom__require
+          必須
+        .product-details-container__bottom__select
+          = select_tag 'status', options_for_select([["選択してください", "1"], ["新品、未使用", "2"], ["未使用に近い", "3"]])
+    
+    .delivery-container
+      %p.delivery-container__main-title 配送について
+      .delivery-container__top
+        %label.delivery-container__top__title 配送料の負担
+        %span.delivery-container__top__require
+          必須
+        .delivery-container__top__select
+          = select_tag 'fee', options_for_select([["選択してください", "1"], ["送料込み(出品者負担)", "2"], ["着払い(購入者負担)", "3"]])
+      .delivery-container__top-derivation
+        %label.delivery-container__top-derivation__title 配送の方法
+        %span.delivery-container__top-derivation__require
+          必須
+        .delivery-container__top-derivation__select
+          = select_tag 'method', options_for_select([["選択してください", "1"], ["未定", "2"], ["レターパック", "3"]])
+      .delivery-container__middle
+        %label.delivery-container__middle__title 発送元の地域
+        %span.delivery-container__middle__require
+          必須
+        .delivery-container__middle__select
+          = select_tag 'shippingOrigin', options_for_select([["選択してください", "1"], ["東京", "2"], ["福岡", "3"]])
+      .delivery-container__bottom
+        %label.delivery-container__bottom__title 発送までの日数
+        %span.delivery-container__bottom__require
+          必須
+        .delivery-container__bottom__select
+          = select_tag 'shippingDays', options_for_select([["選択してください", "1"], ["１〜2日で発送", "2"], ["２〜3日で発送", "3"], ["４〜7日で発送", "4"]])
+    
+    .price-container
+      %p.price-container__main-title 価格 (¥300~9,999,999)
+      .price-container__contents
+        .price-container__contents__main
+          .price-container__contents__main__left
+            %label.price-container__contents__main__left__title 販売価格
+            %span.price-container__contents__main__left__require
+              必須
+          %span.price-container__contents__main__center
+            ¥
+          .price-container__contents__main__right
+            .price-container__contents__main__right__price-box
+              = f.number_field :item,class: "price-container__contents__main__right__price-box--field", placeholder: "0",style:"text-align:right;"
+        .price-container__contents__fee
+          .price-container__contents__fee--label
+            .price-container__contents__fee--label--text 販売手数料 (10%)
+          %span.price-container__contents__fee--value ー
+        %hr.price-container__contents__line
+        .price-container__contents__profit
+          .price-container__contents__profit--label
+            .price-container__contents__profit--label--text 販売利益
+          %span.price-container__contents__profit--value ー
+    
+    .button-container
+      = f.button "出品する", class: "button-container__exhibition"
+      = button_tag "下書きに保存", class: "button-container__draft"
+      = link_to "もどる", "", class: "button-container__return"
+    
+    .notes-container
+      %p.notes-container__text 
+        禁止されている
+        = link_to "行為", "", class: "notes-container__text--link"
+        および
+        = link_to "出品物", "", class: "notes-container__text--link"
+        を必ずご確認ください。
+        = link_to "偽ブランド品", "", class: "notes-container__text--link"
+        や
+        = link_to "盗品物", "", class: "notes-container__text--link"
+        などの販売は犯罪であり、法律により処罰される可能性があります。また、出品をもちまして
+        = link_to "加盟店規約", "", class: "notes-container__text--link"
+        に同意したことになります。
 
 .footer
   = render partial: "/layouts/form_footer"

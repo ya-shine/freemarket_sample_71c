@@ -11,4 +11,6 @@ class Item < ApplicationRecord
     validates :price
     validates :condition
   end
+
+  accepts_nested_attributes_for :images, :category,:brand,:size
 end
