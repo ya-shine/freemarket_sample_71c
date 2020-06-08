@@ -1,4 +1,5 @@
 @import "reset";
+@import "config/colors";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "mixin/registration_login-mixin";
@@ -19,3 +20,4 @@
 @import "modules/mypage";
 @import "modules/top-page-before-login";
 @import "modules/top-page-after-login";
+@import "modules/flash";

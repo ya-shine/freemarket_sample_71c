@@ -1,0 +1,13 @@
+#error_explanation{
+  #error_explanation_count{
+    background-color: $light_blue;
+    color: $white;
+    text-align: center;
+  }
+
+  #error_explanation_details{
+    background-color: $alert_orange;
+    color: $white;
+    text-align: center;
+  }
+}
