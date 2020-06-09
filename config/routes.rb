@@ -4,12 +4,12 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   devise_scope :user do
-    get 'address', to: 'users/registrations#new_address'
-    post 'address', to: 'users/registrations#create_address'
+    get 'shipping_addresses', to: 'users/registrations#new_shipping_address'
+    post 'shipping_addresses', to: 'users/registrations#create_shipping_address'
   end
   root 'items#index'
   resource :item
   resource :order
-  resource :shipping_addresses
+  resources :shipping_addresses
   resources :mypage, only: :index
 end

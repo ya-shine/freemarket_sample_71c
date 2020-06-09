@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    super
+    @user = User.new
   end
 
   # POST /resource
@@ -16,22 +16,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
       flash.now[:alert] = @user.errors.full_messages
       render :new and return
     end
-    session["devise.regist_data"] [user] = @user.attributes
+    session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
-    @address = @user.build_address
-    render :new_address
+    @shipping_address = @user.build_shipping_address
+    render :new_shipping_address
   end
 
-  def create_address
+  def create_shipping_address
     @user = User.new(session["devise.regist_data"]["user"])
-    @address = Address.new(address_params)
-    unless @address.valid?
-      flash.now[:alert] = @address.errors.full_messages
-      render :new_address and return
+    @shipping_address = ShippingAddress.new(shipping_address_params)
+    unless @shipping_address.valid?
+      flash.now[:alert] = @shipping_address.errors.full_messages
+      render :new_shipping_address and return
     end
-    @user.build_address(@address.attributes)
-    session["address"] = @address.attributes
+    @user.build_shipping_address(@shipping_address.attributes)
     @user.save
+    session["devise.regist_data"]["user"].clear
     sign_in(:user, @user)
   end
 
@@ -61,8 +61,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  def address_params
-    params.require(:address).permit(:address, :zipcode, :prefecture, :city, :building, :phone_number)
+  def shipping_address_params
+    params.require(:shipping_address).permit(:address, :zipcode, :prefecture, :city, :building, :phone_number)
   end
 
   # If you have extra params to permit, append them to the sanitizer.

@@ -1,0 +1,63 @@
+= render "devise/shared/error_messages", resource: @shipping_address
+
+.header
+  %h1.title-logo
+    = link_to image_tag("/images/logo.png", alt:"FURIMA", class:"logo"), root_path, class:"logo-link"
+
+.registration-main
+  .sign-up-container
+    %h2.sign-up-container__title お届け先住所登録
+    .form-shipping-address
+      = form_with model: @shipping_address, local: true do |f|
+        .contents-fields
+          .field-top
+            = f.label :郵便番号
+            %span.field__require
+              必須
+            %br/
+            = f.text_field :zipcode, autofocus: true, placeholder: "例）123-4567"
+            %p.notification
+              ※ 英字と数字の両方を含めて設定してください
+          .field
+            = f.label :都道府県
+            %span.field__require
+              必須
+            %br/
+            = f.select :prefecture, ShippingAddress.prefectures.keys
+          .field
+            = f.label :市町村
+            %span.field__require
+              必須
+            %br/
+            = f.text_field :city, autofocus: true, placeholder:"例）坂岡市"
+          .field
+            = f.label :番地
+            %span.field__require
+              必須
+            %br/
+            = f.text_field :address, autofocus: true, placeholder: "例）黄金町"
+          .field
+            = f.label :建物名
+            %span.field__nini
+              任意
+            %br/
+            = f.text_field :building, autofocus: true, placeholder: "例）ガーデンパレスみずほ"
+          .field
+            = f.label :電話番号
+            %span.field__nini
+              任意
+            %br/
+            = f.text_field :phone_number, autofocus: true, placeholder: "例）08080808080"
+        .submit-contents
+          .field
+            %p.field__submit_info
+              「登録する」のボタンを押すことにより、
+              = link_to "利用規約","#",class:"terms"
+              に同意したものとみなします。
+          .actions
+            = f.submit "登録する", id:"registration", url: "shipping_addresses_path", method: :post
+          .about-identification
+            = link_to "本人情報の登録について","#",id:"about-id"
+
+.footer
+  = render "/layouts/form_footer"
