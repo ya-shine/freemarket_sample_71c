@@ -149,7 +149,14 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #category{
+        #parent-category{
+          @include selectBox;
+        }
+      }
+      &__select--children{
+        width: 100%;
+        margin-top: 16px;
+        .listing-select__box {
           @include selectBox;
         }
       }
