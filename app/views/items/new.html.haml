@@ -41,9 +41,9 @@
         %span.product-details-container__top__require
           必須
         .product-details-container__top__select
-          = f.select :category, @category_parent_array,{prompt: "選択してください"}, {class: 'listing-select__box', id: 'parent-category'}
+          = f.select :category, @category_parent_name_array,{prompt: "選択してください"}, {class: 'listing-select__box', id: 'parent-category'}
       .product-details-container__middle
-        %label.product-details-container__middle__title プランド
+        %label.product-details-container__middle__title ブランド
         %span.product-details-container__middle__any
           任意
         .product-details-container__middle__text-box
@@ -98,12 +98,14 @@
         .price-container__contents__fee
           .price-container__contents__fee--label
             .price-container__contents__fee--label--text 販売手数料 (10%)
-          %span.price-container__contents__fee--value ー
+          %span.price-container__contents__fee--value
+            ー
         %hr.price-container__contents__line
         .price-container__contents__profit
           .price-container__contents__profit--label
             .price-container__contents__profit--label--text 販売利益
-          %span.price-container__contents__profit--value ー
+          %span.price-container__contents__profit--value
+            ー
     
     .button-container
       = f.button "出品する", class: "button-container__exhibition"

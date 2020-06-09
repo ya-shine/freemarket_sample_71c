@@ -4,9 +4,11 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @category_parent_array = []
+    @category_parent_id_array = []
+    @category_parent_name_array = []
     Category.where(ancestry: nil).each do |parent|
-        @category_parent_array << parent.name
+        @category_parent_name_array << parent.name
+        @category_parent_id_array << parent.id
     end
     @item = Item.new
     @item.images.new
