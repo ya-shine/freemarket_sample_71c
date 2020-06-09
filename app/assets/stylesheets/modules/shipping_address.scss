@@ -21,68 +21,46 @@ body {
       text-align: center;
     }
     .form-shipping-address{
+      padding: 40px 40px 64px;
+      border-top: 1px solid #f5f5f5;
       .contents-fields {
         max-width: 343px;
         margin: 0 auto;
         .field-top {
-          &__label {
+          & label {
             font-weight: 600;
           }
-          #last-name {
-            @include form-box
-          }
-          #first-name {
+          #shipping_address_zipcode {
             @include form-box
           }
           &__require {
             background-color: #ea352d;
             @include require-sign;
           }
-        }
-        .field {
-          margin-top: 30px;
-          &__label {
-            font-weight: 600;
-          }
           .notification {
             margin: 5px 0 0 0;
             color: #888;
             font-size: 13px;
           }
-          #user_last_name {
-            @include form-area;
+        }
+        .field {
+          margin-top: 30px;
+          & label {
+            font-weight: 600;
           }
-          #user_first_name {
-            @include form-area;
-          }
-          #user_last_name_kana {
-            @include form-area;
-          }
-          #user_first_name_kana {
-            @include form-area;
-          }
-          #last-name-kana {
+          #shipping_address_prefecture {
             @include form-box
           }
-          #first-name-kana {
+          #shipping_address_city {
             @include form-box
           }
-          #postal-code {
+          #shipping_address_address {
             @include form-box
           }
-          #prefecture {
+          #shipping_address_building {
             @include form-box
           }
-          #city {
-            @include form-box
-          }
-          #town {
-            @include form-box
-          }
-          #building {
-            @include form-box
-          }
-          #phone-number {
+          #shipping_address_phone_number {
             @include form-box
           }
           &__require {
@@ -117,6 +95,9 @@ body {
           color: white;
           margin-top: 32px;
           font-size: 14px;
+          outline: none;
+          border-style: none;
+          border-radius: 4px;
         }
       }
       .about-identification {
