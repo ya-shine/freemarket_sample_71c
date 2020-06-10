@@ -18,6 +18,9 @@ $(function () {
     first_name_kana: function (value, element) {
       return this.optional(element) || /^[ァ-ンヴー]*$/i.test(value);
     },
+    zipcode: function (value, element) {
+      return this.optional(element) || /^\d{3}-\d{4}$/i.test(value);
+    },
   }
   $.each(methods, function (key) {
     $.validator.addMethod(key, this);
@@ -67,6 +70,16 @@ $(function () {
       "user[birth_day(3i)]": {
         required: true
       },
+      "user[zipcode]": {
+        required: true,
+        zipcode: true
+      },
+      "user[city]": {
+        required: true
+      },
+      "user[address]": {
+        required: true
+      },
     },
     messages: {
       "user[nickname]": {
@@ -112,12 +125,22 @@ $(function () {
       "user[birth_day(3i)]": {
         required: "生年月日を入力してください"
       },
+      "user[zipcode]": {
+        required: "郵便番号を入力してください",
+        required: "ハイフンありの7桁で入力してください"
+      },
+      "user[city]": {
+        required: "市町村を入力してください"
+      },
+      "user[address]": {
+        required: "番地を入力してください"
+      },
     },
     errorClass: "invalid",
     errorElement: "span",
     validClass: "valid",
   });
-  $("#user_nickname", "#user_email", "#user_password", "#user_password_confirmation", "#user_last_name", "#user_first_name", "#user_last_name_kana", "#user_first_name_kana", "#user_birth_day_1i", "#user_birth_day_2i", "#user_birth_day_3i").blur(function () {
+  $("#user_nickname", "#user_email", "#user_password", "#user_password_confirmation", "#user_last_name", "#user_first_name", "#user_last_name_kana", "#user_first_name_kana", "#user_birth_day_1i", "#user_birth_day_2i", "#user_birth_day_3i", "#user_zipcode", "#user_city", "#user_address").blur(function () {
     $(this).valid();
   });
 });

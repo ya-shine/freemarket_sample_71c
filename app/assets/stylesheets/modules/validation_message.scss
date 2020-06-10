@@ -20,7 +20,10 @@ input.valid{
 #user_password_confirmation-error,
 #user_first_name-error,
 #user_first_name_kana-error,
-#user_birth_day_3i-error{
+#user_birth_day_3i-error,
+#user_zipcode-error,
+#user_city-error,
+#user_address-error{
   color: #ea352d;
   line-height: 1.5;
   font-size: 14px;
