@@ -37,11 +37,6 @@ body {
             background-color: #ea352d;
             @include require-sign;
           }
-          .notification {
-            margin: 5px 0 0 0;
-            color: #888;
-            font-size: 13px;
-          }
         }
         .field {
           margin-top: 30px;
