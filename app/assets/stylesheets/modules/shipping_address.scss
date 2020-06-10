@@ -54,6 +54,15 @@ body {
     }
     .submit-contents {
       @include submit-contents;
+      .field {
+        @include submit-contents-field;
+      }
+      .actions {
+        @include submit-contents-actions;
+      }
+      .about-identification {
+        @include submit-contents-about-identification;
+      }
     }
   }
 }

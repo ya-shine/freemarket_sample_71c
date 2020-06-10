@@ -1,0 +1,25 @@
+.create-main {
+  height: 100vh;
+  .sign-up-container {
+    @include sign-up-container;
+    .create_user{
+      padding: 40px 40px 64px;
+      .submit-contents{
+        @include submit-contents;
+        .actions{
+          @include submit-contents-actions;
+          .return{
+            display: block;
+            background-color: #3ccace;
+            text-decoration: none;
+            color: white;
+            margin-top: 8px;
+            line-height: 48px;
+            border-radius: 4px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
