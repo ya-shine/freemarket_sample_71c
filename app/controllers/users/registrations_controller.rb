@@ -32,7 +32,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def shipping_address_params
-    params.require(:shipping_address).permit(:address, :zipcode, :prefecture, :city, :building, :phone_number)
+    params.require(:shipping_address).permit(:zipcode, :prefecture, :city, :address, :building, :phone_number)
   end
 
 end

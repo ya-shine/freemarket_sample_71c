@@ -15,7 +15,7 @@
       = button_tag type:"#",id:"google-login" do
         = icon('fab','google')
         Googleでログイン
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    = form_with model: @user, scope: @user, url: session_path(resource_name), id: "new_user", dlass: "new_user", local: true do |f|
       .form-fields
         .field-top
           = f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス"

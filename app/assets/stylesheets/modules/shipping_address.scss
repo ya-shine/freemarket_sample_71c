@@ -10,32 +10,18 @@ body {
 
 .registration-main {
   .sign-up-container {
-    margin: 0 auto;
-    width: 700px;
-    background-color: white;
-    &__title {
-      font-size: 22px;
-      padding: 32px;
-      font-weight: bold;
-      margin: auto;
-      text-align: center;
-    }
-    .form-shipping-address{
-      padding: 40px 40px 64px;
-      border-top: 1px solid #f5f5f5;
+    @include sign-up-container;
+    .new_user {
+      @include new_user;
       .contents-fields {
-        max-width: 343px;
-        margin: 0 auto;
-        .field-top {
-          & label {
+        @include contents-fields;
+        .field-top{
+          label {
             font-weight: 600;
           }
-          #shipping_address_zipcode {
-            @include form-box
-          }
-          &__require {
-            background-color: #ea352d;
-            @include require-sign;
+          #user_last_name,
+          #user_first_name{
+            @include form-area;
           }
         }
         .field {
@@ -43,19 +29,16 @@ body {
           & label {
             font-weight: 600;
           }
-          #shipping_address_prefecture {
-            @include form-box
+          #user_last_name_kana,
+          #user_first_name_kana {
+            @include form-area;
           }
-          #shipping_address_city {
-            @include form-box
-          }
-          #shipping_address_address {
-            @include form-box
-          }
-          #shipping_address_building {
-            @include form-box
-          }
-          #shipping_address_phone_number {
+          #user_zipcode,
+          #user_prefecture,
+          #user_city,
+          #user_address,
+          #user_building,
+          #user_phone_number {
             @include form-box
           }
           &__require {
@@ -70,40 +53,7 @@ body {
       }
     }
     .submit-contents {
-      max-width: 343px;
-      margin: 0 auto;
-      .field {
-        margin: 40px 0 0;
-        &__submit_info {
-          font-size: 14px;
-          .terms {
-            color: #0099e8;
-            text-decoration: none;
-          }
-        }
-      }
-      .actions {
-        #registration {
-          width: 100%;
-          height: 50px;
-          background-color: #ea352d;
-          color: white;
-          margin-top: 32px;
-          font-size: 14px;
-          outline: none;
-          border-style: none;
-          border-radius: 4px;
-        }
-      }
-      .about-identification {
-        text-align: right;
-        margin-top: 32px;
-        #about-id {
-          text-decoration: none;
-          font-size: 14px;
-          color: #0099e8;
-        }
-      }
+      @include submit-contents;
     }
   }
 }

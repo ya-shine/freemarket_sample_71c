@@ -28,54 +28,18 @@ body {
 
 .registration-main {
   .sign-up-container {
-    margin: 0 auto;
-    width: 700px;
-    background-color: white;
-    &__title {
-      font-size: 22px;
-      padding: 32px;
-      font-weight: bold;
-      margin: auto;
-      text-align: center;
-    }
+    @include sign-up-container;
     .new_user {
-      padding: 40px 40px 64px;
-      border-top: 1px solid #f5f5f5;
+      @include new_user;
     }
     .contents-fields {
-      max-width: 343px;
-      margin: 0 auto;
+      @include contents-fields;
       .field-top {
         label {
           font-weight: 600;
         }
         #user_nickname {
-          width: 100%;
-          height: 48px;
-          margin: 8px 0 0;
-          padding: 10px 16px 8px;
-          border-radius: 4px;
-          border: 1px solid #ccc;
-          &.invalid{
-            border: 1px solid #ea352d;
-          }
-          &.valid{
-            border: 1px solid #3ccace;
-            border-radius: 4px;
-          }
-          &:focus{
-            outline: none;
-            border-color: #0098e8;
-            border-radius: 4px;
-          }
-        }
-        .field-top__require {
-          background-color: #ea352d;
-          color: #fff;
-          font-size: 12px;
-          border-radius: 2px;
-          margin: 0 0 0 8;
-          padding: 2px 4px;
+          @include form-box;
         }
       }
       .field {
@@ -83,72 +47,21 @@ body {
         label {
           font-weight: 600;
         }
-        #user_password {
-          @include form-email-password;
-          &.invalid{
-            border: 1px solid #ea352d;
-          }
-          &.valid{
-            border: 1px solid #3ccace;
-            border-radius: 4px;
-          }
-        }
-        #user_password_confirmation {
-          @include form-email-password;
-          &.invalid{
-            border: 1px solid #ea352d;
-          }
-          &.valid{
-            border: 1px solid #3ccace;
-            border-radius: 4px;
-          }
-        }
+        #user_password,
+        #user_password_confirmation,
         #user_email {
           @include form-email-password;
-          &.invalid{
-            border: 1px solid #ea352d;
-          }
-          &.valid{
-            border: 1px solid #3ccace;
-            border-radius: 4px;
-          }
         }
         .notification {
           margin: 5px 0 0 0;
           color: #888;
           font-size: 13px;
         }
-        #user_last_name {
-          @include form-area;
-          &:focus{
-            outline: none;
-            border-color: #0098e8;
-            border-radius: 4px;
-          }
-        }
-        #user_first_name {
-          @include form-area;
-          &:focus{
-            outline: none;
-            border-color: #0098e8;
-            border-radius: 4px;
-          }
-        }
-        #user_last_name_kana {
-          @include form-area;
-          &:focus{
-            outline: none;
-            border-color: #0098e8;
-            border-radius: 4px;
-          }
-        }
+        #user_last_name,
+        #user_first_name,
+        #user_last_name_kana,
         #user_first_name_kana {
           @include form-area;
-          &:focus{
-            outline: none;
-            border-color: #0098e8;
-            border-radius: 4px;
-          }
         }
         &__identification {
           font-size: 16px;
@@ -160,11 +73,7 @@ body {
         }
         .field__require {
           background-color: #ea352d;
-          color: #fff;
-          font-size: 12px;
-          border-radius: 2px;
-          margin: 0 0 0 8;
-          padding: 2px 4px;
+          @include require-sign;
         }
         &__birth-day {
           height: 56px;
@@ -175,7 +84,7 @@ body {
               border: 1px solid #ea352d;
               border-radius: 4px;
             }
-            .valid{
+            &.valid{
               border: 1px solid #3ccace;
               border-radius: 4px;
             }
@@ -185,27 +94,9 @@ body {
               border-radius: 4px;
             }
           }
-          #user_birth_day_2i {
-            @include birthday-form;
-            &.invalid{
-              border: 1px solid #ea352d;
-              border-radius: 4px;
-            }
-            &.valid{
-              border: 1px solid #3ccace;
-              border-radius: 4px;
-            }
-          }
+          #user_birth_day_2i,
           #user_birth_day_3i {
             @include birthday-form;
-            &.invalid{
-              border: 1px solid #ea352d;
-              border-radius: 4px;
-            }
-            &.valid{
-              border: 1px solid #3ccace;
-              border-radius: 4px;
-            }
           }
         }
       }
@@ -217,40 +108,7 @@ body {
       }
     }
     .submit-contents {
-      max-width: 343px;
-      margin: 0 auto;
-      .field {
-        margin: 40px 0 0;
-        &__submit_info {
-          font-size: 14px;
-          .terms {
-            color: #0099e8;
-            text-decoration: none;
-          }
-        }
-      }
-      .actions {
-        #submit {
-          width: 100%;
-          height: 50px;
-          background-color: #ea352d;
-          color: white;
-          margin-top: 32px;
-          font-size: 14px;
-          outline: none;
-          border-style: none;
-          border-radius: 4px;
-        }
-      }
-      .about-identification {
-        text-align: right;
-        margin-top: 32px;
-        #about-id {
-          text-decoration: none;
-          font-size: 14px;
-          color: #0099e8;
-        }
-      }
+      @include submit-contents;
     }
   }
 }
