@@ -1,7 +1,7 @@
 class ShippingAddress < ApplicationRecord
 
   belongs_to :user, optional: true
-  validates :zipcode, :prefecture, :city, :address, presence: true
+  validates :last_name, :first_name, :last_name_kana, :first_name_kana, :zipcode, :prefecture, :city, :address, presence: true
 
   enum prefecture: {
     北海道:1, 青森県:2, 岩手県:3, 宮城県:4, 秋田県:5, 山形県:6, 福島県:7, 茨城県:8,
