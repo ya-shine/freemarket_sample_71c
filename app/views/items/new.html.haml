@@ -11,13 +11,14 @@
       %p.exhibition-image-container__explanation
         最大10枚までアップロードできます
       .exhibition-image-container__field
-        = icon('fas', 'camera', class: "exhibition-image-container__field--input--icon")
-        %p.exhibition-image-container__field--text
-          ドラッグアンドドロップ
-          %br/
-          またはクリックしてファイルをアップロード
-        = f.fields_for :images do |i|
-          = i.file_field :image, style: "display:none;",height:"100%",width:"100%", id:"file"
+        = f.fields_for :images do |image|
+          .image-box{"data-index": "#{image.index}"}
+            = image.file_field :image,height:"100%",width:"100%",style: "display:none", id:"file"
+            = icon('fas', 'camera', class: "exhibition-image-container__field--input--icon")
+            %p.exhibition-image-container__field--text
+              ドラッグアンドドロップ
+              %br/
+              またはクリックしてファイルをアップロード
     .product-container
       .product-container__top
         %label.product-container__top__title 商品名
@@ -129,5 +130,3 @@
 .footer
   = render partial: "/layouts/form_footer"
 
--# - @category_parent_array.each do |c|
--#   = c.name
