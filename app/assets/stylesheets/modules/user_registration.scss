@@ -75,6 +75,9 @@ body {
           background-color: #ea352d;
           @include require-sign;
         }
+        .field_with_errors{
+          display: contents;
+        }
         &__birth-day {
           height: 56px;
           margin-top: 5px;
