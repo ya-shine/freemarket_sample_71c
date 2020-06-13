@@ -1,0 +1,137 @@
+.mypage-right-container{
+  background-color: #fff;
+  &__head{
+    font-size: 24px;
+    font-weight: 600;
+    padding: 8px 24px;
+    border-bottom: 1px solid #f5f5f5;
+    text-align: center;
+  }
+  &__inner{
+    padding: 64px;
+    section{
+      .section-title{
+        max-width: 320px;
+        margin: 0 auto;
+        &__text{
+          font-size: 16px;
+        }
+      }
+    }
+    .setting-add-card{
+      padding: 24px 0;
+      border-bottom: 1px solid #eee;
+      .credit-card-container{
+        max-width: 320px;
+        margin: 0 auto;
+        .add-credit-card-button{
+          margin-bottom: 8px;
+          background-color: #3ccace;
+          border: 1px solid #3ccace;
+          border-radius: 4px;
+          color: #fff;
+          display: block;
+          width: 100%;
+          line-height: 48px;font-size: 14px;
+          cursor: pointer;
+          text-align: center;
+          text-decoration: none;
+          .card-icon{
+            margin-right: 16px;
+          }
+        }
+      }
+    }
+  }
+  .credit-card-container{
+    padding: 40px 40px 64px;
+    .field-top{
+      margin: 0 auto;
+      max-width: 343px;
+      label{
+        font-weight: 600;
+      }
+      .card-number{
+        @include form-box;
+      }
+      .field__require{
+        background-color: #ea352d;
+        @include require-sign;
+      }
+      .card-list{
+        margin: 8px 0 0;
+        list-style: none;
+        display: flex;
+        .card-logo{
+          display: inline-block;
+          margin: 0 0 0 8px;
+          vertical-align: middle;
+        }
+        .card-logo:first-child{
+          margin: 0;
+        }
+      }
+    }
+    .field{
+      margin: 32px auto;
+      max-width: 343px;
+      label{
+        font-weight: 600;
+      }
+      .field__require{
+        background-color: #ea352d;
+        @include require-sign;
+      }
+      .card-expiration{
+        width: 100%;
+        margin: 8px 0 0;
+        #expiration{
+          width: calc(50% - 38px);
+          height: 48px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          padding: 0 16px;
+          font-size: 16px;
+          line-height: 1.5;
+          cursor: pointer;
+          outline: none;
+          &:focus{
+            border-color: #0098e8;
+          }
+        }
+      }
+      .security-code{
+        @include form-box;
+      }
+      .security-code-info{
+        margin: 8px 0 0;
+        &__text{
+          text-align: right;
+          color: #0098e8;
+          cursor: pointer;
+          .question{
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: #0098e8;
+            color: #fff;
+            line-height: 14px;
+            font-size: 12px;
+            text-align: center;
+          }
+        }
+      }
+      .add-credit{
+        background-color: #3ccace;
+        color: #fff;
+        width: 100%;
+        font-size: 16px;
+        min-height: 48px;
+        padding: 0 24px;
+        border-radius: 4px;
+        border-style: none;
+      }
+    }
+  }
+}
