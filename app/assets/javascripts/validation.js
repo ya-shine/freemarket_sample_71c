@@ -74,6 +74,9 @@ $(function () {
         required: true,
         zipcode: true
       },
+      "user[prefecture]": {
+        required: true
+      },
       "user[city]": {
         required: true
       },
@@ -129,6 +132,9 @@ $(function () {
         required: "郵便番号を入力してください",
         required: "ハイフンありの7桁で入力してください"
       },
+      "user[prefecture]": {
+        required: "都道府県を選択してください"
+      },
       "user[city]": {
         required: "市町村を入力してください"
       },
@@ -136,11 +142,18 @@ $(function () {
         required: "番地を入力してください"
       },
     },
+    errorPlacement: function(error, element){
+      if(element.attr("name") == "user[birth_day(3i)]"){
+        error.insertAfter("#birth_day");
+      } else {
+        error.insertAfter(element);
+      }
+    },
     errorClass: "invalid",
     errorElement: "span",
     validClass: "valid",
   });
-  $("#user_nickname", "#user_email", "#user_password", "#user_password_confirmation", "#user_last_name", "#user_first_name", "#user_last_name_kana", "#user_first_name_kana", "#user_birth_day_1i", "#user_birth_day_2i", "#user_birth_day_3i", "#user_zipcode", "#user_city", "#user_address").blur(function () {
+  $("#user_nickname", "#user_email", "#user_password", "#user_password_confirmation", "#user_last_name", "#user_first_name", "#user_last_name_kana", "#user_first_name_kana", "#user_birth_day_1i", "#user_birth_day_2i", "#user_birth_day_3i", "#user_zipcode", "#user_prefecture", "#user_city", "#user_address").blur(function () {
     $(this).valid();
   });
 });

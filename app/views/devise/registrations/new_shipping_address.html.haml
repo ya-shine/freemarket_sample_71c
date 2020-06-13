@@ -32,7 +32,7 @@
           %span.field__require
             必須
           %br/
-          = f.select :prefecture, ShippingAddress.prefectures.keys
+          = f.select :prefecture, ShippingAddress.prefectures.keys, {prompt: "----"}
         .field
           = f.label :市町村
           %span.field__require
