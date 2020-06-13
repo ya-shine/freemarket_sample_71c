@@ -4,11 +4,12 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :brand
   belongs_to :size
-  has_many :images
   belongs_to_active_hash :ship_from_area
   belongs_to_active_hash :shipping_method
   belongs_to_active_hash :shipping_day
   belongs_to_active_hash :delivery_fee
+  belongs_to_active_hash :condition
+  has_many :images
 
   with_options presence: true do
     validates :name

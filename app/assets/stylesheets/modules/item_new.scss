@@ -252,7 +252,7 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #fee{
+        #item_delivery_fee_id{
           @include selectBox;
         }
       }
@@ -260,6 +260,7 @@ body{
     &__top-derivation{
       width: 100%;
       margin-top: 32px;
+      display: none;
       &__title{
         @include containerTitle;
       }
@@ -270,7 +271,7 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #method{
+        #item_shipping_method_id {
           @include selectBox;
         }
       }
@@ -288,7 +289,7 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #shippingOrigin{
+        #item_ship_from_area_id {
           @include selectBox;
         }
       }
@@ -306,7 +307,7 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #shippingDays{
+        #item_shipping_day_id{
           @include selectBox;
         }
       }
