@@ -5,7 +5,6 @@
 @import "mixin/item_detail-mixin";
 @import "mixin/headers-mixin";
 @import "mixin/item_new-mixin";
-@import "mixin/shipping_address-mixin";
 @import "mixin/order_new-mixin";
 @import "mixin/top-page-mixin";
 @import "modules/user_registration";
@@ -19,3 +18,5 @@
 @import "modules/mypage";
 @import "modules/top-page-before-login";
 @import "modules/top-page-after-login";
+@import "modules/create_shipping_address";
+@import "modules/validation_message";

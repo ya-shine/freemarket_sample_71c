@@ -28,42 +28,18 @@ body {
 
 .registration-main {
   .sign-up-container {
-    margin: 0 auto;
-    width: 700px;
-    background-color: white;
-    &__title {
-      font-size: 22px;
-      padding: 32px;
-      font-weight: bold;
-      margin: auto;
-      text-align: center;
-    }
+    @include sign-up-container;
     .new_user {
-      padding: 40px 40px 64px;
-      border-top: 1px solid #f5f5f5;
+      @include new_user;
     }
     .contents-fields {
-      max-width: 343px;
-      margin: 0 auto;
+      @include contents-fields;
       .field-top {
         label {
           font-weight: 600;
         }
         #user_nickname {
-          width: 100%;
-          height: 48px;
-          margin: 8px 0 0;
-          padding: 10px 16px 8px;
-          border-radius: 4px;
-          border: 1px solid #ccc;
-        }
-        .field-top__require {
-          background-color: #ea352d;
-          color: #fff;
-          font-size: 12px;
-          border-radius: 2px;
-          margin: 0 0 0 8;
-          padding: 2px 4px;
+          @include form-box;
         }
       }
       .field {
@@ -71,9 +47,8 @@ body {
         label {
           font-weight: 600;
         }
-        #user_password {
-          @include form-email-password;
-        }
+        #user_password,
+        #user_password_confirmation,
         #user_email {
           @include form-email-password;
         }
@@ -82,15 +57,9 @@ body {
           color: #888;
           font-size: 13px;
         }
-        #user_last_name {
-          @include form-area;
-        }
-        #user_first_name {
-          @include form-area;
-        }
-        #user_last_name_kana {
-          @include form-area;
-        }
+        #user_last_name,
+        #user_first_name,
+        #user_last_name_kana,
         #user_first_name_kana {
           @include form-area;
         }
@@ -104,21 +73,31 @@ body {
         }
         .field__require {
           background-color: #ea352d;
-          color: #fff;
-          font-size: 12px;
-          border-radius: 2px;
-          margin: 0 0 0 8;
-          padding: 2px 4px;
+          @include require-sign;
+        }
+        .field_with_errors{
+          display: contents;
         }
         &__birth-day {
           height: 56px;
           margin-top: 5px;
           #user_birth_day_1i {
             height: 48px;
+            &.invalid{
+              border: 1px solid #ea352d;
+              border-radius: 4px;
+            }
+            &.valid{
+              border: 1px solid #3ccace;
+              border-radius: 4px;
+            }
+            &:focus{
+              outline: none;
+              border-color: #0098e8;
+              border-radius: 4px;
+            }
           }
-          #user_birth_day_2i {
-            @include birthday-form;
-          }
+          #user_birth_day_2i,
           #user_birth_day_3i {
             @include birthday-form;
           }
@@ -126,43 +105,21 @@ body {
       }
       &__info {
         line-height: 1.5;
-        margin: 8px 0 0;
+        margin: 18px 0 0;
         color: #888;
         font-size: 14px;
       }
     }
     .submit-contents {
-      max-width: 343px;
-      margin: 0 auto;
+      @include submit-contents;
       .field {
-        margin: 40px 0 0;
-        &__submit_info {
-          font-size: 14px;
-          .terms {
-            color: #0099e8;
-            text-decoration: none;
-          }
-        }
+        @include submit-contents-field;
       }
       .actions {
-        #submit {
-          width: 100%;
-          height: 50px;
-          background-color: #ea352d;
-          color: white;
-          margin-top: 32px;
-          font-size: 14px;
-
-        }
+        @include submit-contents-actions;
       }
       .about-identification {
-        text-align: right;
-        margin-top: 32px;
-        #about-id {
-          text-decoration: none;
-          font-size: 14px;
-          color: #0099e8;
-        }
+        @include submit-contents-about-identification;
       }
     }
   }
@@ -185,14 +142,16 @@ body {
         text-decoration: none;
         color: white;
         margin-top: 8px;
-        line-height: 40px;
+        line-height: 48px;
+        border-radius: 4px;
       }
     }
     .login-form-api {
-      border-top: 1px solid #f5f5f5;
       padding: 32px 64px;
       position: relative;
       #facebook-login {
+        border-style: none;
+        border-radius: 4px;
         display: block;
         background-color: #385185;
         color: #fff;
@@ -207,6 +166,7 @@ body {
         }
       }
       #google-login {
+        border-radius: 4px;
         display: block;
         margin-top: 16px;
         width: 100%;
@@ -228,31 +188,17 @@ body {
         .field-top {
           height: 48px;
           #user_email {
-            width: 100%;
-            height: 48px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            padding: 10px 16px 8px;
+            @include form-email-password;
           }
         }
         .field {
           margin-top: 30px;
           #user_password {
-            width: 100%;
-            height: 48px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            padding: 10px 16px 8px;
+            @include form-email-password;
           }
         }
         .actions {
-          margin-top: 30px;
-          #login-button {
-            width: 100%;
-            background-color: #ea352d;
-            color: white;
-            line-height: 47px;
-          }
+          @include submit-contents-actions;
           #forget-password {
             display: block;
             margin: 40px 0 0;
@@ -286,8 +232,6 @@ body {
   .bottom-logo {
     display: block;
     text-align: center;
-    .logo-bottom {
-    }
   }
   .company-signature {
     text-align: center;

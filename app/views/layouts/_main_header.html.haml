@@ -55,7 +55,7 @@
               %span.navigation-likes-mypage__likes--title
                 いいね！一覧
           %li.navigation-likes-mypage__mypage
-            = link_to "#", class: "mypage-link" do
+            = link_to mypage_index_path, class: "mypage-link" do
               = image_tag("/images/member_photo_noimage_thumb.png", alt: "mypage", class: "mypage")
               %span.navigation-likes-mypage__mypage--title
                 マイページ

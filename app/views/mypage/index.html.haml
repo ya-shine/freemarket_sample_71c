@@ -77,8 +77,8 @@
             電話番号の確認
             = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
         %li.nav__list__box
-          = link_to "#", class: "nav__list__box--item active" do
-            ログアウト
+          = link_to destroy_user_session_path, class: "nav__list__box--item active", method: :delete do
+            %span ログアウト
             = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
   .right-content
     .mypage-user
