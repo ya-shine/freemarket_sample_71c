@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resource :order
   resources :shipping_addresses
   resources :mypage, only: :index
+  resources :credit_cards, only: :new
 end
