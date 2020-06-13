@@ -98,11 +98,16 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|foreign_key:true,null:false|
+|last_name|string|null:false|
+|first_name|string|null:false|
+|last_name_kana|string|null:false|
+|first_name_kana|string|null:false|
 |zipcode|string|null:false|
-|prefecture|string|null:false|
+|prefecture|integer|null:false|
 |city|string|null:false|
 |address|string|null:false|
 |building|string|
+|phone_number|string|
 
 - has_one :order
 - belongs_to :user
