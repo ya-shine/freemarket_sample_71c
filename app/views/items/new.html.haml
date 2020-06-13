@@ -42,7 +42,7 @@
         %span.product-details-container__top__require
           必須
         .product-details-container__top__select
-          = f.select :category, @category_parent_name_array,{prompt: "選択してください"}, {class: 'listing-select__box', id: 'parent-category'}
+          = f.select :category, @category_parent_array,{prompt:"選択してください"}, {class: 'select', id: 'parent_category'}
       .product-details-container__middle
         %label.product-details-container__middle__title ブランド
         %span.product-details-container__middle__any
@@ -54,7 +54,7 @@
         %span.product-details-container__bottom__require
           必須
         .product-details-container__bottom__select
-          = select_tag 'status', options_for_select([["選択してください", "1"], ["新品、未使用", "2"], ["未使用に近い", "3"]])
+          = f.select :condition_id, Condition.all.collect { |p| [p.name, p.id] }, prompt: "選択してください"
     
     .delivery-container
       %p.delivery-container__main-title 配送について
@@ -64,28 +64,24 @@
           必須
         .delivery-container__top__select
           = f.select :delivery_fee_id, DeliveryFee.all.collect { |p| [ p.name, p.id ] }, prompt:"選択してください"
-          -# = select_tag 'fee', options_for_select([["選択してください", "1"], ["送料込み(出品者負担)", "2"], ["着払い(購入者負担)", "3"]])
       .delivery-container__top-derivation
         %label.delivery-container__top-derivation__title 配送の方法
         %span.delivery-container__top-derivation__require
           必須
         .delivery-container__top-derivation__select
           = f.select :shipping_method_id, ShippingMethod.all.collect { |p| [ p.name, p.id ] }, prompt:"選択してください"
-          -# = select_tag 'method', options_for_select([["選択してください", "1"], ["未定", "2"], ["レターパック", "3"]])
       .delivery-container__middle
         %label.delivery-container__middle__title 発送元の地域
         %span.delivery-container__middle__require
           必須
         .delivery-container__middle__select
           = f.select :ship_from_area_id, ShipFromArea.all.collect { |p| [ p.name, p.id ] }, prompt:"選択してください"
-          -# = f.collection_select :ship_from_area, @item.ship_from_area.name,{prompt:'選択してください'},{class:'shipping_from',id:"ship_from"}
       .delivery-container__bottom
         %label.delivery-container__bottom__title 発送までの日数
         %span.delivery-container__bottom__require
           必須
         .delivery-container__bottom__select
           = f.select :shipping_day_id, ShippingDay.all.collect { |p| [ p.name, p.id ] }, prompt:"選択してください"
-          -# = select_tag 'shippingDays', options_for_select([["選択してください", "1"], ["１〜2日で発送", "2"], ["２〜3日で発送", "3"], ["４〜7日で発送", "4"]])
     
     .price-container
       %p.price-container__main-title 価格 (¥300~9,999,999)

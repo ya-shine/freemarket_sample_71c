@@ -180,7 +180,7 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #parent-category{
+        #parent_category{
           @include selectBox;
         }
       }
@@ -225,7 +225,7 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #status{
+        #item_condition_id{
           @include selectBox;
         }
       }

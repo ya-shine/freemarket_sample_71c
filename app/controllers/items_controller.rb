@@ -5,17 +5,16 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @category_parent_id_array = []
-    @category_parent_name_array = []
+    @category_parent_array = []
     Category.where(ancestry: nil).each do |parent|
-        @category_parent_name_array << parent.name
-        @category_parent_id_array << parent.id
+        @category_parent_array << parent.name
     end
     @item = Item.new
     @item.images.new
   end
 
   def create
+    # binding.pry
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
@@ -25,7 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def get_category_children
-    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+    @category_children = Category.find(params[id: parent.id]).children
   end
 
   private
