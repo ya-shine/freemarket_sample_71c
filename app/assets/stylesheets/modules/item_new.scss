@@ -194,8 +194,15 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #parent_category{
+        .select{
           @include selectBox;
+          &.valid {
+            border: 1px solid #3ccace;
+            border-radius: 4px;
+          }
+          &.invalid {
+            border: 1px solid #ea352d;
+          }
         }
       }
       &__select--children{
@@ -299,7 +306,7 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #item_shipping_method_id {
+        select {
           @include selectBox;
           &.valid {
             border: 1px solid #3ccace;

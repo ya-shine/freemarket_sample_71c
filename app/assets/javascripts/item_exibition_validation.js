@@ -9,8 +9,8 @@ $(function(){
     price: function(value, element){
       return this.optional(element) || /^([3-9]{3,})$/i.test(value)
     },
-    // : function(value, element){
-    //   return this.optional(element) || 
+    // category: function(value, element){
+    //   return this.optional(element) || value == "選択してください。"/i.test(value)
     // }
   }
   $('#form-exibition').validate({
@@ -41,6 +41,9 @@ $(function(){
       },
       "item[shipping_day_id]":{
         required: true,
+      },
+      "item[shipping_method_id]":{
+        required: true,
       }
     },
     messages: {
@@ -70,6 +73,9 @@ $(function(){
       },
       "item[shipping_day_id]":{
         required: "選択してください。"
+      },
+      "item[shipping_method_id]":{
+        required: '選択してください。'
       }
     },
     errorClass: "invalid",
