@@ -3,7 +3,7 @@
     = link_to image_tag("/images/logo.png", alt:"FURIMA", class:"logo"), root_path, class:"logo-link"
 
 .item-exhibition-main
-  = form_with model:@item, local: true do |f|
+  = form_with model:@item, local: true, id:"form-exibition" do |f|
     .exhibition-image-container
       %label.exhibition-image-container__title 出品画像
       %span.exhibition-image-container__require
@@ -48,7 +48,7 @@
         %span.product-details-container__middle__any
           任意
         .product-details-container__middle__text-box
-          = text_field_tag 'text', "", class: "product-details-container__middle__text-box--field", placeholder: "例）シャネル"
+          = f.text_field :brand, class: "product-details-container__middle__text-box--field", placeholder: "例）シャネル"
       .product-details-container__bottom
         %label.product-details-container__bottom__title 商品の状態
         %span.product-details-container__bottom__require
@@ -82,7 +82,6 @@
           必須
         .delivery-container__bottom__select
           = f.select :shipping_day_id, ShippingDay.all.collect { |p| [ p.name, p.id ] }, prompt:"選択してください"
-    
     .price-container
       %p.price-container__main-title 価格 (¥300~9,999,999)
       .price-container__contents
@@ -95,7 +94,7 @@
             ¥
           .price-container__contents__main__right
             .price-container__contents__main__right__price-box
-              = f.number_field :item,class: "price-container__contents__main__right__price-box--field", placeholder: "0",style:"text-align:right;"
+              = f.number_field :price,class: "price-container__contents__main__right__price-box--field", placeholder: "0",style:"text-align:right;"
         .price-container__contents__fee
           .price-container__contents__fee--label
             .price-container__contents__fee--label--text 販売手数料 (10%)

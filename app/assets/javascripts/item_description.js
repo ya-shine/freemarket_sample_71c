@@ -4,8 +4,8 @@ $(function(){
     $('.count').text($(this).val().length + "/1000");
   })
 
-  $('#item_item').on('input',function(){
-    var totalPrice = $('#item_item').val();
+  $('#item_price').on('input',function(){
+    var totalPrice = $('#item_price').val();
     var profit = Math.round(totalPrice * 0.9)
     var fee = (totalPrice - profit)
     var profitShow = profit.toLocaleString()
