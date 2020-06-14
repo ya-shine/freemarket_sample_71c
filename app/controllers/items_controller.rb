@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  # before_action :set_item, except: [:index, :new, :create]
+  before_action :set_item, except: [:index, :new, :create]
   def index
   end
 
@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    # binding.pry
+    binding.pry
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name,:description,:price,:condition,:delivery_fee,:ship_from_area,:shipping_method,:shipping_days,:selling_status,images_attributes:  [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
   
-  # def set_item
-  #   @item = Item.find(params[:id])
-  # end
+  def set_item
+    @item = Item.find(params[:id])
+  end
 end
