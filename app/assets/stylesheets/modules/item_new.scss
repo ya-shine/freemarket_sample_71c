@@ -122,6 +122,13 @@ body{
         }
         .product-container__top__text-box--field {
           padding: 0 16px 0;
+          &.valid {
+            border: 1px solid #3ccace;
+            border-radius: 4px;
+          }
+          &.invalid {
+            border: 1px solid #ea352d;
+          }
         }
       } 
     }
@@ -147,6 +154,13 @@ body{
           padding: 13px 16px;
           resize: vertical;
           vertical-align: middle;
+          &.valid {
+            border: 1px solid #3ccace;
+            border-radius: 4px;
+          }
+          &.invalid {
+            border: 1px solid #ea352d;
+          }
         }
       }
       &__limit{
@@ -227,6 +241,13 @@ body{
         margin-top: 16px;
         #item_condition_id{
           @include selectBox;
+          &.valid {
+            border: 1px solid #3ccace;
+            border-radius: 4px;
+          }
+          &.invalid {
+            border: 1px solid #ea352d;
+          }
         }
       }
     }
@@ -254,6 +275,13 @@ body{
         margin-top: 16px;
         #item_delivery_fee_id{
           @include selectBox;
+          &.valid {
+            border: 1px solid #3ccace;
+            border-radius: 4px;
+          }
+          &.invalid {
+            border: 1px solid #ea352d;
+          }
         }
       }
     }
@@ -273,6 +301,13 @@ body{
         margin-top: 16px;
         #item_shipping_method_id {
           @include selectBox;
+          &.valid {
+            border: 1px solid #3ccace;
+            border-radius: 4px;
+          }
+          &.invalid {
+            border: 1px solid #ea352d;
+          }
         }
       }
     }
@@ -291,6 +326,13 @@ body{
         margin-top: 16px;
         #item_ship_from_area_id {
           @include selectBox;
+          &.valid {
+            border: 1px solid #3ccace;
+            border-radius: 4px;
+          }
+          &.invalid {
+            border: 1px solid #ea352d;
+          }
         }
       }
     }
@@ -309,6 +351,13 @@ body{
         margin-top: 16px;
         #item_shipping_day_id{
           @include selectBox;
+          &.valid {
+            border: 1px solid #3ccace;
+            border-radius: 4px;
+          }
+          &.invalid {
+            border: 1px solid #ea352d;
+          }
         }
       }
     }
@@ -356,11 +405,20 @@ body{
           height: 48px;
           &__price-box{
             @include textField;
-            input::placeholder{
-              font-size: 14px;
-              font-weight: 400;
-              text-align: right;
-              padding-right: 16px;
+            &--field{
+              &.valid {
+                border: 1px solid #3ccace;
+                border-radius: 4px;
+              }
+              &.invalid {
+                border: 1px solid #ea352d;
+              }
+              input::placeholder{
+                font-size: 14px;
+                font-weight: 400;
+                text-align: right;
+                padding-right: 16px;
+              }
             }
           }
         }

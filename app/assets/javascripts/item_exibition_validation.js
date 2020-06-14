@@ -7,7 +7,7 @@ $(function(){
       return this.optional(element) || /^.{1,1000}$/i.test(value)
     },
     price: function(value, element){
-      return this.optional(element) || /^.{300,9999999}$/i.test(value)
+      return this.optional(element) || /^([3-9]{3,})$/i.test(value)
     },
     // : function(value, element){
     //   return this.optional(element) || 
@@ -28,7 +28,7 @@ $(function(){
       },
       "item[price]":{
         required: true,
-        price: true
+        rangelength: [300, 9999999]
       },
       "item[condition_id]":{
         required: true,
@@ -37,6 +37,9 @@ $(function(){
         required: true,
       },
       "item[ship_from_area_id]":{
+        required: true,
+      },
+      "item[shipping_day_id]":{
         required: true,
       }
     },
@@ -51,20 +54,26 @@ $(function(){
       },
       "item[price]":{
         required: "入力してください。",
-        price: "300以上9999999以下で入力してください"
+        rangelength: "300以上9999999以下で入力してください"
       },
       "item[category]":{
-        required: "入力してください。",
+        required: "選択してください。",
       },
       "item[condition_id]":{
-        required: "入力してください。",
+        required: "選択してください。",
       },
       "item[delivery_fee_id]":{
-        required: "入力してください。",
+        required: "選択してください。",
       },
       "item[ship_from_area_id]":{
-        required: "入力してください。"
+        required: "選択してください。"
       },
-    }
+      "item[shipping_day_id]":{
+        required: "選択してください。"
+      }
+    },
+    errorClass: "invalid",
+    errorElement: "span",
+    validClass: "valid",
   })
 })
