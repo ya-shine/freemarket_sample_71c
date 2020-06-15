@@ -212,11 +212,26 @@ body{
           @include error-display;
         }
       }
-      &__select--children{
+      &__children{
+        display: none;
         width: 100%;
         margin-top: 16px;
-        .listing-select__box {
+        #parent_category{
           @include selectBox;
+        }
+        #parent_category-error {
+          @include error-display;
+        }
+      }
+      &__grandchildren{
+        display: none;
+        width: 100%;
+        margin-top: 16px;
+        #parent_category{
+          @include selectBox;
+        }
+        #parent_category-error {
+          @include error-display;
         }
       }
     }
