@@ -234,6 +234,7 @@ body{
         margin-top: 16px;
         #item_size_id{
           @include textField;
+          padding: 6px;
         }
         #item_size_id-error {
           @include error-display;
@@ -259,6 +260,9 @@ body{
         margin-top: 16px;
         #item_brand_id{
           @include textField;
+        }
+        &--field {
+          padding: 6px;
         }
         input::placeholder{
           font-size: 14px;
