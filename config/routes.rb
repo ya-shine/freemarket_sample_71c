@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     post 'shipping_addresses', to: 'users/registrations#create_shipping_address'
   end
   root 'items#index'
-  resource :item
+  resources :items
   resource :order
   resources :shipping_addresses
   resources :mypage, only: :index

@@ -31,42 +31,58 @@ body{
       line-height: 1.4em;
     }
     &__field{
-      width: 620px;
-      height: 158px;
-      margin-top: 16px;
-      background-color: #f5f5f5;
-      align-content: center;
-      -webkit-box-align: center;
-      align-items: center;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      cursor: pointer;
-      border-width: 1px;
-      border-style: dashed;
-      border-color: #cccccc;
-      border-image: initial;
-      &--input{
-        height: 24px;
-        margin-bottom: 8px;
-        width: 24px;
-        margin: 0 auto;
-        line-height: 140px;
-        display: block;
+      .image-box {
+        width: auto;
         position: relative;
-        &--icon{
-          position: absolute;
+        text-align: center;
+        max-width: 620px;
+        height: 158px;
+        margin-top: 16px;
+        background-color: #f5f5f5;
+        align-content: center;
+        -webkit-box-align: center;
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        cursor: pointer;
+        border-width: 1px;
+        border-style: dashed;
+        border-color: #cccccc;
+        border-image: initial;
+        i {
+          display: inline-block;
+        }
+        input{
+          height: 24px;
+          margin-bottom: 8px;
+          width: 20%;
+          margin: 0 auto;
+          line-height: 140px;
+          display: block;
+          position: relative;
+        }
+        label{
+          display: inline-block;
           font-size: 22px;
           color: #222222;
+          text-align: center;
+        }
+        .exhibition-image-container__field--text{
+          font-size: 12px;
+          text-align: center;
+          line-height: 1.4em;
+          margin-top: 8px;
         }
       }
-      &--text{
-        font-size: 12px;
-        width: 100%;
-        text-align: center;
-        line-height: 1.4em;
-        margin-top: 8px;
+      .image-uploads {
+        width: 20%;
       }
+      // .image-box-add {
+      //   float: left;
+      //   width: 20%;
+      // }
     }
   }
   
@@ -84,11 +100,16 @@ body{
       }
       &__text-box{
         margin-top: 16px;
-        @include textField;
         input::placeholder{
           font-size: 14px;
           font-weight: 400;
-          padding-left: 16px;
+        }
+        .product-container__top__text-box--field {
+          padding: 0 16px 0;
+          @include textField;
+        }
+        #item_text-error {
+          @include error-display;
         }
       } 
     }
@@ -114,6 +135,16 @@ body{
           padding: 13px 16px;
           resize: vertical;
           vertical-align: middle;
+          &.valid {
+            border: 1px solid #3ccace;
+            border-radius: 4px;
+          }
+          &.invalid {
+            border: 1px solid #ea352d;
+          }
+        }
+        #item_content-error {
+          @include error-display;
         }
       }
       &__limit{
@@ -147,7 +178,17 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #category{
+        .select{
+          @include selectBox;
+        }
+        #parent_category-error {
+          @include error-display;
+        }
+      }
+      &__select--children{
+        width: 100%;
+        margin-top: 16px;
+        .listing-select__box {
           @include selectBox;
         }
       }
@@ -164,7 +205,9 @@ body{
       }
       &__text-box{
         margin-top: 16px;
-        @include textField;
+        #item_brand{
+          @include textField;
+        }
         input::placeholder{
           font-size: 14px;
           font-weight: 400;
@@ -185,8 +228,11 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #status{
+        #item_condition_id{
           @include selectBox;
+        }
+        #item_condition_id-error {
+          @include error-display;
         }
       }
     }
@@ -212,14 +258,18 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #fee{
+        #item_delivery_fee_id{
           @include selectBox;
+        }
+        #item_delivery_fee_id-error {
+          @include error-display;
         }
       }
     }
     &__top-derivation{
       width: 100%;
       margin-top: 32px;
+      display: none;
       &__title{
         @include containerTitle;
       }
@@ -230,8 +280,11 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #method{
+        select {
           @include selectBox;
+        }
+        #item_shipping_method_id-error {
+          @include error-display;
         }
       }
     }
@@ -248,8 +301,11 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #shippingOrigin{
+        #item_ship_from_area_id {
           @include selectBox;
+        }
+        #item_ship_from_area_id-error {
+          @include error-display;
         }
       }
     }
@@ -266,8 +322,11 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #shippingDays{
+        #item_shipping_day_id{
           @include selectBox;
+        }
+        #item_shipping_day_id-error {
+          @include error-display;
         }
       }
     }
@@ -314,12 +373,17 @@ body{
           width: 285px;
           height: 48px;
           &__price-box{
-            @include textField;
-            input::placeholder{
-              font-size: 14px;
-              font-weight: 400;
-              text-align: right;
-              padding-right: 16px;
+            &--field{
+              @include textField;
+              input::placeholder{
+                font-size: 14px;
+                font-weight: 400;
+                text-align: right;
+                padding-right: 16px;
+              }
+            }
+            #item_price-error {
+              @include error-display;
             }
           }
         }
