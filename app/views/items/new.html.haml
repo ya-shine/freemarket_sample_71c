@@ -42,8 +42,7 @@
         %span.product-details-container__top__require
           必須
         .product-details-container__top__select
-          = f.select :category_id, @category_parent_array,{prompt:"選択してください。"}, {class: 'select', id: 'parent_category'}
-          -# = f.select :category_id, options_for_select( @category_parent_array.map{|c| [0][c[:name], c[:id]]}),{include_blank: "選択してください"}, { class: "parent_category_box", id: "parent_category"}
+          = f.select :category, @category_parent_array,{}, {class: 'select', id: 'parent_category'}
       .product-details-container__middle
         %label.product-details-container__middle__title ブランド
         %span.product-details-container__middle__any
