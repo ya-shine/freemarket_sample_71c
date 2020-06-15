@@ -193,6 +193,28 @@ body{
         }
       }
     }
+    &__size {
+      width: 100%;
+      margin-top: 32px;
+      &__title{
+        @include containerTitle;
+      }
+      &__require{
+        @include annotation;
+        background-color: #ff0211;
+      }
+      &__text-box{
+        margin-top: 16px;
+        #item_size_id{
+          @include textField;
+        }
+        input::placeholder{
+          font-size: 14px;
+          font-weight: 400;
+          padding-left: 16px;
+        }
+      }
+    }
     &__middle{
       width: 100%;
       margin-top: 32px;
