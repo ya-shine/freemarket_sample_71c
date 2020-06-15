@@ -14,5 +14,5 @@ class User < ApplicationRecord
   validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: true
 
   has_one :shipping_address
-  
+  has_many :items
 end
