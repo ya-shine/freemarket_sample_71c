@@ -1,17 +1,13 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_item, except: [:index, :new, :create]
+  before_action :set_category, only: [:new, :edit, :create, :update, :destroy]
   def index
   end
 
   def new
     @item = Item.new
     @item.images.new
-    @parents = Category.all.order("id ASC")
-    @category_parent_array = []
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
   end
 
   def get_category_children
@@ -23,7 +19,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
@@ -43,6 +39,10 @@ class ItemsController < ApplicationController
   
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_category  
+    @category_parent_array = Category.where(ancestry: nil)
   end
   
 end
