@@ -19,6 +19,7 @@ $.extend( $.validator.messages, {
 	name: "入力してください",
 	description: "入力してください",
 	category_id: "選択してください",
+	size_id: "選択してください。",
 	condition_id: "選択してください",
 	delivery_fee_id: "選択してください",
 	shipping_method_id: "選択してください",

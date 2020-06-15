@@ -178,6 +178,9 @@ $(function () {
       "item[category_id]":{
         required: true,
       },
+      "item[size_id]":{
+        required: true,
+      },
       "item[price]":{
         required: true,
         range: [300, 9999999]
@@ -211,7 +214,10 @@ $(function () {
         required: "入力してください。",
         range: "300以上9999999以下で入力してください"
       },
-      "item[category]":{
+      "item[category_id]":{
+        required: "選択してください。",
+      },
+      "item[size_id]":{
         required: "選択してください。",
       },
       "item[condition_id]":{

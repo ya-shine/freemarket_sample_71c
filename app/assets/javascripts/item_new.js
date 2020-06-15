@@ -1,7 +1,7 @@
 $(function(){
-  $('.exhibition-image-container__field').on('click',function(){
-    $('#file').get(0).click();
-  })
+  // $('.exhibition-image-container__field').on('click',function(){
+  //   $('#file').get(0).click();
+  // })
   var text_max = 1000;
   $('#item_description').on('input',function(){
     $('.count').text($(this).val().length + "/1000");
