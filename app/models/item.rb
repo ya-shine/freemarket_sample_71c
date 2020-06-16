@@ -1,6 +1,5 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  mount_uploader :image, ImageUploader
     belongs_to :user
     belongs_to :category
     belongs_to :brand
@@ -27,5 +26,5 @@ class Item < ApplicationRecord
     validates :shipping_day_id,presence: true
     validates :delivery_fee_id,presence: true
   
-    accepts_nested_attributes_for :images, :category,:brand,:size
+    accepts_nested_attributes_for :images, allow_destroy:true
 end

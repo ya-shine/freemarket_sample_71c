@@ -21,15 +21,6 @@ $(function () {
     zipcode: function (value, element) {
       return this.optional(element) || /^\d{3}-\d{4}$/i.test(value);
     },
-    name: function(value, element){
-      return this.optional(element) || /^.{1,40}$/i.test(value)
-    },
-    description: function(value, element){
-      return this.optional(element) || /^.{1,1000}$/i.test(value)
-    },
-    price: function(value, element){
-      return this.optional(element) || /^([3-9]{3,})$/i.test(value)
-    },
   }
   $.each(methods, function (key) {
     $.validator.addMethod(key, this);
@@ -165,17 +156,31 @@ $(function () {
   $("#user_nickname", "#user_email", "#user_password", "#user_password_confirmation", "#user_last_name", "#user_first_name", "#user_last_name_kana", "#user_first_name_kana", "#user_birth_day_1i", "#user_birth_day_2i", "#user_birth_day_3i", "#user_zipcode", "#user_prefecture", "#user_city", "#user_address").blur(function () {
     $(this).valid();
   });
+});
+
+$(function () {
+  var methods = {
+    price: function(value, element){
+      return this.optional(element) || /^([3-9]{3,})$/i.test(value)
+    },
+  }
+  $.each(methods, function (key) {
+    $.validator.addMethod(key, this);
+  });
   $("#form-exibition").validate({
     rules: {
       "item[name]": {
         required: true,
-        maxlength: 40
+        maxlength: 40,
       },
       "item[description]":{
         required: true,
-        maxlength: 1000
+        maxlength: 1000,
       },
       "item[category_id]":{
+        required: true,
+      },
+      "item[size_id]":{
         required: true,
       },
       "item[price]":{
@@ -201,17 +206,20 @@ $(function () {
     messages: {
       "item[name]": {
         required: "入力してください。",
-        maxlength: "40文字以内で入力してください。" 
+        maxlength: "40文字以内で入力してください。",
       },
       "item[description]":{
         required: "入力してください。",
-        maxlength: "1000文字以内で入力してください。"
+        maxlength: "1000文字以内で入力してください。",
       },
       "item[price]":{
         required: "入力してください。",
         range: "300以上9999999以下で入力してください"
       },
-      "item[category]":{
+      "item[category_id]":{
+        required: "選択してください。",
+      },
+      "item[size_id]":{
         required: "選択してください。",
       },
       "item[condition_id]":{
@@ -235,4 +243,3 @@ $(function () {
     validClass: "valid",
   });
 });
-
