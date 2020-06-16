@@ -24,7 +24,7 @@ $(function(){
   }
   $(document).on("change","#parent_category", function() {
     //選択された親カテゴリーの名前取得 → コントローラーに送る
-    $(".product-details-container__top__children").css('display','block')
+    // $(".product-details-container__top__children").css('display','block')
     let parentCategory =  $("#parent_category").val();
     if (parentCategory != "選択してください") {
       $.ajax( {
@@ -35,7 +35,7 @@ $(function(){
       })
       .done(function(children) {
         //親カテゴリーが変更されたら、子/孫カテゴリー、サイズを削除し、初期値にする
-        // $("#children_box").empty();
+        $("#children_box").empty();
         $("#grandchildren_box").empty();
         $('.size_box').val('');
         $('#size_box').css('display', 'none');
