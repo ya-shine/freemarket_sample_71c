@@ -178,18 +178,28 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
+        position: relative;
         .select{
           @include selectBox;
+        }
+        .icon-arrow-down{
+          @include arrow-down;
         }
         #parent_category-error {
           @include error-display;
         }
       }
-      &__select--children{
+      .add-select-wrapper{
         width: 100%;
         margin-top: 16px;
-        .listing-select__box {
-          @include selectBox;
+        position: relative;
+        &__box{
+          &--select{
+            @include selectBox;
+          }
+          .icon-arrow-down{
+            @include arrow-down;
+          }
         }
       }
     }
