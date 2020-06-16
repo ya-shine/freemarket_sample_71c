@@ -205,30 +205,28 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #parent_category{
+        position: relative;
+        .select{
           @include selectBox;
+        }
+        .icon-arrow-down{
+          @include arrow-down;
         }
         #parent_category-error {
           @include error-display;
         }
       }
-      &__children{
-        display: none;
+      .add-select-wrapper{
         width: 100%;
         margin-top: 16px;
-        #parent_category{
-          @include selectBox;
-        }
-        #parent_category-error {
-          @include error-display;
-        }
-      }
-      &__grandchildren{
-        display: none;
-        width: 100%;
-        margin-top: 16px;
-        #parent_category{
-          @include selectBox;
+        position: relative;
+        &__box{
+          &--select{
+            @include selectBox;
+          }
+          .icon-arrow-down{
+            @include arrow-down;
+          }
         }
         #parent_category-error {
           @include error-display;

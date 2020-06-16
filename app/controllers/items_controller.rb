@@ -1,17 +1,22 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  # before_action :set_item, except: [:index, :new, :create]
-  before_action :set_category, only: [:new, :edit, :create, :update, :destroy]
+  before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren]
+
   def index
   end
 
   def new
     @item = Item.new
     @item.images.new
+    @parents = Category.all.order("id ASC")
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
   end
 
   def get_category_children
-    @category_children = Category.find(params[:parent_name]).children
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
 
   def get_category_grandchildren

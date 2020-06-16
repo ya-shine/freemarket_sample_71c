@@ -40,11 +40,17 @@
 }
 
 @mixin selectBox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background-color: #ffffff;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  color: #222;
+  font-size: 16px;
   height: 48px;
+  margin: 0;
   line-height: 1;
   outline: none;
   padding: 0 56px 0 16px;
@@ -85,4 +91,13 @@
 @mixin linkButton {
   text-decoration: none;
   color: #0095ee;
+}
+
+@mixin arrow-down {
+  bottom: 0;
+  margin: auto;
+  pointer-events: none;
+  position: absolute;
+  right: 16px;
+  top: 18px;
 }
