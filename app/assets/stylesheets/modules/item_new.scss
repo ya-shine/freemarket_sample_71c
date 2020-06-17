@@ -233,15 +233,24 @@ body{
         }
       }
     }
-    &__size {
+    #size_wrapper {
       width: 100%;
       margin-top: 32px;
-      &__title{
-        @include containerTitle;
+      .listing-select-wrapper__added--size{
+        width: 100%;
+        margin-top: 16px;
+        position: relative;
+        .listing-select-wrapper__box{
+          select {
+            @include selectBox;
+          }
+          i {
+            @include arrow-down;
+          }
+        }
       }
-      &__require{
-        @include annotation;
-        background-color: #ff0211;
+      .listing-default__label{
+        @include containerTitle;
       }
       &__text-box{
         margin-top: 16px;

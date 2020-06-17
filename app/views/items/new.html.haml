@@ -51,7 +51,7 @@
         %span.product-details-container__top__require
           必須
         .product-details-container__top__select
-          = f.select :category, @category_parent_array,{}, {class: "select", id: "parent_category"}
+          = f.select :category_id, @category_parent_array,{}, {class: "select", id: "parent_category"}
           %i.fas.fa-chevron-down.icon-arrow-down
       .product-details-container__middle
         %label.product-details-container__middle__title ブランド

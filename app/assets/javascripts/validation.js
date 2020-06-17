@@ -177,7 +177,7 @@ $(function () {
         required: true,
         maxlength: 1000,
       },
-      "item[category_id]":{
+      "item[category]":{
         required: true,
       },
       "item[size_id]":{
@@ -216,7 +216,7 @@ $(function () {
         required: "入力してください。",
         range: "300以上9999999以下で入力してください"
       },
-      "item[category_id]":{
+      "item[category]":{
         required: "選択してください。",
       },
       "item[size_id]":{
