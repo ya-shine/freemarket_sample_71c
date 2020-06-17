@@ -19,7 +19,7 @@ class Item < ApplicationRecord
       length: {maximum:1000}
     validates :price,
       presence: true,
-      length: {minimum:300,maximum:9999999}
+      numericality: {greater_than_or_equal_to:300,less_than:10000000}
     validates :condition_id,presence: true
     validates :ship_from_area_id,presence: true
     validates :shipping_method_id,presence: true

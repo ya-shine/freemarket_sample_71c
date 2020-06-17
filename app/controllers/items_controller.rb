@@ -36,19 +36,12 @@ class ItemsController < ApplicationController
   end
 
   def create
-    # binding.pry
-    @item = Item.new(item_params)
-    if @item.save
+    @itemi = Item.new(item_params)
+    if @itemi.save!
       render root_path, notice:"created"
     else
-      render new_item_path, notice:"oioioi"
+      render new_item_path
     end
-    # @item = Item.new(item_params)
-    # if @item.save
-    #   redirect_to root
-    # else
-    #   render "new"
-    # end
   end
 
   def show
@@ -57,7 +50,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name,:description,:price,:category_id,:brand_id,:size_id,:condition_id,:delivery_fee_id,:shipping_method_id,:ship_from_area_id,:shipping_day_id,:selling_status,images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name,:description,:price,:category_id,:brand_id,:size_id,:condition_id,:delivery_fee_id,:shipping_method_id,:ship_from_area_id,:shipping_day_id,images_attributes: [:image]).merge(user_id: current_user.id)
   end
   
   def set_item

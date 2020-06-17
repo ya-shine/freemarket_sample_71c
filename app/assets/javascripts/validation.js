@@ -160,12 +160,6 @@ $(function () {
 
 $(function () {
   var methods = {
-    price: function(value, element){
-      return this.optional(element) || /^([3-9]{3,})$/i.test(value)
-    },
-    // category_id: function(value, element){
-    //   return this.optional(element) || /^([3-9]{3,})$/i.test(value)
-    // },
   }
   $.each(methods, function (key) {
     $.validator.addMethod(key, this);
