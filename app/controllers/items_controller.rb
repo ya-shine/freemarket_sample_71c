@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.new
     @parents = Category.all.order("id ASC")
-    @category_parent_array = ["---"]
+    @category_parent_array = ['---']
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
@@ -36,7 +36,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    binding.pry
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path

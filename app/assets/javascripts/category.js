@@ -1,6 +1,6 @@
 $(function(){
   function appendOption(category){
-    var html = `<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
+    var html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
     return html;
   }
   function appendChidrenBox(insertHTML){
@@ -122,15 +122,14 @@ $(function(){
         dataType: 'json'
       })
       .done(function(sizes){
-        $('#size_wrapper').remove(); //孫が変更された時、サイズ欄以下を削除する
-        $('#brand_wrapper').remove();
-        // if (sizes.length != 0) {
-        var insertHTML = '';
-          sizes.forEach(function(size){
-            insertHTML += appendSizeOption(size);
-          });
+        if (sizes.length != 0) {
+          $('#size_wrapper').remove(); //孫が変更された時、サイズ欄以下を削除する
+          var insertHTML = '';
+            sizes.forEach(function(size){
+              insertHTML += appendSizeOption(size);
+            });
           appendSizeBox(insertHTML);
-        // }
+        }
       })
       .fail(function(){
         alert('サイズ取得に失敗しました');

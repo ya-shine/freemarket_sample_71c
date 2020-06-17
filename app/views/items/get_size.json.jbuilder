@@ -1,4 +1,4 @@
 json.array! @sizes do |size|
   json.id size.id
-  json.size size.size
+  json.name size.name
 end
