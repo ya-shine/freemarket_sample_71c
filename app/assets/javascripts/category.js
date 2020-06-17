@@ -7,8 +7,8 @@ $(function(){
     var childSelectHtml = '';
     childSelectHtml = `<div class="add-select-wrapper" id= "children_wrapper">
                         <div class="add-select-wrapper__box">
-                          <select class="add-select-wrapper__box--select" id="child_category" name="category_id">
-                            <option value="---" data-category="---">選択してください</option>
+                          <select class="add-select-wrapper__box--select" id="child_category" name="">
+                            <option value="" data-category="">選択してください</option>
                             ${insertHTML}
                           </select>
                           <i class="fas fa-chevron-down icon-arrow-down"></i>
@@ -20,8 +20,8 @@ $(function(){
     var grandchildSelectHtml = '';
     grandchildSelectHtml = `<div class="add-select-wrapper" id= "grandchildren_wrapper">
                               <div class="add-select-wrapper__box">
-                                <select class="add-select-wrapper__box--select" id="grandchild_category" name="category_id">
-                                  <option value="---" data-category="---">選択してください</option>
+                                <select class="add-select-wrapper__box--select" id="grandchild_category" name="item[category_id]">
+                                  <option value="" data-category="">選択してください</option>
                                   ${insertHTML}
                                 </select>
                                 <i class='fas fa-chevron-down icon-arrow-down'></i>
@@ -33,7 +33,7 @@ $(function(){
     var html = `<option value="${size.id}">${size.name}</option>`;
     return html;
   }
-  // サイズ・ブランド入力欄の表示作成
+  // サイズ入力欄の表示作成
   function appendSizeBox(insertHTML){
     var sizeSelectHtml = '';
     sizeSelectHtml = `<div class="listing-product-detail__size" id= 'size_wrapper'>
@@ -41,8 +41,10 @@ $(function(){
                         <span class='listing-default--require'>必須</span>
                         <div class='listing-select-wrapper__added--size'>
                           <div class='listing-select-wrapper__box'>
-                            <select id="size" name="size_id>
-                              <option value="---">選択してください</option>
+                            <select id="size" name="item[size_id]">
+                            <option value="---">
+                              選択してください
+                            </option>
                               ${insertHTML}
                             </select>
                             <i class='fas fa-chevron-down listing-select-wrapper__box--arrow-down'></i>
@@ -53,7 +55,7 @@ $(function(){
   }
   $('#parent_category').on('change', function(){
     var parentCategory = document.getElementById('parent_category').value;
-    if (parentCategory != "---"){
+    if (parentCategory != ''){
       $.ajax({
         url: 'get_category_children',
         type: 'GET',
@@ -84,7 +86,7 @@ $(function(){
   // 子カテゴリー選択後のイベント
   $('.product-details-container__top').on('change', '#child_category', function(){
     var childId = $('#child_category option:selected').data('category');
-    if (childId != "---"){
+    if (childId != ""){
       $.ajax({
         url: 'get_category_grandchildren',
         type: 'GET',
@@ -95,7 +97,6 @@ $(function(){
         if (grandchildren.length != 0) {
           $('#grandchildren_wrapper').remove();
           $('#size_wrapper').remove();
-          $('#brand_wrapper').remove();
           var insertHTML = '';
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
@@ -114,7 +115,7 @@ $(function(){
   });
   $('.product-details-container__top').on('change', '#grandchild_category', function(){
     var grandchildId = $('#grandchild_category option:selected').data('category'); //選択された孫カテゴリーのidを取得
-    if (grandchildId != "---"){ //孫カテゴリーが初期値でないことを確認
+    if (grandchildId != ""){ //孫カテゴリーが初期値でないことを確認
       $.ajax({
         url: 'get_size',
         type: 'GET',

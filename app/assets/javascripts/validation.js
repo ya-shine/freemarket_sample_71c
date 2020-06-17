@@ -163,6 +163,9 @@ $(function () {
     price: function(value, element){
       return this.optional(element) || /^([3-9]{3,})$/i.test(value)
     },
+    // category_id: function(value, element){
+    //   return this.optional(element) || /^([3-9]{3,})$/i.test(value)
+    // },
   }
   $.each(methods, function (key) {
     $.validator.addMethod(key, this);
@@ -177,7 +180,7 @@ $(function () {
         required: true,
         maxlength: 1000,
       },
-      "item[category]":{
+      "item[category_id]":{
         required: true,
       },
       "item[size_id]":{
@@ -216,7 +219,7 @@ $(function () {
         required: "入力してください。",
         range: "300以上9999999以下で入力してください"
       },
-      "item[category]":{
+      "item[category_id]":{
         required: "選択してください。",
       },
       "item[size_id]":{

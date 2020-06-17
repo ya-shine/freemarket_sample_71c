@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :get_size]
-
+  before_action :set_category
   def index
   end
 
@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.new
     @parents = Category.all.order("id ASC")
-    @category_parent_array = ['---']
+    @category_parent_array = []
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
@@ -36,12 +36,19 @@ class ItemsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+      render root_path, notice:"created"
     else
-      render "new"
+      render new_item_path, notice:"oioioi"
     end
+    # @item = Item.new(item_params)
+    # if @item.save
+    #   redirect_to root
+    # else
+    #   render "new"
+    # end
   end
 
   def show
@@ -50,12 +57,12 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name,:description,:price,:category_id,:condition_id,:delivery_fee_id,:size_id,:shipping_method_id,:ship_from_area_id,:shipping_day_id,images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name,:description,:price,:category_id,:brand_id,:size_id,:condition_id,:delivery_fee_id,:shipping_method_id,:ship_from_area_id,:shipping_day_id,:selling_status,images_attributes: [:image]).merge(user_id: current_user.id)
   end
   
-  # def set_item
-  #   @item = Item.find(params[:id])
-  # end
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def set_category  
     @category_parent_array = Category.where(ancestry: nil)

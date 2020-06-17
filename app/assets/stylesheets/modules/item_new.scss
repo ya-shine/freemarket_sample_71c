@@ -236,6 +236,10 @@ body{
     #size_wrapper {
       width: 100%;
       margin-top: 32px;
+      .listing-default--require {
+        @include annotation;
+        background-color: #ff0211;
+      }
       .listing-select-wrapper__added--size{
         width: 100%;
         margin-top: 16px;
