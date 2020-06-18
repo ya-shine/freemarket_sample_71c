@@ -16,7 +16,7 @@ body{
   background-color: #ffffff;
   .exhibition-image-container{
     @include container;
-    height: 300px;
+    height: 350px;
     border-bottom: $borderBottom;
     &__title{
       @include containerTitle;
@@ -35,6 +35,7 @@ body{
       margin: 16px auto 0;
       display: flex;
       flex-wrap: wrap;
+      position: relative;
       .image-upload {
         display: flex;
         .preview-box {
@@ -103,11 +104,18 @@ body{
         }
       }
       .hidden-content {
+        position: absolute;
+        top: 10px;
         .hidden-field {
-          display: none;
+          visibility: hidden;
+        }
+        #item_images_attributes_0_image-error{
+          @include error-display;
+          position: absolute;
+          bottom: 0;
         }
         .hidden-checkbox {
-          display: none;
+          visibility: hidden;
         }
       }
     }
@@ -228,7 +236,8 @@ body{
             @include arrow-down;
           }
         }
-        #parent_category-error {
+        #child_category-error,
+        #grandchild_category-error {
           @include error-display;
         }
       }
@@ -530,6 +539,7 @@ body{
       font-size: 17px;
       min-height: 48px;
       padding: 0 24px;
+      border-style: none;
       border-radius: 4px; 
     }
     &__draft{
@@ -539,6 +549,7 @@ body{
       font-size: 17px;
       min-height: 48px;
       padding: 0 24px;
+      border-style: none;
       border-radius: 4px;
       margin: 24px 0;
     }
