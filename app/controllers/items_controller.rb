@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :get_size]
-  before_action :set_category
+  before_action :set_category, only: [:create]
   def index
   end
 
@@ -36,8 +36,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @itemi = Item.new(item_params)
-    if @itemi.save!
+    @item = Item.new(item_params)
+    if @item.save!
       render root_path, notice:"created"
     else
       render new_item_path
