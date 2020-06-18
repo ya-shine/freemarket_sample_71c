@@ -166,73 +166,91 @@ $(function () {
   });
   $("#form-exibition").validate({
     rules: {
+      "item[images_attributes][0][image]": {
+        required: true,
+      },
       "item[name]": {
         required: true,
         maxlength: 40,
       },
-      "item[description]":{
+      "item[description]": {
         required: true,
         maxlength: 1000,
       },
-      "item[category_id]":{
+      "item[category_id]": {
         required: true,
       },
-      "item[size_id]":{
+      "item[child_category]": {
         required: true,
       },
-      "item[price]":{
+      "item[grandchild_category]": {
+        required: true,
+      },
+      "item[size_id]": {
+        required: true,
+      },
+      "item[price]": {
         required: true,
         range: [300, 9999999]
       },
-      "item[condition_id]":{
+      "item[condition_id]": {
         required: true,
       },
-      "item[delivery_fee_id]":{
+      "item[delivery_fee_id]": {
         required: true,
       },
-      "item[ship_from_area_id]":{
+      "item[ship_from_area_id]": {
         required: true,
       },
-      "item[shipping_day_id]":{
+      "item[shipping_day_id]": {
         required: true,
       },
-      "item[shipping_method_id]":{
+      "item[shipping_method_id]": {
         required: true,
       }
     },
     messages: {
+      "item[images_attributes][0][image]": {
+        required: "画像をアップロードしてください",
+      },
       "item[name]": {
-        required: "入力してください。",
-        maxlength: "40文字以内で入力してください。",
+        required: "入力してください",
+        maxlength: "40文字以内で入力してください",
       },
-      "item[description]":{
-        required: "入力してください。",
-        maxlength: "1000文字以内で入力してください。",
+      "item[description]": {
+        required: "入力してください",
+        maxlength: "1000文字以内で入力してください",
       },
-      "item[price]":{
-        required: "入力してください。",
+      "item[price]": {
+        required: "入力してください",
         range: "300以上9999999以下で入力してください"
       },
-      "item[category_id]":{
-        required: "選択してください。",
+      "item[category_id]": {
+        required: "選択してください",
       },
-      "item[size_id]":{
-        required: "選択してください。",
+      "item[child_category]": {
+        required: "選択してください",
       },
-      "item[condition_id]":{
-        required: "選択してください。",
+      "item[grandchild_category]": {
+        required: "選択してください",
       },
-      "item[delivery_fee_id]":{
-        required: "選択してください。",
+      "item[size_id]": {
+        required: "選択してください",
       },
-      "item[ship_from_area_id]":{
-        required: "選択してください。"
+      "item[condition_id]": {
+        required: "選択してください",
       },
-      "item[shipping_day_id]":{
-        required: "選択してください。"
+      "item[delivery_fee_id]": {
+        required: "選択してください",
       },
-      "item[shipping_method_id]":{
-        required: '選択してください。'
+      "item[ship_from_area_id]": {
+        required: "選択してください"
+      },
+      "item[shipping_day_id]": {
+        required: "選択してください"
+      },
+      "item[shipping_method_id]": {
+        required: '選択してください'
       }
     },
     errorClass: "invalid",
