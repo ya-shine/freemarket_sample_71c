@@ -105,7 +105,9 @@ body{
       }
       .hidden-content {
         position: absolute;
-        top: 10px;
+        top: 172px;
+        height: 60px;
+        display: flex;
         .hidden-field {
           visibility: hidden;
         }
