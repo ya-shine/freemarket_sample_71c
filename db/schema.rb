@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 2020_06_16_140146) do
     t.string "name", null: false
     t.text "description", null: false
     t.integer "price", null: false
-    t.boolean "selling_status", default: false, null: false
     t.bigint "category_id", null: false
     t.bigint "brand_id"
     t.bigint "size_id", null: false
