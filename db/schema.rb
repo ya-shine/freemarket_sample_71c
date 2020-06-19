@@ -29,20 +29,6 @@ ActiveRecord::Schema.define(version: 2020_06_16_140146) do
     t.index ["size_id"], name: "index_category_sizes_on_size_id"
   end
 
-  create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "condition_id"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "delivery_fees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "delivery_fee_id"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
     t.bigint "item_id", null: false
@@ -56,31 +42,19 @@ ActiveRecord::Schema.define(version: 2020_06_16_140146) do
     t.text "description", null: false
     t.integer "price", null: false
     t.integer "brand_id"
+    t.integer "condition_id", null: false
+    t.integer "delivery_fee_id", null: false
+    t.integer "shipping_method_id", null: false
+    t.integer "ship_from_area_id", null: false
+    t.integer "shipping_day_id", null: false
     t.bigint "category_id", null: false
     t.bigint "size_id", null: false
-    t.bigint "condition_id", null: false
-    t.bigint "delivery_fee_id", null: false
-    t.bigint "shipping_method_id", null: false
-    t.bigint "ship_from_area_id", null: false
-    t.bigint "shipping_day_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["condition_id"], name: "index_items_on_condition_id"
-    t.index ["delivery_fee_id"], name: "index_items_on_delivery_fee_id"
-    t.index ["ship_from_area_id"], name: "index_items_on_ship_from_area_id"
-    t.index ["shipping_day_id"], name: "index_items_on_shipping_day_id"
-    t.index ["shipping_method_id"], name: "index_items_on_shipping_method_id"
     t.index ["size_id"], name: "index_items_on_size_id"
     t.index ["user_id"], name: "index_items_on_user_id"
-  end
-
-  create_table "ship_from_areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "ship_from_area_id"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "shipping_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -98,20 +72,6 @@ ActiveRecord::Schema.define(version: 2020_06_16_140146) do
     t.string "last_name_kana", null: false
     t.string "first_name_kana", null: false
     t.index ["user_id"], name: "index_shipping_addresses_on_user_id"
-  end
-
-  create_table "shipping_days", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "shipping_day_id"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "shipping_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "shipping_method_id"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "sizes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -144,11 +104,6 @@ ActiveRecord::Schema.define(version: 2020_06_16_140146) do
   add_foreign_key "category_sizes", "sizes"
   add_foreign_key "images", "items"
   add_foreign_key "items", "categories"
-  add_foreign_key "items", "conditions"
-  add_foreign_key "items", "delivery_fees"
-  add_foreign_key "items", "ship_from_areas"
-  add_foreign_key "items", "shipping_days"
-  add_foreign_key "items", "shipping_methods"
   add_foreign_key "items", "sizes"
   add_foreign_key "items", "users"
   add_foreign_key "shipping_addresses", "users"
