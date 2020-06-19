@@ -1,0 +1,11 @@
+.header
+  %h1.title-logo
+    = link_to image_tag("/images/logo.png", alt:"FURIMA", class:"logo"), root_path, class:"logo-link"
+
+.create-main
+  .sign-up-container
+    %h2.sign-up-container__title 商品出品が完了しました
+    .create_user
+      .submit-contents
+        .actions
+          = link_to "トップページへ戻る", root_path, class: "return"
