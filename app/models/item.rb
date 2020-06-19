@@ -2,8 +2,8 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to :user
     belongs_to :category
-    belongs_to :brand
     belongs_to :size
+    belongs_to_active_hash :brand
     belongs_to_active_hash :ship_from_area
     belongs_to_active_hash :shipping_method
     belongs_to_active_hash :shipping_day

@@ -411,7 +411,6 @@ tire_wheels_12 = tire_wheels.children.create(name: "23インチ")
 tire_wheels_13 = tire_wheels.children.create(name: "24インチ")
 
 
-
 category_size = CategorySize.create({category_id: lady_1.id,size_id:clothes.id})
 category_size = CategorySize.create({category_id: lady_2.id,size_id:clothes.id})
 category_size = CategorySize.create({category_id: lady_3.id,size_id:clothes.id})

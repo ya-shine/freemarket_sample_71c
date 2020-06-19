@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_06_16_140146) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "brand_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -61,7 +62,6 @@ ActiveRecord::Schema.define(version: 2020_06_16_140146) do
     t.string "name", null: false
     t.text "description", null: false
     t.integer "price", null: false
-    t.boolean "selling_status", default: false, null: false
     t.bigint "category_id", null: false
     t.bigint "brand_id"
     t.bigint "size_id", null: false
@@ -151,6 +151,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_140146) do
   add_foreign_key "category_sizes", "categories"
   add_foreign_key "category_sizes", "sizes"
   add_foreign_key "images", "items"
+  add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "conditions"
   add_foreign_key "items", "delivery_fees"
