@@ -7,7 +7,7 @@ $(function(){
     var childSelectHtml = '';
     childSelectHtml = `<div class="add-select-wrapper" id= "children_wrapper">
                         <div class="add-select-wrapper__box">
-                          <select class="add-select-wrapper__box--select" id="child_category" name="item[child_category]">
+                          <select class="add-select-wrapper__box--select" id="child_category" name="">
                             <option value="" data-category="">選択してください</option>
                             ${insertHTML}
                           </select>
@@ -20,7 +20,7 @@ $(function(){
     var grandchildSelectHtml = '';
     grandchildSelectHtml = `<div class="add-select-wrapper" id= "grandchildren_wrapper">
                               <div class="add-select-wrapper__box">
-                                <select class="add-select-wrapper__box--select" id="grandchild_category" name="item[grandchild_category]">
+                                <select class="add-select-wrapper__box--select" id="grandchild_category" name="item[category_id]">
                                   <option value="" data-category="">選択してください</option>
                                   ${insertHTML}
                                 </select>
