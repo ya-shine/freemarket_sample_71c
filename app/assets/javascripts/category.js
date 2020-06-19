@@ -42,7 +42,7 @@ $(function(){
                         <div class='listing-select-wrapper__added--size'>
                           <div class='listing-select-wrapper__box'>
                             <select id="size" name="item[size_id]">
-                            <option value="---">
+                            <option value>
                               選択してください
                             </option>
                               ${insertHTML}
