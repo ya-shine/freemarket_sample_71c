@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', function(){
 
     //プレビューのhtmlを定義
     function buildHTML(count) {
-      var html = `<div class="preview-box" id="preview-box__${count}">
+      var html = `<div class="preview-box" id="preview-box__${count}" name="item[image]">
                     <div class="upper-box">
                       <img src="" alt="preview">
                     </div>

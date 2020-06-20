@@ -80,7 +80,6 @@ $(function(){
       $('#children_wrapper').remove();
       $('#grandchildren_wrapper').remove();
       $('#size_wrapper').remove();
-      $('#brand_wrapper').remove();
     }
   });
   // 子カテゴリー選択後のイベント
@@ -110,7 +109,6 @@ $(function(){
     }else{
       $('#grandchildren_wrapper').remove();
       $('#size_wrapper').remove();
-      $('#brand_wrapper').remove();
     }
   });
   $('.product-details-container__top').on('change', '#grandchild_category', function(){
@@ -137,7 +135,6 @@ $(function(){
       })
     }else{
       $('#size_wrapper').remove(); //孫カテゴリーが初期値になった時、サイズ欄以下を削除する
-      $('#brand_wrapper').remove();
     }
   });
 });
