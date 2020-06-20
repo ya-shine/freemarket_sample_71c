@@ -11,7 +11,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :ship_from_area_id, null:false
       t.integer :shipping_day_id, null:false
       t.references :category, null:false, foreign_key: true
-      t.references :size, null:false, foreign_key: true
+      t.references :size, foreign_key: true
       t.references :user, null:false, foreign_key: true
       t.timestamps
     end
