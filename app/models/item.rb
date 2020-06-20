@@ -20,7 +20,9 @@ class Item < ApplicationRecord
     validates :price,
       presence: true,
       numericality: {greater_than_or_equal_to:300,less_than:10000000}
+    validates :category_id, presence: true
     validates :condition_id,presence: true
+    validates :size_id, presence:true
     validates :ship_from_area_id,presence: true
     validates :shipping_method_id,presence: true
     validates :shipping_day_id,presence: true

@@ -166,6 +166,10 @@ $(function () {
   });
   $("#form-exibition").validate({
     rules: {
+      "item[images_attributes][0][image]": {
+        required: true,
+      },
+      
       "item[name]": {
         required: true,
         maxlength: 40,
