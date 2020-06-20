@@ -38,10 +38,11 @@ class ItemsController < ApplicationController
   def create
     # binding.pry
     @item = Item.new(item_params)
-    if @item.save
+    if @item.save!
       # redirect_to root_path, notice:"created"
     else
-      render new_item_path
+      flash[:alert] = "出品できませんでした"
+      redirect_to new_item_path
     end
   end
 
