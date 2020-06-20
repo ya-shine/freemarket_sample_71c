@@ -111,7 +111,7 @@ body{
         .hidden-field {
           visibility: hidden;
         }
-        #item_images_attributes_0_image-error{
+        #item_images_attributes_5_image-error{
           @include error-display;
           position: absolute;
           bottom: 0;
@@ -261,6 +261,9 @@ body{
           }
           i {
             @include arrow-down;
+          }
+          #size-error{
+            @include error-display;
           }
         }
       }
