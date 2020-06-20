@@ -47,7 +47,7 @@ $(function(){
                             </option>
                               ${insertHTML}
                             </select>
-                            <i class='fas fa-chevron-down listing-select-wrapper__box--arrow-down'></i>
+                            <i class='fas fa-chevron-down icon-arrow-down'></i>
                           </div>
                         </div>
                       </div>`;
