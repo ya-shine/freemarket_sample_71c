@@ -166,9 +166,6 @@ $(function () {
   });
   $("#form-exibition").validate({
     rules: {
-      "item[image]": {
-        required: true,
-      },
       "item[images_attributes][0][image]": {
         required: true,
       },
@@ -214,9 +211,6 @@ $(function () {
       }
     },
     messages: {
-      "item[image]": {
-        required: "画像をアップロードしてください",
-      },
       "item[images_attributes][0][image]": {
         required: "画像をアップロードしてください",
       },

@@ -22,6 +22,9 @@ class Item < ApplicationRecord
       numericality: {greater_than_or_equal_to:300,less_than:10000000}
     validates :category_id, presence: true
     validates :condition_id,presence: true
+    with_options if category_id.size_id.exists? do
+    validates :size_id, presence: true
+    end
     validates :ship_from_area_id,presence: true
     validates :shipping_method_id,presence: true
     validates :shipping_day_id,presence: true
