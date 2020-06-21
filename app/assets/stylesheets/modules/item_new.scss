@@ -110,6 +110,7 @@ body{
         display: flex;
         .hidden-field {
           visibility: hidden;
+          width: 20%;
         }
         #item_images_attributes_5_image-error{
           @include error-display;
@@ -259,7 +260,7 @@ body{
           select {
             @include selectBox;
           }
-          i {
+          .icon-arrow-down{
             @include arrow-down;
           }
           #size-error{
@@ -272,9 +273,13 @@ body{
       }
       &__text-box{
         margin-top: 16px;
+        position: relative;
         #item_size_id{
-          @include textField;
+          @include selectBox;
           padding: 6px;
+        }
+        .icon-arrow-down{
+          @include arrow-down;
         }
         #item_size_id-error {
           @include error-display;
@@ -298,11 +303,15 @@ body{
       }
       &__text-box{
         margin-top: 16px;
+        position: relative;
         #item_brand_id{
-          @include textField;
+          @include selectBox;
         }
         &--field {
           padding: 6px;
+        }
+        .icon-arrow-down{
+          @include arrow-down;
         }
         input::placeholder{
           font-size: 14px;
@@ -324,8 +333,12 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
+        position: relative;
         #item_condition_id{
           @include selectBox;
+        }
+        .icon-arrow-down{
+          @include arrow-down;
         }
         #item_condition_id-error {
           @include error-display;
@@ -354,8 +367,12 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
+        position: relative;
         #item_delivery_fee_id{
           @include selectBox;
+        }
+        .icon-arrow-down{
+          @include arrow-down;
         }
         #item_delivery_fee_id-error {
           @include error-display;
@@ -376,8 +393,12 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
+        position: relative;
         select {
           @include selectBox;
+        }
+        .icon-arrow-down{
+          @include arrow-down;
         }
         #item_shipping_method_id-error {
           @include error-display;
@@ -397,8 +418,12 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
+        position: relative;
         #item_ship_from_area_id {
           @include selectBox;
+        }
+        .icon-arrow-down{
+          @include arrow-down;
         }
         #item_ship_from_area_id-error {
           @include error-display;
@@ -418,8 +443,12 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
+        position: relative;
         #item_shipping_day_id{
           @include selectBox;
+        }
+        .icon-arrow-down{
+          @include arrow-down;
         }
         #item_shipping_day_id-error {
           @include error-display;

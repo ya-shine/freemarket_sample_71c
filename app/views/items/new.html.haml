@@ -59,12 +59,14 @@
           任意
         .product-details-container__middle__text-box
           = f.select :brand_id, Brand.all.collect {|p| [p.name,p.id]},class: "product-details-container__middle__text-box--field", placeholder: "例）シャネル"
+          %i.fas.fa-chevron-down.icon-arrow-down
       .product-details-container__bottom
         %label.product-details-container__bottom__title 商品の状態
         %span.product-details-container__bottom__require
           必須
         .product-details-container__bottom__select
           = f.select :condition_id, Condition.all.collect { |p| [p.name, p.id] }, prompt: "選択してください"
+          %i.fas.fa-chevron-down.icon-arrow-down
     
     .delivery-container
       %p.delivery-container__main-title 配送について
@@ -74,24 +76,28 @@
           必須
         .delivery-container__top__select
           = f.select :delivery_fee_id, DeliveryFee.all.collect { |p| [ p.name, p.id ] }, prompt:"選択してください"
+          %i.fas.fa-chevron-down.icon-arrow-down
       .delivery-container__top-derivation
         %label.delivery-container__top-derivation__title 配送の方法
         %span.delivery-container__top-derivation__require
           必須
         .delivery-container__top-derivation__select
           = f.select :shipping_method_id, ShippingMethod.all.collect { |p| [ p.name, p.id ] }, prompt:"選択してください"
+          %i.fas.fa-chevron-down.icon-arrow-down
       .delivery-container__middle
         %label.delivery-container__middle__title 発送元の地域
         %span.delivery-container__middle__require
           必須
         .delivery-container__middle__select
           = f.select :ship_from_area_id, ShipFromArea.all.collect { |p| [ p.name, p.id ] }, prompt:"選択してください"
+          %i.fas.fa-chevron-down.icon-arrow-down
       .delivery-container__bottom
         %label.delivery-container__bottom__title 発送までの日数
         %span.delivery-container__bottom__require
           必須
         .delivery-container__bottom__select
           = f.select :shipping_day_id, ShippingDay.all.collect { |p| [ p.name, p.id ] }, prompt:"選択してください"
+          %i.fas.fa-chevron-down.icon-arrow-down
     .price-container
       %p.price-container__main-title 価格 (¥300~9,999,999)
       .price-container__contents
