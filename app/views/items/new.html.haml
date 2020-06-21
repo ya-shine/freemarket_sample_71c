@@ -22,7 +22,7 @@
                 またはクリックしてファイルをアップロード
         .hidden-content
           = f.fields_for :images do |image|
-            = image.file_field :image, class:"hidden-field", name: "item[images_attributes][0][image]"
+            = image.file_field :image, class:"hidden-field", name: "item[images_attributes][][image]"
             %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][image]", id: "item_images_attributes_1_image" }
             %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][image]", id: "item_images_attributes_2_image" }
             %input{class:"hidden-field", type: "file", name: "item[images_attributes][3][image]", id: "item_images_attributes_3_image" }
@@ -116,6 +116,8 @@
             .price-container__contents__profit--label--text 販売利益
           %span.price-container__contents__profit--value
             ー
+        .item_status
+          = f.check_box :item_status, class:"status",id:"status-default", style: "display:none;"
     
     .button-container
       = f.submit "出品する", class: "button-container__exhibition"
