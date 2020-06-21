@@ -7,7 +7,7 @@ $(function(){
     var childSelectHtml = '';
     childSelectHtml = `<div class="add-select-wrapper" id= "children_wrapper">
                         <div class="add-select-wrapper__box">
-                          <select class="add-select-wrapper__box--select" id="child_category">
+                          <select class="add-select-wrapper__box--select" id="child_category" name="item[child]">
                             <option value="" data-category="">選択してください</option>
                             ${insertHTML}
                           </select>
