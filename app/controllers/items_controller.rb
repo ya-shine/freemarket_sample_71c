@@ -39,7 +39,6 @@ class ItemsController < ApplicationController
     # binding.pry
     @item = Item.new(item_params)
     if @item.save
-      # redirect_to root_path, notice:"created"
     else
       flash[:alert] = "出品できませんでした"
       redirect_to new_item_path
@@ -52,7 +51,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name,:description,:price,:category_id,:brand_id,:size_id,:condition_id,:delivery_fee_id,:shipping_method_id,:ship_from_area_id,:shipping_day_id,images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name,:description,:price,:category_id,:brand_id,:size_id,:condition_id,:delivery_fee_id,:shipping_method_id,:ship_from_area_id,:shipping_day_id,:item_status,images_attributes: [:image]).merge(user_id: current_user.id)
   end
   
   def set_item

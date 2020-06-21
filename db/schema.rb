@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_140146) do
     t.bigint "category_id", null: false
     t.bigint "size_id"
     t.bigint "user_id", null: false
+    t.boolean "item_status", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_items_on_category_id"

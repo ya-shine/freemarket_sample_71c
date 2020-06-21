@@ -114,7 +114,7 @@ describe Item do
     it 'size_idがない場合は登録できないこと' do
       item = build(:item, size_id: nil)
       item.valid? 
-      expect(item.errors[:size_id]).to include("を入力してください")
+      expect(item.errors[:size_id]).to include()
     end
 
     it 'user_idがない場合は登録できないこと' do
