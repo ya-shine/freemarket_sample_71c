@@ -9,7 +9,7 @@
       %span.exhibition-image-container__require
         必須
       %p.exhibition-image-container__explanation
-        最大10枚までアップロードできます
+        最大５枚までアップロードできます
       .exhibition-image-container__field
         .image-upload
         .label-content
@@ -17,9 +17,7 @@
             .icons-box
               = icon('fas', 'camera', class: "exhibition-image-container__field--input--icon")
               %p.exhibition-image-container__field--text
-                ドラッグアンドドロップ
-                %br/
-                またはクリックしてファイルをアップロード
+                クリックしてファイルをアップロード
         .hidden-content
           = f.fields_for :images do |image|
             = image.file_field :image, class:"hidden-field", name: "item[images_attributes][][image]"
@@ -51,7 +49,7 @@
         %span.product-details-container__top__require
           必須
         .product-details-container__top__select
-          = f.select :category_id, @category_parent_array,{prompt:"選択してください"}, {class: "select", id: "parent_category",name:""}
+          = f.select :category_id, @category_parent_array,{prompt:"選択してください"}, {class: "select", id: "parent_category",name:"item[category_id]"}
           %i.fas.fa-chevron-down.icon-arrow-down
       .product-details-container__middle
         %label.product-details-container__middle__title ブランド

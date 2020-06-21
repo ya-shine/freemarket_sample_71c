@@ -166,7 +166,7 @@ $(function () {
   });
   $("#form-exibition").validate({
     rules: {
-      "item[images_attributes][0][image]": {
+      "item[images_attributes][][image]": {
         required: true,
       },
       
