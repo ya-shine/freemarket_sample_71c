@@ -27,6 +27,7 @@ class Item < ApplicationRecord
     validates :shipping_method_id,presence: true
     validates :shipping_day_id,presence: true
     validates :delivery_fee_id,presence: true
+    validates :image_ids,presence: true
   
     accepts_nested_attributes_for :images, allow_destroy:true
 end
