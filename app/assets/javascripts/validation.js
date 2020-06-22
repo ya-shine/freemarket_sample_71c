@@ -166,10 +166,6 @@ $(function () {
   });
   $("#form-exibition").validate({
     rules: {
-      "item[images_attributes][][image]": {
-        required: true,
-      },
-      
       "item[name]": {
         required: true,
         maxlength: 40,
@@ -181,10 +177,10 @@ $(function () {
       "item[category_id]": {
         required: true,
       },
-      "item[child_category]": {
+      "item[child]": {
         required: true,
       },
-      "item[grandchild_category]": {
+      "item[parent]": {
         required: true,
       },
       "item[size_id]": {
@@ -226,10 +222,10 @@ $(function () {
       "item[category_id]": {
         required: "選択してください",
       },
-      "item[child_category]": {
+      "item[child]": {
         required: "選択してください",
       },
-      "item[grandchild_category]": {
+      "item[parent]": {
         required: "選択してください",
       },
       "item[size_id]": {

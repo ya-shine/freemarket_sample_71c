@@ -2,8 +2,8 @@ $(document).on('turbolinks:load', function(){
   $(function(){
 
     //プレビューのhtmlを定義
-    function buildHTML(count) {
-      var html = `<div class="preview-box" id="preview-box__${count}" name="item[image]">
+    function buildHTML(index) {
+      var html = `<div class="preview-box" id="preview-box__${index}" name="item[image]">
                     <div class="upper-box">
                       <img src="" alt="preview">
                     </div>
@@ -11,7 +11,7 @@ $(document).on('turbolinks:load', function(){
                       <div class="update-box">
                         <label class="edit_btn">編集</label>
                       </div>
-                      <div class="delete-box" id="delete_btn_${count}">
+                      <div class="delete-box" id="delete_btn_${index}">
                         <span>削除</span>
                       </div>
                     </div>
