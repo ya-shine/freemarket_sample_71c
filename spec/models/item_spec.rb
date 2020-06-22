@@ -13,7 +13,8 @@ describe Item do
       shipping_method = create(:shipping_method)
       condition = create(:condition)
       brand = create(:brand)
-      item = build(:item,condition_id: condition.id,delivery_fee_id: delivery_fee.id,shipping_day_id:shipping_day.id,shipping_method_id:shipping_method.id,user_id: user.id,ship_from_area_id: ship_from_area.id, category_id:category.id, size_id: size.id,brand_id:brand.id)
+      image = create(:image)
+      item = build(:item,condition_id: condition.id,delivery_fee_id: delivery_fee.id,shipping_day_id:shipping_day.id,shipping_method_id:shipping_method.id,user_id: user.id,ship_from_area_id: ship_from_area.id, category_id:category.id, size_id: size.id,brand_id:brand.id,images: image.image)
       expect(item).to be_valid
     end
 
@@ -121,6 +122,12 @@ describe Item do
       item = build(:item, user_id: nil)
       item.valid? 
       expect(item.errors[:user_id]).to include()
+    end
+
+    it 'imageがない場合は登録できないこと'  do
+      item = build(:item, images:nil)
+      item.valid? 
+      expect(item.errors[:image]).to include()
     end
   end
 end
