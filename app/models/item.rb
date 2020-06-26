@@ -12,6 +12,7 @@ class Item < ApplicationRecord
     has_many :images
   
     validates_associated :images
+    # validates :image_ids, presence:true
     validates :name,
       presence: true,
       length: {maximum:40}

@@ -3,18 +3,18 @@ require 'rails_helper'
 describe Item do
   describe '#create' do
 
-    it 'name,description,price,condition_id,delivery_fee_id,shipping_method_id,ship_from_area_id,shipping_day_id,category_id,brand_id,size_id,user_idが存在すれば登録できること' do
+    it 'name,description,price,condition_id,delivery_fee_id,shipping_method_id,ship_from_area_id,shipping_day_id,category_id,brand_id,size_id,user_id,imagesが存在すれば登録できること' do
       user = create(:user)
       category = create(:category)
-      size = create(:size)
-      ship_from_area = create(:ship_from_area)
-      delivery_fee = create(:delivery_fee)
-      shipping_day = create(:shipping_day)
-      shipping_method = create(:shipping_method)
-      condition = create(:condition)
-      brand = create(:brand)
-      image = create(:image)
-      item = build(:item,condition_id: condition.id,delivery_fee_id: delivery_fee.id,shipping_day_id:shipping_day.id,shipping_method_id:shipping_method.id,user_id: user.id,ship_from_area_id: ship_from_area.id, category_id:category.id, size_id: size.id,brand_id:brand.id,images: image.image)
+      size = build(:size)
+      ship_from_area = build(:ship_from_area)
+      delivery_fee = build(:delivery_fee)
+      shipping_day = build(:shipping_day)
+      shipping_method = build(:shipping_method)
+      condition = build(:condition)
+      brand = build(:brand)
+      image = build(:image)
+      item = build(:item,condition_id: condition.id,delivery_fee_id: delivery_fee.id,shipping_day_id:shipping_day.id,shipping_method_id:shipping_method.id,user_id: user.id,ship_from_area_id: ship_from_area.id, category_id:category.id, size_id: size.id,brand_id:brand.id)
       expect(item).to be_valid
     end
 
@@ -125,7 +125,8 @@ describe Item do
     end
 
     it 'imageがない場合は登録できないこと'  do
-      item = build(:item, images:nil)
+      image = build(:image)
+      item = build(:item, image_ids:nil)
       item.valid? 
       expect(item.errors[:image]).to include()
     end
