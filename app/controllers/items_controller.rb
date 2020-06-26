@@ -24,24 +24,22 @@ class ItemsController < ApplicationController
   end
 
   def get_size
-    selected_grandchild = Category.find("#{params[:grandchild_id]}") #孫カテゴリーを取得
-    if related_size_parent = selected_grandchild.sizes[0] #孫カテゴリーと紐付くサイズ（親）があれば取得
-      @sizes = related_size_parent.children #紐づいたサイズ（親）の子供の配列を取得
+    selected_grandchild = Category.find("#{params[:grandchild_id]}")
+    if related_size_parent = selected_grandchild.sizes[0]
+      @sizes = related_size_parent.children
     else
-      selected_child = Category.find("#{params[:grandchild_id]}").parent #孫カテゴリーの親を取得
-      if related_size_parent = selected_child.sizes[0] #孫カテゴリーの親と紐付くサイズ（親）があれば取得
-          @sizes = related_size_parent.children #紐づいたサイズ（親）の子供の配列を取得
+      selected_child = Category.find("#{params[:grandchild_id]}").parent
+      if related_size_parent = selected_child.sizes[0]
+          @sizes = related_size_parent.children
       end
     end
   end
 
   def create
-    # binding.pry
     @item = Item.new(item_params)
-    if @item.save
-    else
+    unless @item.save
       flash[:alert] = "出品できませんでした"
-      redirect_to new_item_path
+      render :new
     end
   end
 
