@@ -121,6 +121,9 @@ body{
           visibility: hidden;
         }
       }
+      .notifications{
+        @include error-display;
+      }
     }
   }
   

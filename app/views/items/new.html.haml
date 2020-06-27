@@ -3,7 +3,7 @@
     = link_to image_tag("/images/logo.png", alt:"FURIMA", class:"logo"), root_path, class:"logo-link"
 
 .item-exhibition-main
-  = form_with model: @item, local: true, id:"form-exibition" do |f|
+  = form_with model: @item, local: true,url:'/items/new',id:"form-exibition" do |f|
     .exhibition-image-container
       %label.exhibition-image-container__title 出品画像
       %span.exhibition-image-container__require
@@ -25,6 +25,9 @@
             %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][image]", id: "item_images_attributes_2_image" }
             %input{class:"hidden-field", type: "file", name: "item[images_attributes][3][image]", id: "item_images_attributes_3_image" }
             %input{class:"hidden-field", type: "file", name: "item[images_attributes][4][image]", id: "item_images_attributes_4_image" }
+        .notifications
+          - flash.each do |key, value|
+            = content_tag(:div, value, class:key)
     .product-container
       .product-container__top
         %label.product-container__top__title 商品名

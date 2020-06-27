@@ -38,7 +38,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     unless @item.save
-      flash[:alert] = "出品できませんでした"
+      flash.now[:alert] = "画像を入力してください"
       render :new
     end
   end

@@ -12,7 +12,7 @@ class Item < ApplicationRecord
     has_many :images
   
     validates_associated :images
-
+    validates :images, presence: true
     validates :name,
       presence: true,
       length: {maximum:40}
@@ -22,7 +22,6 @@ class Item < ApplicationRecord
     validates :price,
       presence: true,
       numericality: {greater_than_or_equal_to:300,less_than:10000000}
-    validates :images, presence: true
 
     accepts_nested_attributes_for :images, allow_destroy:true
 end
