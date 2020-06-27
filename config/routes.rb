@@ -8,7 +8,19 @@ Rails.application.routes.draw do
     post 'shipping_addresses', to: 'users/registrations#create_shipping_address'
   end
   root 'items#index'
-  resource :item
+  post 'items/new', to:'items#create'
+  resources :items,except: :index do
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'get_size', defaults: { format: 'json' }
+    end
+    member do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'get_size', defaults: { format: 'json' }
+    end
+  end
   resource :order
   resources :shipping_addresses
   resources :mypage, only: :index

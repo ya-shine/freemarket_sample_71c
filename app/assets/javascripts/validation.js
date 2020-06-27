@@ -157,3 +157,98 @@ $(function () {
     $(this).valid();
   });
 });
+
+$(function () {
+  var methods = {
+  }
+  $.each(methods, function (key) {
+    $.validator.addMethod(key, this);
+  });
+  $("#form-exibition").validate({
+    rules: {
+      "item[name]": {
+        required: true,
+        maxlength: 40,
+      },
+      "item[description]": {
+        required: true,
+        maxlength: 1000,
+      },
+      "item[category_id]": {
+        required: true,
+      },
+      "item[child]": {
+        required: true,
+      },
+      "item[parent]": {
+        required: true,
+      },
+      "item[size_id]": {
+        required: true,
+      },
+      "item[price]": {
+        required: true,
+        range: [300, 9999999]
+      },
+      "item[condition_id]": {
+        required: true,
+      },
+      "item[delivery_fee_id]": {
+        required: true,
+      },
+      "item[ship_from_area_id]": {
+        required: true,
+      },
+      "item[shipping_day_id]": {
+        required: true,
+      },
+      "item[shipping_method_id]": {
+        required: true,
+      }
+    },
+    messages: {
+      "item[name]": {
+        required: "入力してください",
+        maxlength: "40文字以内で入力してください",
+      },
+      "item[description]": {
+        required: "入力してください",
+        maxlength: "1000文字以内で入力してください",
+      },
+      "item[price]": {
+        required: "入力してください",
+        range: "300以上9999999以下で入力してください"
+      },
+      "item[category_id]": {
+        required: "選択してください",
+      },
+      "item[child]": {
+        required: "選択してください",
+      },
+      "item[parent]": {
+        required: "選択してください",
+      },
+      "item[size_id]": {
+        required: "選択してください",
+      },
+      "item[condition_id]": {
+        required: "選択してください",
+      },
+      "item[delivery_fee_id]": {
+        required: "選択してください",
+      },
+      "item[ship_from_area_id]": {
+        required: "選択してください"
+      },
+      "item[shipping_day_id]": {
+        required: "選択してください"
+      },
+      "item[shipping_method_id]": {
+        required: '選択してください'
+      }
+    },
+    errorClass: "invalid",
+    errorElement: "span",
+    validClass: "valid",
+  });
+});

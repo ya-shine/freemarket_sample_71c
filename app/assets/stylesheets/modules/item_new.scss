@@ -16,7 +16,7 @@ body{
   background-color: #ffffff;
   .exhibition-image-container{
     @include container;
-    height: 300px;
+    height: 350px;
     border-bottom: $borderBottom;
     &__title{
       @include containerTitle;
@@ -31,41 +31,98 @@ body{
       line-height: 1.4em;
     }
     &__field{
-      width: 620px;
-      height: 158px;
-      margin-top: 16px;
-      background-color: #f5f5f5;
-      align-content: center;
-      -webkit-box-align: center;
-      align-items: center;
+      display: block;
+      margin: 16px auto 0;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      cursor: pointer;
-      border-width: 1px;
-      border-style: dashed;
-      border-color: #cccccc;
-      border-image: initial;
-      &--input{
-        height: 24px;
-        margin-bottom: 8px;
-        width: 24px;
-        margin: 0 auto;
-        line-height: 140px;
-        display: block;
-        position: relative;
-        &--icon{
-          position: absolute;
-          font-size: 22px;
-          color: #222222;
+      position: relative;
+      .image-upload {
+        display: flex;
+        .preview-box {
+          height: 162px;
+          width: 112px;
+          margin: 0 15px 10px 0;
+          .upper-box {
+            height: 112px;
+            width: 100%;
+            img{
+              width: 112px;
+              height: 112px;
+            }
+          }
+          .lower-box {
+            display: flex;
+            text-align: center;
+            .update-box {
+              color: #00b0ff;
+              width: 50%;
+              height: 50px;
+              line-height: 50px;
+              border: 1px solid #eee;
+              background: #f5f5f5;
+              cursor: pointer;
+            }
+            .delete-box {
+              color: #00b0ff;
+              width: 50%;
+              height: 50px;
+              line-height: 50px;
+              border: 1px solid #eee;
+              background: #f5f5f5;
+              cursor: pointer;
+            }
+          }
         }
       }
-      &--text{
-        font-size: 12px;
-        width: 100%;
-        text-align: center;
-        line-height: 1.4em;
-        margin-top: 8px;
+      .label-content {
+        margin-bottom: 10px;
+        width: 620px;
+        .label-box {
+          display: flex;
+          border: 1px dashed #ccc;
+          position: relative;
+          background: #f5f5f5;
+          width: 100%;
+          height: 162px;
+          cursor: pointer;
+          .icons-box {
+            text-align: center;
+            margin: auto;
+            i {
+              display: inline-block;
+              font-size: 22px;
+              color: #222222;
+              text-align: center;
+            }
+            .exhibition-image-container__field--text {
+              font-size: 12px;
+              text-align: center;
+              line-height: 1.4em;
+              margin-top: 8px;
+            }
+          }
+        }
+      }
+      .hidden-content {
+        position: absolute;
+        top: 172px;
+        height: 60px;
+        display: flex;
+        .hidden-field {
+          visibility: hidden;
+          width: 20%;
+        }
+        #item_images_attributes_5_image-error{
+          @include error-display;
+          position: absolute;
+          bottom: 0;
+        }
+        .hidden-checkbox {
+          visibility: hidden;
+        }
+      }
+      .notifications{
+        @include error-display;
       }
     }
   }
@@ -84,11 +141,16 @@ body{
       }
       &__text-box{
         margin-top: 16px;
-        @include textField;
         input::placeholder{
           font-size: 14px;
           font-weight: 400;
-          padding-left: 16px;
+        }
+        .product-container__top__text-box--field {
+          padding: 0 16px 0;
+          @include textField;
+        }
+        #item_name-error {
+          @include error-display;
         }
       } 
     }
@@ -114,6 +176,16 @@ body{
           padding: 13px 16px;
           resize: vertical;
           vertical-align: middle;
+          &.valid {
+            border: 1px solid #3ccace;
+            border-radius: 4px;
+          }
+          &.invalid {
+            border: 1px solid #ea352d;
+          }
+        }
+        #item_description-error {
+          @include error-display;
         }
       }
       &__limit{
@@ -147,8 +219,78 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #category{
+        position: relative;
+        .select{
           @include selectBox;
+        }
+        .icon-arrow-down{
+          @include arrow-down;
+        }
+        #parent_category-error {
+          @include error-display;
+        }
+      }
+      .add-select-wrapper{
+        width: 100%;
+        margin-top: 16px;
+        position: relative;
+        &__box{
+          &--select{
+            @include selectBox;
+          }
+          .icon-arrow-down{
+            @include arrow-down;
+          }
+        }
+        #child_category-error,
+        #grandchild_category-error {
+          @include error-display;
+        }
+      }
+    }
+    #size_wrapper {
+      width: 100%;
+      margin-top: 32px;
+      .listing-default--require {
+        @include annotation;
+        background-color: #ff0211;
+      }
+      .listing-select-wrapper__added--size{
+        width: 100%;
+        margin-top: 16px;
+        position: relative;
+        .listing-select-wrapper__box{
+          select {
+            @include selectBox;
+          }
+          .icon-arrow-down{
+            @include arrow-down;
+          }
+          #size-error{
+            @include error-display;
+          }
+        }
+      }
+      .listing-default__label{
+        @include containerTitle;
+      }
+      &__text-box{
+        margin-top: 16px;
+        position: relative;
+        #item_size_id{
+          @include selectBox;
+          padding: 6px;
+        }
+        .icon-arrow-down{
+          @include arrow-down;
+        }
+        #item_size_id-error {
+          @include error-display;
+        }
+        input::placeholder{
+          font-size: 14px;
+          font-weight: 400;
+          padding-left: 16px;
         }
       }
     }
@@ -164,7 +306,16 @@ body{
       }
       &__text-box{
         margin-top: 16px;
-        @include textField;
+        position: relative;
+        #item_brand_id{
+          @include selectBox;
+        }
+        &--field {
+          padding: 6px;
+        }
+        .icon-arrow-down{
+          @include arrow-down;
+        }
         input::placeholder{
           font-size: 14px;
           font-weight: 400;
@@ -185,8 +336,15 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #status{
+        position: relative;
+        #item_condition_id{
           @include selectBox;
+        }
+        .icon-arrow-down{
+          @include arrow-down;
+        }
+        #item_condition_id-error {
+          @include error-display;
         }
       }
     }
@@ -212,14 +370,22 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #fee{
+        position: relative;
+        #item_delivery_fee_id{
           @include selectBox;
+        }
+        .icon-arrow-down{
+          @include arrow-down;
+        }
+        #item_delivery_fee_id-error {
+          @include error-display;
         }
       }
     }
     &__top-derivation{
       width: 100%;
       margin-top: 32px;
+      display: none;
       &__title{
         @include containerTitle;
       }
@@ -230,8 +396,15 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #method{
+        position: relative;
+        select {
           @include selectBox;
+        }
+        .icon-arrow-down{
+          @include arrow-down;
+        }
+        #item_shipping_method_id-error {
+          @include error-display;
         }
       }
     }
@@ -248,8 +421,15 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #shippingOrigin{
+        position: relative;
+        #item_ship_from_area_id {
           @include selectBox;
+        }
+        .icon-arrow-down{
+          @include arrow-down;
+        }
+        #item_ship_from_area_id-error {
+          @include error-display;
         }
       }
     }
@@ -266,8 +446,15 @@ body{
       &__select{
         width: 100%;
         margin-top: 16px;
-        #shippingDays{
+        position: relative;
+        #item_shipping_day_id{
           @include selectBox;
+        }
+        .icon-arrow-down{
+          @include arrow-down;
+        }
+        #item_shipping_day_id-error {
+          @include error-display;
         }
       }
     }
@@ -314,12 +501,17 @@ body{
           width: 285px;
           height: 48px;
           &__price-box{
-            @include textField;
-            input::placeholder{
-              font-size: 14px;
-              font-weight: 400;
-              text-align: right;
-              padding-right: 16px;
+            &--field{
+              @include textField;
+              input::placeholder{
+                font-size: 14px;
+                font-weight: 400;
+                text-align: right;
+                padding-right: 16px;
+              }
+            }
+            #item_price-error {
+              @include error-display;
             }
           }
         }
@@ -384,6 +576,7 @@ body{
       font-size: 17px;
       min-height: 48px;
       padding: 0 24px;
+      border-style: none;
       border-radius: 4px; 
     }
     &__draft{
@@ -393,6 +586,7 @@ body{
       font-size: 17px;
       min-height: 48px;
       padding: 0 24px;
+      border-style: none;
       border-radius: 4px;
       margin: 24px 0;
     }
