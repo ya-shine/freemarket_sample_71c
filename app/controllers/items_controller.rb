@@ -39,6 +39,8 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     unless @item.save
       flash.now[:alert] = "画像を入力してください"
+      @item.images.new
+      @category_parent_array = Category.where(ancestry: nil).pluck(:name)
       render :new
     end
   end
