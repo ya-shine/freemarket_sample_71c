@@ -12,7 +12,7 @@ class Item < ApplicationRecord
     has_many :images
   
     validates_associated :images
-    # validates :image_ids, presence:true
+
     validates :name,
       presence: true,
       length: {maximum:40}
@@ -23,13 +23,6 @@ class Item < ApplicationRecord
       presence: true,
       numericality: {greater_than_or_equal_to:300,less_than:10000000}
     validates :images, presence: true
-    validates :category_id, presence: true
-    validates :condition_id,presence: true
-    validates :size_id, presence:true, if: Proc.new { |item| item.size_id.present? }
-    validates :ship_from_area_id,presence: true
-    validates :shipping_method_id,presence: true
-    validates :shipping_day_id,presence: true
-    validates :delivery_fee_id,presence: true
 
     accepts_nested_attributes_for :images, allow_destroy:true
 end

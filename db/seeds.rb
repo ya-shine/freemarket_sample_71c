@@ -395,6 +395,16 @@ kids_clothes_5 = kids_clothes.children.create(name: "140cm")
 kids_clothes_6 = kids_clothes.children.create(name: "150cm")
 kids_clothes_7 = kids_clothes.children.create(name: "160cm")
 
+kids_shoes = Size.create(name: "子供用靴")
+kids_shoes_1 = kids_shoes.children.create(name: "10.5cm以下")
+kids_shoes_2 = kids_shoes.children.create(name: "11cm-11.5cm")
+kids_shoes_3 = kids_shoes.children.create(name: "12cm-12.5cm")
+kids_shoes_4 = kids_shoes.children.create(name: "13cm-13.5cm")
+kids_shoes_5 = kids_shoes.children.create(name: "14cm-14.5cm")
+kids_shoes_6 = kids_shoes.children.create(name: "15cm-15.5cm")
+kids_shoes_7 = kids_shoes.children.create(name: "16cm-16.5cm")
+kids_shoes_8 = kids_shoes.children.create(name: "17cm以上")
+
 tire_wheels = Size.create(name: "タイヤ・ホイール")
 tire_wheels_1 = tire_wheels.children.create(name: "12インチ")
 tire_wheels_2 = tire_wheels.children.create(name: "13インチ")
@@ -428,6 +438,7 @@ category_size = CategorySize.create({category_id: men_1.id,size_id:clothes.id})
 category_size = CategorySize.create({category_id: men_2.id,size_id:clothes.id})
 category_size = CategorySize.create({category_id: men_3.id,size_id:clothes.id})
 category_size = CategorySize.create({category_id: men_4.id,size_id:clothes.id})
+category_size = CategorySize.create({category_id: men_6.id,size_id:clothes.id})
 
 category_size = CategorySize.create({category_id: baby_kids_1.id,size_id:baby_clothes.id})
 category_size = CategorySize.create({category_id: baby_kids_2.id,size_id:baby_clothes.id})
@@ -436,5 +447,7 @@ category_size = CategorySize.create({category_id: baby_kids_3.id,size_id:baby_cl
 category_size = CategorySize.create({category_id: baby_kids_4.id,size_id:kids_clothes.id})
 category_size = CategorySize.create({category_id: baby_kids_5.id,size_id:kids_clothes.id})
 category_size = CategorySize.create({category_id: baby_kids_6.id,size_id:kids_clothes.id})
+
+category_size = CategorySize.create({category_id: baby_kids_7.id,size_id: kids_shoes.id})
 
 category_size = CategorySize.create({category_id: car_motorcycle_6.children[1].id,size_id:tire_wheels.id})
