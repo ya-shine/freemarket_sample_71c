@@ -5,8 +5,9 @@
         %figure.item-image
           .image-thumbnail
             %span.price
+              ¥
               = item.price
-            = image_tag "/images/icon-01.png",alt:"sample",class:"sample"
+            = image_tag item.images[0].image.url,alt:"sample",class:"sample"
           %figcaption.caption
             %span.line
               = item.name.truncate(22)
