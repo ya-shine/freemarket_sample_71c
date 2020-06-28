@@ -10,9 +10,9 @@
       %tbody.item-container
         %tr.item-details-table
           %th.item-details-table__containers
-            出品者
+            = @item.name
           %td.item-details-table__information
-            = link_to "ユーザー名","#",class:"user-name"
+            = link_to @item.user.nickname, users_path(@item.user.id), class:"user-name"
             .user-evaluations-container
               .user-evaluations-good
                 = icon("far", "grin-beam")
@@ -30,13 +30,13 @@
           %th.item-details-table__containers
             カテゴリー
           %td.item-details-table__information
-            = link_to "カテゴリー1","#",class:"category"
+            = link_to "#", class:"category" do
+              = @item.category.parent.name
+              = icon("fas", "chevron-right")
+                = @item.category.child.name
             = link_to "#",class:"category" do
               = icon("fas", "chevron-right")
-              カテゴリー2
-            = link_to "#",class:"category" do
-              = icon("fas", "chevron-right")
-              カテゴリー3
+                = @item
         %tr.item-details-table
           %th.item-details-table__containers
             ブランド
