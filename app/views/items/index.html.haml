@@ -9,7 +9,7 @@
     .favorite-container
       .favorite-title-box-top
         %h3.favorite-title
-          新着商品
+          新着アイテム
         .favorite-more
           = link_to "#",class:"more-items" do
             %span.item-category
@@ -144,7 +144,11 @@
       = link_to image_tag("/images/appstore-icon.png",alt:"appstore",class:"icon-image"),"#",class:"icon-left"
       = link_to image_tag("/images/googlestore-icon.png",alt:"googleplay",class:"icon-image"),"#",class:"icon-right"
 
-  test
+= link_to new_item_path do
+  .sell-btn
+    %span.sell-btn__text 出品
+    = image_tag("/images/icon_camera.png", alt: "CAMERA", class: "sell-btn__image")
+
   = link_to "ログイン", user_session_path
   = link_to "新規会員登録", new_user_registration_path
   = link_to "出品", new_item_path

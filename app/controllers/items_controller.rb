@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :get_size]
   before_action :set_category, only: [:create]
   def index
-    @items = Item.all
+    @items = Item.all.order("id DESC").limit(10)
   end
 
   def new
