@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :get_size]
   before_action :set_category, only: [:create]
   def index
+    @items = Item.includes(:user).order("created_at DESC")
   end
 
   def new
