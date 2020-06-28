@@ -5,6 +5,21 @@
     .top-banner
     .items-genre-box
       %h2.box-title
+        新着商品
+    .favorite-container
+      .favorite-title-box-top
+        %h3.favorite-title
+          新着商品
+        .favorite-more
+          = link_to "#",class:"more-items" do
+            %span.item-category
+              もっと見る
+            = icon("fas","arrow-right")
+      .items-boxes
+        %ul.items-lists
+          = render partial:"/items/favorite-items-lists"
+    .items-genre-box
+      %h2.box-title
         人気のカテゴリー
       .genre-famous
         %ul.genre-lists
