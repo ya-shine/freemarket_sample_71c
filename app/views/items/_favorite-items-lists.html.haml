@@ -1,15 +1,16 @@
-%li.items-lists__each
-  .item-sammary
-    - @items.each do |item|
+- @items.each do |item| 
+  %li.items-lists__each
+    .item-sammary
       = link_to item_path(item.id), class:"sammary" do
         %figure.item-image
           .image-thumbnail
-            %span.price ¥
-            = item.price
-            -# = image_tag item.images[0].src.url, class: "sample"
+            %span.price
+            ¥
+            = item.price.to_s(:delimited, delimiter: ',')
+            = image_tag item.images[0].image.url, alt:"sample", class:"sample"
           %figcaption.caption
             %span.line
-              = item.name
+              = item.name.truncate(22)
             .like-count
               = icon("far","heart")
               %span.item-box-likes__number
