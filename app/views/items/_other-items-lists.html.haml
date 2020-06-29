@@ -1,5 +1,5 @@
 %h2.item-other-content
-  = link_to "ユーザー名さんのその他の出品","#",class:"other-item"
+  = link_to "#{@item.user.nickname}さんのその他の出品","#",class:"other-item"
 .item-others-container
   %section.item-informations
     = link_to "#",class:"item-informations__link" do
