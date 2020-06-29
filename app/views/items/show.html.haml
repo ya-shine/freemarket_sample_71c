@@ -2,7 +2,7 @@
   = render partial:"/layouts/main_header"
 .main
   %h1.main-title
-    ここにタイトルが入ります。
+    = @item.name
   .main-container
     .item-photos
       = render partial:"slider-item-image"
@@ -10,9 +10,9 @@
       %tbody.item-container
         %tr.item-details-table
           %th.item-details-table__containers
-            = @item.name
+            出品者
           %td.item-details-table__information
-            = link_to @item.user.nickname, users_path(@item.user.id), class:"user-name"
+            = link_to @item.user.nickname, "#", class:"user-name"
             .user-evaluations-container
               .user-evaluations-good
                 = icon("far", "grin-beam")
@@ -31,58 +31,62 @@
             カテゴリー
           %td.item-details-table__information
             = link_to "#", class:"category" do
-              = @item.category.parent.name
-              = icon("fas", "chevron-right")
-                = @item.category.child.name
+              = @item.category.parent.parent.name
             = link_to "#",class:"category" do
               = icon("fas", "chevron-right")
-                = @item
+              = @item.category.parent.name
+            = link_to "#",class:"category" do
+              = icon("fas", "chevron-right")
+              = @item.category.name
         %tr.item-details-table
           %th.item-details-table__containers
             ブランド
           %td.item-details-table__information
-            = link_to "ブランド名","#",class:"brand"
+            = link_to "#", class:"brand" do
+              = @item.brand.name
         %tr.item-details-table
           %th.item-details-table__containers
             商品のサイズ
           %td.item-details-table__information
-            LL
+            - if @item.size_id?
+              = @item.size.name
         %tr.item-details-table
           %th.item-details-table__containers
             商品の状態
           %td.item-details-table__information
-            傷なし
+            = @item.condition.name
         %tr.item-details-table
           %th.item-details-table__containers
             送料の負担
           %td.item-details-table__information
-            送料込み
+            = @item.delivery_fee.name
         %tr.item-details-table
           %th.item-details-table__containers
             発送の方法
           %td.item-details-table__information
-            未定
+            = @item.shipping_method.name
         %tr.item-details-table
           %th.item-details-table__containers
             発送元地域
           %td.item-details-table__information
-            山形県
+            = @item.ship_from_area.name
         %tr.item-details-table
           %th.item-details-table__containers
             発送日の目安
           %td.item-details-table__information
-            4~7日で発送
+            = @item.shipping_day.name
   .price-container
     %span.price-container__price
-      ￥10,000
+      ¥
+      = @item.price.to_s(:delimited, delimiter: ',')
     %span.price-container__tax
       (税込)
     %span.price-container__shipping-fee
-      送料込み
+      = @item.delivery_fee.name
   = link_to "購入画面に進む","#",class:"link-to-purchase"
   .item-description
     %p.item-description__inner
-      サンプルサンプルサンプル
+      = @item.description
   .item-likes
     = button_tag  "#", id:"like" do
       = icon("far","heart")
