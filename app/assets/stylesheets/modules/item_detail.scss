@@ -46,14 +46,14 @@
         width: 300px;
         margin: 0 auto;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         flex-wrap:wrap;
         .thumbnail-item{
           margin-bottom: 10px;
           box-sizing: border-box;
           position:relative;
           height: 60px;
-          width: 60px;
+          width: 20%;
           &::after{
             content:'';
             background-color: rgba(0,0,0,0.5);
