@@ -1,0 +1,16 @@
+- @item_category_hobby.each do |item|
+  %li.items-lists__each
+    .item-sammary
+      = link_to "#",class:"sammary" do
+        %figure.item-image
+          .image-thumbnail
+            %span.price
+              = item.price
+            = image_tag item.images[0].image.url,alt:"sample",class:"sample"
+          %figcaption.caption
+            %span.line
+              = item.name
+            .like-count
+              = icon("far","heart")
+              %span.item-box-likes__number
+                4

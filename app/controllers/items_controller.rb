@@ -5,7 +5,9 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all.where(item_status:0).order("id DESC").limit(10)
     @item_category_lady = Item.all.where(item_status:0,category_id:1..199).limit(10)
-    # @item_category = Item.find(params[:id])
+    @item_category_mens = Item.all.where(item_status:0,category_id:200..345).limit(10)
+    @item_category_hobby = Item.all.where(item_status:0,category_id:346..480).limit(10)
+    @item_category_gadget = Item.all.where(item_status:0,category_id:481..624).limit(10)
     # @item_category.category.root
   end
 
