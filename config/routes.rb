@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get 'get_size', defaults: { format: 'json' }
     end
   end
+  resources :categories, only: :show
   resource :order
   resources :shipping_addresses
   resources :mypage, only: :index
