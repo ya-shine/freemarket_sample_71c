@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     get 'shipping_addresses', to: 'users/registrations#new_shipping_address'
     post 'shipping_addresses', to: 'users/registrations#create_shipping_address'
   end
-  root 'items#index'
+  root 'shops#index'
+  resources :shops, only: :index
   post 'items/new', to:'items#create'
   resources :items do
     collection do
