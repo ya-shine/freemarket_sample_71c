@@ -1,6 +1,8 @@
 class CategoriesController < ApplicationController
   def show
+    @category_parents = Category.all.where(ancestry: nil)
     @category = Category.find(params[:id])
-    @items = Item.all.where(category_id: @category.indirects)
+    @items = @category.find_items
+    @items = @items.order("created_at DESC")
   end
 end
