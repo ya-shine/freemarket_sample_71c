@@ -194,6 +194,12 @@
       }
       .navigation-login-signup{
         display: flex;
+        &__product-list {
+          padding: 0 14px;
+          .product-list-link {
+            @include login-signup;
+          }
+        }
         &__login {
           padding: 0 14px;
           .login {
