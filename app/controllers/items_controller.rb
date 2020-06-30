@@ -3,14 +3,14 @@ class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :get_size]
   before_action :set_category, only: [:create]
   def index
+    # @category = Category.find(params[:id])
     @items = Item.all.where(item_status:0).order("id DESC").limit(10)
     @item_category_lady = Item.all.where(item_status:0,category_id:1..199).limit(10)
     @item_category_mens = Item.all.where(item_status:0,category_id:200..345).limit(10)
-    @item_category_hobby = Item.all.where(item_status:0,category_id:346..480).limit(10)
-    @item_category_gadget = Item.all.where(item_status:0,category_id:481..624).limit(10)
-    # @item_category.category.root
+    @item_category_hobby = Item.all.where(item_status:0,category_id:685..797).limit(10)
+    @item_category_gadget = Item.all.where(item_status:0,category_id:898..983).limit(10)
   end
-
+  898
   def new
     @item = Item.new
     @item.images.new
@@ -63,6 +63,10 @@ class ItemsController < ApplicationController
 
   def set_category  
     @category_parent_array = Category.where(ancestry: nil)
+  end
+
+  def find_category
+
   end
   
 end
