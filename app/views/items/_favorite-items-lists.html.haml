@@ -5,8 +5,8 @@
         %figure.item-image
           .image-thumbnail
             %span.price
-            ¥
-            = item.price.to_s(:delimited, delimiter: ',')
+              ¥
+              = item.price.to_s(:delimited, delimiter: ',')
             = image_tag item.images[0].image.url, alt:"sample", class:"sample"
           %figcaption.caption
             %span.line
