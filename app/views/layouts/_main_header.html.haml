@@ -15,20 +15,20 @@
               %span.category-title__title
                 カテゴリー
           %ul.categories-container
-            %li.categories-container__parent
-              %h3.category-name
-                = link_to "レディース", "#", class: "category-parent"
-              %ul.categories-container-child
-                %li.categories-container-child__child
-                  %h3.category-name
-                    = link_to "トップス", "#", class: "category-child"
-                  %ul.categories-container-grandchild
-                    %li.categories-container-grandchild__grandchild
+            - @category_parents.each do |parent|
+              %li.categories-container__parent
+                %h3.category-name
+                  = link_to "#{parent.name}","#", class: "category-parent"
+                %ul.categories-container-child
+                  - parent.children.each do |child|
+                    %li.categories-container-child__child
                       %h3.category-name
-                        = link_to "ポロシャツ", "#", class: "category-grandchild"
-            %li.categories-container__parent
-              %h3.category-name
-                = link_to "メンズ", "#", class: "category-parent"
+                        = link_to "#{child.name}", "#", class: "category-child"
+                      %ul.categories-container-grandchild
+                        - child.children.each do |grandchild|
+                          %li.categories-container-grandchild__grandchild
+                            %h3.category-name
+                              = link_to "#{grandchild.name}", "#", class: "category-grandchild"
         .navigation-category__brands
           %h2.brand-title-box
             = link_to "#", class: "brand" do
