@@ -50,6 +50,11 @@
       .navigation-right
         %ul.navigation-likes-mypage
           %li.navigation-likes-mypage__likes
+            = link_to items_path, class: "likes-link" do
+              = icon("fas", "shopping-cart")
+              %span.navigation-likes-mypage__likes--title
+                商品一覧
+          %li.navigation-likes-mypage__likes
             = link_to "#", class: "likes-link" do
               = icon("far", "heart")
               %span.navigation-likes-mypage__likes--title
@@ -110,6 +115,8 @@
                 = link_to "アシックス", "#", class: "brand"
       .navigation-right
         %ul.navigation-login-signup
+          %li.navigation-likes-mypage__likes
+            = link_to "商品一覧", items_path, class: "likes-link"
           %li.navigation-login-signup__login
             = link_to "ログイン", new_user_session_path, class:"login"
           %li.navigation-login-signup__signup
