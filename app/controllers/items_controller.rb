@@ -1,9 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :get_size]
-  before_action :set_category, only: [:create]
   def index
-    # @category = Category.find(params[:id])
+    @category_parents = Category.all.where(ancestry: nil)
     @items = Item.all.where(item_status:0).order("id DESC").limit(10)
     @item_category_lady = Item.all.where(item_status:0,category_id:1..199).limit(10)
     @item_category_mens = Item.all.where(item_status:0,category_id:200..345).limit(10)
@@ -59,14 +58,6 @@ class ItemsController < ApplicationController
   
   def set_item
     @item = Item.find(params[:id])
-  end
-
-  def set_category  
-    @category_parent_array = Category.where(ancestry: nil)
-  end
-
-  def find_category
-
   end
   
 end
