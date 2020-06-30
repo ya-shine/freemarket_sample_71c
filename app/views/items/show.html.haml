@@ -112,13 +112,17 @@
 .item-messages
   .message-container
     .message-content
-      .message-form
+      - if user_signed_in?
+        .message-form
+          %p.message-warning
+            相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          = text_area "text",'', class:"item-messages" 
+          = button_tag '#', class:"submit-comment" do
+            %span.submit-comment__line
+              コメントする
+      - else
         %p.message-warning
-          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        = text_area "text",'', class:"item-messages" 
-        = button_tag '#', class:"submit-comment" do
-          %span.submit-comment__line
-            コメントする
+          商品の購入、コメントの投稿には新規会員登録/ログインが必要です
 %ul.link-to-items
   %li.link-to-items__previous
     = link_to "#", class:"previous-item" do
