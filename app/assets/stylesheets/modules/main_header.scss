@@ -1,8 +1,8 @@
-.header-main {
+.header-main{
   background-color: #fff;
   padding: 0 60px;
   border-bottom: 1px solid #f5f5f5;
-  .header-inner-before-login{
+  .header-inner{
     max-width: 1040px;
     width: 100%;
     min-height: 82px;
@@ -60,7 +60,7 @@
       display: flex;
       justify-content: space-between;
       margin: 9px 0 0;
-      padding-bottom: 16px;
+      height: 46px;
       .navigation-left{
         display: flex;
         .navigation-category__categories {
@@ -85,7 +85,7 @@
             }
           }
           .categories-container {
-            @include category-brands-parentbox-before-login;
+            @include category-brands-parentbox;
             &__parent {
               @include category-brands-one-box;
               &:hover {
@@ -174,7 +174,7 @@
             }
           }
           .brands-container {
-            @include category-brands-parentbox-before-login;
+            @include category-brands-parentbox;
             &__brand {
               @include category-brands-one-box;
               &:hover {
@@ -192,23 +192,76 @@
           }
         }
       }
-      .navigation-login-signup{
-        display: flex;
-        &__product-list {
-          padding: 0 14px;
-          .product-list-link {
-            @include login-signup;
+      .navigation-right {
+        .navigation-likes-mypage {
+          display: flex;
+          .navigation-likes-mypage__likes {
+            padding: 0 14px;
+            &:hover .likes-link i  {
+              color: #0099e8;
+            }
+            &:hover .likes-link span  {
+              color: #0099e8;
+            }
+            .likes-link {
+              line-height: 32px;
+              text-decoration: none;
+              i {
+                color:#ccc;
+                font-size: 18px;
+              }
+              .navigation-likes-mypage__likes--title {
+                color:#333;
+                display: inline-block;
+                vertical-align: top;
+              }
+            }
+          }
+          .navigation-likes-mypage__mypage {
+            margin-left: 14px;
+            position: relative;
+            &:hover .mypage-link span {
+              color: #0099e8;
+            }
+            .mypage-link {  
+              position: relative;
+              height: 44px;
+              line-height: 32px;
+              font-size: 0;
+              color: #333;
+                .mypage {
+                  height: 30px;
+                  width: 30px;
+                }
+              .navigation-likes-mypage__mypage--title {
+                margin-left: 10px;
+                font-size: 16px;
+                display: inline-block;
+                vertical-align: top;
+                color:#333;
+                position: relative;
+              }
+            }
           }
         }
-        &__login {
-          padding: 0 14px;
-          .login {
-            @include login-signup;
+        .navigation-login-signup{
+          display: flex;
+          &__product-list {
+            padding: 0 14px;
+            .product-list-link {
+              @include login-signup;
+            }
           }
-        }
-        &__signup {
-          .signup {
-            @include login-signup;
+          &__login {
+            padding: 0 14px;
+            .login {
+              @include login-signup;
+            }
+          }
+          &__signup {
+            .signup {
+              @include login-signup;
+            }
           }
         }
       }
