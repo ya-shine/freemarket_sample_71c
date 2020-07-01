@@ -90,7 +90,7 @@
       .edit-menu
         .edit-menu__list
           = link_to "編集", "#", class: "edit-delete-btn"
-          = link_to "削除", "#", class: "edit-delete-btn"
+          = link_to "削除", "/items/#{@item.id}", method: :delete, class: "edit-delete-btn"
     - elsif user_signed_in? && current_user.id != @item.user_id
       .purchase
         = link_to "購入画面に進む", "#", class: "link-to-purchase"
