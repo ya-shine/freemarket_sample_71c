@@ -44,6 +44,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @items = Item.includes(:user).where(users: {id: @item.user_id})
   end
 
   private

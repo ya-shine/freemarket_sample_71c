@@ -1,4 +1,31 @@
-%h2.item-other-content
-  = link_to "#{@item.user.nickname}さんのその他の出品", "#", class: "other-item"
-  %br/
-  = link_to "#{@item.category.parent.parent.name}をもっと見る", "#", class: "other-item"
+.item-other-content
+  %h2.item-other-title
+    = link_to "#{@item.user.nickname}さんのその他の出品", "#", class: "other-item"
+  .favorite-more
+    = link_to "#",class:"more-items" do
+      %span.item-category
+        もっと見る
+      = icon("fas","arrow-right")
+.item-others-container
+  %ul.items-lists
+    - @items.each do |item|
+      %li.items-lists__each
+        .item-sammary
+          = link_to item_path(item.id), class:"sammary" do
+            %figure.item-image
+              .image-thumbnail
+                %span.price
+                  ¥
+                  = item.price.to_s(:delimited, delimiter: ',')
+                = image_tag item.images[0].image.url, alt:"sample", class:"sample"
+              %figcaption.caption
+                %span.line
+                  = item.name.truncate(22)
+                .like-count
+                  = icon("far","heart")
+                  %span.item-box-likes__number
+                    4
+
+.item-other-content
+  %h2.item-other-title
+    = link_to "#{@item.category.parent.parent.name}をもっと見る", "#", class: "other-item"
