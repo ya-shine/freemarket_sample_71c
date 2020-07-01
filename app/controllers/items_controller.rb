@@ -3,10 +3,11 @@ class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :get_size]
   before_action :category_all, only: :index
   def index
+    @brands = Brand.all
     @category_parents = Category.all.where(ancestry: nil)
     @items = Item.all.where(item_status:0).order("id DESC").page(params[:page]).per(50)
   end
-  898
+
   def new
     @item = Item.new
     @item.images.new
