@@ -1,22 +1,14 @@
 %ul#slider
-  %li.slide-item
-    = image_tag "/images/test_image.jpg",alt:"test-image",class:"slide-image"
-  %li.slide-item
-    = image_tag "/images/logo.png",alt:"test-image",class:"slide-image"
-  %li.slide-item
-    = image_tag "/images/test_image.jpg",alt:"test-image",class:"slide-image"
-  %li.slide-item
-    = image_tag "/images/icon_brand.png",alt:"test-image",class:"slide-image"
-  %li.slide-item
-    = image_tag "/images/icon_brand.png",alt:"test-image",class:"slide-image"
+  - if @item.images.count == 1
+    %li.slide-item
+      = image_tag @item.images[0].image.url, alt: "image", class: "slide-image"
+  - else
+    - @item.images[0...5].each do |image|
+      %li.slide-item
+        = image_tag image.image.url, alt: "image", class: "slide-image"
+
 %ul#thumbnail-list
-  %li.thumbnail-item
-    = image_tag "/images/test_image.jpg",alt:"test-image",class:"thumbnail-image"
-  %li.thumbnail-item
-    = image_tag "/images/logo.png",alt:"test-image",class:"thumbnail-image"
-  %li.thumbnail-item
-    = image_tag "/images/test_image.jpg",alt:"test-image",class:"thumbnail-image"
-  %li.thumbnail-item
-    = image_tag "/images/icon_brand.png",alt:"test-image",class:"thumbnail-image"
-  %li.thumbnail-item
-    = image_tag "/images/icon_brand.png",alt:"test-image",class:"thumbnail-image"
+  - if @item.images.count >= 2
+    - @item.images[0...5].each do |image|
+      %li.thumbnail-item
+        = image_tag image.image.url, alt: "image", class: "thumbnail-image"

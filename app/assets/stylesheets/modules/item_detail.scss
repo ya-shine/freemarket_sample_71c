@@ -14,6 +14,7 @@
     line-height: 1.4;
     font-weight: bold;
   }
+
   .main-container {
     display: flex;
     margin-top: 16px;
@@ -46,14 +47,14 @@
         width: 300px;
         margin: 0 auto;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         flex-wrap:wrap;
         .thumbnail-item{
           margin-bottom: 10px;
           box-sizing: border-box;
           position:relative;
           height: 60px;
-          width: 60px;
+          width: 20%;
           &::after{
             content:'';
             background-color: rgba(0,0,0,0.5);
@@ -142,6 +143,7 @@
       }
     }
   }
+
   .price-container {
     margin: 24px 0 0;
     text-align: center;
@@ -158,19 +160,46 @@
       font-size: 16px;
     }
   }
+
+  .conditional-branch {
+    margin: 36px 0 0;
+    text-align: center;
+    .edit-menu {
+      &__list {
+        display: flex;
+        justify-content: space-evenly;
+        .edit-delete-btn {
+          width: 25%;
+          display: block;
+          background: #3ccace;
+          color: #fff;
+          font-size: 24px;
+          line-height: 45px;
+          text-align: center;
+          font-weight: 600;
+          transition: all ease-out .3s;
+          text-decoration: none;
+          border-radius: 40px;
+        }
+      }
+    }
+  }
+
   .link-to-purchase {
+    width: 70%;
+    margin: 0  auto;
     display: block;
     margin-top: 16px;
-    background: #ea352d;
+    background: #3ccace;
     color: #fff;
     font-size: 24px;
     line-height: 60px;
-    text-align: center;
     font-weight: 600;
     transition: all ease-out .3s;
     text-decoration: none;
-
+    border-radius: 4px;
   }
+
   .item-description {
     padding: 32px 0 0;
     line-height: 1.5;
@@ -178,6 +207,7 @@
       white-space: pre-wrap;
     }
   }
+
   .item-likes {
     margin: 16px 0 0;
     #like {
@@ -190,6 +220,7 @@
     }
   }
 }
+
 .item-messages {
   margin: 8px auto;
   width: 700px;
@@ -256,6 +287,7 @@
     }
   }
 }
+
 .item-social-medias {
   margin: 24px auto;
   padding: 32px 0 24px;
@@ -287,78 +319,107 @@
     }
   }
 }
+
 .item-other-in-this-user {
   width: 700px;
   margin: 0 auto;
   .item-other-content {
+    display: flex;
+    justify-content: space-between;
     font-size: 22px;
     margin: 24px 0 8px;
     font-weight: 600;
-    .other-item {
-      color: #0099e8;
-      text-decoration: none;
+    .item-other-title {
+      .other-item {
+        color: #0099e8;
+        text-decoration: none;
+      }
+    }
+    .favorite-more {
+      font-size: 15px;
+      line-height: 34px;
+      .more-items {
+        color: #0099e8;
+        text-decoration: none;
+      }
     }
   }
   .item-others-container {
-    width: auto;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    .item-informations {
-      width: 220px;
-      height: 330px;
-      margin: 0 20px 20px 0;
-      background: #fff;
-      position: relative;
-      &__link {
-        display: block;
-        text-decoration: none;
-        color: black;
-        .item-image {
-          width: 220px;
-          height: 220px;
-          overflow: hidden;
-          position: relative;
-          padding: 0 0 100%;
-          margin: 0;
-          &__title {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            z-index: 1;
-          }
-        }
-        .item-box-body {
-          padding: 16px;
-          height: 110px;
-          .item-box-name {
-            overflow: hidden;
-            position: relative;
-            font-size: 16px;
-            font-weight: 400;
-            height: 3em;
-            line-height: 1.5;
-            word-break: break-word;
-            white-space: normal;
-          }
-          .item-box-price-box {
-            display: flex;
-            -webkit-box-pack: justify;
-            align-items: center;
-            justify-content: space-between;
-            margin: 8px 0 0;
-            .item-box-price {
-              font-size: 15px;
-              font-weight: 600;
-            }
-            .item-box-likes {
-              color: #333;
-              i {
-                color: #ccc;
-              }
-              &__number {
+    .items-lists {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      margin-top: 20px;
+      &__each {
+        width: 25%;
+        .item-sammary {
+          .sammary {
+            display: inline-block;
+            text-decoration: none;
+            vertical-align: top;
+            .item-image {
+              width: 100%;
+              flex-direction: column;
+              align-items: center;
+              display: flex;
+              position: relative;
+              margin: 0 auto;
+              .caption {
+                height: 64px;
+                box-sizing: border-box;
+                color: #222;
                 font-size: 14px;
-                font-weight: 400;
+                line-height: 1.4em;
+                padding: 12px;
+                white-space: normal;
+                word-break: break-word;
+                align-items: center;
+                display: flex;
+                width: 100%;
+                position: relative;
+                .line {
+                  display: inline-block;
+                  height: 2.8em;
+                  overflow: hidden;
+                  position: relative;
+                }
+                .like-count {
+                  align-items: center;
+                  display: flex;
+                  margin: auto;
+                  position: absolute;
+                  right: 12px;
+                  top: 32px;
+                }
+              }
+              .image-thumbnail {
+                margin: 0 auto;
+                overflow: hidden;
+                width: 160px;
+                height: 160px;
+                .price {
+                  align-items: center;
+                  background: rgba(0,0,0,.4);
+                  border-radius: 0 14px 14px 0;
+                  bottom: 70px;
+                  color: #fff;
+                  display: inline-flex;
+                  font-size: 17px;
+                  height: 28px;
+                  letter-spacing: .02em;
+                  margin: 0;
+                  padding: 0 12px;
+                  position: absolute;
+                  z-index: 2;
+                }
+                .sample {
+                  bottom: 0;
+                  object-fit: cover;
+                  vertical-align: top;
+                  width: 100%;
+                  z-index: 1;
+                  height: 100%;
+                }
               }
             }
           }
@@ -460,6 +521,7 @@
     }
   }
 }
+
 .bottom-category-connection {
   position: relative;
   border-top: 1px solid #eee;
@@ -493,6 +555,7 @@
     }
   }
 }
+
 .banner-for-app {
   background-image: url(/images/bg-appBanner-pict.jpg);
   padding: 100px 40px;
@@ -539,7 +602,6 @@
     }
   }
 }
-
 
 .main-footer {
   padding: 60px;

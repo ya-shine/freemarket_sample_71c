@@ -2,7 +2,7 @@
   = render partial:"/layouts/main_header"
 .main
   %h1.main-title
-    ここにタイトルが入ります。
+    = @item.name
   .main-container
     .item-photos
       = render partial:"slider-item-image"
@@ -12,7 +12,7 @@
           %th.item-details-table__containers
             出品者
           %td.item-details-table__information
-            = link_to "ユーザー名","#",class:"user-name"
+            = link_to @item.user.nickname, "#", class:"user-name"
             .user-evaluations-container
               .user-evaluations-good
                 = icon("far", "grin-beam")
@@ -30,59 +30,78 @@
           %th.item-details-table__containers
             カテゴリー
           %td.item-details-table__information
-            = link_to "カテゴリー1","#",class:"category"
+            = link_to "#", class:"category" do
+              = @item.category.parent.parent.name
             = link_to "#",class:"category" do
               = icon("fas", "chevron-right")
-              カテゴリー2
+              = @item.category.parent.name
             = link_to "#",class:"category" do
               = icon("fas", "chevron-right")
-              カテゴリー3
+              = @item.category.name
         %tr.item-details-table
           %th.item-details-table__containers
             ブランド
           %td.item-details-table__information
-            = link_to "ブランド名","#",class:"brand"
+            - if @item.brand_id?
+              = link_to "#", class:"brand" do
+                = @item.brand.name
         %tr.item-details-table
           %th.item-details-table__containers
             商品のサイズ
           %td.item-details-table__information
-            LL
+            - if @item.size_id?
+              = @item.size.name
         %tr.item-details-table
           %th.item-details-table__containers
             商品の状態
           %td.item-details-table__information
-            傷なし
+            = @item.condition.name
         %tr.item-details-table
           %th.item-details-table__containers
             送料の負担
           %td.item-details-table__information
-            送料込み
+            = @item.delivery_fee.name
         %tr.item-details-table
           %th.item-details-table__containers
             発送の方法
           %td.item-details-table__information
-            未定
+            = @item.shipping_method.name
         %tr.item-details-table
           %th.item-details-table__containers
             発送元地域
           %td.item-details-table__information
-            山形県
+            = @item.ship_from_area.name
         %tr.item-details-table
           %th.item-details-table__containers
             発送日の目安
           %td.item-details-table__information
-            4~7日で発送
+            = @item.shipping_day.name
   .price-container
     %span.price-container__price
-      ￥10,000
+      ¥
+      = @item.price.to_s(:delimited, delimiter: ',')
     %span.price-container__tax
       (税込)
     %span.price-container__shipping-fee
-      送料込み
-  = link_to "購入画面に進む","#",class:"link-to-purchase"
+      = @item.delivery_fee.name
+
+  .conditional-branch
+    - if user_signed_in? && current_user.id == @item.user_id
+      .edit-menu
+        .edit-menu__list
+          = link_to "編集", "#", class: "edit-delete-btn"
+          = link_to "削除", "#", class: "edit-delete-btn"
+    - elsif user_signed_in? && current_user.id != @item.user_id
+      .purchase
+        = link_to "購入画面に進む", "#", class: "link-to-purchase"
+    - else
+      .purchase
+        = link_to new_user_registration_path, class: "link-to-purchase" do
+          会員登録はこちら
+
   .item-description
     %p.item-description__inner
-      サンプルサンプルサンプル
+      = @item.description
   .item-likes
     = button_tag  "#", id:"like" do
       = icon("far","heart")
@@ -93,13 +112,17 @@
 .item-messages
   .message-container
     .message-content
-      .message-form
+      - if user_signed_in?
+        .message-form
+          %p.message-warning
+            相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          = text_area "text",'', class:"item-messages" 
+          = button_tag '#', class:"submit-comment" do
+            %span.submit-comment__line
+              コメントする
+      - else
         %p.message-warning
-          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        = text_area "text",'', class:"item-messages" 
-        = button_tag '#', class:"submit-comment" do
-          %span.submit-comment__line
-            コメントする
+          商品の購入、コメントの投稿には新規会員登録/ログインが必要です
 %ul.link-to-items
   %li.link-to-items__previous
     = link_to "#", class:"previous-item" do
