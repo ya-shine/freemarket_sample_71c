@@ -1,51 +1,52 @@
-.pickup-list
-  = link_to "#",class:"pickup" do
-    .pickup-image
-      = image_tag("/images/sample-1.png",class:"image-pickup")
-    .pickup-description
-      %h3.name
-        product1
-      .detail
-        %ul.details
-          %li.details__left
-            30000円
-          %li.details__right
-            = icon("fas","star")
-            %span.star-number
-              3
-      %p.tax
-        (税込)
-.pickup-list
-  = link_to "#",class:"pickup" do
-    .pickup-image
-      = image_tag("/images/sample-2.png",class:"image-pickup")
-    .pickup-description
-      %h3.name
-        product2
-      .detail
-        %ul.details
-          %li.details__left
-            300円
-          %li.details__right
-            = icon("fas","star")
-            %span.star-number
-              3
-      %p.tax
-        (税込)
-.pickup-list
-  = link_to "#",class:"pickup" do
-    .pickup-image
-      = image_tag("/images/sample-3.png",class:"image-pickup")
-    .pickup-description
-      %h3.name
-        product3
-      .detail
-        %ul.details
-          %li.details__left
-            60000円
-          %li.details__right
-            = icon("fas","star")
-            %span.star-number
-              3
-      %p.tax
-        (税込)
+- @items.each do |item|
+  .pickup-list
+    = link_to "#",class:"pickup" do
+      .pickup-image
+        = image_tag item.images[0].image.url,class:"image-pickup"
+      .pickup-description
+        %h3.name
+          = item.name.truncate(12)
+        .detail
+          %ul.details
+            %li.details__left
+              = number_to_currency(item.price,format: "%u%n",unit: "¥")
+            %li.details__right
+              = icon("fas","star")
+              %span.star-number
+                0
+        %p.tax
+          (税込)
+-# .pickup-list
+-#   = link_to "#",class:"pickup" do
+-#     .pickup-image
+-#       = image_tag("/images/sample-2.png",class:"image-pickup")
+-#     .pickup-description
+-#       %h3.name
+-#         product2
+-#       .detail
+-#         %ul.details
+-#           %li.details__left
+-#             300円
+-#           %li.details__right
+-#             = icon("fas","star")
+-#             %span.star-number
+-#               3
+-#       %p.tax
+-#         (税込)
+-# .pickup-list
+-#   = link_to "#",class:"pickup" do
+-#     .pickup-image
+-#       = image_tag("/images/sample-3.png",class:"image-pickup")
+-#     .pickup-description
+-#       %h3.name
+-#         product3
+-#       .detail
+-#         %ul.details
+-#           %li.details__left
+-#             60000円
+-#           %li.details__right
+-#             = icon("fas","star")
+-#             %span.star-number
+-#               3
+-#       %p.tax
+-#         (税込)

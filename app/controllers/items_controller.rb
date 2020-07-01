@@ -4,11 +4,7 @@ class ItemsController < ApplicationController
   before_action :category_all, only: :index
   def index
     @category_parents = Category.all.where(ancestry: nil)
-    @items = Item.all.where(item_status:0).order("id DESC").limit(10)
-    @item_category_lady = Item.all.where(item_status:0,category_id:1..199).limit(10)
-    @item_category_mens = Item.all.where(item_status:0,category_id:200..345).limit(10)
-    @item_category_hobby = Item.all.where(item_status:0,category_id:685..797).limit(10)
-    @item_category_gadget = Item.all.where(item_status:0,category_id:898..983).limit(10)
+    @items = Item.all.where(item_status:0).order("id DESC").page(params[:page]).per(50)
   end
   898
   def new

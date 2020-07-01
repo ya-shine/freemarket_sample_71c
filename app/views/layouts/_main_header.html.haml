@@ -35,18 +35,19 @@
               %span.brand-title__title
                 ブランド
           %ul.brands-container
+            - @brands[0...5].each do |brand|
+              %li.brands-container__brand
+                %h3.brand-name
+                  = link_to "#{brand.name}", "#", class: "brand"
             %li.brands-container__brand
               %h3.brand-name
-                = link_to "ナイキ", "#", class: "brand"
-            %li.brands-container__brand
-              %h3.brand-name
-                = link_to "アディダス", "#", class: "brand"
-            %li.brands-container__brand
-              %h3.brand-name
-                = link_to "プーマ", "#", class: "brand"
-            %li.brands-container__brand
-              %h3.brand-name
-                = link_to "アシックス", "#", class: "brand"
+                = link_to "ブランド一覧", "#", class: "brand"
+            -# %li.brands-container__brand
+            -#   %h3.brand-name
+            -#     = link_to "プーマ", "#", class: "brand"
+            -# %li.brands-container__brand
+            -#   %h3.brand-name
+            -#     = link_to "アシックス", "#", class: "brand"
       .navigation-right
         %ul.navigation-likes-mypage
           %li.navigation-likes-mypage__likes

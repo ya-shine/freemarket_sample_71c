@@ -58,7 +58,7 @@
         %span.product-details-container__middle__any
           任意
         .product-details-container__middle__text-box
-          = f.select :brand_id, Brand.all.collect {|p| [p.name,p.id]},class: "product-details-container__middle__text-box--field", placeholder: "例）シャネル"
+          = f.select :brand_id, Brand.all.collect {|p| [p.name,p.id]}, prompt: "選択してください",class: "product-details-container__middle__text-box--field", placeholder: "例）シャネル"
           %i.fas.fa-chevron-down.icon-arrow-down
       .product-details-container__bottom
         %label.product-details-container__bottom__title 商品の状態

@@ -96,24 +96,14 @@
           お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
   %section.pickups
     %h2.title
-      ピックアップカテゴリー
+      最新商品
     .pickup-box
       .pickup-head
-        = link_to "#",class:"link-pickups" do
+        = link_to items_path,class:"link-pickups" do
           %h3.pickup-title
-            新規投稿商品
+            商品一覧へ
       .pickup-lists
         = render partial:"layouts/main_pickup-items"
-  %section.pickups
-    %h2.title
-      ピックアップブランド
-    .pickup-box
-      .pickup-head
-        = link_to "#",class:"link-pickups" do
-          %h3.pickup-title
-            アーカイバ
-      .pickup-lists
-        = render partial:"/layouts/main_pickup-items"
 %aside.banner-for-app
   .banner-inner
     %h2.banner-inner__title
