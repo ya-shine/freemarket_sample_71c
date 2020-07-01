@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
   end
   resources :categories, only: :show
-  resources :brands, only: :show
+  resources :brands, only: [:index,:show]
   resource :order
   resources :shipping_addresses
   resources :mypage, only: :index

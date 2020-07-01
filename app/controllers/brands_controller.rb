@@ -1,6 +1,7 @@
 class BrandsController < ApplicationController
 
   def index
+    @category_parents = Category.all.where(ancestry: nil)
     @brands = Brand.all
   end
   def show
