@@ -1,21 +1,17 @@
 .main-screen {
   max-width: 1020px;
   display: flex;
-  margin: 0 auto;
+  margin: 40px auto;
   .main-box {
     position: relative;
     margin: 0 auto;
     width: 100%;
-    .top-banner {
-      height: 300px;
-      width: 100%;
-    }
     .items-genre-box {
       background: #fff;
       text-align: center;
       .box-title {
         font-size: 27px;
-        padding: 40px 0 10px;
+        padding: 20px 0 20px;
         font-weight: bold;
       }
       .genre-famous {
@@ -125,6 +121,9 @@
                       position: absolute;
                       right: 12px;
                       top: 32px;
+                      .fa-heart {
+                        margin-right: 5px;  
+                      }
                     }
                   }
                   .image-thumbnail {
