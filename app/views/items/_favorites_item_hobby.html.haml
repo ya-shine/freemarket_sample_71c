@@ -1,7 +1,7 @@
 - @item_category_hobby.each do |item|
   %li.items-lists__each
     .item-sammary
-      = link_to "#",class:"sammary" do
+      = link_to item_path(item.id),class:"sammary" do
         %figure.item-image
           .image-thumbnail
             %span.price
