@@ -1,16 +1,16 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :get_size]
-  before_action :category_all, only: :index
-  before_action :brand_category_header, only: [:index]
+  before_action :category_all, only: [:index, :show]
+  before_action :brand_category_header, only: [:index, :show]
   def index
-    @items = Item.all.where(item_status:0).order("id DESC").page(params[:page]).per(50)
+    @items = Item.includes(:user).where(item_status:0).order("id DESC").page(params[:page]).per(50)
   end
 
   def new
     @item = Item.new
     @item.images.new
-    @parents = Category.all.order("id ASC")
+    @parents = Category.includes(:item).order("id ASC")
     @category_parent_array = Category.where(ancestry: nil).pluck(:name)
   end
 
@@ -73,10 +73,10 @@ class ItemsController < ApplicationController
   end
 
   def category_all
-    @item_category_lady = Item.all.where(item_status:0,category_id:1..199).limit(10)
-    @item_category_mens = Item.all.where(item_status:0,category_id:200..345).limit(10)
-    @item_category_hobby = Item.all.where(item_status:0,category_id:685..797).limit(10)
-    @item_category_gadget = Item.all.where(item_status:0,category_id:898..983).limit(10)
+    @item_category_lady = Item.includes(:category).where(item_status:0,category_id:1..199).limit(10)
+    @item_category_mens = Item.includes(:category).where(item_status:0,category_id:200..345).limit(10)
+    @item_category_hobby = Item.includes(:category).where(item_status:0,category_id:685..797).limit(10)
+    @item_category_gadget = Item.includes(:category).where(item_status:0,category_id:898..983).limit(10)
   end
   
 end
