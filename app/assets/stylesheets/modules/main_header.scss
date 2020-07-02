@@ -60,6 +60,7 @@
       display: flex;
       justify-content: space-between;
       margin: 9px 0 0;
+      height: 46px;
       .navigation-left{
         display: flex;
         .navigation-category__categories {
@@ -240,6 +241,26 @@
                 color:#333;
                 position: relative;
               }
+            }
+          }
+        }
+        .navigation-login-signup{
+          display: flex;
+          &__product-list {
+            padding: 0 14px;
+            .product-list-link {
+              @include login-signup;
+            }
+          }
+          &__login {
+            padding: 0 14px;
+            .login {
+              @include login-signup;
+            }
+          }
+          &__signup {
+            .signup {
+              @include login-signup;
             }
           }
         }

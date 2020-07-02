@@ -1,4 +1,5 @@
 class ShopsController < ApplicationController
+  before_action :authenticate_user!, except: :index
   def index
     @category_parents = Category.where(ancestry: nil)
     @brands = Brand.all

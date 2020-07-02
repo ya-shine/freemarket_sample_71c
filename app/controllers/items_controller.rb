@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :get_size]
   before_action :category_all, only: :index
   before_action :brand_category_header, only: [:index]
@@ -45,6 +45,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @items = Item.includes(:user).where(users: {id: @item.user_id})
   end
 
   private
