@@ -47,6 +47,15 @@ class ItemsController < ApplicationController
     @items = Item.includes(:user).where(users: {id: @item.user_id})
   end
 
+  def destroy
+    if @item.destroy
+      redirect_to items_path
+    else
+      flash.now[:alert] = "削除できませんでした"
+      render :show
+    end
+  end
+
   private
 
   def item_params
