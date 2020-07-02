@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
   private
 
   def brand_category_header
-    @category_parents = Category.all.where(ancestry: nil)
+    @category_parents = Category.where(ancestry: nil)
     @brands = Brand.all
   end
 end
