@@ -10,11 +10,6 @@
       .favorite-title-box-top
         %h3.favorite-title
           新着アイテム
-        .favorite-more
-          = link_to "#",class:"more-items" do
-            %span.item-category
-              もっと見る
-            = icon("fas","arrow-right")
       .items-boxes
         %ul.items-lists
           = render partial:"/items/item.all"
@@ -24,13 +19,13 @@
       .genre-famous
         %ul.genre-lists
           %li.genre-lists__list
-            = link_to "レディース","#",class:"list"
+            = link_to "レディース",category_path(1),class:"list"
           %li.genre-lists__list
-            = link_to "メンズ","#",class:"list"
+            = link_to "メンズ",category_path(200),class:"list"
           %li.genre-lists__list
-            = link_to "家電・スマホ・カメラ","#",class:"list"
+            = link_to "家電・スマホ・カメラ",category_path(898),class:"list"
           %li.genre-lists__list
-            = link_to "おもちゃ・ホビー・グッズ","#",class:"list"
+            = link_to "おもちゃ・ホビー・グッズ",category_path(685),class:"list"
     .favorite-container
       .favorite-title-box-top
         %h3.favorite-title
@@ -76,64 +71,7 @@
       .items-boxes
         %ul.items-lists
           = render partial:"/items/favorites_item_hobby"
-    .items-genre-box
-      %h2.box-title
-        人気のブランド
-      .genre-famous
-        %ul.genre-lists
-          %li.genre-lists__list
-            = link_to "シャネル","#",class:"list"
-          %li.genre-lists__list
-            = link_to "ルイヴィトン","#",class:"list"
-          %li.genre-lists__list
-            = link_to "ナイキ","#",class:"list"
-          %li.genre-lists__list
-            = link_to "プーマ","#",class:"list"
-    .favorite-container
-      .favorite-title-box-top
-        %h3.favorite-title
-          シャネル新着アイテム
-        .favorite-more
-          = link_to "#",class:"more-items" do
-            %span.item-category
-              もっと見る
-            = icon("fas","arrow-right")
-      .items-boxes
-        %ul.items-lists
-          = render partial:"/items/favorite-items-lists"
-      .favorite-title-box-else
-        %h3.favorite-title
-          ルイヴィトン新着アイテム
-        .favorite-more
-          = link_to "#",class:"more-items" do
-            %span.item-category
-              もっと見る
-            = icon("fas","arrow-right")
-      .items-boxes
-        %ul.items-lists
-          = render partial:"/items/favorite-items-lists"
-      .favorite-title-box-else
-        %h3.favorite-title
-          ナイキ新着アイテム
-        .favorite-more
-          = link_to "#",class:"more-items" do
-            %span.item-category
-              もっと見る
-            = icon("fas","arrow-right")
-      .items-boxes
-        %ul.items-lists
-          = render partial:"/items/favorite-items-lists"
-      .favorite-title-box-else
-        %h3.favorite-title
-          プーマ新着アイテム
-        .favorite-more
-          = link_to "#",class:"more-items" do
-            %span.item-category
-              もっと見る
-            = icon("fas","arrow-right")
-      .items-boxes
-        %ul.items-lists
-          = render partial:"/items/favorite-items-lists"
+
 %aside.banner-for-app
   .banner-inner
     %h2.banner-inner__title

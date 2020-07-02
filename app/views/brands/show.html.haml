@@ -26,7 +26,24 @@
                           %span.item-box-likes__number
                             0
           - else
-            何もないお
+            .create-main
+              .add-more-items
+                %h2.notice__title まだ商品がありません。
+                .create
+                  .submit-next
+                    .actions
+                      = link_to "トップページへ戻る", root_path, class: "return"
+                      = link_to "商品を出品する", new_item_path, class: "return"
+
+%aside.banner-for-app
+  .banner-inner
+    %h2.banner-inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.banner-inner__text
+      今すぐ無料ダウンロード！
+    .inner-icons
+      = link_to image_tag("/images/appstore-icon.png",alt:"appstore",class:"icon-image"),"#",class:"icon-left"
+      = link_to image_tag("/images/googlestore-icon.png",alt:"googleplay",class:"icon-image"),"#",class:"icon-right"
 
 .main-footer
   = render partial:"/layouts/main-footer"

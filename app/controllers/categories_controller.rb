@@ -1,13 +1,15 @@
 class CategoriesController < ApplicationController
 
   def index
+    @brands = Brand.all
     @category_parents = Category.all.where(ancestry: nil)
-    @categories = Category.all
+    @items = Item.all.where(item_status:0).order("id DESC").page(params[:page]).per(50)
   end
   def show
+    @brands = Brand.all
     @category_parents = Category.all.where(ancestry: nil)
     @category = Category.find(params[:id])
     @items = @category.find_items
-    @items = @items.order("created_at DESC").page(params[:page]).per(30)
+    @items = @items.where(item_status:0).order("created_at DESC").page(params[:page]).per(30)
   end
 end
