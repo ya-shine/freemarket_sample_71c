@@ -1,0 +1,31 @@
+.create-main {
+  margin: auto;
+  .add-more-items {
+    @include sign-up-container;
+    .notice__title {
+      font-size: 22px;
+      font-weight: bold;
+      text-align: center;
+      padding-top: 15px;
+    }
+    .create{
+      padding: 40px 40px 64px;
+      .submit-next{
+        @include submit-contents;
+        .actions{
+          @include submit-contents-actions;
+          .return{
+            display: block;
+            background-color: #3ccace;
+            text-decoration: none;
+            color: white;
+            margin-top: 8px;
+            line-height: 48px;
+            border-radius: 4px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}

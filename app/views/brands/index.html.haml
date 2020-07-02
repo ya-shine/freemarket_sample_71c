@@ -1,0 +1,37 @@
+.header-main
+  = render partial:'/layouts/main_header'
+.main-brandry
+  .main-box
+    .items-genre-box
+      %h2.box-title
+        ブランド一覧
+  .all-kinds
+    - @brands.each do |brand|
+      = link_to "#{brand.name}",brand_path(brand.id),class:"brand"
+
+  .items-boxes
+    %ul.items-lists
+      - @items.each do |item|
+        %li.items-lists__each
+          .item-sammary
+            = link_to "#",class:"sammary" do
+              %figure.item-image
+                .image-thumbnail
+                  %span.price
+                    = number_to_currency(item.price,format: "%u%n",unit: "¥")
+                  = image_tag item.images[0].image.url,alt:"sample",class:"sample"
+                %figcaption.caption
+                  %span.line
+                    = item.name.truncate(22)
+                  .like-count
+                    = icon("far","heart")
+                    %span.item-box-likes__number
+                      0
+= paginate(@items)
+.main-footer
+  = render partial:"/layouts/main-footer"
+
+= link_to new_item_path do
+  .sell-btn
+    %span.sell-btn__text 出品
+    = image_tag("/images/icon_camera.png", alt: "CAMERA", class: "sell-btn__image")

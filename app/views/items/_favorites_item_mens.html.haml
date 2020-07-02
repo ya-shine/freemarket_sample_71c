@@ -1,13 +1,12 @@
-- @items.each do |item| 
+- @item_category_mens.each do |item|
   %li.items-lists__each
     .item-sammary
-      = link_to item_path(item.id), class:"sammary" do
+      = link_to "#",class:"sammary" do
         %figure.item-image
           .image-thumbnail
             %span.price
-              ¥
-              = item.price.to_s(:delimited, delimiter: ',')
-            = image_tag item.images[0].image.url, alt:"sample", class:"sample"
+              = number_to_currency(item.price,format: "%u%n",unit: "¥")
+            = image_tag item.images[0].image.url,alt:"sample",class:"sample"
           %figcaption.caption
             %span.line
               = item.name.truncate(22)

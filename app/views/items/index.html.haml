@@ -5,120 +5,73 @@
     .top-banner
     .items-genre-box
       %h2.box-title
+        新着商品
+    .favorite-container
+      .favorite-title-box-top
+        %h3.favorite-title
+          新着アイテム
+      .items-boxes
+        %ul.items-lists
+          = render partial:"/items/item.all"
+    .items-genre-box
+      %h2.box-title
         人気のカテゴリー
       .genre-famous
         %ul.genre-lists
           %li.genre-lists__list
-            = link_to "レディース","#",class:"list"
+            = link_to "レディース",category_path(1),class:"list"
           %li.genre-lists__list
-            = link_to "メンズ","#",class:"list"
+            = link_to "メンズ",category_path(200),class:"list"
           %li.genre-lists__list
-            = link_to "家電・スマホ・カメラ","#",class:"list"
+            = link_to "家電・スマホ・カメラ",category_path(898),class:"list"
           %li.genre-lists__list
-            = link_to "おもちゃ・ホビー・グッズ","#",class:"list"
+            = link_to "おもちゃ・ホビー・グッズ",category_path(685),class:"list"
     .favorite-container
       .favorite-title-box-top
         %h3.favorite-title
           レディース新着アイテム
         .favorite-more
-          = link_to "#",class:"more-items" do
+          = link_to category_path(1),class:"more-items" do
             %span.item-category
               もっと見る
             = icon("fas","arrow-right")
       .items-boxes
         %ul.items-lists
-          = render partial:"/items/favorite-items-lists"
+          = render partial:"/items/favorite_item_ladys"
       .favorite-title-box-else
         %h3.favorite-title
           メンズ新着アイテム
         .favorite-more
-          = link_to "#",class:"more-items" do
+          = link_to category_path(200),class:"more-items" do
             %span.item-category
               もっと見る
             = icon("fas","arrow-right")
       .items-boxes
         %ul.items-lists
-          = render partial:"/items/favorite-items-lists"
+          = render partial:"/items/favorites_item_mens"
       .favorite-title-box-else
         %h3.favorite-title
           家電・スマホ・カメラ新着アイテム
         .favorite-more
-          = link_to "#",class:"more-items" do
+          = link_to category_path(898),class:"more-items" do
             %span.item-category
               もっと見る
             = icon("fas","arrow-right")
       .items-boxes
         %ul.items-lists
-          = render partial:"/items/favorite-items-lists"
+          = render partial:"/items/favorite_item_gadget"
       .favorite-title-box-else
         %h3.favorite-title
           おもちゃ・ホビー・グッズ新着アイテム
         .favorite-more
-          = link_to "#",class:"more-items" do
+          = link_to category_path(685),class:"more-items" do
             %span.item-category
               もっと見る
             = icon("fas","arrow-right")
       .items-boxes
         %ul.items-lists
-          = render partial:"/items/favorite-items-lists"
-    .items-genre-box
-      %h2.box-title
-        人気のブランド
-      .genre-famous
-        %ul.genre-lists
-          %li.genre-lists__list
-            = link_to "シャネル","#",class:"list"
-          %li.genre-lists__list
-            = link_to "ルイヴィトン","#",class:"list"
-          %li.genre-lists__list
-            = link_to "ナイキ","#",class:"list"
-          %li.genre-lists__list
-            = link_to "プーマ","#",class:"list"
-    .favorite-container
-      .favorite-title-box-top
-        %h3.favorite-title
-          シャネル新着アイテム
-        .favorite-more
-          = link_to "#",class:"more-items" do
-            %span.item-category
-              もっと見る
-            = icon("fas","arrow-right")
-      .items-boxes
-        %ul.items-lists
-          = render partial:"/items/favorite-items-lists"
-      .favorite-title-box-else
-        %h3.favorite-title
-          ルイヴィトン新着アイテム
-        .favorite-more
-          = link_to "#",class:"more-items" do
-            %span.item-category
-              もっと見る
-            = icon("fas","arrow-right")
-      .items-boxes
-        %ul.items-lists
-          = render partial:"/items/favorite-items-lists"
-      .favorite-title-box-else
-        %h3.favorite-title
-          ナイキ新着アイテム
-        .favorite-more
-          = link_to "#",class:"more-items" do
-            %span.item-category
-              もっと見る
-            = icon("fas","arrow-right")
-      .items-boxes
-        %ul.items-lists
-          = render partial:"/items/favorite-items-lists"
-      .favorite-title-box-else
-        %h3.favorite-title
-          プーマ新着アイテム
-        .favorite-more
-          = link_to "#",class:"more-items" do
-            %span.item-category
-              もっと見る
-            = icon("fas","arrow-right")
-      .items-boxes
-        %ul.items-lists
-          = render partial:"/items/favorite-items-lists"
+          = render partial:"/items/favorites_item_hobby"
+
 %aside.banner-for-app
   .banner-inner
     %h2.banner-inner__title
@@ -129,7 +82,11 @@
       = link_to image_tag("/images/appstore-icon.png",alt:"appstore",class:"icon-image"),"#",class:"icon-left"
       = link_to image_tag("/images/googlestore-icon.png",alt:"googleplay",class:"icon-image"),"#",class:"icon-right"
 
-  test
+= link_to new_item_path do
+  .sell-btn
+    %span.sell-btn__text 出品
+    = image_tag("/images/icon_camera.png", alt: "CAMERA", class: "sell-btn__image")
+
   = link_to "ログイン", user_session_path
   = link_to "新規会員登録", new_user_registration_path
   = link_to "出品", new_item_path

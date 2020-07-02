@@ -24,4 +24,6 @@ class Item < ApplicationRecord
       numericality: {greater_than_or_equal_to:300,less_than:10000000}
 
     accepts_nested_attributes_for :images, allow_destroy:true
+
+
 end

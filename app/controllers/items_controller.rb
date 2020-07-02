@@ -1,9 +1,10 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :get_size]
-  before_action :set_category, only: [:create]
+  before_action :category_all, only: :index
+  before_action :brand_category_header, only: [:index]
   def index
-    @items = Item.includes(:user).order("created_at DESC")
+    @items = Item.all.where(item_status:0).order("id DESC").page(params[:page]).per(50)
   end
 
   def new
@@ -66,8 +67,16 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def set_category  
-    @category_parent_array = Category.where(ancestry: nil)
+  def brand_category_header
+    @category_parents = Category.all.where(ancestry: nil)
+    @brands = Brand.all
+  end
+
+  def category_all
+    @item_category_lady = Item.all.where(item_status:0,category_id:1..199).limit(10)
+    @item_category_mens = Item.all.where(item_status:0,category_id:200..345).limit(10)
+    @item_category_hobby = Item.all.where(item_status:0,category_id:685..797).limit(10)
+    @item_category_gadget = Item.all.where(item_status:0,category_id:898..983).limit(10)
   end
   
 end

@@ -96,24 +96,14 @@
           お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
   %section.pickups
     %h2.title
-      ピックアップカテゴリー
+      最新商品
     .pickup-box
       .pickup-head
-        = link_to "#",class:"link-pickups" do
+        = link_to items_path,class:"link-pickups" do
           %h3.pickup-title
-            新規投稿商品
+            商品一覧へ
       .pickup-lists
         = render partial:"layouts/main_pickup-items"
-  %section.pickups
-    %h2.title
-      ピックアップブランド
-    .pickup-box
-      .pickup-head
-        = link_to "#",class:"link-pickups" do
-          %h3.pickup-title
-            アーカイバ
-      .pickup-lists
-        = render partial:"/layouts/main_pickup-items"
 %aside.banner-for-app
   .banner-inner
     %h2.banner-inner__title
@@ -123,7 +113,6 @@
     .inner-icons
       = link_to image_tag("/images/appstore-icon.png",alt:"appstore",class:"icon-image"),"#",class:"icon-left"
       = link_to image_tag("/images/googlestore-icon.png",alt:"googleplay",class:"icon-image"),"#",class:"icon-right"
-
 .main-footer
   = render partial:"/layouts/main-footer"
 
@@ -139,4 +128,4 @@ test
 = link_to "商品一覧", items_path
 -# = link_to "商品詳細ページ", item_path
 -# = link_to "商品購入ページ", new_order_path
--# = link_to "お届け先住所登録",new_shipping_address_path 
+-# = link_to "お届け先住所登録",new_shipping_address_path
