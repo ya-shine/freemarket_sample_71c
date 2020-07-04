@@ -86,51 +86,52 @@
           = link_to destroy_user_session_path, class: "nav__list__box--item active", method: :delete do
             %span ログアウト
             = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
-  .right-content
-    .mypage-right-container
-      %h2.mypage-right-container__head クレジットカード情報入力
-      .credit-card-container
-        .field-top
-          %label カード番号
-          %span.field__require
-            必須
-          %br/
-          = text_field_tag "card-number", "", class: "card-number", placeholder: "半角数字のみ"
-          %ul.card-list
-            %li.card-logo
-              = image_tag("/images/VISAロゴデータ.png", alt: "VISA", width: "40", height: "20")
-            %li.card-logo
-              = image_tag("/images/logo_mastercard.gif", alt: "mastercard", width: "34", height: "20")
-            %li.card-logo
-              = image_tag("/images/jcb-logomark-img-01.gif", alt: "JCB", width: "32", height: "20")
-            %li.card-logo
-              = image_tag("/images/amex-logomark-img-04.gif", alt: "amex", width: "21", height: "20")
-            %li.card-logo
-              = image_tag("/images/diners-logomark-img-01.gif", alt: "Diners", width: "32", height: "20")
-            %li.card-logo
-              = image_tag("/images/discover-logomark-img-08.gif", alt: "discover", width: "32", height: "20")
-        .field
-          %label 有効期限
-          %span.field__require
-            必須
-          %br/
-          .card-expiration
-            = select_tag "expiration", options_for_select([["--", "1"], ["01", "2"], ["02", "3"], ["03", "4"], ["04", "5"], ["05", "6"], ["06", "7"], ["07", "8"], ["08", "9"], ["09", "10"], ["10", "11"], ["11", "12"], ["12", "13"]])
-            %span 月
-            = select_tag "expiration", options_for_select([["--", "1"], ["2020", "2"], ["2021", "3"], ["2022", "4"], ["2023", "5"], ["2024", "6"], ["2025", "7"], ["2026", "8"], ["2027", "9"], ["2028", "10"]])
-            %span 年
-        .field
-          %label セキュリティコード
-          %span.field__require
-            必須
-          %br/
-          = text_field_tag "security-code", "", class: "security-code", placeholder: "カード背面4桁もしくは3桁の番号"
-          .security-code-info
-            .security-code-info__text
-              %span.question ?
-              カード裏面の番号とは？
-        .field
-          = button_tag "追加する", class: "add-credit"
+  = form_tag(pay_credit_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
+    .right-content
+      .mypage-right-container
+        %h2.mypage-right-container__head クレジットカード情報入力
+        .credit-card-container
+          .field-top
+            %label カード番号
+            %span.field__require
+              必須
+            %br/
+            = text_field_tag "number", "", class: "card-number", placeholder: "半角数字のみ",id:"card_number",maxlength: "16", type: "text"
+            %ul.card-list
+              %li.card-logo
+                = image_tag("/images/VISAロゴデータ.png", alt: "VISA", width: "40", height: "20")
+              %li.card-logo
+                = image_tag("/images/logo_mastercard.gif", alt: "mastercard", width: "34", height: "20")
+              %li.card-logo
+                = image_tag("/images/jcb-logomark-img-01.gif", alt: "JCB", width: "32", height: "20")
+              %li.card-logo
+                = image_tag("/images/amex-logomark-img-04.gif", alt: "amex", width: "21", height: "20")
+              %li.card-logo
+                = image_tag("/images/diners-logomark-img-01.gif", alt: "Diners", width: "32", height: "20")
+              %li.card-logo
+                = image_tag("/images/discover-logomark-img-08.gif", alt: "discover", width: "32", height: "20")
+          .field
+            %label 有効期限
+            %span.field__require
+              必須
+            %br/
+            .card-expiration
+              = select_tag "expiration",options_for_select([["01", "1"], ["02", "2"], ["03", "3"], ["04", "4"], ["05", "5"], ["06", "6"], ["07", "7"], ["08", "8"], ["09", "9"], ["10", "10"], ["11", "11"], ["12", "12"]]),prompt:"---",id:"exp_month",name:"exp_month",type:"text"
+              %span 月
+              = select_tag "expiration", options_for_select([["2020", "1"], ["2021", "2"], ["2022", "3"], ["2023", "4"], ["2024", "5"], ["2025", "6"], ["2026", "7"], ["2027", "8"], ["2028", "9"], ["2029", "10"]]),prompt:"---",id:"exp_year",name:"exp_year",type:"text"
+              %span 年
+          .field
+            %label セキュリティコード
+            %span.field__require
+              必須
+            %br/
+            = text_field_tag "cvc", "", class: "security-code",id:"cvc", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4"
+            .security-code-info
+              .security-code-info__text
+                %span.question ?
+                カード裏面の番号とは？
+          .field
+            = submit_tag "追加する", class: "add-credit",id:"token_submit"
 
 %aside.banner-for-app
   .banner-inner
