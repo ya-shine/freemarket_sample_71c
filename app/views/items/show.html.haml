@@ -30,12 +30,12 @@
           %th.item-details-table__containers
             カテゴリー
           %td.item-details-table__information
-            = link_to "#", class:"category" do
+            = link_to category_path(@item.category.parent.parent_id), class:"category" do
               = @item.category.parent.parent.name
-            = link_to "#",class:"category" do
+            = link_to category_path(@item.category.parent_id), class:"category" do
               = icon("fas", "chevron-right")
               = @item.category.parent.name
-            = link_to "#",class:"category" do
+            = link_to category_path(@item.category_id), class:"category" do
               = icon("fas", "chevron-right")
               = @item.category.name
         %tr.item-details-table
