@@ -28,9 +28,9 @@
 
 .item-other-content
   %h2.item-other-title
-    = link_to "#{@item.category.parent.parent.name}のそのほかの商品", category_path(@item.category.parent.parent_id), class: "other-item"
+    = link_to "#{@item.category.root.name}のそのほかの商品", category_path(@item.category.root_id), class: "other-item"
   .favorite-more
-    = link_to category_path(@item.category.parent.parent_id), class: "more-items" do
+    = link_to category_path(@item.category.root_id), class: "more-items" do
       %span.item-category
         もっと見る
       = icon("fas","arrow-right")
