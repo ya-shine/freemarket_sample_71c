@@ -1,10 +1,14 @@
 class CreditCardsController < ApplicationController
+  require "payjp"
   before_action :brand_category_header, only: [:index,:new]
 
   def index
   end
 
   def new
+  end
+
+  def pay
   end
 
   private
