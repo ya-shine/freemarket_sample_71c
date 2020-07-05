@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   resources :mypage, only: :index
   resources :credit_cards, only: [:index, :new, :show] do
     collection do
-      post 'pay', to: 'credit_card#pay'
+      post 'pay', to: 'credit_cards#pay'
     end
   end
 end
