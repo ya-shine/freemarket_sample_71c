@@ -2,27 +2,28 @@ class CreditCardsController < ApplicationController
   require "payjp"
   before_action :brand_category_header, only: [:index,:new]
   def index
-    card = current_user.credit_cards
-    redirect_to action: "show" if card.exists?
+    # card = current_user.credit_card
+    # redirect_to action: "show" if card.exists?
   end
 
   def new
     card = CreditCard.where(user_id: current_user.id)
-    redirect_to action: "show" if card.exists?
+    # redirect_to action: "show" if card.exists?
   end
 
   def pay
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    if params['authenticity_token'].blank?
+    if params['payjp-token'].blank?
       redirect_to action: "new"
     else
       costomer = Payjp::Customer.create(
+      email: current_user.email,
       card: params['payjp-token'],
       metadata: {user_id: current_user.id}
       )
-      @card = CreditCard.new(user_id: current_user.id, costomer_id: costomer.id, card_id: costomer.default_card),
+      @card = CreditCard.new(user_id: current_user.id, costomer_id: costomer.id, card_id: costomer.default_card)
       if @card.save
-        redirect_to action: "show"
+        redirect_to root_path
       else
         redirect_to root_path
       end
