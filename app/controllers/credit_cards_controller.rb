@@ -4,9 +4,9 @@ class CreditCardsController < ApplicationController
   def index
     card = CreditCard.where(user_id: current_user.id)
     if card.exists?
-      redirect_to mypage_index_path
+      redirect_to credit_card_path(current_user.id)
     else
-      redirect_to root_path
+      redirect_to new_credit_card_path
     end
   end
 
@@ -33,13 +33,7 @@ class CreditCardsController < ApplicationController
   end
 
   def show
-    card = current_user.credit_cards.first
-    if card.present?
-      costomer = Payjp::Customer.retrieve(card.costomer_id)
-      @default_card_information = costomer.cards.retrieve(card.card_id)
-    else
-      redirect_to action: "confirmation", id: current_user.id
-    end
+    @card = CreditCard.find(params[:id])
   end
 
   private
