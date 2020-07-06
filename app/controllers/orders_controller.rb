@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
   end
 
   def done
-
+    @item = Item.find(params[:item_id])
   end
 
 end

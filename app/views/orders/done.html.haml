@@ -2,7 +2,30 @@
   %h1.title-logo
     = link_to image_tag("/images/logo.png", alt:"FURIMA", class: "logo"), root_path, class: "logo-link"
     
-kounyuuarigatou
-
+.purchased-notice
+  .greeting
+    %h1.greet
+      購入完了
+  .notice-container
+    %h2.title
+      購入商品
+    .item-info
+      .image
+        = image_tag @item.images[0].image.url,alt:"item-image",class:"image-one"
+      .name
+        %h3.name-title
+          商品名
+        %h5.name-item
+          = simple_format(@item.name)
+      .price
+        %h3.price-title
+          金額
+        %h5.price-item
+          = number_to_currency(@item.price,format: "%u%n",unit: "¥")
+    .link
+      .link-to-top
+        = link_to "トップページへ",root_path,class:"linked"
+      .link-to-mypage
+        = link_to "マイページへ",mypage_index_path,class:"linked"
 .footer
   = render "/layouts/form_footer"
