@@ -87,27 +87,22 @@
             %span ログアウト
             = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
   .right-content
-    %section.card__container
-      %h2.chapter__head 支払い方法
-      .payment__main
-        .payment__list
-          .payment__list__content
-            %h3.sub__head クレジットカード一覧
-        .card__payment__list
-          %form.card__payment__content
-          .card__list
-            .card__list__picture  
-          .card__number 
+    %section.card-container
+      %h2.card-container__head 支払い方法
+      .card-container__inner
+        .payment-list
+          .payment-list__content
+            %h3.sub-head 登録クレジットカード
+        .payment-info
+          .card-list
+            .card-list-image
+          .card-number 
             = "**** **** **** " + @default_card_information.last4
-          .expire__date 
+          .expire-date 
             - exp_month = @default_card_information.exp_month.to_s
             - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
             = exp_month + " / " + exp_year
-          -# = form_tag(delete_credit_card_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
-          -#   %input{ type: "hidden", name: "card_id", value: "" }
-          -#   %button.delete__button 削除する
-        .how__not__regist
-          %span 支払い方法について
+
 
 %aside.banner-for-app
   .banner-inner
