@@ -1,0 +1,128 @@
+.header-main
+  = render partial: "/layouts/main_header"
+
+.bread-crumb
+  %ul.bread-crumb__nav
+    %li.bread-crumb__nav__item
+      = link_to root_path, class: "bread-crumb__nav__item--link" do
+        %span フリマ
+      = icon('fas', 'chevron-right', class: "bread-crumb__nav__item--icon")
+      = link_to root_path, class: "bread-crumb__nav__item--link present-location" do
+        %span マイページ
+      = icon('fas', 'chevron-right', class: "bread-crumb__nav__item--icon")
+      = link_to credit_cards_path, class: "bread-crumb__nav__item--link present-location" do
+        %span 支払い方法
+      = icon('fas', 'chevron-right', class: "bread-crumb__nav__item--icon")
+      = link_to new_credit_card_path, class: "bread-crumb__nav__item--link present-location" do
+        %span クレジットカード情報入力
+
+.mypage-main
+  .left-content
+    %nav.nav
+      %ul.nav__list
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            マイページ
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            いいね！一覧
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to new_item_path, class: "nav__list__box--item active" do
+            出品する
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            出品した商品-出品中
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            出品した商品-取引中
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            出品した商品-売却済み
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            購入した商品-取引中
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            購入した商品-過去の取引
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            評価一覧
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+      %h3.nav__title 設定
+      %ul.nav__list
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            プロフィール
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            発送元・お届け先住所変更
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            支払い方法
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            メール/パスワード
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            本人情報
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to "#", class: "nav__list__box--item active" do
+            電話番号の確認
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+        %li.nav__list__box
+          = link_to destroy_user_session_path, class: "nav__list__box--item active", method: :delete do
+            %span ログアウト
+            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+  .right-content
+    %section.chapter__container
+      %h2.chapter__head 支払い方法
+      .payment__main
+        .payment__list
+          .payment__list__content
+            %h3.sub__head クレジットカード一覧
+        .card__payment__list
+          %form.card__payment__content
+          .card__list
+            .card__list__picture  
+          .card__number 
+            = "**** **** **** " + @default_card_information.last4
+          .expire__date 
+            - exp_month = @default_card_information.exp_month.to_s
+            - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+            = exp_month + " / " + exp_year
+          -# = form_tag(delete_credit_card_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
+          -#   %input{ type: "hidden", name: "card_id", value: "" }
+          -#   %button.delete__button 削除する
+        .how__not__regist
+          %span 支払い方法について
+
+%aside.banner-for-app
+  .banner-inner
+    %h2.banner-inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.banner-inner__text
+      今すぐ無料ダウンロード！
+    .inner-icons
+      = link_to image_tag("/images/appstore-icon.png",alt:"appstore",class:"icon-image"),"#",class:"icon-left"
+      = link_to image_tag("/images/googlestore-icon.png",alt:"googleplay",class:"icon-image"),"#",class:"icon-right"
+
+.main-footer
+  = render partial: "/layouts/main-footer"
+
+= link_to new_item_path do
+  .sell-btn
+    %span.sell-btn__text 出品
+    = image_tag("/images/icon_camera.png", alt: "CAMERA", class: "sell-btn__image")

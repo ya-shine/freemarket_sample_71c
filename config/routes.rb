@@ -27,9 +27,5 @@ Rails.application.routes.draw do
   resource :order
   resources :shipping_addresses
   resources :mypage, only: :index
-  resources :credit_cards, only: [:index, :new, :show] do
-    collection do
-      post 'pay', to: 'credit_cards#pay'
-    end
-  end
+  resources :credit_cards, only: [:index, :new, :show, :create]
 end

@@ -86,7 +86,7 @@
           = link_to destroy_user_session_path, class: "nav__list__box--item active", method: :delete do
             %span ログアウト
             = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
-  = form_tag(pay_credit_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
+  = form_tag(credit_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
     .right-content
       .mypage-right-container
         %h2.mypage-right-container__head クレジットカード情報入力

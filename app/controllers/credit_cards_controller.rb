@@ -1,29 +1,25 @@
 class CreditCardsController < ApplicationController
   require "payjp"
-  before_action :brand_category_header, only: [:index,:new]
+  before_action :brand_category_header, only: [:index,:new,:show]
   def index
     card = CreditCard.where(user_id: current_user.id)
-    if card.exists?
-      redirect_to credit_card_path(current_user.id)
-    else
-      redirect_to new_credit_card_path
-    end
+    redirect_to credit_card_path(current_user.id) if card.exists?
   end
 
   def new
   end
 
-  def pay
+  def create
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params['payjp-token'].blank?
       redirect_to action: "new"
     else
-      costomer = Payjp::Customer.create(
+      customer = Payjp::Customer.create(
       email: current_user.email,
       card: params['payjp-token'],
       metadata: {user_id: current_user.id}
       )
-      @card = CreditCard.new(user_id: current_user.id,costomer_id: costomer.id, card_id: costomer.default_card)
+      @card = CreditCard.new(user_id: current_user.id,customer_id: customer.id, card_id: customer.default_card)
       if @card.save
         redirect_to root_path
       else
@@ -33,7 +29,14 @@ class CreditCardsController < ApplicationController
   end
 
   def show
-    @card = CreditCard.find(params[:id])
+    card = CreditCard.find_by(user_id: current_user.id)
+    if card.blank?
+      redirect_to action: "new" 
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @default_card_information = customer.cards.retrieve(card.card_id)
+    end
   end
 
   private
