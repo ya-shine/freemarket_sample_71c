@@ -180,8 +180,8 @@ body{
           padding: 32px 0;
           border-top: $borderTop;
           &--button{
-            border: 1px solid #888;
-            background: #888;
+            border: 1px solid rgb(214, 21, 21);
+            background: rgba(225, 23, 23, 0.819);
             color: #fff;
             display: block;
             width: 100%;
@@ -190,6 +190,7 @@ body{
             text-align: center;
             font-weight: 600;
             outline: 0;
+            
           }
         }
       }
