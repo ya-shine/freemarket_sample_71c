@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
   resources :categories, only: [:index, :show]
   resources :brands, only: [:index,:show]
-  resource :order
+  resources :orders, only: :show
   resources :shipping_addresses
   resources :mypage, only: :index
   resources :credit_cards, only: [:index, :new, :show, :create,:destroy]

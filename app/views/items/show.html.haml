@@ -93,7 +93,7 @@
           = link_to "削除", item_path, method: :delete, class: "edit-delete-btn"
     - elsif user_signed_in? && current_user.id != @item.user_id
       .purchase
-        = link_to "購入画面に進む", "#", class: "link-to-purchase"
+        = link_to "購入画面に進む", order_path(@item.id), class: "link-to-purchase"
     - else
       .purchase
         = link_to new_user_registration_path, class: "link-to-purchase" do
