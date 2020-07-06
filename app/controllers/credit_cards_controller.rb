@@ -2,8 +2,8 @@ class CreditCardsController < ApplicationController
   require "payjp"
   before_action :brand_category_header, only: [:index,:new,:show]
   def index
-    card = CreditCard.where(user_id: current_user.id)
-    redirect_to credit_card_path(current_user.id) if card.exists?
+    card = CreditCard.find_by(user_id: current_user.id)
+    redirect_to credit_card_path(current_user.id) if card.present?
   end
 
   def new
