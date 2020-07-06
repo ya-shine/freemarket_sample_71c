@@ -21,7 +21,7 @@ class CreditCardsController < ApplicationController
       )
       @card = CreditCard.new(user_id: current_user.id,customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to root_path
+        redirect_to mypage_index_path
       else
         redirect_to root_path
       end
@@ -29,13 +29,25 @@ class CreditCardsController < ApplicationController
   end
 
   def show
-    card = CreditCard.find_by(user_id: current_user.id)
-    if card.blank?
+    @card = CreditCard.find_by(user_id: current_user.id)
+    if @card.blank?
       redirect_to action: "new" 
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @default_card_information = customer.cards.retrieve(@card.card_id)
+    end
+  end
+
+  def destroy
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    @card = CreditCard.find_by(user_id: current_user.id)
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+    customer.delete
+    if @card.destroy
+      redirect_to credit_cards_path
+    else
+      redirect_to mypage_index_path, alert: "削除できませんでした"
     end
   end
 

@@ -93,15 +93,17 @@
         .payment-list
           .payment-list__content
             %h3.sub-head 登録クレジットカード
-        .payment-info
-          .card-list
-            .card-list-image
-          .card-number 
-            = "**** **** **** " + @default_card_information.last4
-          .expire-date 
-            - exp_month = @default_card_information.exp_month.to_s
-            - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-            = exp_month + " / " + exp_year
+          .payment-info
+            .card-list
+              .card-list-image
+            .card-number 
+              = "**** **** **** " + @default_card_information.last4
+            .expire-date 
+              - exp_month = @default_card_information.exp_month.to_s
+              - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+              = exp_month + " / " + exp_year
+        .delete-card
+          = link_to "削除する",credit_card_path(current_user.id), method: :delete,class: "delete-card-link"
 
 
 %aside.banner-for-app

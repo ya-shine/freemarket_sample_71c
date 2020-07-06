@@ -9,6 +9,8 @@
   }
   &__inner{
     padding: 64px;
+    display: flex;
+    justify-content: space-between;
     .payment-list{
       padding-bottom: 30px;
       &__content{
@@ -31,6 +33,23 @@
       }
       .expire-date {
         font-size: 16px;
+      }
+    }
+    .delete-card {
+      .delete-card-link {
+        display: inline-block;
+        text-decoration: none;
+        font-size: 15px;
+        padding: 9px;
+        color: rgba(242, 9, 24, 0.393);
+        border: solid 1px;
+        margin-top: 30px;
+        font-weight: bolder;
+        border-radius: 5px;
+        &:hover {
+          background-color: rgba(242, 9, 24, 0.393);
+          color: white;
+        }
       }
     }
   }
