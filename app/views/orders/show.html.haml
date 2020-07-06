@@ -26,15 +26,23 @@
               %span
               = number_to_currency(@item.price,format:"%u%n",unit:"¥")
         - if @buyer.credit_card.present?
-          .method
-            .method__label
-              %h3.method__label--text 支払い方法
-            .card-number 
-              = "**** **** **** " + @default_card_information.last4
+          .card-info
+            .card-info__label
+              %h3.card-info__label--text 支払い方法
+              = link_to credit_cards_path(@item.user_id), class: "sipping-adress__inner__label--right" do
+                %span 変更する
+            .card-number
+              %h3.title 
+                クレジットカード
+              %span.number
+                = "**** **** **** " + @default_card_information.last4
             .expire-date 
               - exp_month = @default_card_information.exp_month.to_s
               - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-              = exp_month + " / " + exp_year
+              %span.expiration
+                有効期限
+              %span.date-year
+                = exp_month + " / " + exp_year
         - else
           .method
             .method__label
