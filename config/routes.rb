@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resource :order, only: [:show] do
       collection do
         post 'pay', to: 'orders#pay'
+        get 'done', to: 'orders#done'
       end
     end
   end

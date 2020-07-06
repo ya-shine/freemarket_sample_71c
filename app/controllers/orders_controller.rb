@@ -13,15 +13,21 @@ class OrdersController < ApplicationController
   end
 
   def pay
+    @item = Item.find(params[:item_id])
     card = CreditCard.find_by(user_id: current_user.id)
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(
-    amount: 1000,
-    customer: card.customer_id,
-    currency: 'jpy',
-  )
+      amount: @item.price,
+      customer: card.customer_id,
+      currency: 'jpy',
+    )
+    @item.update(item_status: 1)
+    Order.create(user_id: current_user.id,item_id:@item.id,shipping_address_id:@item.user.shipping_address.id)
+    redirect_to done_item_order_path(@item.id)
+  end
 
-  redirect_to root_path, notice:"you got it"
+  def done
+
   end
 
 end
