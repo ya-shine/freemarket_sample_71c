@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
     )
     @item.update(item_status: 1)
     Order.new(order_params)
-    Order.create(user_id: current_user.id,item_id:@item.id,zipcode:@item.user.shipping_address.zipcode,prefecture:@item.user.shipping_address.prefecture,city:@item.user.shipping_address.city,building:@item.user.shipping_address.building)
+    Order.create(user_id: current_user.id,item_id:@item.id,zipcode:@item.user.shipping_address.zipcode,prefecture:@item.user.shipping_address.prefecture,city:@item.user.shipping_address.city,building:@item.user.shipping_address.building,receiver_last_name:@item.user.shipping_address.last_name,receiver_first_name:@item.user.shipping_address.first_name)
     # Order.create(user_id: current_user.id,item_id:@item.id,shipping_address_id:@item.user.shipping_address.id)
     redirect_to done_item_order_path(@item.id)
   end
@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.permit(:user_id,:item_id,:zipcode,:prefecture,:city,:building,)
+    params.permit(:user_id,:item_id,:zipcode,:prefecture,:city,:building,:receiver_last_name,:receiver_first_name)
   end
 
 end
