@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @items = Item.includes(:user).where(users: {id: @item.user_id})
+    @items = Item.includes(:user).where(users: {id: @item.user_id},item_status:0)
   end
 
   def destroy
@@ -55,16 +55,6 @@ class ItemsController < ApplicationController
       flash.now[:alert] = "削除できませんでした"
       render :show
     end
-  end
-
-  def pay
-    @item = Item.find(params[:id])
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-    charge = Payjp::Charge.create(
-    amount: @item.price,
-    card: params['payjp-token'],
-    currency: 'jpy'
-    )
   end
 
   private
