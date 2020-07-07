@@ -43,6 +43,9 @@
                 有効期限
               %span.date-year
                 = exp_month + " / " + exp_year
+          .buy-content
+            = form_tag(action: :pay,method: :post) do
+              %button 購入する
         - else
           .method
             .method__label
@@ -50,26 +53,27 @@
               = link_to new_credit_card_path, class: "method__label--link" do
                 = icon('fas', 'plus-circle', class: "method__label--link--icon")
                 %span.method__label--link--comment 登録してください
-        .sipping-adress
-          .sipping-adress__inner
-            .sipping-adress__inner__label.clearfix
-              %h3.sipping-adress__inner__label--left 配送先
-              = link_to "#", class: "sipping-adress__inner__label--right" do
-                %span 変更する
-            %address.sipping-adress__inner--info
-              %p 
-                = @buyer.shipping_address.zipcode
-                %br/ 
-                = @buyer.shipping_address.prefecture
-                = @buyer.shipping_address.city
-                = @buyer.shipping_address.address
-                = @buyer.shipping_address.building
-                %br/ 
-                %br/ 
-                = @buyer.nickname
-        .buy-content
-          = form_tag(action: :pay,method: :post) do
-            %button 購入する
+          .sipping-adress
+            .sipping-adress__inner
+              .sipping-adress__inner__label.clearfix
+                %h3.sipping-adress__inner__label--left 配送先
+                = link_to "#", class: "sipping-adress__inner__label--right" do
+                  %span 変更する
+              %address.sipping-adress__inner--info
+                %p 
+                  = @buyer.shipping_address.zipcode
+                  %br/ 
+                  = @buyer.shipping_address.prefecture
+                  = @buyer.shipping_address.city
+                  = @buyer.shipping_address.address
+                  = @buyer.shipping_address.building
+                  %br/ 
+                  %br/ 
+                  = @buyer.nickname
+          .buy-content
+            %h3.alert
+              支払い方法の入力を完了してください。
+            %h1 購入する
 
 .footer
   = render "/layouts/form_footer"

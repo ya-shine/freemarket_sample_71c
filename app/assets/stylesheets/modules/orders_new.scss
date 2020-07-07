@@ -179,7 +179,7 @@ body{
         .buy-content{
           padding: 32px 0;
           border-top: $borderTop;
-          &--button{
+          button{
             border: 1px solid rgb(214, 21, 21);
             background: rgba(225, 23, 23, 0.819);
             color: #fff;
@@ -190,7 +190,25 @@ body{
             text-align: center;
             font-weight: 600;
             outline: 0;
-            
+            cursor: pointer;
+          }
+          .alert {
+            margin-bottom: 20px;
+            font-size: 15px;
+            color: #ea352d;
+          }
+          h1{
+            border: 1px solid rgba(165, 157, 157, 0.819);
+            background: rgba(145, 140, 140, 0.819);
+            color: #fff;
+            display: block;
+            width: 100%;
+            line-height: 48px;
+            font-size: $fontSize;
+            text-align: center;
+            font-weight: 600;
+            outline: 0;
+            cursor: pointer;
           }
         }
       }
