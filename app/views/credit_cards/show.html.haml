@@ -96,6 +96,7 @@
           .payment-info
             .card-list
               .card-list-image
+                = image_tag "/images/#{@card_src}", class: "credit_card_info__brand__img", alt: @card_brand, width:"50px",height:"40px"
             .card-number 
               = "**** **** **** " + @default_card_information.last4
             .expire-date 

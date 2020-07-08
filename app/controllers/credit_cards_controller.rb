@@ -21,7 +21,7 @@ class CreditCardsController < ApplicationController
       )
       @card = CreditCard.new(user_id: current_user.id,customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to mypage_index_path
+        redirect_to credit_card_path(@card.user_id)
       else
         redirect_to root_path
       end
@@ -36,6 +36,19 @@ class CreditCardsController < ApplicationController
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @default_card_information = customer.cards.retrieve(@card.card_id)
+      @card_brand = @default_card_information.brand
+      case @card_brand
+      when "Visa"
+        @card_src = "logo_visa.gif"
+      when "JCB"
+        @card_src = "jcb-logomark-img-02.gif"
+      when "MasterCard"
+        @card_src = "logo_mastercard.gif"
+      when "Diners Club"
+        @card_src = "diners-logomark-img-01.gif"
+      when "Discover"
+        @card_src = "discover-logomark-img-08.gif"
+      end
     end
   end
 
