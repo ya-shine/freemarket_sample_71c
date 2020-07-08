@@ -23,7 +23,6 @@ Rails.application.routes.draw do
     end
     resource :order, only: [:new,:create] do
       collection do
-        post 'pay', to: 'orders#pay'
         get 'done', to: 'orders#done'
       end
     end
