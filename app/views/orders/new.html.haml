@@ -60,9 +60,17 @@
                     %br/ 
                     %br/ 
                     = @buyer.nickname
-          .buy-content
-            = form_tag(action: :pay,method: :post) do
-              %button 購入する
+          = form_with(model: [@item, @order], local: true,url: item_order_path) do |f|
+            = f.hidden_field :seller_id, value: @item.user.id
+            = f.hidden_field :buyer_id, value: current_user.id
+            = f.hidden_field :item_id, value:@item.id
+            = f.hidden_field :zipcode, value: current_user.shipping_address.zipcode
+            = f.hidden_field :prefecture,value: current_user.shipping_address.prefecture
+            = f.hidden_field :city, value: current_user.shipping_address.city
+            = f.hidden_field :building, value: current_user.shipping_address.building
+            = f.hidden_field :receiver_last_name, value: current_user.shipping_address.last_name
+            = f.hidden_field :receiver_first_name, value: current_user.shipping_address.first_name
+            = f.submit "購入する",class:"hidden_form"
         - else
           .method
             .method__label

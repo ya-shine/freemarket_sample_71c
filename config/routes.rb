@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
       get 'get_size', defaults: { format: 'json' }
     end
-    resource :order, only: [:show] do
+    resource :order, only: [:new,:create] do
       collection do
         post 'pay', to: 'orders#pay'
         get 'done', to: 'orders#done'
