@@ -68,18 +68,20 @@ ActiveRecord::Schema.define(version: 2020_07_06_085933) do
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "seller_id", null: false
+    t.bigint "buyer_id", null: false
     t.bigint "item_id", null: false
     t.string "receiver_last_name"
     t.string "receiver_first_name"
     t.string "zipcode", null: false
     t.string "prefecture", null: false
     t.string "city", null: false
-    t.string "building", null: false
+    t.string "building"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_orders_on_buyer_id"
     t.index ["item_id"], name: "index_orders_on_item_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
+    t.index ["seller_id"], name: "index_orders_on_seller_id"
   end
 
   create_table "shipping_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -138,6 +140,7 @@ ActiveRecord::Schema.define(version: 2020_07_06_085933) do
   add_foreign_key "items", "sizes"
   add_foreign_key "items", "users"
   add_foreign_key "orders", "items"
-  add_foreign_key "orders", "users"
+  add_foreign_key "orders", "users", column: "buyer_id"
+  add_foreign_key "orders", "users", column: "seller_id"
   add_foreign_key "shipping_addresses", "users"
 end
