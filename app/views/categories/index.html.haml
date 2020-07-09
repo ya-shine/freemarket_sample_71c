@@ -7,7 +7,7 @@
         カテゴリー一覧
   .all-kinds
     - @category_parents.each do |category|
-      = link_to "#{category.name}",category_path(category.id),class:"brand"
+      = link_to "#{category.name}", category_path(category.id), class: "brand"
 
   .items-boxes
     %ul.items-lists
@@ -18,13 +18,13 @@
               %figure.item-image
                 .image-thumbnail
                   %span.price
-                    = number_to_currency(item.price,format: "%u%n",unit: "¥")
-                  = image_tag item.images[0].image.url,alt:"sample",class:"sample"
+                    = number_to_currency(item.price,format: "%u%n", unit: "¥")
+                  = image_tag item.images[0].image.url, alt: "sample", class: "sample"
                 %figcaption.caption
                   %span.line
                     = item.name.truncate(22)
                   .like-count
-                    = icon("far","heart")
+                    = icon("far", "heart")
                     %span.item-box-likes__number
                       0
 = paginate(@items)

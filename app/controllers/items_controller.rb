@@ -46,6 +46,7 @@ class ItemsController < ApplicationController
 
   def show
     @items = Item.includes(:user).where(users: {id: @item.user_id},item_status:false)
+    @categories = Item.includes(:category).where(categories: {id: @item.category_id})
   end
 
   def destroy
