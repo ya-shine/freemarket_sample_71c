@@ -3,6 +3,6 @@ class ShopsController < ApplicationController
   def index
     @category_parents = Category.where(ancestry: nil)
     @brands = Brand.all
-    @items = Item.includes(:category).where(item_status:0).order("created_at DESC").limit(3)
+    @items = Item.includes(:category).where(item_status: false).order("created_at DESC").limit(3)
   end
 end

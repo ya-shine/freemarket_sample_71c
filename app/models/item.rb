@@ -10,6 +10,7 @@ class Item < ApplicationRecord
     belongs_to_active_hash :delivery_fee
     belongs_to_active_hash :condition
     has_many :images, dependent: :destroy
+    has_one :order
   
     validates_associated :images
     validates :images, presence: true

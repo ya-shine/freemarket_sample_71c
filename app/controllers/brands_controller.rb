@@ -2,7 +2,7 @@ class BrandsController < ApplicationController
   before_action :brand_category_header
 
   def index
-    @items = Item.all.where(item_status:0).where.not(brand_id: nil).order("id DESC").page(params[:page]).per(50)
+    @items = Item.all.where(item_status: false).where.not(brand_id: nil).order("id DESC").page(params[:page]).per(50)
   end
   def show
     @brand = Brand.find(params[:id])

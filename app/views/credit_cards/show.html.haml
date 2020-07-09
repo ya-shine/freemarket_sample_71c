@@ -86,52 +86,26 @@
           = link_to destroy_user_session_path, class: "nav__list__box--item active", method: :delete do
             %span ログアウト
             = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
-  = form_tag(credit_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
-    .right-content
-      .mypage-right-container
-        %h2.mypage-right-container__head クレジットカード情報入力
-        .credit-card-container
-          .field-top
-            %label カード番号
-            %span.field__require
-              必須
-            %br/
-            = text_field_tag "number", "", class: "card-number", placeholder: "半角数字のみ",id:"card_number",maxlength: "16", type: "text"
-            %ul.card-list
-              %li.card-logo
-                = image_tag("/images/VISAロゴデータ.png", alt: "VISA", width: "40", height: "20")
-              %li.card-logo
-                = image_tag("/images/logo_mastercard.gif", alt: "mastercard", width: "34", height: "20")
-              %li.card-logo
-                = image_tag("/images/jcb-logomark-img-01.gif", alt: "JCB", width: "32", height: "20")
-              %li.card-logo
-                = image_tag("/images/amex-logomark-img-04.gif", alt: "amex", width: "21", height: "20")
-              %li.card-logo
-                = image_tag("/images/diners-logomark-img-01.gif", alt: "Diners", width: "32", height: "20")
-              %li.card-logo
-                = image_tag("/images/discover-logomark-img-08.gif", alt: "discover", width: "32", height: "20")
-          .field
-            %label 有効期限
-            %span.field__require
-              必須
-            %br/
-            .card-expiration
-              = select_tag "expiration",options_for_select([["01", "1"], ["02", "2"], ["03", "3"], ["04", "4"], ["05", "5"], ["06", "6"], ["07", "7"], ["08", "8"], ["09", "9"], ["10", "10"], ["11", "11"], ["12", "12"]]),prompt:"---",id:"exp_month",name:"exp_month",type:"text"
-              %span 月
-              = select_tag "expiration",options_for_select([["2020", "2020"], ["2021", "2021"], ["2022", "2022"], ["2023", "2023"], ["2024", "2024"], ["2025", "2025"], ["2026", "2026"], ["2027", "2027"], ["2028", "2028"], ["2029", "2029"]]),prompt:"---",id:"exp_year",name:"exp_year",type:"text"
-              %span 年
-          .field
-            %label セキュリティコード
-            %span.field__require
-              必須
-            %br/
-            = text_field_tag "cvc", "", class: "security-code",id:"cvc", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4"
-            .security-code-info
-              .security-code-info__text
-                %span.question ?
-                カード裏面の番号とは？
-          #card_token
-            = submit_tag "追加する", class: "add-credit",id:"token_submit"
+  .right-content
+    %section.card-container
+      %h2.card-container__head 支払い方法
+      .card-container__inner
+        .payment-list
+          .payment-list__content
+            %h3.sub-head 登録クレジットカード
+          .payment-info
+            .card-list
+              .card-list-image
+                = image_tag "/images/#{@card_src}", class: "credit_card_info__brand__img", alt: @card_brand, width:"50px",height:"40px"
+            .card-number 
+              = "**** **** **** " + @default_card_information.last4
+            .expire-date 
+              - exp_month = @default_card_information.exp_month.to_s
+              - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+              = exp_month + " / " + exp_year
+        .delete-card
+          = link_to "削除する",credit_card_path(current_user.id), method: :delete,class: "delete-card-link"
+
 
 %aside.banner-for-app
   .banner-inner

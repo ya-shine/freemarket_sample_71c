@@ -1,6 +1,6 @@
 - @items.each do |item|
   .pickup-list
-    = link_to "#",class:"pickup" do
+    = link_to item_path(item.id),class:"pickup" do
       .pickup-image
         = image_tag item.images[0].image.url,class:"image-pickup"
       .pickup-description

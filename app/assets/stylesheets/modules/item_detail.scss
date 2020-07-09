@@ -199,6 +199,20 @@
     text-decoration: none;
     border-radius: 4px;
   }
+  .soldout {
+    width: 70%;
+    margin: 0  auto;
+    display: block;
+    margin-top: 16px;
+    background: #d0d8d8;
+    color: #fff;
+    font-size: 24px;
+    line-height: 60px;
+    font-weight: 600;
+    transition: all ease-out .3s;
+    text-decoration: none;
+    border-radius: 4px;
+  }
 
   .item-description {
     padding: 32px 0 0;

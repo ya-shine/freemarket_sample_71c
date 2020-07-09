@@ -92,8 +92,13 @@
           = link_to "編集", "#", class: "edit-delete-btn"
           = link_to "削除", item_path, method: :delete, class: "edit-delete-btn"
     - elsif user_signed_in? && current_user.id != @item.user_id
-      .purchase
-        = link_to "購入画面に進む", "#", class: "link-to-purchase"
+      - if @item.item_status == false
+        .purchase
+          = link_to "購入画面に進む", new_item_order_path(@item.id), class: "link-to-purchase"
+      - else
+        .purchase
+          %h3.soldout
+            売り切れ
     - else
       .purchase
         = link_to new_user_registration_path, class: "link-to-purchase" do

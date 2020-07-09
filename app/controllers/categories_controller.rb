@@ -3,12 +3,12 @@ class CategoriesController < ApplicationController
   before_action :brand_category_header
 
   def index
-    @items = Item.includes(:user).where(item_status:0).order("id DESC").page(params[:page]).per(50)
+    @items = Item.includes(:user).where(item_status: false).order("id DESC").page(params[:page]).per(50)
   end
   def show
     @category = Category.find(params[:id])
     @items = @category.find_items
-    @items = @items.where(item_status:0).order("created_at DESC").page(params[:page]).per(30)
+    @items = @items.where(item_status: false).order("created_at DESC").page(params[:page]).per(30)
   end
 
   private

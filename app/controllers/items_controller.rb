@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :category_all, only: [:index, :show]
   before_action :brand_category_header, only: [:index, :show]
   def index
-    @items = Item.includes(:user).where(item_status:0).order("id DESC").page(params[:page]).per(50)
+    @items = Item.includes(:user).where(item_status:false).order("id DESC").page(params[:page]).per(50)
   end
 
   def new
@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @items = Item.includes(:user).where(users: {id: @item.user_id})
+    @items = Item.includes(:user).where(users: {id: @item.user_id},item_status:false)
     @categories = Item.includes(:category).where(categories: {id: @item.category_id})
   end
 

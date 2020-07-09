@@ -15,4 +15,6 @@ class User < ApplicationRecord
 
   has_one :shipping_address
   has_many :items
+  has_one :credit_card
+  has_many :order
 end

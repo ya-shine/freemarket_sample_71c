@@ -8,11 +8,13 @@
   .selected-item-container
     .selected-item-container__content
       .selected-item-container__content__inner
-        = image_tag("/images/IMG_1471.png", alt:"", class: "selected-item-container__content__inner--image")
+        = image_tag @item.images[0].image.url, alt:"", class: "selected-item-container__content__inner--image"
         .item-detail
-          %p.item-detail--name Dell 4Kモニター 27インチ U2720QM
+          %p.item-detail--name
+            = @item.name
           %p.item-detail--price
-            %span ¥59,890
+            %span
+            = number_to_currency(@item.price,format:"%u%n",unit:"¥")
             %span.item-detail--price--fee （税込）送料込み
   .payment-container
     .payment-container__contents
@@ -21,28 +23,86 @@
           %li.price-table__label
             .price-table__label--text 支払い金額
             .price-table__label--amount
-              %span ¥59,890
-        .method
-          .method__label
-            %h3.method__label--text 支払い方法
-            = link_to "#", class: "method__label--link" do
-              = icon('fas', 'plus-circle', class: "method__label--link--icon")
-              %span.method__label--link--comment 登録してください
-        .sipping-adress
-          .sipping-adress__inner
-            .sipping-adress__inner__label.clearfix
-              %h3.sipping-adress__inner__label--left 配送先
-              = link_to "#", class: "sipping-adress__inner__label--right" do
+              %span
+              = number_to_currency(@item.price,format:"%u%n",unit:"¥")
+        - if @buyer.credit_card.present?
+          .card-info
+            .card-info__label
+              %h3.card-info__label--text 支払い方法
+              = link_to credit_cards_path(@item.user_id), class: "sipping-adress__inner__label--right" do
                 %span 変更する
-            %address.sipping-adress__inner--info
-              %p 
-                〒810-0801
-                %br/ 
-                福岡県福岡市博多区中洲4丁目6ー12 プラート中洲8F
-                %br/ 
-                福岡 太郎
-        .buy-content
-          = button_tag "購入する", class: "buy-content--button"
+            .card-number
+              %h3.title 
+                クレジットカード
+              .card-list
+                .card-list-image
+                  = image_tag "/images/#{@card_src}", class: "credit_card_info__brand__img", alt: @card_brand, width:"50px",height:"40px"
+              %span.number
+                = "**** **** **** " + @default_card_information.last4
+            .expire-date 
+              - exp_month = @default_card_information.exp_month.to_s
+              - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+              %span.expiration
+                有効期限
+              %span.date-year
+                = exp_month + " / " + exp_year
+            .sipping-adress
+              .sipping-adress__inner
+                .sipping-adress__inner__label.clearfix
+                  %h3.sipping-adress__inner__label--left 配送先
+                  = link_to "#", class: "sipping-adress__inner__label--right" do
+                    %span 変更する
+                %address.sipping-adress__inner--info
+                  %p 
+                    = @buyer.shipping_address.zipcode
+                    %br/ 
+                    = @buyer.shipping_address.prefecture
+                    = @buyer.shipping_address.city
+                    = @buyer.shipping_address.address
+                    = @buyer.shipping_address.building
+                    %br/ 
+                    %br/ 
+                    = @buyer.nickname
+          = form_with(model: [@item, @order], local: true,url: item_order_path) do |f|
+            = f.hidden_field :seller_id, value: @item.user.id
+            = f.hidden_field :buyer_id, value: current_user.id
+            = f.hidden_field :item_id, value:@item.id
+            = f.hidden_field :zipcode, value: current_user.shipping_address.zipcode
+            = f.hidden_field :prefecture,value: current_user.shipping_address.prefecture
+            = f.hidden_field :city, value: current_user.shipping_address.city
+            = f.hidden_field :address, value: current_user.shipping_address.address
+            = f.hidden_field :building, value: current_user.shipping_address.building
+            = f.hidden_field :receiver_last_name, value: current_user.shipping_address.last_name
+            = f.hidden_field :receiver_first_name, value: current_user.shipping_address.first_name
+            = f.submit "購入する",class:"hidden_form"
+        - else
+          .method
+            .method__label
+              %h3.method__label--text 支払い方法
+              = link_to new_credit_card_path, class: "method__label--link" do
+                = icon('fas', 'plus-circle', class: "method__label--link--icon")
+                %span.method__label--link--comment 登録してください
+          .sipping-adress
+            .sipping-adress__inner
+              .sipping-adress__inner__label.clearfix
+                %h3.sipping-adress__inner__label--left 配送先
+                = link_to "#", class: "sipping-adress__inner__label--right" do
+                  %span 変更する
+              %address.sipping-adress__inner--info
+                %p 
+                  = @buyer.shipping_address.zipcode
+                  %br/ 
+                  = @buyer.shipping_address.prefecture
+                  = @buyer.shipping_address.city
+                  = @buyer.shipping_address.address
+                  = @buyer.shipping_address.building
+                  %br/ 
+                  %br/ 
+                  = @buyer.nickname
+          .buy-content
+            %h3.alert
+              支払い方法の入力を完了してください。
+            %h1 購入する
 
 .footer
   = render "/layouts/form_footer"

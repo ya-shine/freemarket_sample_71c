@@ -47,6 +47,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'pry-rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -84,3 +85,4 @@ gem 'mini_magick'
 gem 'active_hash'
 gem 'pry-rails'
 gem 'kaminari'
+gem 'payjp'

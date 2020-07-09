@@ -1,0 +1,56 @@
+.card-container{
+  background-color: #fff;
+  &__head{
+    font-size: 24px;
+    font-weight: 600;
+    padding: 8px 24px;
+    border-bottom: 1px solid #f5f5f5;
+    text-align: center;
+  }
+  &__inner{
+    padding: 64px;
+    display: flex;
+    justify-content: space-between;
+    .payment-list{
+      padding-bottom: 30px;
+      &__content{
+        max-width: 320px;
+        .sub-head{
+          font-size: 17px;
+          font-weight: bold;
+        }
+      }
+    }
+    .payment-info {
+      padding: 10px;
+      .card-list {
+        .card-list-image{
+
+        }
+      }
+      .card-number {
+        font-size: 16px;
+      }
+      .expire-date {
+        font-size: 16px;
+      }
+    }
+    .delete-card {
+      .delete-card-link {
+        display: inline-block;
+        text-decoration: none;
+        font-size: 15px;
+        padding: 9px;
+        color: rgba(242, 9, 24, 0.393);
+        border: solid 1px;
+        margin-top: 30px;
+        font-weight: bolder;
+        border-radius: 5px;
+        &:hover {
+          background-color: rgba(242, 9, 24, 0.393);
+          color: white;
+        }
+      }
+    }
+  }
+}
