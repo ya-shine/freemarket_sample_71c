@@ -24,8 +24,6 @@ class OrdersController < ApplicationController
       when "Discover"
         @card_src = "discover-logomark-img-08.gif"
       end
-      else
-        redirect_to mypage_index_path
       end
     else
       redirect_to item_path(@item.id)

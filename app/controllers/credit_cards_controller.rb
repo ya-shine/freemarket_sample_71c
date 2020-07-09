@@ -23,7 +23,7 @@ class CreditCardsController < ApplicationController
       if @card.save
         redirect_to credit_card_path(@card.user_id)
       else
-        redirect_to root_path
+        redirect_to credit_cards_path
       end
     end
   end
