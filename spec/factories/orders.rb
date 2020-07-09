@@ -1,14 +1,16 @@
 FactoryBot.define do
+
   factory :order do
-    id                   {'1'}
+    buyer_id             {'1'}
+    seller_id            {'2'}
+    item
     zipcode              {'998-9909'}
     prefecture           {'Fukuoka'}
     city                 {'Fukuoka'}
-    address              {'Fukuoka'}
+    address              {'fukuoka'}
     building             {'Fukuoka000'}
-    reciever_last_name   {'test'}
-    reciever_first_name  {'test'}
-    item
-    user
+    receiver_last_name   {'test'}
+    receiver_first_name  {'test'}
   end
+
 end

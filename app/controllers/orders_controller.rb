@@ -44,23 +44,15 @@ class OrdersController < ApplicationController
         currency: 'jpy',
       )
       @item.update(item_status: true)
-      if @order.save
-        redirect_to done_item_order_path(@item.id)
-      else
-        redirect_back(fallback_location: new_item_order_path(@item.id))
-      end
+      redirect_back(fallback_location: new_item_order_path(@item.id)) unless @order.save
     else
       redirect_back(fallback_location: new_item_order_path(@item.id))
     end
   end
 
-  def done
-    @item = Item.find(params[:item_id])
-  end
-
   private
   def order_params
-    params.require(:order).permit(:seller_id,:buyer_id,:item_id,:zipcode,:prefecture,:city,:building,:receiver_last_name,:receiver_first_name)
+    params.require(:order).permit(:seller_id,:buyer_id,:item_id,:zipcode,:prefecture,:city,:address,:building,:receiver_last_name,:receiver_first_name)
   end
 
 end

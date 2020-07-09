@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2020_07_06_085933) do
     t.string "zipcode", null: false
     t.string "prefecture", null: false
     t.string "city", null: false
+    t.string "address", null: false
     t.string "building"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
