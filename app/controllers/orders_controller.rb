@@ -1,8 +1,9 @@
 class OrdersController < ApplicationController
+  before_action :set_item
   require "payjp"
 
+
   def new
-    @item = Item.find(params[:item_id])
     if @item.item_status == false
     @order = Order.new
     @buyer = User.find_by(id: current_user.id)
@@ -32,7 +33,6 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @item = Item.find(params[:item_id])
     if @item.item_status == false
       card = CreditCard.find_by(user_id: current_user.id)
       Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
@@ -51,6 +51,10 @@ class OrdersController < ApplicationController
   private
   def order_params
     params.require(:order).permit(:seller_id,:buyer_id,:item_id,:zipcode,:prefecture,:city,:address,:building,:receiver_last_name,:receiver_first_name)
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
 end
