@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
     @buyer = User.find_by(id: current_user.id)
     @card = CreditCard.find_by(user_id: current_user.id)
       unless @card.nil?
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @default_card_information = customer.cards.retrieve(@card.card_id)
       @card_brand = @default_card_information.brand
@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     if @item.item_status == false
       card = CreditCard.find_by(user_id: current_user.id)
-      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
       Payjp::Charge.create(
         amount: @item.price,
         customer: card.customer_id,
