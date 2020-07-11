@@ -10,7 +10,7 @@ class CreditCardsController < ApplicationController
   end
 
   def create
-    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     if params['payjp-token'].blank?
       redirect_to action: "new"
     else
@@ -33,7 +33,7 @@ class CreditCardsController < ApplicationController
     if @card.blank?
       redirect_to action: "new" 
     else
-      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @default_card_information = customer.cards.retrieve(@card.card_id)
       @card_brand = @default_card_information.brand
@@ -53,7 +53,7 @@ class CreditCardsController < ApplicationController
   end
 
   def destroy
-    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     @card = CreditCard.find_by(user_id: current_user.id)
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete
