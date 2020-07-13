@@ -89,8 +89,8 @@
     - if user_signed_in? && current_user.id == @item.user_id
       .edit-menu
         .edit-menu__list
-          = link_to "編集", "#", class: "edit-delete-btn"
-          = link_to "削除", item_path, method: :delete, class: "edit-delete-btn"
+          = link_to "編集", edit_item_path(@item.id), class: "edit-delete-btn"
+          = link_to "削除", item_path(@item.id), method: :delete, class: "edit-delete-btn"
     - elsif user_signed_in? && current_user.id != @item.user_id
       - if @item.item_status == false
         .purchase

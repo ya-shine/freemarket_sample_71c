@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
     else
       selected_child = Category.find("#{params[:grandchild_id]}").parent
       if related_size_parent = selected_child.sizes[0]
-          @sizes = related_size_parent.children
+        @sizes = related_size_parent.children
       end
     end
   end
@@ -41,6 +41,22 @@ class ItemsController < ApplicationController
       @item.images.new
       @category_parent_array = Category.where(ancestry: nil).pluck(:name)
       render :new
+    end
+  end
+
+  def edit
+    @grandchild = Category.find(@item.category_id)
+    @child = @grandchild.parent
+    @parent = @child.parent
+  end
+
+  def update
+    unless @item.update(item_update_params)
+      flash.now[:alert] = "更新できませんでした"
+      @grandchild = Category.find(@item.category_id)
+      @child = @grandchild.parent
+      @parent = @child.parent
+      render :edit
     end
   end
 
@@ -61,7 +77,11 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name,:description,:price,:category_id,:brand_id,:size_id,:condition_id,:delivery_fee_id,:shipping_method_id,:ship_from_area_id,:shipping_day_id,:item_status,images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :price, :category_id, :brand_id, :size_id, :condition_id, :delivery_fee_id, :shipping_method_id, :ship_from_area_id, :shipping_day_id, :item_status, images_attributes: [:image]).merge(user_id: current_user.id)
+  end
+
+  def item_update_params
+    params.require(:item).permit(:id, :name, :description, :price, :category_id, :brand_id, :size_id, :condition_id, :delivery_fee_id, :shipping_method_id, :ship_from_area_id, :shipping_day_id, :item_status, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
   
   def set_item
