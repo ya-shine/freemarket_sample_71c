@@ -3,7 +3,7 @@
     = link_to image_tag("/images/logo.png", alt:"FURIMA", class:"logo"), root_path, class:"logo-link"
 
 .item-exhibition-main
-  = form_with model: @item, id: "form-exibition", local: true do |f|
+  = form_with model: @item, url: edit_item_path(@item), id: "form-exibition", local: true do |f|
     .exhibition-image-container
       %label.exhibition-image-container__title 出品画像
       %span.exhibition-image-container__require
@@ -15,7 +15,7 @@
           - @item.images.each do |image|
             .preview-box
               .upper-box
-                = image_tag image.image.url, alt: "preview"
+                = image_tag "#{image.image.url}", alt: "preview"
               .lower-box
                 .delete-box
                   %span 削除
@@ -41,13 +41,13 @@
         %span.product-container__top__require
           必須
         .product-container__top__text-box
-          = f.text_field :name, class: "product-container__top__text-box--field", placeholder: "40文字まで",style:"text-aligh:left"
+          = f.text_field :name, class: "product-container__top__text-box--field", placeholder: "40文字まで", style: "text-aligh:left"
       .product-container__bottom
         %label.product-container__bottom__title 商品の説明
         %span.product-container__bottom__require
           必須
         .product-container__bottom__text-area
-          = f.text_area :description,class: "product-container__bottom__text-area--field", placeholder: "商品の説明（必須 1,000文字以内）"
+          = f.text_area :description, class: "product-container__bottom__text-area--field", placeholder: "商品の説明（必須 1,000文字以内）"
         .product-container__bottom__limit
           %span.count 0/1000
     
@@ -58,29 +58,29 @@
         %span.product-details-container__top__require
           必須
         .product-details-container__top__select
-          = f.select :category_id, @category_parent_array, {selected: @item.category.root.name, prompt: "選択してください"}, {class: "select", id: "parent_category", name: "item[parent]"}
+          = f.select :category_id, Category.where(ancestry: nil).collect {|p| [p.name,p.id]}, selected: @item.category.root.name, prompt: "選択してください", class: "select", id: "parent_category", name: "item[parent]"
           %i.fas.fa-chevron-down.icon-arrow-down
         .add-select-wrapper#children_wrapper
           .add-select-wrapper__box
-            = f.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "選択してください", selected: @item.category.parent.id}),{}, {class: 'add-select-wrapper__box--select', id: 'child_category'}
+            = f.select :category_id, Category.where(ancestry: "#{@parent.id}").collect {|p| [p.name,p.id]}, selected: @item.category.parent.id, class: 'add-select-wrapper__box--select', id: 'child_category'
             %i.fas.fa-chevron-down.icon-arrow-down
         .add-select-wrapper#grandchildren_wrapper
           .add-select-wrapper__box
-            = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "選択してください", selected: @item.category.id}),{}, {class: 'add-select-wrapper__box--select', id: 'grandchild_category'}
+            = f.select :category_id, Category.where(ancestry: "#{@parent.id}/#{@child.id}").collect {|p| [p.name,p.id]}, selected: @item.category.id, class: 'add-select-wrapper__box--select', id: 'grandchild_category'
             %i.fas.fa-chevron-down.icon-arrow-down
       .product-details-container__middle
         %label.product-details-container__middle__title ブランド
         %span.product-details-container__middle__any
           任意
         .product-details-container__middle__text-box
-          = f.select :brand_id, Brand.all.collect {|p| [p.name,p.id]}, prompt: "選択してください",class: "product-details-container__middle__text-box--field", placeholder: "例）シャネル"
+          = f.select :brand_id, Brand.all.collect {|p| [p.name,p.id]}, class: "product-details-container__middle__text-box--field", placeholder: "例）シャネル"
           %i.fas.fa-chevron-down.icon-arrow-down
       .product-details-container__bottom
         %label.product-details-container__bottom__title 商品の状態
         %span.product-details-container__bottom__require
           必須
         .product-details-container__bottom__select
-          = f.select :condition_id, Condition.all.collect { |p| [p.name, p.id] }, prompt: "選択してください"
+          = f.select :condition_id, Condition.all.collect { |p| [p.name, p.id] }
           %i.fas.fa-chevron-down.icon-arrow-down
     
     .delivery-container
@@ -90,28 +90,28 @@
         %span.delivery-container__top__require
           必須
         .delivery-container__top__select
-          = f.select :delivery_fee_id, DeliveryFee.all.collect { |p| [ p.name, p.id ] }, prompt:"選択してください"
+          = f.select :delivery_fee_id, DeliveryFee.all.collect { |p| [ p.name, p.id ] }
           %i.fas.fa-chevron-down.icon-arrow-down
       .delivery-container__top-derivation
         %label.delivery-container__top-derivation__title 配送の方法
         %span.delivery-container__top-derivation__require
           必須
         .delivery-container__top-derivation__select
-          = f.select :shipping_method_id, ShippingMethod.all.collect { |p| [ p.name, p.id ] }, prompt:"選択してください"
+          = f.select :shipping_method_id, ShippingMethod.all.collect { |p| [ p.name, p.id ] }
           %i.fas.fa-chevron-down.icon-arrow-down
       .delivery-container__middle
         %label.delivery-container__middle__title 発送元の地域
         %span.delivery-container__middle__require
           必須
         .delivery-container__middle__select
-          = f.select :ship_from_area_id, ShipFromArea.all.collect { |p| [ p.name, p.id ] }, prompt:"選択してください"
+          = f.select :ship_from_area_id, ShipFromArea.all.collect { |p| [ p.name, p.id ] }
           %i.fas.fa-chevron-down.icon-arrow-down
       .delivery-container__bottom
         %label.delivery-container__bottom__title 発送までの日数
         %span.delivery-container__bottom__require
           必須
         .delivery-container__bottom__select
-          = f.select :shipping_day_id, ShippingDay.all.collect { |p| [ p.name, p.id ] }, prompt:"選択してください"
+          = f.select :shipping_day_id, ShippingDay.all.collect { |p| [ p.name, p.id ] }
           %i.fas.fa-chevron-down.icon-arrow-down
     .price-container
       %p.price-container__main-title 価格 (¥300~9,999,999)
@@ -125,7 +125,7 @@
             ¥
           .price-container__contents__main__right
             .price-container__contents__main__right__price-box
-              = f.number_field :price,class: "price-container__contents__main__right__price-box--field", placeholder: "0",style:"text-align:right;"
+              = f.number_field :price, class: "price-container__contents__main__right__price-box--field", placeholder: "0", style: "text-align:right;"
         .price-container__contents__fee
           .price-container__contents__fee--label
             .price-container__contents__fee--label--text 販売手数料 (10%)
