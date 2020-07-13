@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root 'shops#index'
   resources :shops, only: :index
   post 'items/new', to:'items#create'
+  patch 'items/:id/edit', to: 'items#update'
   resources :items do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
