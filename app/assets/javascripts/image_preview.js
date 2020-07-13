@@ -20,6 +20,7 @@ $(function(){
     $('.label-content').css('width', labelWidth);
     $('.preview-box').each(function(index, box) {
       $(box).attr('id', `preview-box__${index}`);
+      $(box).attr('name', `item[image]`);
     })
     $('.delete-box').each(function(index, box) {
       $(box).attr('id', `delete_btn_${index}`);
