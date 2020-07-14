@@ -17,4 +17,5 @@ class User < ApplicationRecord
   has_many :items
   has_one :credit_card
   has_many :order
+  has_many :likes
 end
