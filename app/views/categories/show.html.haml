@@ -1,5 +1,9 @@
 .header-main
   = render partial:'/layouts/main_header'
+
+- breadcrumb :category_parent
+= render "/layouts/bread-crumbs"
+
 .main-screen
   .main-box
     .favorite-container
