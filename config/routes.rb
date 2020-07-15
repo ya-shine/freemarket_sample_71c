@@ -27,6 +27,7 @@ Rails.application.routes.draw do
         get 'done', to: 'orders#done'
       end
     end
+    resources :likes, only: [:create, :destroy]
   end
   resources :categories, only: [:index, :show]
   resources :brands, only: [:index,:show]
