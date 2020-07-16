@@ -32,6 +32,10 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
   resources :brands, only: [:index,:show]
   resources :shipping_addresses
-  resources :mypage, only: :index
   resources :credit_cards, only: [:index, :new, :show, :create,:destroy]
+  resources :users, only: [:index, :show] do
+    collection do
+      get :likes
+    end
+  end
 end
