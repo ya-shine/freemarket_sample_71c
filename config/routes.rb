@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   resources :brands, only: [:index,:show]
   resources :shipping_addresses
   resources :credit_cards, only: [:index, :new, :show, :create,:destroy]
-  resources :users, only: [:index, :show] do
+  resources :users, only: :show do
     collection do
       get :likes
     end
