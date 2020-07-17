@@ -121,8 +121,13 @@
                       position: absolute;
                       right: 12px;
                       top: 32px;
-                      .fa-heart {
+                      .fa {
+                        color: #ff0022;
                         margin-right: 5px;  
+                      }
+                      .far {
+                        color: #222;
+                        margin-right: 5px;
                       }
                     }
                   }

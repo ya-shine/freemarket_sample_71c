@@ -50,12 +50,12 @@
               %span.navigation-likes-mypage__likes--title
                 商品一覧
           %li.navigation-likes-mypage__likes
-            = link_to "#", class: "likes-link" do
+            = link_to likes_users_path, class: "likes-link" do
               = icon("far", "heart")
               %span.navigation-likes-mypage__likes--title
                 いいね！一覧
           %li.navigation-likes-mypage__mypage
-            = link_to mypage_index_path, class: "mypage-link" do
+            = link_to user_path(current_user.id), class: "mypage-link" do
               = image_tag("/images/member_photo_noimage_thumb.png", alt: "mypage", class: "mypage")
               %span.navigation-likes-mypage__mypage--title
                 マイページ

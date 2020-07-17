@@ -10,6 +10,8 @@ class Item < ApplicationRecord
     belongs_to_active_hash :delivery_fee
     belongs_to_active_hash :condition
     has_many :images, dependent: :destroy
+    has_many :likes, dependent: :destroy
+    has_many :liked_users, through: :likes, source: :user
     has_one :order
   
     validates_associated :images
@@ -25,6 +27,10 @@ class Item < ApplicationRecord
       numericality: {greater_than_or_equal_to:300,less_than:10000000}
 
     accepts_nested_attributes_for :images, allow_destroy:true
+
+    def like_user(user_id)
+      likes.find_by(user_id: user_id)
+    end
 
 
 end

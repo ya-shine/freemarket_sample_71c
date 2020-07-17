@@ -1,0 +1,9 @@
+- if user_signed_in?
+  - unless item.like_user(current_user.id).blank?
+    = icon("fa", "heart")
+    %span.likes-counts
+      = item.likes_count
+  - else
+    = icon("far", "heart")
+    %span.likes-counts
+      = item.likes_count
