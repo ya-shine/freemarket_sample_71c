@@ -3,7 +3,7 @@
     %figure
       = image_tag("/images/member_photo_noimage_thumb.png", alt: "member", class: "member", width: "60", height: "60")
     %h2.nickname
-      = @user.nickname
+      = current_user.nickname
     .mypage-count
       .mypage-count__evaluation
         評価

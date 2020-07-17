@@ -18,7 +18,7 @@
       %h2.mypage-tab-head いいね一覧
       .like-content
         %ul.like-lists
-          - @user.liked_items.each do |item|
+          - current_user.liked_items.each do |item|
             %li
               = link_to item_path(item.id), class: "sammary" do
                 .item-image
