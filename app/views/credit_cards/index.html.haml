@@ -1,17 +1,8 @@
 .header-main
   = render partial: "/layouts/main_header"
 
-.bread-crumb
-  %ul.bread-crumb__nav
-    %li.bread-crumb__nav__item
-      = link_to root_path, class: "bread-crumb__nav__item--link" do
-        %span フリマ
-      = icon('fas', 'chevron-right', class: "bread-crumb__nav__item--icon")
-      = link_to mypage_index_path, class: "bread-crumb__nav__item--link present-location" do
-        %span マイページ
-      = icon('fas', 'chevron-right', class: "bread-crumb__nav__item--icon")
-      = link_to credit_cards_path, class: "bread-crumb__nav__item--link present-location" do
-        %span 支払い方法
+- breadcrumb :payment_method
+= render "/layouts/bread-crumbs"
 
 .mypage-main
   .left-content

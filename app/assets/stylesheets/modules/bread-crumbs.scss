@@ -1,0 +1,36 @@
+.bread-crumb{
+  height: 49px;
+  position: relative;
+  background-color: #ffffff;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  z-index: 1;
+  &__nav{
+    width: 1020px;
+    height: 48px;
+    margin: 0 auto;
+    padding: 16px 0;
+    font-size: 0;
+    list-style: none;
+    &__item{
+      font-size: 14px;
+      line-height: 1.2;
+      a {
+        text-decoration: none;
+        color: black;
+        margin: 0 10px 0 10px;
+        &:hover {
+          text-decoration: underline;
+          color: dimgrey;
+        }
+      }
+      .current {
+        margin-left: 10px;
+        font-weight: bold;
+      }
+      .present-location{
+        font-weight: 600;
+        margin-left: 8px;
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 .header-main
   = render partial: "/layouts/main_header"
 
-- breadcrumb :card_register
+- breadcrumb :mypage
 = render "/layouts/bread-crumbs"
 
 .mypage-main
@@ -9,7 +9,7 @@
     %nav.nav
       %ul.nav__list
         %li.nav__list__box
-          = link_to "#", class: "nav__list__box--item active" do
+          = link_to mypage_index_path, class: "nav__list__box--item active" do
             マイページ
             = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
         %li.nav__list__box
@@ -55,7 +55,7 @@
             発送元・お届け先住所変更
             = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
         %li.nav__list__box
-          = link_to "#", class: "nav__list__box--item active" do
+          = link_to credit_cards_path, class: "nav__list__box--item active" do
             支払い方法
             = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
         %li.nav__list__box
@@ -74,52 +74,32 @@
           = link_to destroy_user_session_path, class: "nav__list__box--item active", method: :delete do
             %span ログアウト
             = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
-  = form_tag(credit_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
-    .right-content
-      .mypage-right-container
-        %h2.mypage-right-container__head クレジットカード情報入力
-        .credit-card-container
-          .field-top
-            %label カード番号
-            %span.field__require
-              必須
-            %br/
-            = text_field_tag "number", "", class: "card-number", placeholder: "半角数字のみ",id:"card_number",maxlength: "16", type: "text"
-            %ul.card-list
-              %li.card-logo
-                = image_tag("/images/VISAロゴデータ.png", alt: "VISA", width: "40", height: "20")
-              %li.card-logo
-                = image_tag("/images/logo_mastercard.gif", alt: "mastercard", width: "34", height: "20")
-              %li.card-logo
-                = image_tag("/images/jcb-logomark-img-01.gif", alt: "JCB", width: "32", height: "20")
-              %li.card-logo
-                = image_tag("/images/amex-logomark-img-04.gif", alt: "amex", width: "21", height: "20")
-              %li.card-logo
-                = image_tag("/images/diners-logomark-img-01.gif", alt: "Diners", width: "32", height: "20")
-              %li.card-logo
-                = image_tag("/images/discover-logomark-img-08.gif", alt: "discover", width: "32", height: "20")
-          .field
-            %label 有効期限
-            %span.field__require
-              必須
-            %br/
-            .card-expiration
-              = select_tag "expiration",options_for_select([["01", "1"], ["02", "2"], ["03", "3"], ["04", "4"], ["05", "5"], ["06", "6"], ["07", "7"], ["08", "8"], ["09", "9"], ["10", "10"], ["11", "11"], ["12", "12"]]),prompt:"---",id:"exp_month",name:"exp_month",type:"text"
-              %span 月
-              = select_tag "expiration",options_for_select([["2020", "2020"], ["2021", "2021"], ["2022", "2022"], ["2023", "2023"], ["2024", "2024"], ["2025", "2025"], ["2026", "2026"], ["2027", "2027"], ["2028", "2028"], ["2029", "2029"]]),prompt:"---",id:"exp_year",name:"exp_year",type:"text"
-              %span 年
-          .field
-            %label セキュリティコード
-            %span.field__require
-              必須
-            %br/
-            = text_field_tag "cvc", "", class: "security-code",id:"cvc", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4"
-            .security-code-info
-              .security-code-info__text
-                %span.question ?
-                カード裏面の番号とは？
-          #card_token
-            = submit_tag "追加する", class: "add-credit",id:"token_submit"
+  .right-content
+    .mypage-user
+      = link_to "#", class: "mypage-user__link" do
+        %figure
+          = image_tag("/images/member_photo_noimage_thumb.png", alt: "member", class: "member", width: "60", height: "60")
+        %h2.nickname 博多
+        .mypage-count
+          .mypage-count__evaluation
+            評価
+            %span.mypage-count__evaluation--number 10
+          .mypage-count__exhibition
+            出品数
+            %span.mypage-count__exhibition--number 30
+    .mypage-tab-container
+      %h2.mypage-tab-head 購入した商品
+      .tabs
+        = radio_button_tag(:tab, "left", "")
+        %label{for: "tab_left", class: "tab-item"} 取引中
+        = radio_button_tag(:tab, "right")
+        %label{for: "tab_right", class: "tab-item"} 過去の取引
+        .tab-content#tab_left
+          = image_tag("/images/logo-white.png",alt:"FURIMA",class:"logo-bottom",height:"50",width:"170")
+          %p.tab-content-text 取引中の商品がありません
+        .tab-content#tab_right
+          = image_tag("/images/logo-white.png",alt:"FURIMA",class:"logo-bottom",height:"50",width:"170")
+          %p.tab-content-text 過去に取引した商品がありません
 
 %aside.banner-for-app
   .banner-inner
