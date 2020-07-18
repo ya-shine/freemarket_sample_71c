@@ -254,6 +254,93 @@
   width: 700px;
   .message-container {
     margin: auto;
+    .comment-content {
+      padding: 24px;
+      background-color: #fff;
+      text-align: right;
+      .comment-area {
+        .comment-box {
+          padding: 20px 10px;
+          margin: 15px auto 0;
+          font-size: 14px;
+          background-color: #fff;
+          .right-comment {
+            display: inline-block;
+            position: relative; 
+            margin: 0 10px 0 0;
+            padding: 8px;
+            max-width: 300px;
+            border-radius: 12px;
+            background: #ccc;
+            font-size: 15px;
+            word-wrap: break-word;
+            text-align: left;
+          }
+          .right-comment::after{
+            content: "";
+            position: absolute;
+            top: 8px; 
+            right: -19px;
+            border: 8px solid transparent;
+            border-left: 18px solid #ccc;
+            -webkit-transform: rotate(-35deg);
+            transform: rotate(-35deg);
+          }
+          .comment-user-myself {
+            text-decoration: none;
+            color: #888;
+          }
+          .comment-user-myself:hover {
+            color: #3ccace;
+          }
+        }
+        .comment-delete {
+          display: block;
+          text-decoration: none;
+          font-size: 12px;
+          color: #888;
+          margin-bottom: 15px;
+        }
+        .comment-delete:hover {
+          color: #3ccace;
+        }
+        .other-comment-box {
+          padding: 20px 10px;
+          margin: 15px auto 0;
+          font-size: 14px;
+          background-color: #fff;
+          text-align: left;
+          .comment-user-other {
+            text-decoration: none;
+            color: #888;
+          }
+          .comment-user-other:hover {
+            color: #3ccace;
+          }
+          .left-comment {
+            display: inline-block;
+            position: relative; 
+            margin: 0 0 0 10px;
+            padding: 8px;
+            max-width: 300px;
+            border-radius: 12px;
+            background: #ccc;
+            font-size: 15px;
+            word-wrap: break-word;
+          }
+          .left-comment::after {
+            content: "";
+            position: absolute;
+            top: 8px; 
+            left: -19px;
+            border: 8px solid transparent;
+            border-right: 18px solid #ccc;
+            -webkit-transform: rotate(35deg);
+            transform: rotate(35deg);
+          }
+        }
+      }
+    }
     .message-content {
       padding: 24px;
       background: #fff;
@@ -263,7 +350,7 @@
           font-size: 13px;
           background: #fff6de;
         }
-        .item-messages {
+        .messages {
           margin: 8px 0 0;
           display: block;
           width: 100%;
@@ -274,6 +361,7 @@
           font-size: 16px;
           line-height: 1.5;
           resize: vertical;
+          outline: none;
         }
         .submit-comment {
           width: 100%;
