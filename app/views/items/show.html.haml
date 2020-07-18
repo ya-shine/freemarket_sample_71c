@@ -111,15 +111,15 @@
     = render partial: 'likes/like', locals:{ item: @item }
 .item-messages
   .message-container
+    .comment-content
+      #comment-area.comment-area
+        = render partial: 'comments/index', locals: { comments: @comments }
     .message-content
       - if user_signed_in?
         .message-form
           %p.message-warning
             相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          = text_area "text",'', class:"item-messages" 
-          = button_tag '#', class:"submit-comment" do
-            %span.submit-comment__line
-              コメントする
+          = render partial: 'comments/form', locals: { comment: @comment, item: @item }
       - else
         %p.message-warning
           商品の購入、コメントの投稿には新規会員登録/ログインが必要です
