@@ -63,6 +63,8 @@ class ItemsController < ApplicationController
   def show
     @items = Item.includes(:user).where(users: {id: @item.user_id},item_status:false)
     @categories = Item.includes(:category).where(categories: {id: @item.category_id})
+    @comment = Comment.new
+    @comments = @item.comments.order(created_at: :desc)
   end
 
   def destroy
