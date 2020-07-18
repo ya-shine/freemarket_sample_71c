@@ -1,0 +1,2 @@
+class CommetnsController < ApplicationController
+end
