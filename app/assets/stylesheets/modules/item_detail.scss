@@ -252,19 +252,19 @@
 .item-messages {
   margin: 8px auto;
   width: 700px;
-  .message-container {
+  &__container {
     margin: auto;
-    .comment-content {
+    &--text {
       padding: 24px;
       background-color: #fff;
       text-align: right;
       .comment-area {
-        .comment-box {
+        &__current {
           padding: 20px 10px;
           margin: 15px auto 0;
           font-size: 14px;
           background-color: #fff;
-          .right-comment {
+          &--user-comment {
             display: inline-block;
             position: relative; 
             margin: 0 10px 0 0;
@@ -276,7 +276,7 @@
             word-wrap: break-word;
             text-align: left;
           }
-          .right-comment::after{
+          &--user-comment::after{
             content: "";
             position: absolute;
             top: 8px; 
@@ -286,38 +286,38 @@
             -webkit-transform: rotate(-35deg);
             transform: rotate(-35deg);
           }
-          .comment-user-myself {
+          &--user-nickname {
             text-decoration: none;
             color: #888;
           }
-          .comment-user-myself:hover {
+          &--user-nickname:hover {
             color: #3ccace;
           }
         }
-        .comment-delete {
+        &__delete {
           display: block;
           text-decoration: none;
           font-size: 12px;
           color: #888;
           margin-bottom: 15px;
         }
-        .comment-delete:hover {
+        &__delete:hover {
           color: #3ccace;
         }
-        .other-comment-box {
+        &__other {
           padding: 20px 10px;
           margin: 15px auto 0;
           font-size: 14px;
           background-color: #fff;
           text-align: left;
-          .comment-user-other {
+          &--user-nickname {
             text-decoration: none;
             color: #888;
           }
-          .comment-user-other:hover {
+          &--user-nickname:hover {
             color: #3ccace;
           }
-          .left-comment {
+          &--user-comment {
             display: inline-block;
             position: relative; 
             margin: 0 0 0 10px;
@@ -328,7 +328,7 @@
             font-size: 15px;
             word-wrap: break-word;
           }
-          .left-comment::after {
+          &--user-comment::after {
             content: "";
             position: absolute;
             top: 8px; 
@@ -341,16 +341,16 @@
         }
       }
     }
-    .message-content {
+    &--form {
       padding: 24px;
       background: #fff;
-      .message-form {
-        .message-warning {
+      .form-area{
+        &__warning {
           padding: 8px;
           font-size: 13px;
           background: #fff6de;
         }
-        .messages {
+        &__messages {
           margin: 8px 0 0;
           display: block;
           width: 100%;
@@ -363,13 +363,14 @@
           resize: vertical;
           outline: none;
         }
-        .submit-comment {
+        &__submit {
           width: 100%;
           margin: 8px 0 0;
           text-align: center;
           background: #aaa;
           border: 1px solid #aaa;
           line-height: 48px;
+          outline: none;
           cursor: pointer;
           &__line {
             color: #fff;

@@ -110,14 +110,14 @@
   .item-likes{id: "likes_buttons_#{@item.id}"}
     = render partial: 'likes/like', locals:{ item: @item }
 .item-messages
-  .message-container
-    .comment-content
+  .item-messages__container
+    .item-messages__container--text
       #comment-area.comment-area
         = render partial: 'comments/index', locals: { comments: @comments }
-    .message-content
+    .item-messages__container--form
       - if user_signed_in?
-        .message-form
-          %p.message-warning
+        .form-area
+          %p.form-area__warning
             相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
           = render partial: 'comments/form', locals: { comment: @comment, item: @item }
       - else
