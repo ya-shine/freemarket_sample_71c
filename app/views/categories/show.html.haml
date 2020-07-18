@@ -1,7 +1,12 @@
 .header-main
   = render partial:'/layouts/main_header'
 
-- breadcrumb :category_parent
+- if @category.root?
+  - breadcrumb :category
+- elsif @category.has_children? && @category.has_parent?
+  - breadcrumb :category_child
+- else
+  - breadcrumb :category_grandchild
 = render "/layouts/bread-crumbs"
 
 .main-screen

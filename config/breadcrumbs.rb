@@ -48,29 +48,25 @@ crumb :categories do
   parent :root
 end
 
-crumb :category_parent do |category_parent|
-  category_parent = Category.find(params[:id])
-  link category_parent.name
+crumb :category do |category|
+  category = Category.find(params[:id])
+  link category.root.name, category_path(category.root)
   parent :categories
 end
 
-# crumb :project do |project|
-#   link project.name, project_path(project)
-#   parent :projects
-# end
+crumb :category_child do |category_child|
+  category_child = Category.find(params[:id])
+  if category_child.has_children?
+    link category_child.name, category_path(category_child.parent)
+    parent :category
+  else
+    link category_child.parent.name, category_path(category_child.parent)
+    parent :category
+  end
+end
 
-# crumb :project_issues do |project|
-#   link "Issues", project_issues_path(project)
-#   parent :project, project
-# end
-
-# crumb :issue do |issue|
-#   link issue.title, issue_path(issue)
-#   parent :project_issues, issue.project
-# end
-
-# If you want to split your breadcrumbs configuration over multiple files, you
-# can create a folder named `config/breadcrumbs` and put your configuration
-# files there. All *.rb files (e.g. `frontend.rb` or `products.rb`) in that
-# folder are loaded and reloaded automatically when you change them, just like
-# this file (`config/breadcrumbs.rb`).
+crumb :category_grandchild do |category_grandchild|
+  category_grandchild = Category.find(params[:id])
+  link category_grandchild.name
+  parent :category_child
+end
