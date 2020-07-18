@@ -12,6 +12,4 @@
             %span.line
               = item.name.truncate(22)
             .like-count
-              = icon("far","heart")
-              %span.item-box-likes__number
-                4
+              = render partial: 'likes/like_display', locals:{ item: item }

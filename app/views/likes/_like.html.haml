@@ -1,0 +1,11 @@
+- if user_signed_in?
+  - unless item.like_user(current_user.id).blank?
+    = link_to item_like_path(item_id: item.id, id: item.likes[0].id), class: "like", method: :delete, remote: true do
+      %span.like-title
+        いいねを取り消す
+      = icon("fa", "heart")
+  - else
+    = link_to item_likes_path(item.id), class: "like", method: :post, remote: true do
+      %span.like-title
+        いいね！
+      = icon("far", "heart")

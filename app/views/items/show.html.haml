@@ -107,13 +107,8 @@
   .item-description
     %p.item-description__inner
       = @item.description
-  .item-likes
-    = button_tag  "#", id:"like" do
-      = icon("far","heart")
-      %span.like-title
-      いいね！
-      %span.likes-counts
-      23
+  .item-likes{id: "likes_buttons_#{@item.id}"}
+    = render partial: 'likes/like', locals:{ item: @item }
 .item-messages
   .message-container
     .message-content
