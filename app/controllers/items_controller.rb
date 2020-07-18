@@ -74,6 +74,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search
+    @items = Item.where('name LIKE(?)',"%#{params[:keyword]}%")
+  end
+
   private
 
   def item_params
