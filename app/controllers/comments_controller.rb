@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   def create
     @item = Item.find(params[:item_id])
     @comment = @item.comments.build(comment_params)
-    @comments = @item.comments
+    @comments = @item.comments.order(created_at: :desc)
     @comment.user_id = current_user.id
     if @comment.save
       render :index
@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     if @comment.destroy
-      @comments = Comment.where(item_id: params[:item_id])
+      @comments = Comment.where(item_id: params[:item_id]).order(created_at: :desc)
       render :index
     end
   end
