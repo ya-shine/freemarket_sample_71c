@@ -1,0 +1,14 @@
+- @comments.each do |comment|
+  - unless comment.id.nil?
+    - if comment.user == current_user
+      .comment-area__current
+        %p.comment-area__current--user-comment
+          = comment.comment
+        %span
+          = link_to "#{comment.user.nickname}", user_path(comment.user.id), class: "comment-area__current--user-nickname"
+      = link_to "コメントを削除する", item_comment_path(comment.item_id, comment.id), method: :delete, remote: true, class: "comment-area__delete"
+    - else
+      .comment-area__other
+        = link_to "#{comment.user.nickname}さん", user_path(comment.user.id), class: "comment-area__other--user-nickname"
+        %span.comment-area__other--user-comment
+          = comment.comment

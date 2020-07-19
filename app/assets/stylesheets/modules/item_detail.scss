@@ -252,18 +252,107 @@
 .item-messages {
   margin: 8px auto;
   width: 700px;
-  .message-container {
+  &__container {
     margin: auto;
-    .message-content {
+    &--text {
+      padding: 24px;
+      background-color: #fff;
+      text-align: right;
+      .comment-area {
+        max-height: 500px;
+        overflow: scroll;
+        &__current {
+          padding: 20px 10px;
+          margin: 15px auto 0;
+          font-size: 14px;
+          background-color: #fff;
+          &--user-comment {
+            display: inline-block;
+            position: relative; 
+            margin: 0 10px 0 0;
+            padding: 8px;
+            max-width: 300px;
+            border-radius: 12px;
+            background: #ccc;
+            font-size: 15px;
+            word-wrap: break-word;
+            text-align: left;
+          }
+          &--user-comment::after{
+            content: "";
+            position: absolute;
+            top: 8px; 
+            right: -19px;
+            border: 8px solid transparent;
+            border-left: 18px solid #ccc;
+            -webkit-transform: rotate(-35deg);
+            transform: rotate(-35deg);
+          }
+          &--user-nickname {
+            text-decoration: none;
+            color: #888;
+          }
+          &--user-nickname:hover {
+            color: #3ccace;
+          }
+        }
+        &__delete {
+          display: block;
+          text-decoration: none;
+          font-size: 12px;
+          color: #888;
+          margin-bottom: 15px;
+        }
+        &__delete:hover {
+          color: #3ccace;
+        }
+        &__other {
+          padding: 20px 10px;
+          margin: 15px auto 0;
+          font-size: 14px;
+          background-color: #fff;
+          text-align: left;
+          &--user-nickname {
+            text-decoration: none;
+            color: #888;
+          }
+          &--user-nickname:hover {
+            color: #3ccace;
+          }
+          &--user-comment {
+            display: inline-block;
+            position: relative; 
+            margin: 0 0 0 10px;
+            padding: 8px;
+            max-width: 300px;
+            border-radius: 12px;
+            background: #ccc;
+            font-size: 15px;
+            word-wrap: break-word;
+          }
+          &--user-comment::after {
+            content: "";
+            position: absolute;
+            top: 8px; 
+            left: -19px;
+            border: 8px solid transparent;
+            border-right: 18px solid #ccc;
+            -webkit-transform: rotate(35deg);
+            transform: rotate(35deg);
+          }
+        }
+      }
+    }
+    &--form {
       padding: 24px;
       background: #fff;
-      .message-form {
-        .message-warning {
+      .form-area{
+        &__warning {
           padding: 8px;
           font-size: 13px;
           background: #fff6de;
         }
-        .item-messages {
+        &__messages {
           margin: 8px 0 0;
           display: block;
           width: 100%;
@@ -274,14 +363,16 @@
           font-size: 16px;
           line-height: 1.5;
           resize: vertical;
+          outline: none;
         }
-        .submit-comment {
+        &__submit {
           width: 100%;
           margin: 8px 0 0;
           text-align: center;
           background: #aaa;
           border: 1px solid #aaa;
           line-height: 48px;
+          outline: none;
           cursor: pointer;
           &__line {
             color: #fff;
