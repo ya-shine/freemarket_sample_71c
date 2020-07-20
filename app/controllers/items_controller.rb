@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :get_size]
+  before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :get_size, :search]
   before_action :category_all, only: [:index, :show]
-  before_action :brand_category_header, only: [:index, :show]
+  before_action :brand_category_header, only: [:index, :show, :search]
   def index
     @items = Item.includes(:user).where(item_status:false).order("id DESC").page(params[:page]).per(50)
   end
@@ -75,7 +75,12 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.where('name LIKE(?)',"%#{params[:keyword]}%")
+    @search = params[:search]
+    if @search == ''
+      redirect_to items_path
+    else
+      @items = Item.search(params[:search])
+    end
   end
 
   private

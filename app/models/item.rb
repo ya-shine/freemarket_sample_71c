@@ -32,5 +32,8 @@ class Item < ApplicationRecord
       likes.find_by(user_id: user_id)
     end
 
+    def self.search(search)
+      Item.where(['name LIKE ?', "%#{search}%"])
+    end
 
 end
