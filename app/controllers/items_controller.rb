@@ -1,10 +1,12 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :get_size, :search]
+  before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :get_size, :search, :detail_search]
   before_action :category_all, only: [:index, :show]
-  before_action :brand_category_header, only: [:index, :show, :search]
+  before_action :brand_category_header, only: [:index, :show, :search, :detail_search]
   def index
-    @items = Item.includes(:user).where(item_status:false).order("id DESC").page(params[:page]).per(50)
+    @items = Item.includes(:user, :likes, :images).where(item_status:false).order("id DESC").page(params[:page]).per(50)
+    @q = Item.ransack(params[:q])
+    @search_items = @q.result.includes(:user, :likes, :images)
   end
 
   def new
@@ -85,6 +87,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def detail_search
+    @q = Item.ransack(detail_search_params)
+    @search_items = @q.result.includes(:user, :likes, :images)
+  end
+
   private
 
   def item_params
@@ -93,6 +100,10 @@ class ItemsController < ApplicationController
 
   def item_update_params
     params.require(:item).permit(:id, :name, :description, :price, :category_id, :brand_id, :size_id, :condition_id, :delivery_fee_id, :shipping_method_id, :ship_from_area_id, :shipping_day_id, :item_status, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+  end
+
+  def detail_search_params
+    params.require(:q).permit(:sorts)
   end
   
   def set_item
