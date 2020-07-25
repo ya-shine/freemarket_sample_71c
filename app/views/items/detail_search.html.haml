@@ -1,0 +1,33 @@
+.header-main
+  = render partial:'/layouts/main_header'
+
+- breadcrumb :item_all
+= render "/layouts/bread-crumbs"
+
+.main-screen
+  .detail-search
+    = render "detail_search_form"
+  .main-box
+    .items-genre-box
+      %h2.box-title
+        検索結果
+    .favorite-container
+      .favorite-titile-box-top
+        %h3.box-title
+          件
+      .items-boxes
+        %ul.items-lists
+          - @search_items.each do |item|
+            %li.items-lists__each
+              .item-sammary
+                = link_to item_path(item.id), class: "sammary" do
+                  %figure.item-image
+                    .image-thumbnail
+                      %span.price
+                        = number_to_currency(item.price,format: "%u%n", unit: "¥")
+                      = image_tag item.images[0].image.url, alt: "sample", class: "sample"
+                    %figcaption.caption
+                      %span.line
+                        = item.name.truncate(22)
+                      .like-count
+                        = render partial: 'likes/like_display', locals:{ item: item }
