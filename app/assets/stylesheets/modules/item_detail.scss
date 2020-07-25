@@ -169,17 +169,7 @@
         display: flex;
         justify-content: space-evenly;
         .edit-delete-btn {
-          width: 25%;
-          display: block;
-          background: #3ccace;
-          color: #fff;
-          font-size: 24px;
-          line-height: 45px;
-          text-align: center;
-          font-weight: 600;
-          transition: all ease-out .3s;
-          text-decoration: none;
-          border-radius: 40px;
+          @include button-style;
         }
       }
     }

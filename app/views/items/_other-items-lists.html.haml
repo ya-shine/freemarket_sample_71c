@@ -20,7 +20,7 @@
                 = image_tag item.images[0].image.url, alt:"sample", class:"sample"
               %figcaption.caption
                 %span.line
-                  = item.name.truncate(22)
+                  = item.name.truncate(20)
                 .like-count
                   = render partial: 'likes/like_display', locals:{ item: item }
 
@@ -46,6 +46,6 @@
                 = image_tag item.images[0].image.url, alt:"sample", class:"sample"
               %figcaption.caption
                 %span.line
-                  = item.name.truncate(22)
+                  = item.name.truncate(20)
                 .like-count
                   = render partial: 'likes/like_display', locals:{ item: item }

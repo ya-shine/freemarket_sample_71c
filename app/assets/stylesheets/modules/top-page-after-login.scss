@@ -1,7 +1,26 @@
 .main-screen {
-  max-width: 1020px;
+  max-width: 63%;
   display: flex;
   margin: 40px auto;
+  .detail-search {
+    margin: 40px 30px 0 0;
+    &__form {
+      width: 100%;
+      position: relative;
+      &--select {
+        @include selectBox;
+      }
+      &--arrow-icon {
+        @include arrow-down;
+      }
+      &--submit {
+        @include submit-contents;
+        .submit-btn {
+          @include submit-contents-actions;
+        }
+      }
+    }
+  }
   .main-box {
     position: relative;
     margin: 0 auto;
@@ -32,6 +51,27 @@
               color: black;
             }
           }
+        }
+      }
+    }
+    .all-kinds {
+      margin-top: 42px;
+      padding: 0 0 15px;
+      display: flex;
+      flex-wrap: wrap;
+      .brand {
+        text-decoration: none;
+        font-size: 15px;
+        color: black;
+        padding: 15px;
+        background: white;
+        border-radius: 6px;
+        box-shadow: 1px 1px 1px 1px rgba(14,14,14,0.0580392);
+        margin-left: 10px;
+        margin-bottom: 10px;
+        &:hover {
+          background-color: #ea352d;
+          color: #fff;
         }
       }
     }
@@ -105,7 +145,6 @@
                     word-break: break-word;
                     align-items: center;
                     display: flex;
-                    width: 100%;
                     background-color: white;
                     position: relative;
                     .line {
@@ -133,9 +172,8 @@
                   }
                   .image-thumbnail {
                     margin: 0 auto;
-                    overflow: hidden;
-                    width: 188px;
-                    height: 188px;
+                    width: 100%;
+                    height: 180px;
                     .price {
                       align-items: center;
                       background: rgba(0,0,0,.4);
