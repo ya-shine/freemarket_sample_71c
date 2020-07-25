@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     post 'shipping_addresses', to: 'users/registrations#create_shipping_address'
   end
   root 'shops#index'
+  get 'detail_search', to: 'items#detail_search'
   resources :shops, only: :index
   post 'items/new', to:'items#create'
   patch 'items/:id/edit', to: 'items#update'
