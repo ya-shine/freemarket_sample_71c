@@ -4,34 +4,33 @@
 - breadcrumb :brands
 = render "/layouts/bread-crumbs"
 
-.main-brandry
+.main-screen
+  .detail-search
+    = render "/items/detail_search_form"
   .main-box
     .items-genre-box
       %h2.box-title
         ブランド一覧
-  .all-kinds
-    - @brands.each do |brand|
-      = link_to "#{brand.name}",brand_path(brand.id),class:"brand"
-
-  .items-boxes
-    %ul.items-lists
-      - @items.each do |item|
-        %li.items-lists__each
-          .item-sammary
-            = link_to item_path(item.id), class:"sammary" do
-              %figure.item-image
-                .image-thumbnail
-                  %span.price
-                    = number_to_currency(item.price,format: "%u%n",unit: "¥")
-                  = image_tag item.images[0].image.url,alt:"sample",class:"sample"
-                %figcaption.caption
-                  %span.line
-                    = item.name.truncate(22)
-                  .like-count
-                    = icon("far","heart")
-                    %span.item-box-likes__number
-                      0
-= paginate(@items)
+    .all-kinds
+      - @brands.each do |brand|
+        = link_to "#{brand.name}",brand_path(brand.id),class:"brand"
+    .favorite-container
+      .items-boxes
+        %ul.items-lists
+          - @items.each do |item|
+            %li.items-lists__each
+              .item-sammary
+                = link_to item_path(item.id), class:"sammary" do
+                  %figure.item-image
+                    .image-thumbnail
+                      %span.price
+                        = number_to_currency(item.price,format: "%u%n",unit: "¥")
+                      = image_tag item.images[0].image.url,alt:"sample",class:"sample"
+                    %figcaption.caption
+                      %span.line
+                        = item.name.truncate(22)
+                      .like-count
+                        = render partial: 'likes/like_display', locals:{ item: item }
 .main-footer
   = render partial:"/layouts/main-footer"
 

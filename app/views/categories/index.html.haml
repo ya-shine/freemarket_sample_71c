@@ -4,33 +4,33 @@
 - breadcrumb :categories
 = render "/layouts/bread-crumbs"
 
-.main-brandry
+.main-screen
+  .detail-search
+    = render "/items/detail_search_form"
   .main-box
     .items-genre-box
       %h2.box-title
         カテゴリー一覧
-  .all-kinds
-    - @category_parents.each do |category|
-      = link_to "#{category.name}", category_path(category.id), class: "brand"
-
-  .items-boxes
-    %ul.items-lists
-      - @items.each do |item|
-        %li.items-lists__each
-          .item-sammary
-            = link_to item_path(item.id),class:"sammary" do
-              %figure.item-image
-                .image-thumbnail
-                  %span.price
-                    = number_to_currency(item.price,format: "%u%n", unit: "¥")
-                  = image_tag item.images[0].image.url, alt: "sample", class: "sample"
-                %figcaption.caption
-                  %span.line
-                    = item.name.truncate(22)
-                  .like-count
-                    = icon("far", "heart")
-                    %span.item-box-likes__number
-                      0
+    .all-kinds
+      - @category_parents.each do |category|
+        = link_to "#{category.name}", category_path(category.id), class: "brand"
+    .favorite-container
+      .items-boxes
+        %ul.items-lists
+          - @items.each do |item|
+            %li.items-lists__each
+              .item-sammary
+                = link_to item_path(item.id),class:"sammary" do
+                  %figure.item-image
+                    .image-thumbnail
+                      %span.price
+                        = number_to_currency(item.price,format: "%u%n", unit: "¥")
+                      = image_tag item.images[0].image.url, alt: "sample", class: "sample"
+                    %figcaption.caption
+                      %span.line
+                        = item.name.truncate(22)
+                      .like-count
+                        = render partial: 'likes/like_display', locals:{ item: item }
 = paginate(@items)
 .main-footer
   = render partial:"/layouts/main-footer"
