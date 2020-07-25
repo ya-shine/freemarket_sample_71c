@@ -14,7 +14,8 @@
     .favorite-container
       .favorite-titile-box-top
         %h3.box-title
-          件
+          = @search_items.count
+          %span 件
       .items-boxes
         %ul.items-lists
           - @search_items.each do |item|
@@ -31,3 +32,5 @@
                         = item.name.truncate(22)
                       .like-count
                         = render partial: 'likes/like_display', locals:{ item: item }
+.main-footer
+  = render partial:"/layouts/main-footer"
