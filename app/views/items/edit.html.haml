@@ -58,15 +58,15 @@
         %span.product-details-container__top__require
           必須
         .product-details-container__top__select
-          = f.select :category_id, Category.where(ancestry: nil).collect {|p| [p.name,p.id]}, selected: @item.category.root.name, prompt: "選択してください", class: "select", id: "parent_category", name: "item[parent]"
+          = f.select :category_id, @category_parent_array, {selected: @item.category.root.name, prompt: "選択してください"}, {class: "select", id: "parent_category", name: ""}
           %i.fas.fa-chevron-down.icon-arrow-down
         .add-select-wrapper#children_wrapper
           .add-select-wrapper__box
-            = f.select :category_id, Category.where(ancestry: "#{@parent.id}").collect {|p| [p.name,p.id]}, selected: @item.category.parent.id, class: 'add-select-wrapper__box--select', id: 'child_category'
+            = f.select :category_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {selected: @item.category.parent.id}), {}, {class: 'add-select-wrapper__box--select', id: 'child_category', name: ""}
             %i.fas.fa-chevron-down.icon-arrow-down
         .add-select-wrapper#grandchildren_wrapper
           .add-select-wrapper__box
-            = f.select :category_id, Category.where(ancestry: "#{@parent.id}/#{@child.id}").collect {|p| [p.name,p.id]}, selected: @item.category.id, class: 'add-select-wrapper__box--select', id: 'grandchild_category'
+            = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {selected: @item.category.id}), {}, {class: 'add-select-wrapper__box--select', id: 'grandchild_category', name: "item[category_id]"}
             %i.fas.fa-chevron-down.icon-arrow-down
       .product-details-container__middle
         %label.product-details-container__middle__title ブランド
