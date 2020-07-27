@@ -103,7 +103,7 @@ class ItemsController < ApplicationController
   end
 
   def detail_search_params
-    params.require(:q).permit(:sorts)
+    params.require(:q).permit(:sorts, :price_gteq, :price_lteq, condition_id_in: [], delivery_fee_id_in: [])
   end
   
   def set_item
