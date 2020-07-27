@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   root 'shops#index'
   get 'detail_search', to: 'items#detail_search'
   resources :shops, only: :index
-  post 'items/new', to:'items#create'
   patch 'items/:id/edit', to: 'items#update'
   resources :items do
     collection do
@@ -18,6 +17,7 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
       get 'get_size', defaults: { format: 'json' }
       get 'search'
+      get 'detail_search'
     end
     member do
       get 'get_category_children', defaults: { format: 'json' }
