@@ -13,6 +13,7 @@ class User < ApplicationRecord
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }, length: { minimum: 7 }
   validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: true
 
+  has_many :sns_credentials
   has_one :shipping_address
   has_many :items, dependent: :destroy
   has_one :credit_card
