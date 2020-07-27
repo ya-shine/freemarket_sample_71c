@@ -1,12 +1,12 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :get_size, :search, :detail_search]
+  before_action :set_item, only: [:create, :edit, :update, :show, :destroy]
   before_action :category_all, only: [:index, :show]
   before_action :brand_category_header, only: [:index, :show, :search, :detail_search]
+  before_action :set_detail_search, only: [:index, :detail_search]
+
   def index
     @items = Item.includes(:user, :likes, :images).where(item_status:false).order("id DESC").page(params[:page]).per(50)
-    @q = Item.ransack(params[:q])
-    @search_items = @q.result.includes(:user, :likes, :images)
   end
 
   def new
@@ -88,8 +88,6 @@ class ItemsController < ApplicationController
   end
 
   def detail_search
-    @q = Item.ransack(detail_search_params)
-    @search_items = @q.result.includes(:user, :likes, :images)
   end
 
   private
@@ -120,6 +118,11 @@ class ItemsController < ApplicationController
     @item_category_mens = Item.includes(:category).where(item_status:0,category_id:200..345).limit(10)
     @item_category_hobby = Item.includes(:category).where(item_status:0,category_id:685..797).limit(10)
     @item_category_gadget = Item.includes(:category).where(item_status:0,category_id:898..983).limit(10)
+  end
+
+  def set_detail_search
+    @q = Item.ransack(params[:q])
+    @search_items = @q.result.includes(:user, :likes, :images)
   end
   
 end
