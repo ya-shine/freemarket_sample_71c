@@ -1,0 +1,36 @@
+= search_form_for @q, url: detail_search_items_path, class: "detail-search__form" do |f|
+  = f.select( :sorts, { '並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' } , { onchange: 'this.form.submit()'}, class: "detail-search__form--select" )
+  %i.fas.fa-chevron-down.detail-search__form--arrow-icon
+  .detail-search__form__container
+    %h2.detail-search__form__container--main-title 詳細検索
+    %i.fas.fa-search
+    = f.label :condition_id_in, "商品の状態", class: "detail-search__form__container--sub-title"
+    .detail-search__form__container--checkbox
+      %input{type: "checkbox", id: "condition_all", name: "condition_all", class: "checkbox-all"}
+      = label_tag :condition_all, "すべて", class: "checkbox-all-label"
+      .detail-search__form__container--checkbox--select
+        = f.collection_check_boxes :condition_id_in, Condition.all, :id, :name, include_hidden: false do |b|
+          #boxes.detail-search__form__container--checkbox--select--boxes
+            = b.check_box class: "checkbox"
+            = b.label class: "checkbox-label"
+    %i.fas.fa-search
+    = f.label :delivery_fee_id_in, "配送料の負担", class: "detail-search__form__container--sub-title"
+    .detail-search__form__container--checkbox
+      %input{type: "checkbox", id: "delivery_fee_all", name: "condition_all", class: "checkbox-all"}
+      = label_tag :delivery_fee_all, "すべて", class: "checkbox-all-label"
+      .detail-search__form__container--checkbox--select
+        = f.collection_check_boxes :delivery_fee_id_in, DeliveryFee.all, :id, :name, include_hidden: false do |b|
+          #boxes.detail-search__form__container--checkbox--select--boxes
+            = b.check_box class: "checkbox"
+            = b.label class: "checkbox-label"
+    %i.fas.fa-search
+    = f.label :price, "価格", class: "detail-search__form__container--sub-title"
+    .detail-search__form__container--price
+      = f.number_field :price_gteq, placeholder: "¥ Min", class: "detail-search__form__container--price--input"
+      .detail-search__form__container--price--range 〜
+      = f.number_field :price_lteq, placeholder: "¥ Max", class: "detail-search__form__container--price--input"
+    .detail-search__form--submit
+      .clear-btn
+        .clear#clear クリア
+      .submit-btn
+        = f.submit "完了", id: "submit"

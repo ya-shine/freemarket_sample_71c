@@ -5,12 +5,14 @@
 = render "/layouts/bread-crumbs"
 
 .main-screen
+  .detail-search
+    = render "detail_search_form"
   .main-box
     .items-genre-box
       %h2.box-title
         新着商品
     .favorite-container
-      .favorite-title-box-top
+      .favorite-title-box-else
         %h3.favorite-title
           新着アイテム
       .items-boxes
@@ -30,7 +32,7 @@
           %li.genre-lists__list
             = link_to "おもちゃ・ホビー・グッズ",category_path(685),class:"list"
     .favorite-container
-      .favorite-title-box-top
+      .favorite-title-box-else
         %h3.favorite-title
           レディース新着アイテム
         .favorite-more
