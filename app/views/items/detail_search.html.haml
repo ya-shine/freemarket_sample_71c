@@ -12,10 +12,10 @@
       %h2.box-title
         検索結果
     .favorite-container
-      .favorite-titile-box-top
-        %h3.box-title
+      .favorite-title-box-top
+        %h3.favorite-title
           = @search_items.count
-          %span 件
+          %span 件検索
       .items-boxes
         %ul.items-lists
           - @search_items.each do |item|

@@ -1,21 +1,98 @@
 .main-screen {
-  max-width: 63%;
+  max-width: 75%;
   display: flex;
   margin: 40px auto;
   .detail-search {
-    margin: 40px 30px 0 0;
+    width: 25%;
+    margin: 40px 40px 0 0;
     &__form {
       width: 100%;
       position: relative;
       &--select {
         @include selectBox;
+        margin-bottom: 20px;
       }
       &--arrow-icon {
         @include arrow-down;
       }
+      &__container {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #fff;
+        &--main-title {
+          font-weight: 600;
+          margin-bottom: 10px;
+        }
+        &--sub-title,
+        .fa-search {
+          font-weight: 600;
+          font-size: 14px;
+        }
+        &--checkbox {
+          margin: 5px 0 10px 0;
+          font-size: 10px;
+          .checkbox-all,
+          .checkbox-all-label {
+            vertical-align: middle;
+          }
+          &--select {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            &--boxes {
+              width: 46%;
+              margin: 6px 10px 0 0;
+              line-height: 0;
+              .checkbox,
+              .checkbox-label {
+                vertical-align: middle;
+              }
+            }
+          }
+        }
+        &--price {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 5px;
+          &--input {
+            width: 40%;
+            line-height: 30px;
+            border: 1px solid #999;
+            border-radius: 4px;
+            outline: none;
+          }
+          &--input::placeholder {
+            padding-left: 5px;
+            font-size: 14px;
+          }
+          &--range {
+            font-size: 14px;
+            color: #999;
+            line-height: 30px;
+          }
+        }
+      }
       &--submit {
+        display: flex;
+        justify-content: space-around;
         @include submit-contents;
+        .clear-btn {
+          width: 40%;
+          .clear {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background-color: #999;
+            color: white;
+            margin-top: 32px;
+            font-size: 14px;
+            border-radius: 4px;
+          }
+        }
         .submit-btn {
+          width: 40%;
+          margin-bottom: 10px;
           @include submit-contents-actions;
         }
       }
@@ -80,11 +157,11 @@
       padding-bottom: 100px;
       width: 100%;
       .favorite-title-box-top {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
+        margin-bottom: 10px;
         .favorite-title {
-          @include box-title;
+          font-size: 18px;
+          font-weight: 600;
+          color: #888;
         }
         .favorite-more {
         font-size: 15px;
@@ -120,87 +197,7 @@
           &__each {
             width: 20%;
             padding: 10px;
-            .item-sammary {
-              position: relative;
-              .sammary {
-                display: inline-block;
-                position: relative;
-                text-decoration: none;
-                vertical-align: top;
-                .item-image {
-                  width: 100%;
-                  flex-direction: column;
-                  align-items: center;
-                  display: flex;
-                  position: relative;
-                  margin: 0 auto;
-                  .caption {
-                    height: 64px;
-                    box-sizing: border-box;
-                    color: #222;
-                    font-size: 14px;
-                    line-height: 1.4em;
-                    padding: 12px;
-                    white-space: normal;
-                    word-break: break-word;
-                    align-items: center;
-                    display: flex;
-                    background-color: white;
-                    position: relative;
-                    .line {
-                      display: inline-block;
-                      height: 2.8em;
-                      overflow: hidden;
-                      position: relative;
-                    }
-                    .like-count {
-                      align-items: center;
-                      display: flex;
-                      margin: auto;
-                      position: absolute;
-                      right: 12px;
-                      top: 32px;
-                      .fa {
-                        color: #ff0022;
-                        margin-right: 5px;  
-                      }
-                      .far {
-                        color: #222;
-                        margin-right: 5px;
-                      }
-                    }
-                  }
-                  .image-thumbnail {
-                    margin: 0 auto;
-                    width: 100%;
-                    height: 180px;
-                    .price {
-                      align-items: center;
-                      background: rgba(0,0,0,.4);
-                      border-radius: 0 14px 14px 0;
-                      bottom: 70px;
-                      color: #fff;
-                      display: inline-flex;
-                      font-size: 17px;
-                      height: 28px;
-                      letter-spacing: .02em;
-                      margin: 0;
-                      padding: 0 12px;
-                      position: absolute;
-                      z-index: 2;
-                    }
-                    .sample {
-                      bottom: 0;
-                      object-fit: cover;
-                      vertical-align: top;
-                      width: 100%;
-                      z-index: 1;
-                      height: 100%;
-                    }
-                  }
-                }
-              }
-            }
+            @include products;
           }
         }
       }
