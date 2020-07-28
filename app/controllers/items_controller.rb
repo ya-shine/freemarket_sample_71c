@@ -1,10 +1,12 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, except: [:index, :new, :create, :get_category_children, :get_category_grandchildren, :get_size, :search]
+  before_action :set_item, only: [:create, :edit, :update, :show, :destroy]
   before_action :category_all, only: [:index, :show]
-  before_action :brand_category_header, only: [:index, :show, :search]
+  before_action :brand_category_header, only: [:index, :show, :search, :detail_search]
+  before_action :set_detail_search, only: [:index, :detail_search]
+
   def index
-    @items = Item.includes(:user).where(item_status:false).order("id DESC").page(params[:page]).per(50)
+    @items = Item.includes(:user, :likes, :images).where(item_status:false).order("id DESC").page(params[:page]).per(50)
   end
 
   def new
@@ -45,17 +47,30 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @grandchild = Category.find(@item.category_id)
-    @child = @grandchild.parent
-    @parent = @child.parent
+    grandchild_category = @item.category
+    child_category = grandchild_category.parent
+
+
+    @category_parent_array = []
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+
+    @category_children_array = []
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children
+    end
+
+    @category_grandchildren_array = []
+    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
+      @category_grandchildren_array << grandchildren
+    end
   end
 
   def update
     unless @item.update(item_update_params)
       flash.now[:alert] = "更新できませんでした"
-      @grandchild = Category.find(@item.category_id)
-      @child = @grandchild.parent
-      @parent = @child.parent
+   
       render :edit
     end
   end
@@ -85,6 +100,9 @@ class ItemsController < ApplicationController
     end
   end
 
+  def detail_search
+  end
+
   private
 
   def item_params
@@ -93,6 +111,10 @@ class ItemsController < ApplicationController
 
   def item_update_params
     params.require(:item).permit(:id, :name, :description, :price, :category_id, :brand_id, :size_id, :condition_id, :delivery_fee_id, :shipping_method_id, :ship_from_area_id, :shipping_day_id, :item_status, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+  end
+
+  def detail_search_params
+    params.require(:q).permit(:sorts, :price_gteq, :price_lteq, condition_id_in: [], delivery_fee_id_in: [])
   end
   
   def set_item
@@ -109,6 +131,11 @@ class ItemsController < ApplicationController
     @item_category_mens = Item.includes(:category).where(item_status:0,category_id:200..345).limit(10)
     @item_category_hobby = Item.includes(:category).where(item_status:0,category_id:685..797).limit(10)
     @item_category_gadget = Item.includes(:category).where(item_status:0,category_id:898..983).limit(10)
+  end
+
+  def set_detail_search
+    @q = Item.ransack(params[:q])
+    @search_items = @q.result.includes(:user, :likes, :images)
   end
   
 end

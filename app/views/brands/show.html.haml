@@ -5,6 +5,8 @@
 = render "/layouts/bread-crumbs"
 
 .main-screen
+  .detail-search
+    = render "/items/detail_search_form"
   .main-box
     .favorite-container
       .favorite-title-box-top
@@ -26,9 +28,7 @@
                         %span.line
                           = item.name.truncate(22)
                         .like-count
-                          = icon("far","heart")
-                          %span.item-box-likes__number
-                            0
+                          = render partial: 'likes/like_display', locals:{ item: item }
           - else
             .create-main
               .add-more-items

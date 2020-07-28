@@ -1,26 +1,27 @@
 .header-main
   = render partial:'/layouts/main_header'
 
-- breadcrumb :categories
+- breadcrumb :item_all
 = render "/layouts/bread-crumbs"
 
 .main-screen
   .detail-search
-    = render "/items/detail_search_form"
+    = render "detail_search_form"
   .main-box
     .items-genre-box
       %h2.box-title
-        カテゴリー一覧
-    .all-kinds
-      - @category_parents.each do |category|
-        = link_to "#{category.name}", category_path(category.id), class: "brand"
+        検索結果
     .favorite-container
+      .favorite-title-box-top
+        %h3.favorite-title
+          = @search_items.count
+          %span 件検索
       .items-boxes
         %ul.items-lists
-          - @items.each do |item|
+          - @search_items.each do |item|
             %li.items-lists__each
               .item-sammary
-                = link_to item_path(item.id),class:"sammary" do
+                = link_to item_path(item.id), class: "sammary" do
                   %figure.item-image
                     .image-thumbnail
                       %span.price
@@ -31,11 +32,5 @@
                         = item.name.truncate(22)
                       .like-count
                         = render partial: 'likes/like_display', locals:{ item: item }
-= paginate(@items)
 .main-footer
   = render partial:"/layouts/main-footer"
-
-= link_to new_item_path do
-  .sell-btn
-    %span.sell-btn__text 出品
-    = image_tag("/images/icon_camera.png", alt: "CAMERA", class: "sell-btn__image")
