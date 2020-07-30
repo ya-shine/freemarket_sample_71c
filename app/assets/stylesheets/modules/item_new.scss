@@ -103,6 +103,10 @@ body{
           }
         }
       }
+      .alert {
+        color: red;
+        display: none;
+      }
       .hidden-content {
         position: absolute;
         top: 172px;

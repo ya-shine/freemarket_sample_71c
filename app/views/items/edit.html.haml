@@ -25,6 +25,8 @@
               = icon('fas', 'camera', class: "exhibition-image-container__field--input--icon")
               %p.exhibition-image-container__field--text
                 クリックしてファイルをアップロード
+        .alert
+          画像は必須です。
         .hidden-content
           = f.fields_for :images do |image|
             = image.file_field :image, class: "hidden-field"

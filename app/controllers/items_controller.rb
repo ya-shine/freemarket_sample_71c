@@ -68,7 +68,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    unless @item.update!(item_update_params)
+    unless @item.update(item_update_params)
       flash.now[:alert] = "更新できませんでした"
 
       grandchild_category = @item.category

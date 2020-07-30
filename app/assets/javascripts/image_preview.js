@@ -98,4 +98,23 @@ $(function(){
       }
     }
   });
+
+  $('.lower-box').on('click', function(){
+    var widthCheck = $('.label-content').width();
+    console.log(widthCheck)
+    if(widthCheck != 493){
+      $('.alert').css('display','none');
+    }else{
+      $('.alert').css('display','block')
+    }
+  })
+
+  $('.button-container__exhibition').on('click', function(){
+    var value_doc = $('.label-content').width();
+    if(value_doc == 620){
+      $('.alert').css('display','block')
+      $(window).scrollTop(0);
+      return false
+    };
+  })
 });
