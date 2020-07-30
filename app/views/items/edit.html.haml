@@ -31,10 +31,6 @@
             = image.check_box :_destroy, class: "hidden-checkbox"
           - @item.images.length.upto(4) do |i|
             %input{class: "hidden-field", type: "file", name: "item[images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image" }
-            
-        .notifications
-          - flash.each do |key, value|
-            = content_tag(:div, value, class:key)
     .product-container
       .product-container__top
         %label.product-container__top__title 商品名

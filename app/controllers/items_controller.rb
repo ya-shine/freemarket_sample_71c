@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, only: [:edit, :update, :show, :destroy]
+  before_action :set_item, only: [ :edit, :update, :show, :destroy]
   before_action :category_all, only: [:index, :show]
   before_action :brand_category_header, only: [:index, :show, :search, :detail_search]
   before_action :set_detail_search, only: [:index, :detail_search]
@@ -68,8 +68,9 @@ class ItemsController < ApplicationController
   end
 
   def update
-    unless @item.update(item_update_params)
+    unless @item.update!(item_update_params)
       flash.now[:alert] = "更新できませんでした"
+
       grandchild_category = @item.category
       child_category = grandchild_category.parent
 
@@ -84,7 +85,6 @@ class ItemsController < ApplicationController
       Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
         @category_grandchildren_array << grandchildren
       end
-
       render :edit
     end
   end
