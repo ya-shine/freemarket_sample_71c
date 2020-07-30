@@ -26,6 +26,6 @@
       .link-to-top
         = link_to "トップページへ",root_path,class:"linked"
       .link-to-mypage
-        = link_to "マイページへ",mypage_index_path,class:"linked"
+        = link_to "マイページへ",user_path(current_user.id),class:"linked"
 .footer
   = render "/layouts/form_footer"

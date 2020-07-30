@@ -5,75 +5,7 @@
 = render "/layouts/bread-crumbs"
 
 .mypage-main
-  .left-content
-    %nav.nav
-      %ul.nav__list
-        %li.nav__list__box
-          = link_to "#", class: "nav__list__box--item active" do
-            マイページ
-            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
-        %li.nav__list__box
-          = link_to "#", class: "nav__list__box--item active" do
-            いいね！一覧
-            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
-        %li.nav__list__box
-          = link_to new_item_path, class: "nav__list__box--item active" do
-            出品する
-            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
-        %li.nav__list__box
-          = link_to "#", class: "nav__list__box--item active" do
-            出品した商品-出品中
-            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
-        %li.nav__list__box
-          = link_to "#", class: "nav__list__box--item active" do
-            出品した商品-取引中
-            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
-        %li.nav__list__box
-          = link_to "#", class: "nav__list__box--item active" do
-            出品した商品-売却済み
-            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
-        %li.nav__list__box
-          = link_to "#", class: "nav__list__box--item active" do
-            購入した商品-取引中
-            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
-        %li.nav__list__box
-          = link_to "#", class: "nav__list__box--item active" do
-            購入した商品-過去の取引
-            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
-        %li.nav__list__box
-          = link_to "#", class: "nav__list__box--item active" do
-            評価一覧
-            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
-      %h3.nav__title 設定
-      %ul.nav__list
-        %li.nav__list__box
-          = link_to "#", class: "nav__list__box--item active" do
-            プロフィール
-            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
-        %li.nav__list__box
-          = link_to "#", class: "nav__list__box--item active" do
-            発送元・お届け先住所変更
-            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
-        %li.nav__list__box
-          = link_to "#", class: "nav__list__box--item active" do
-            支払い方法
-            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
-        %li.nav__list__box
-          = link_to "#", class: "nav__list__box--item active" do
-            メール/パスワード
-            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
-        %li.nav__list__box
-          = link_to "#", class: "nav__list__box--item active" do
-            本人情報
-            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
-        %li.nav__list__box
-          = link_to "#", class: "nav__list__box--item active" do
-            電話番号の確認
-            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
-        %li.nav__list__box
-          = link_to destroy_user_session_path, class: "nav__list__box--item active", method: :delete do
-            %span ログアウト
-            = icon('fas', 'angle-right', class: "nav__list__box--item--icon")
+  = render "/users/side-bar"
   .right-content
     .mypage-right-container
       %h2.mypage-right-container__head 支払い方法
