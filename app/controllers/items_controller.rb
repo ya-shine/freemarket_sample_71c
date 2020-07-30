@@ -90,8 +90,8 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @items = Item.includes(:user).where(users: {id: @item.user_id},item_status:false)
-    @categories = Item.includes(:category).where(categories: {id: @item.category_id})
+    @items = Item.includes(:user).where(users: {id: @item.user_id},item_status:false).limit(3)
+    @categories = Item.includes(:category).where(categories: {id: @item.category_id}).limit(3)
     @comment = Comment.new
     @comments = @item.comments.order(created_at: :desc)
   end
