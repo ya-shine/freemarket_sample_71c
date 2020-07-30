@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, only: [:create, :edit, :update, :show, :destroy]
+  before_action :set_item, only: [:edit, :update, :show, :destroy]
   before_action :category_all, only: [:index, :show]
   before_action :brand_category_header, only: [:index, :show, :search, :detail_search]
   before_action :set_detail_search, only: [:index, :detail_search]
