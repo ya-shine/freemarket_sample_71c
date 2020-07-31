@@ -113,6 +113,7 @@ $(function(){
     } else {
       
       $(`#item_images_attributes_${id}__destroy`).prop('checked', true);
+      var count = $('.preview-box').length;
       if (count == 4 ) {
         $('.label-content').show();
       }
