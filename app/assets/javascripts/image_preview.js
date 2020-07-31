@@ -37,6 +37,31 @@ $(function(){
     $('.label-content').css('width', labelWidth);
   }
 
+
+  $(document).on('click', '.label-content', function(){
+    var countVal0 = $('#preview-box__0').val()
+    var countVal1 = $('#preview-box__1').val()
+    var countVal2 = $('#preview-box__2').val()
+    var countVal3 = $('#preview-box__3').val()
+    var countVal4 = $('#preview-box__4').val()
+    if(countVal0 == undefined){
+      var image0 = $('.label-box').prop('for','item_images_attributes_0_image')
+      console.log(image0)
+    }else if(countVal0 == '' && countVal1 == undefined ){
+      var image1 = $('.label-box').prop('for','item_images_attributes_1_image')
+      console.log(image1)
+    }else if(countVal0 == '' && countVal1 == '' && countVal2 == undefined){
+      var image2 = $('.label-box').prop('for','item_images_attributes_2_image')
+      console.log(image2)
+    }else if(countVal0 == '' && countVal1 == '' && countVal2 == '' && countVal3 == undefined){
+      var image3 = $('.label-box').prop('for','item_images_attributes_3_image')
+      console.log(image3)
+    }else if(countVal0 == '' && countVal1 == '' && countVal2 == '' && countVal3 == '' && countVal4 == undefined){
+      var image4 = $('.label-box').prop('for','item_images_attributes_4_image')
+      console.log(image4)
+    }
+  })
+
   $(document).on('change', '.hidden-field', function() {
     setLabel();
     var id = $(this).attr('id').replace(/[^0-9]/g, '');
@@ -101,7 +126,6 @@ $(function(){
 
   $('.lower-box').on('click', function(){
     var widthCheck = $('.label-content').width();
-    console.log(widthCheck)
     if(widthCheck != 493){
       $('.alert').css('display','none');
     }else{

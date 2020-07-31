@@ -149,7 +149,7 @@ class ItemsController < ApplicationController
 
   def set_detail_search
     @q = Item.ransack(params[:q])
-    @search_items = @q.result.includes(:user, :likes, :images)
+    @search_items = @q.result.includes(:user, :likes, :images).where(item_status: false)
   end
   
 end
