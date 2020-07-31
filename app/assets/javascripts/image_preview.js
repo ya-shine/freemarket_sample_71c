@@ -133,7 +133,7 @@ $(function(){
     }
   })
 
-  $('.button-container__exhibition').on('click', function(){
+  $('.button-container__edit').on('click', function(){
     var value_doc = $('.label-content').width();
     if(value_doc == 620){
       $('.alert').css('display','block')

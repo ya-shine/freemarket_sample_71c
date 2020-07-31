@@ -575,7 +575,8 @@ body{
     margin: 40px auto 32px;
     vertical-align: baseline;
     text-align: center;
-    &__exhibition{
+    &__exhibition,
+    &__edit{
       background-color: #ea352d;
       color: #fff;
       width: 100%;
